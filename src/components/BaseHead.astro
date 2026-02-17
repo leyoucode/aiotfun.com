@@ -1,0 +1,49 @@
+---
+import '../styles/global.css';
+import { getLocaleFromUrl } from '../utils/i18n';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description = 'Discover Fun Things in AI & IoT', image } = Astro.props;
+const locale = getLocaleFromUrl(Astro.url);
+const altLocale = locale === 'en' ? 'zh' : 'en';
+const altUrl = Astro.url.pathname.replace(`/${locale}`, `/${altLocale}`);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- Google Fonts: preconnect + load -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@500;700&display=swap"
+  rel="stylesheet"
+/>
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- hreflang -->
+<link rel="alternate" hreflang={locale} href={canonicalURL} />
+<link rel="alternate" hreflang={altLocale} href={new URL(altUrl, Astro.site)} />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:locale" content={locale === 'zh' ? 'zh_CN' : 'en_US'} />
+{image && <meta property="og:image" content={new URL(image, Astro.site)} />}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{image && <meta name="twitter:image" content={new URL(image, Astro.site)} />}

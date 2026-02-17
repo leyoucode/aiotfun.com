@@ -1,0 +1,113 @@
+---
+import { getLocaleFromUrl, useTranslations, getLanguageSwitchUrl, localePath } from '../utils/i18n';
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const switchUrl = getLanguageSwitchUrl(Astro.url);
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { key: 'products', href: localePath('/products/', locale) },
+  { key: 'boards', href: localePath('/boards/', locale) },
+  { key: 'builds', href: localePath('/builds/', locale) },
+  { key: 'models', href: localePath('/models/', locale) },
+  { key: 'signals', href: localePath('/signals/', locale) },
+  { key: 'about', href: localePath('/about/', locale) },
+] as const;
+---
+
+<header class="sticky top-0 z-50 border-b border-border bg-bg/80 backdrop-blur-md">
+  <div class="mx-auto flex h-16 max-w-content items-center justify-between px-4 md:px-6">
+    <!-- Logo -->
+    <a href={localePath('/', locale)} class="font-logo text-xl font-bold tracking-tight">
+      <span class="text-text">AIoT</span><span class="text-accent">Fun</span>
+    </a>
+
+    <!-- 桌面端导航 -->
+    <nav class="hidden items-center gap-6 md:flex">
+      {navItems.map((item) => {
+        const label = t.nav[item.key];
+        const isActive = currentPath.startsWith(item.href.replace(/\/$/, ''));
+        return (
+          <a
+            href={item.href}
+            class:list={[
+              'font-body text-sm transition-colors hover:text-accent',
+              isActive ? 'font-semibold text-accent' : 'text-text-muted',
+            ]}
+          >
+            {label}
+          </a>
+        );
+      })}
+    </nav>
+
+    <!-- 右侧：语言切换 + 移动端汉堡 -->
+    <div class="flex items-center gap-4">
+      <a
+        href={switchUrl}
+        class="font-mono text-xs text-text-muted transition-colors hover:text-accent"
+      >
+        {t.common.lang_switch}
+      </a>
+
+      <!-- 汉堡菜单按钮 -->
+      <button
+        id="mobile-menu-btn"
+        class="flex flex-col gap-1.5 md:hidden"
+        aria-label="Toggle menu"
+      >
+        <span class="hamburger-line block h-0.5 w-5 bg-text transition-transform"></span>
+        <span class="hamburger-line block h-0.5 w-5 bg-text transition-opacity"></span>
+        <span class="hamburger-line block h-0.5 w-5 bg-text transition-transform"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 移动端菜单 -->
+  <nav
+    id="mobile-menu"
+    class="hidden border-t border-border bg-bg px-4 pb-4 pt-2 md:hidden"
+  >
+    {navItems.map((item) => {
+      const label = t.nav[item.key];
+      const isActive = currentPath.startsWith(item.href.replace(/\/$/, ''));
+      return (
+        <a
+          href={item.href}
+          class:list={[
+            'block py-2 font-body text-sm transition-colors hover:text-accent',
+            isActive ? 'font-semibold text-accent' : 'text-text-muted',
+          ]}
+        >
+          {label}
+        </a>
+      );
+    })}
+  </nav>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const lines = btn?.querySelectorAll('.hamburger-line');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+
+    if (lines && lines.length === 3) {
+      if (isOpen) {
+        // 关闭 → 汉堡
+        (lines[0] as HTMLElement).style.transform = '';
+        (lines[1] as HTMLElement).style.opacity = '1';
+        (lines[2] as HTMLElement).style.transform = '';
+      } else {
+        // 打开 → X
+        (lines[0] as HTMLElement).style.transform = 'translateY(4px) rotate(45deg)';
+        (lines[1] as HTMLElement).style.opacity = '0';
+        (lines[2] as HTMLElement).style.transform = 'translateY(-4px) rotate(-45deg)';
+      }
+    }
+  });
+</script>

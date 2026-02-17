@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #F6F5F1;
+  --color-bg-alt: #F0EFEB;
+  --color-text: #1A1A1A;
+  --color-text-muted: #6B7280;
+  --color-border: #E8E6E1;
+  --color-accent: #10B981;
+  --color-products: #DC6843;
+  --color-boards: #CA8A04;
+  --color-builds: #0D9488;
+  --color-models: #7C3AED;
+  --color-signals: #6B7280;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-bg text-text font-body antialiased;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+  }
+}

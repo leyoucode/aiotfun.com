@@ -1,0 +1,27 @@
+---
+import { getLocaleFromUrl, useTranslations } from '../utils/i18n';
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+---
+
+<section class="mx-auto max-w-content px-4 py-12 md:px-6">
+  <div class="text-center">
+    <h2 class="font-body text-2xl font-bold md:text-3xl">{t.home.newsletter_title}</h2>
+    <p class="mt-2 text-sm text-text-muted">{t.home.newsletter_subtitle}</p>
+
+    <form class="mx-auto mt-6 flex max-w-md gap-2" onsubmit="return false;">
+      <input
+        type="email"
+        placeholder="your@email.com"
+        class="flex-1 rounded-card border border-border bg-white px-4 py-2.5 font-body text-sm text-text placeholder:text-text-muted focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+      />
+      <button
+        type="submit"
+        class="rounded-card bg-accent px-6 py-2.5 font-mono text-sm font-medium text-white transition-colors hover:bg-accent/90"
+      >
+        {t.home.subscribe}
+      </button>
+    </form>
+  </div>
+</section>

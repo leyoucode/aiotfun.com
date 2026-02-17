@@ -1,0 +1,33 @@
+---
+import { getLocaleFromUrl, useTranslations } from '../utils/i18n';
+import { getRadarItems } from '../data/mockRadar';
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const items = getRadarItems(locale);
+---
+
+<div class="rounded-card bg-bg-alt p-6">
+  <h3 class="mb-4 font-display text-xl">
+    <span class="mr-2 text-accent">◈</span>
+    {t.home.weekly_radar}
+  </h3>
+
+  <ol class="space-y-3">
+    {items.map((item) => (
+      <li class="flex gap-3">
+        <span class="font-mono text-sm font-medium text-accent">{item.id}.</span>
+        <div>
+          <a href={item.url} class="text-sm font-medium text-text transition-colors hover:text-accent">
+            {item.title}
+          </a>
+          <span class="ml-2 font-mono text-xs text-text-muted">{item.source}</span>
+        </div>
+      </li>
+    ))}
+  </ol>
+
+  <a href="#" class="mt-4 inline-block font-mono text-sm text-accent transition-colors hover:underline">
+    {t.home.see_full_radar}
+  </a>
+</div>

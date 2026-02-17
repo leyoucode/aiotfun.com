@@ -1,0 +1,20 @@
+---
+import { getLocaleFromUrl, useTranslations } from '../utils/i18n';
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const monitoring = t.agent_status.monitoring.replace('{count}', '127');
+const lastDiscovery = t.agent_status.last_discovery.replace('{time}', '3 min');
+---
+
+<div class="border-b border-border bg-bg py-2">
+  <div class="mx-auto flex max-w-content items-center gap-2 px-4 font-mono text-xs text-text-muted md:px-6">
+    <span class="relative flex h-2 w-2">
+      <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
+      <span class="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
+    </span>
+    <span>{monitoring}</span>
+    <span class="text-border">·</span>
+    <span>{lastDiscovery}</span>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+---
+import ArticleCard from './ArticleCard.astro';
+import { getLocaleFromUrl, useTranslations } from '../utils/i18n';
+import { getLatestArticles } from '../data/mockArticles';
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const articles = getLatestArticles(locale, 12);
+// 排除 featured 的文章，用于 Discovery Stream
+const streamArticles = articles.filter((a) => !a.featured);
+---
+
+<section class="mx-auto max-w-content px-4 py-8 md:px-6">
+  <h2 class="mb-6 font-display text-2xl md:text-3xl">{t.home.discovery_stream}</h2>
+
+  <!-- 3列非对称网格 -->
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {streamArticles.map((article, i) => (
+      <ArticleCard
+        article={article}
+        variant={i === 0 ? 'large' : 'medium'}
+      />
+    ))}
+  </div>
+</section>

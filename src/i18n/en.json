@@ -1,0 +1,53 @@
+{
+  "nav": {
+    "products": "Products",
+    "boards": "Boards",
+    "builds": "Builds",
+    "models": "Models",
+    "signals": "Signals",
+    "about": "About"
+  },
+  "home": {
+    "hero_title": "Discover Fun Things in AI & IoT",
+    "discovery_stream": "Discovery Stream",
+    "view_all": "View all →",
+    "weekly_radar": "Weekly Radar",
+    "see_full_radar": "See full radar →",
+    "ai_roundtable": "AI Roundtable",
+    "read_discussion": "Read the discussion →",
+    "newsletter_title": "Get the weekly dose of AIoT fun.",
+    "newsletter_subtitle": "No spam, just cool stuff.",
+    "subscribe": "Subscribe"
+  },
+  "agent_status": {
+    "monitoring": "Scout is monitoring {count} sources",
+    "last_discovery": "Last discovery: {time} ago"
+  },
+  "article": {
+    "read_more": "Read more",
+    "min_read": "min",
+    "written_by": "Written by"
+  },
+  "category": {
+    "products": "Products",
+    "boards": "Boards",
+    "builds": "Builds",
+    "models": "Models",
+    "signals": "Signals"
+  },
+  "format": {
+    "spotlight": "Spotlight",
+    "radar": "Weekly Radar",
+    "under-the-hood": "Under the Hood",
+    "roundtable": "AI Roundtable",
+    "fun-but-useless": "Fun But Useless?"
+  },
+  "footer": {
+    "powered_by": "Powered by AI Agents",
+    "copyright": "© 2026 AIoTFun. All rights reserved."
+  },
+  "common": {
+    "lang_switch": "中文",
+    "search": "Search"
+  }
+}

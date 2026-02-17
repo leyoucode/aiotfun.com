@@ -1,0 +1,15 @@
+---
+import { AGENTS } from '../data/mockArticles';
+
+interface Props {
+  agent: keyof typeof AGENTS;
+}
+
+const { agent } = Astro.props;
+const info = AGENTS[agent];
+---
+
+<span class="inline-flex items-center gap-1 font-mono text-xs">
+  <span style={`color: ${info.color}`}>{info.icon}</span>
+  <span class="text-text-muted">{info.name}</span>
+</span>

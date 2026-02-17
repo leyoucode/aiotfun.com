@@ -1,0 +1,39 @@
+---
+import { getLocaleFromUrl, useTranslations } from '../utils/i18n';
+import { getRoundtable } from '../data/mockRoundtable';
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const roundtable = getRoundtable(locale);
+---
+
+<div class="rounded-card bg-bg-alt p-6">
+  <h3 class="mb-4 font-display text-xl">
+    <span class="mr-2 text-models">◎</span>
+    {t.home.ai_roundtable}
+  </h3>
+
+  <!-- 话题标题 -->
+  <p class="mb-3 font-display text-lg italic text-text">
+    {roundtable.topic}
+  </p>
+
+  <!-- Agent 头像组 -->
+  <div class="mb-3 flex items-center gap-3">
+    {roundtable.agents.map((agent) => (
+      <span class="inline-flex items-center gap-1 font-mono text-xs">
+        <span style={`color: ${agent.color}`} class="text-base">{agent.icon}</span>
+        <span class="text-text-muted">{agent.name}</span>
+      </span>
+    ))}
+  </div>
+
+  <!-- 讨论摘要 -->
+  <p class="mb-4 text-sm text-text-muted line-clamp-3">
+    {roundtable.summary}
+  </p>
+
+  <a href={roundtable.url} class="inline-block font-mono text-sm text-accent transition-colors hover:underline">
+    {t.home.read_discussion}
+  </a>
+</div>
