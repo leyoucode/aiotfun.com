@@ -34,10 +34,10 @@ const isSmall = variant === 'small';
         <CategoryTag category={article.category} />
         <FormatTag format={article.formatTag} />
       </div>
-      <h3 class="font-body text-xl md:text-2xl font-bold leading-snug text-white group-hover:text-white/90 transition-colors">
+      <h3 class="font-body text-xl md:text-2xl font-bold leading-snug text-white group-hover:text-white/90 transition-colors truncate" title={article.title}>
         {article.title}
       </h3>
-      <p class="mt-2 text-sm md:text-base text-white/80 line-clamp-2">
+      <p class="mt-2 text-sm md:text-base text-white/80 truncate" title={article.description}>
         {article.description}
       </p>
       <div class="mt-3 flex items-center gap-2 font-mono text-xs text-white/60">
@@ -69,13 +69,13 @@ const isSmall = variant === 'small';
         <FormatTag format={article.formatTag} />
       </div>
       <h3 class:list={[
-        'font-body font-bold leading-snug text-text group-hover:text-accent transition-colors',
-        isLarge ? 'text-xl md:text-2xl' : isSmall ? 'text-sm' : 'text-base',
-      ]}>
+        'font-body font-bold leading-snug text-text group-hover:text-accent transition-colors truncate',
+        isSmall ? 'text-sm' : 'text-base',
+      ]} title={article.title}>
         {article.title}
       </h3>
       {!isSmall && (
-        <p class="mt-2 text-sm text-text-muted line-clamp-2">
+        <p class="mt-2 text-sm text-text-muted truncate" title={article.description}>
           {article.description}
         </p>
       )}
