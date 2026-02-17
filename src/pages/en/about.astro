@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../utils/i18n';
+import { agentProfiles } from '../../data/mockAgents';
+
+const locale = 'en';
+const t = useTranslations(locale);
+const about = (t as any).about;
+
+const statusColors = {
+  online: 'bg-green-500',
+  busy: 'bg-yellow-500',
+  idle: 'bg-gray-400',
+};
+const statusLabels = {
+  online: 'Online',
+  busy: 'Busy',
+  idle: 'Idle',
+};
+
+const workflowSteps = [
+  { icon: '●', color: '#10B981', label: 'Discover', agent: 'Scout', desc: about.workflow_steps.discover },
+  { icon: '▲', color: '#6366F1', label: 'Curate', agent: 'Editor', desc: about.workflow_steps.curate },
+  { icon: '◆', color: '#F59E0B', label: 'Write', agent: 'Writer', desc: about.workflow_steps.write },
+  { icon: '■', color: '#EC4899', label: 'Publish', agent: 'Publisher', desc: about.workflow_steps.publish },
+];
+---
+
+<BaseLayout title={about.title} description={about.subtitle}>
+  <div class="mx-auto max-w-content px-4 md:px-6 py-8">
+
+    <!-- Hero -->
+    <div class="text-center mb-16 pt-8">
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-text mb-4">{about.title}</h1>
+      <p class="text-lg text-text-muted max-w-2xl mx-auto">{about.subtitle}</p>
+    </div>
+
+    <!-- 品牌故事 -->
+    <section class="mb-20 max-w-prose mx-auto">
+      <h2 class="font-display text-2xl md:text-3xl font-bold text-text mb-6">{about.story_title}</h2>
+      <div class="space-y-4 text-text/90 leading-relaxed text-lg">
+        <p>{about.story_p1}</p>
+        <p>{about.story_p2}</p>
+        <p>{about.story_p3}</p>
+      </div>
+    </section>
+
+    <!-- Meet the Crew -->
+    <section class="mb-20">
+      <div class="text-center mb-10">
+        <h2 class="font-display text-2xl md:text-3xl font-bold text-text mb-2">{about.crew_title}</h2>
+        <p class="text-text-muted">{about.crew_subtitle}</p>
+      </div>
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {agentProfiles.map((agent) => (
+          <div class="rounded-card border border-border bg-white p-6 text-center shadow-card hover:shadow-md transition-shadow">
+            <!-- 几何头像 -->
+            <div
+              class="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full text-4xl"
+              style={`background: ${agent.color}15; color: ${agent.color}`}
+            >
+              {agent.icon}
+            </div>
+            <!-- 名称 + 角色 -->
+            <h3 class="font-body text-lg font-bold text-text">{agent.name}</h3>
+            <p class="mt-1 text-sm text-text-muted">{agent.role[locale]}</p>
+            <!-- 简介 -->
+            <p class="mt-3 text-sm text-text/80 leading-relaxed">{agent.bio[locale]}</p>
+            <!-- 在线状态 -->
+            <div class="mt-4 inline-flex items-center gap-1.5">
+              <span class={`inline-block h-2 w-2 rounded-full ${statusColors[agent.status]}`}></span>
+              <span class="font-mono text-xs text-text-muted">{statusLabels[agent.status]}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 工作流 -->
+    <section class="mb-20">
+      <div class="text-center mb-10">
+        <h2 class="font-display text-2xl md:text-3xl font-bold text-text mb-2">{about.workflow_title}</h2>
+        <p class="text-text-muted">{about.workflow_desc}</p>
+      </div>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {workflowSteps.map((step, i) => (
+          <div class="relative rounded-card border border-border bg-white p-6 shadow-card">
+            <!-- 步骤编号 -->
+            <div class="absolute -top-3 left-4 rounded-full bg-bg px-2 font-mono text-xs text-text-muted">
+              Step {i + 1}
+            </div>
+            <!-- 图标 -->
+            <div class="mb-3 text-2xl" style={`color: ${step.color}`}>{step.icon}</div>
+            <h3 class="font-body font-bold text-text mb-1">{step.label}</h3>
+            <p class="font-mono text-xs text-text-muted mb-2">{step.agent}</p>
+            <p class="text-sm text-text/80 leading-relaxed">{step.desc}</p>
+            <!-- 箭头连接线（非最后一步） -->
+            {i < workflowSteps.length - 1 && (
+              <div class="absolute -right-3 top-1/2 hidden text-text-muted lg:block">→</div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 创始人 -->
+    <section class="mb-20 max-w-prose mx-auto">
+      <h2 class="font-display text-2xl md:text-3xl font-bold text-text mb-6">{about.founder_title}</h2>
+      <blockquote class="border-l-4 border-accent pl-4 py-2 italic text-text/80 text-lg leading-relaxed mb-4">
+        {about.founder_bio}
+      </blockquote>
+      <p class="font-body font-semibold text-text">— {about.founder_name}</p>
+    </section>
+
+    <!-- 联系 -->
+    <section class="text-center pb-8">
+      <h2 class="font-display text-2xl font-bold text-text mb-3">{about.contact_title}</h2>
+      <p class="text-text-muted mb-6">{about.contact_desc}</p>
+      <div class="flex justify-center gap-4">
+        <a
+          href="https://github.com/aiotfun"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full border border-border px-6 py-2 text-sm font-mono text-text-muted hover:border-accent hover:text-accent transition-colors"
+        >
+          GitHub
+        </a>
+        <a
+          href="mailto:hello@aiotfun.com"
+          class="inline-flex items-center gap-2 rounded-full border border-border px-6 py-2 text-sm font-mono text-text-muted hover:border-accent hover:text-accent transition-colors"
+        >
+          Email
+        </a>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

@@ -11,7 +11,10 @@ export interface Article {
   lang: 'en' | 'zh';
   featured?: boolean;
   tags: string[];
+  body?: string;
 }
+
+export type Category = Article['category'];
 
 export const AGENTS = {
   scout: { name: 'Scout', icon: '●', color: '#10B981' },
@@ -351,4 +354,36 @@ export function getFeaturedArticles(lang: 'en' | 'zh'): Article[] {
 
 export function getLatestArticles(lang: 'en' | 'zh', count = 12): Article[] {
   return getArticles(lang).slice(0, count);
+}
+
+/** 按 slug 查找文章，自动注入 body */
+export function getArticleBySlug(slug: string, lang: 'en' | 'zh'): Article | undefined {
+  // 注意：body 注入在页面层完成，避免循环依赖
+  const article = getArticles(lang).find((a) => a.slug === slug);
+  return article || undefined;
+}
+
+/** 按分类筛选文章 */
+export function getArticlesByCategory(category: string, lang: 'en' | 'zh'): Article[] {
+  return getArticles(lang).filter((a) => a.category === category);
+}
+
+/** 获取相关文章（同分类或同标签） */
+export function getRelatedArticles(article: Article, lang: 'en' | 'zh', count = 3): Article[] {
+  const all = getArticles(lang).filter((a) => a.slug !== article.slug);
+  // 优先同分类
+  const sameCategory = all.filter((a) => a.category === article.category);
+  // 再按标签交集排序
+  const withScore = all.map((a) => ({
+    article: a,
+    score: (a.category === article.category ? 10 : 0) +
+      a.tags.filter((tag) => article.tags.includes(tag)).length,
+  }));
+  withScore.sort((a, b) => b.score - a.score);
+  return withScore.slice(0, count).map((w) => w.article);
+}
+
+/** 返回所有分类 key */
+export function getAllCategories(): Category[] {
+  return ['products', 'boards', 'builds', 'models', 'signals'];
 }

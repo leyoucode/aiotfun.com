@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import { getArticlesByCategory, getAllCategories } from '../../../data/mockArticles';
+import { useTranslations, localePath } from '../../../utils/i18n';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return getAllCategories().map((cat) => ({
+    params: { category: cat },
+  }));
+};
+
+const locale = 'en';
+const { category } = Astro.params;
+const t = useTranslations(locale);
+const articles = getArticlesByCategory(category!, locale);
+const categoryLabel = t.category[category as keyof typeof t.category] || category;
+const description = (t as any).category_page.descriptions[category as string] || '';
+
+// 收集该分类下的所有 formatTag
+const formatTags = [...new Set(articles.map((a) => a.formatTag))];
+---
+
+<BaseLayout title={`${categoryLabel} — AIoTFun`} description={description}>
+  <div class="mx-auto max-w-content px-4 md:px-6 py-8">
+    <!-- 分类标题 -->
+    <div class="mb-8">
+      <h1 class="font-display text-3xl md:text-4xl font-bold text-text mb-3">
+        {categoryLabel}
+      </h1>
+      <p class="text-text-muted text-lg max-w-2xl">{description}</p>
+      <p class="mt-2 font-mono text-sm text-text-muted">
+        {(t as any).category_page.article_count.replace('{count}', String(articles.length))}
+      </p>
+    </div>
+
+    <!-- 筛选栏 -->
+    {formatTags.length > 1 && (
+      <div class="mb-8 flex flex-wrap gap-2" id="format-filter">
+        <button
+          class="filter-btn active rounded-full border border-accent bg-accent/10 px-4 py-1.5 text-sm font-mono text-accent transition-colors"
+          data-format="all"
+        >
+          {(t as any).category_page.all}
+        </button>
+        {formatTags.map((tag) => (
+          <button
+            class="filter-btn rounded-full border border-border px-4 py-1.5 text-sm font-mono text-text-muted hover:border-accent hover:text-accent transition-colors"
+            data-format={tag}
+          >
+            {t.format[tag as keyof typeof t.format] || tag}
+          </button>
+        ))}
+      </div>
+    )}
+
+    <!-- 文章网格 -->
+    {articles.length > 0 ? (
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" id="articles-grid">
+        {articles.map((article) => (
+          <div class="article-item" data-format={article.formatTag}>
+            <ArticleCard article={article} variant="medium" />
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-16">
+        <p class="text-text-muted text-lg">{(t as any).category_page.no_articles}</p>
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.article-item');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const format = (btn as HTMLElement).dataset.format;
+
+      // 更新按钮状态
+      buttons.forEach((b) => {
+        b.classList.remove('active', 'border-accent', 'bg-accent/10', 'text-accent');
+        b.classList.add('border-border', 'text-text-muted');
+      });
+      btn.classList.add('active', 'border-accent', 'bg-accent/10', 'text-accent');
+      btn.classList.remove('border-border', 'text-text-muted');
+
+      // 过滤文章
+      items.forEach((item) => {
+        const el = item as HTMLElement;
+        if (format === 'all' || el.dataset.format === format) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

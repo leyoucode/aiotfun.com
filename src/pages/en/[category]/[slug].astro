@@ -1,0 +1,26 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import { getArticles, getArticleBySlug } from '../../../data/mockArticles';
+import { getArticleBody } from '../../../data/mockArticleBodies';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const articles = getArticles('en');
+  return articles.map((article) => ({
+    params: { category: article.category, slug: article.slug },
+  }));
+};
+
+const { category, slug } = Astro.params;
+const article = getArticleBySlug(slug!, 'en');
+
+if (!article) {
+  return Astro.redirect('/en/');
+}
+
+// 注入 body
+const body = getArticleBody(slug!, 'en');
+const articleWithBody = { ...article, body };
+---
+
+<ArticleLayout article={articleWithBody} />

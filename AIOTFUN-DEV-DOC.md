@@ -131,52 +131,51 @@ aiotfun.com/
 ├── src/
 │   ├── components/           # 通用组件
 │   │   ├── BaseHead.astro    # <head> 公共部分（SEO/字体/样式）
-│   │   ├── Header.astro      # 导航栏（含语言切换、深色模式）
+│   │   ├── Header.astro      # 导航栏（含语言切换）
 │   │   ├── Footer.astro      # 页脚
 │   │   ├── AgentStatusBar.astro  # Agent 状态条
-│   │   ├── ArticleCard.astro     # 文章卡片组件
+│   │   ├── ArticleCard.astro     # 文章卡片组件（4种变体）
 │   │   ├── CategoryTag.astro     # 分类标签组件
 │   │   ├── FormatTag.astro       # 内容形式标签组件
 │   │   ├── AgentAvatar.astro     # Agent 几何头像组件
+│   │   ├── HeroSection.astro     # 首页 Hero 轮播区
+│   │   ├── DiscoveryStream.astro # 最新发现流（文章网格）
 │   │   ├── WeeklyRadar.astro     # 每周雷达区块
 │   │   ├── AIRoundtable.astro    # AI 圆桌区块
 │   │   └── Newsletter.astro      # 邮件订阅组件
+│   ├── data/                     # Mock 数据（后期迁移到 MDX content collections）
+│   │   ├── mockArticles.ts       # 文章数据（中英各12篇） + 查询函数
+│   │   ├── mockArticleBodies.ts  # 文章 HTML 正文（4篇完整 + 占位）
+│   │   ├── mockAgents.ts         # Agent 团队资料（关于页用）
+│   │   ├── mockRadar.ts          # 每周雷达条目
+│   │   └── mockRoundtable.ts     # AI 圆桌讨论数据
 │   ├── layouts/
-│   │   ├── BaseLayout.astro      # 基础页面布局
-│   │   ├── ArticleLayout.astro   # 文章详情布局
-│   │   └── ListLayout.astro      # 列表页布局
+│   │   ├── BaseLayout.astro      # 基础页面布局（Header + slot + Footer）
+│   │   └── ArticleLayout.astro   # 文章详情布局（包裹 BaseLayout）
 │   ├── pages/
-│   │   ├── en/                   # 英文页面
+│   │   ├── index.astro           # 根路径重定向（检测语言偏好）
+│   │   ├── en/
 │   │   │   ├── index.astro       # 英文首页
 │   │   │   ├── about.astro       # 英文关于页
-│   │   │   ├── products/         # 产品分类列表
-│   │   │   ├── boards/           # 开发板分类列表
-│   │   │   ├── builds/           # 创造分类列表
-│   │   │   ├── models/           # 模型分类列表
-│   │   │   └── signals/          # 信号分类列表
-│   │   ├── zh/                   # 中文页面（同上结构）
-│   │   │   ├── index.astro
-│   │   │   ├── about.astro
-│   │   │   ├── products/
-│   │   │   ├── boards/
-│   │   │   ├── builds/
-│   │   │   ├── models/
-│   │   │   └── signals/
-│   │   └── index.astro           # 根路径重定向（检测语言偏好）
-│   ├── content/                  # 文章内容（MDX）
-│   │   ├── en/                   # 英文文章
-│   │   │   └── 2026-02-09-esp32-voice-commands.mdx
-│   │   └── zh/                   # 中文文章
-│   │       └── 2026-02-09-esp32-voice-commands.mdx
+│   │   │   └── [category]/       # 动态路由（5个分类统一处理）
+│   │   │       ├── index.astro   # 分类列表页（含 formatTag 筛选）
+│   │   │       └── [slug].astro  # 文章详情页
+│   │   └── zh/
+│   │       ├── index.astro       # 中文首页
+│   │       ├── about.astro       # 中文关于页
+│   │       └── [category]/       # 同上
+│   │           ├── index.astro
+│   │           └── [slug].astro
+│   ├── content/                  # 文章内容（MDX，Phase 2 使用）
+│   │   ├── en/
+│   │   └── zh/
 │   ├── i18n/                     # 国际化翻译文件
-│   │   ├── en.json               # 英文 UI 文案
+│   │   ├── en.json               # 英文 UI 文案（含 article_detail/category_page/about）
 │   │   └── zh.json               # 中文 UI 文案
 │   ├── styles/
-│   │   └── global.css            # 全局样式（字体引入、基础样式）
+│   │   └── global.css            # 全局样式 + .article-body 排版样式
 │   └── utils/
-│       ├── i18n.ts               # i18n 工具函数
-│       ├── content.ts            # 内容查询工具函数
-│       └── date.ts               # 日期格式化工具
+│       └── i18n.ts               # i18n 工具函数
 ├── design/                       # 设计参考文件
 │   └── homepage.png              # 最终确认的首页设计图
 └── workflow/                     # AI Agent 工作流目录（见第6节）
@@ -235,7 +234,7 @@ tags: ["esp32", "voice", "llm", "edge-ai"]
 
 ## 4. 页面结构详解
 
-### 4.1 首页（基于最终设计图）
+### 4.1 首页（当前实现）
 
 ```
 ┌─────────────────────────────────────────────────┐
@@ -246,22 +245,24 @@ tags: ["esp32", "voice", "llm", "edge-ai"]
 │ 🟢 Scout is monitoring 127 sources · Last        │
 │    discovery: 3 min ago                          │
 ├─────────────────────────────────────────────────┤
-│ [Hero]                                           │
-│ "Discover Fun Things in AI & IoT"               │
-│ ┌──────────────────────────────────┐            │
-│ │  Featured Article (大图+标题+    │            │
-│ │  摘要+分类标签+形式标签+Agent署名) │            │
-│ └──────────────────────────────────┘            │
+│ [Hero - ViewPager 轮播]                          │
+│      "Discover Fun Things in AI & IoT"（居中）    │
+│ ┌──────────────────────────────────────────┐    │
+│ │  全幅图片铺满卡片                          │    │
+│ │  ████████████████████████████████████████ │    │
+│ │  ▓▓ 底部渐变遮罩 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ │    │
+│ │  [标签] 标题（单行截断）                    │    │
+│ │  摘要（单行截断）· 日期 · Agent    ● ● ● ● │    │
+│ └──────────────────────────────────────────┘    │
+│  共4张卡片，鼠标/触摸左右滑动，右下角圆点指示器     │
 ├─────────────────────────────────────────────────┤
-│ [Discovery Stream]                               │
-│ ┌─────────┐ ┌────────┐ ┌────────┐              │
-│ │ 大卡60% │ │ 中卡   │ │ 小卡   │              │
-│ │         │ ├────────┤ ├────────┤              │
-│ │         │ │ 中卡   │ │ 小卡   │              │
-│ └─────────┘ └────────┘ └────────┘              │
-│ ┌──────┐ ┌──────┐                               │
-│ │ 卡片 │ │ 卡片 │ ...                            │
-│ └──────┘ └──────┘                               │
+│ [Discovery Stream - 最新发现]                     │
+│ ┌────────┐ ┌────────┐ ┌────────┐               │
+│ │ 封面图 │ │ 封面图 │ │ 封面图 │               │
+│ │ 标题…  │ │ 标题…  │ │ 标题…  │  等高卡片      │
+│ │ 摘要…  │ │ 摘要…  │ │ 摘要…  │  标题/摘要单行  │
+│ │ meta   │ │ meta   │ │ meta   │               │
+│ └────────┘ └────────┘ └────────┘               │
 ├──────────────────────┬──────────────────────────┤
 │ [Weekly Radar]       │ [AI Roundtable]           │
 │ 1. ...               │ 话题标题                   │
@@ -597,47 +598,165 @@ collected: []           # 采集器自动填入搜索结果
 
 ---
 
-## 9. 开发优先级与里程碑
+## 9. 开发进度与里程碑
 
-### Phase 1: 网站骨架（优先开发）
+### Phase 1: 网站骨架（核心页面已完成）
 
-1. Astro 项目初始化 + Tailwind + MDX
-2. i18n 路由配置
-3. 基础布局组件（Header / Footer / BaseLayout）
-4. Agent 状态条组件
-5. 首页开发（完整实现设计图）
-6. 文章详情页开发
-7. 分类列表页开发
-8. 关于页开发
-9. 部署到 Cloudflare Pages
-10. SEO 基础（sitemap / robots.txt / Open Graph）
+| # | 任务 | 状态 | 说明 |
+|---|------|------|------|
+| 1 | Astro 项目初始化 + Tailwind + MDX | ✅ 已完成 | pnpm, Astro v5, Tailwind v3 |
+| 2 | i18n 路由配置 | ✅ 已完成 | `/en/` + `/zh/`，根路径自动重定向 |
+| 3 | 基础布局组件（Header / Footer / BaseLayout） | ✅ 已完成 | 含导航栏、页脚、BaseHead |
+| 4 | Agent 状态条组件 | ✅ 已完成 | AgentStatusBar.astro |
+| 5 | 首页开发 | ✅ 已完成 | 见下方「首页组件清单」 |
+| 6 | 文章详情页开发 | ✅ 已完成 | ArticleLayout + 动态路由，见下方详情 |
+| 7 | 分类列表页开发 | ✅ 已完成 | 动态路由 + 客户端 formatTag 筛选 |
+| 8 | 关于页开发 | ✅ 已完成 | 品牌故事 + Agent 团队 + 工作流 + 创始人 |
+| 9 | 部署到 Cloudflare Pages | 待开始 | — |
+| 10 | SEO 基础（sitemap / robots.txt / OG） | 待开始 | — |
+
+**首页组件清单（全部已完成）：**
+
+| 组件 | 文件 | 说明 |
+|------|------|------|
+| Hero 轮播 | `HeroSection.astro` | ViewPager 式轮播，4张文章卡片（featured+3张），鼠标/触摸拖拽滑动，右下角圆点指示器 |
+| 文章卡片 | `ArticleCard.astro` | 4种变体：featured（全幅图+底部渐变叠加白色文字）/ large / medium / small；标题和摘要单行截断+title悬浮 |
+| 分类标签 | `CategoryTag.astro` | 实色背景，5种分类色 |
+| 形式标签 | `FormatTag.astro` | 描边/淡背景 |
+| Agent 头像 | `AgentAvatar.astro` | 几何图标 + 名称 |
+| 最新发现 | `DiscoveryStream.astro` | 3列等高网格，标题加粗 |
+| 每周雷达 | `WeeklyRadar.astro` | 编号列表，标题加粗 |
+| AI 圆桌 | `AIRoundtable.astro` | 话题 + Agent头像组 + 讨论摘要，标题加粗 |
+| 邮件订阅 | `Newsletter.astro` | 邮箱输入 + 订阅按钮 |
+
+**首页样式规范（已落地）：**
+- 全站不使用斜体（`italic`），标题统一加粗（`font-bold`）
+- Hero 大标题居中显示
+- 所有卡片标题/摘要单行截断（`truncate`），鼠标悬浮显示完整内容（`title` 属性），确保卡片等高
+- Featured 卡片：图片 `absolute inset-0` 铺满，文字区 `absolute bottom-0` + `bg-gradient-to-t` 暗色渐变，白色文字
+
+**Mock 数据（临时占位，后期替换为 MDX 内容查询）：**
+
+| 文件 | 说明 |
+|------|------|
+| `src/data/mockArticles.ts` | 文章数据，含中英文各 12 篇，支持 featured/latest/bySlug/byCategory/related 查询 |
+| `src/data/mockArticleBodies.ts` | 文章 HTML 正文，4 篇完整中英文正文 + 通用占位内容 |
+| `src/data/mockAgents.ts` | Agent 团队详细资料（Scout/Editor/Writer/Publisher），关于页用 |
+| `src/data/mockRadar.ts` | 每周雷达条目 |
+| `src/data/mockRoundtable.ts` | AI 圆桌讨论数据 |
+
+**文章详情页（#6，已完成）：**
+
+| 文件 | 说明 |
+|------|------|
+| `src/layouts/ArticleLayout.astro` | 文章详情布局，包裹 BaseLayout |
+| `src/pages/en/[category]/[slug].astro` | 英文文章详情动态路由 |
+| `src/pages/zh/[category]/[slug].astro` | 中文文章详情动态路由 |
+
+- 结构：返回分类链接 → 标签行（CategoryTag + FormatTag） → 大标题（font-display，3xl~5xl） → 元信息行（日期·阅读时间·Agent·语言切换） → 封面大图（max-h-480px） → 正文（`.article-body`，max-w-prose 居中，`set:html`） → 标签云（`#tag` 圆角胶囊） → 相关文章（3列 ArticleCard medium）
+- 正文排版样式 `.article-body` 在 `global.css` 的 `@layer components` 中定义，覆盖 h2/h3/p/ul/ol/pre/code/figure/figcaption/blockquote/a/strong/em/hr
+- body 数据独立在 `mockArticleBodies.ts`，页面层按需注入，避免 mockArticles.ts 膨胀
+- 相关文章算法：同分类 +10 分，每个共同标签 +1 分，取前 3 篇
+
+**分类列表页（#7，已完成）：**
+
+| 文件 | 说明 |
+|------|------|
+| `src/pages/en/[category]/index.astro` | 英文分类列表动态路由 |
+| `src/pages/zh/[category]/index.astro` | 中文分类列表动态路由 |
+
+- `getStaticPaths()` 返回 5 个分类路径（products/boards/builds/models/signals）
+- 结构：分类名称（font-display） + 描述（从 i18n `category_page.descriptions` 取） + 文章数量 → 筛选栏（按 formatTag 过滤，客户端 JS 切换显隐） → 3 列文章网格（复用 ArticleCard medium） → 空状态提示
+- 筛选为客户端 JS，数据量小，比生成 25 个静态页面更高效
+
+**关于页（#8，已完成）：**
+
+| 文件 | 说明 |
+|------|------|
+| `src/pages/en/about.astro` | 英文关于页 |
+| `src/pages/zh/about.astro` | 中文关于页 |
+
+- 结构：品牌故事（3 段） → Meet the Crew（4 个 Agent 卡片网格：放大几何头像 + 名称 + 角色 + 简介 + 在线状态） → 工作流简图（Scout → Editor → Writer → Publisher 的 4 步流程卡片） → 创始人寄语 → 联系链接（GitHub + Email）
+
+**i18n 扩展（已完成）：**
+
+`en.json` / `zh.json` 新增 3 个翻译分组：
+- `article_detail`：related_articles / tags / back_to_category / reading_time / published / switch_lang
+- `category_page`：all / no_articles / filter_by_format / article_count / descriptions（5 个分类描述）
+- `about`：title / subtitle / story_title / story_p1~p3 / crew_title / crew_subtitle / workflow_title / workflow_desc / workflow_steps / founder_title / founder_bio / founder_name / contact_title / contact_desc
+
+**构建验证：**
+
+- `pnpm build` 成功生成 **38 个静态页面**（Phase 1 之前为 3 个）
+- 完整浏览链路已打通：首页卡片 → 文章详情 → 相关文章 → 分类列表 → 关于页
+- 导航栏所有链接均指向有效页面
+- 中英文切换在所有页面正常工作
+
+### 下一步开发计划（新会话从这里开始）
+
+> **当前状态**：Phase 1 核心页面全部完成（#1~#8），共 38 个静态页面。网站已从「一张首页」变成「可浏览的站点」，首页→详情→列表→关于的完整浏览链路已打通。Phase 2 的分类筛选（#3）和相关文章推荐（#4）也已提前完成。当前剩余 Phase 1 的 #9 部署和 #10 SEO。
+
+**接下来的优先级排序：**
+
+#### 1. 部署到 Cloudflare Pages（Phase 1 #9）
+- 在 Cloudflare Pages 创建项目，关联 GitHub 仓库
+- 构建命令：`pnpm build`，输出目录：`dist/`
+- 配置自定义域名 `aiotfun.com`
+- 验证所有 38 个页面在线上正常渲染
+
+#### 2. SEO 基础（Phase 1 #10）
+- 添加 `@astrojs/sitemap` 集成，自动生成 sitemap.xml
+- 创建 `public/robots.txt`
+- 完善 BaseHead.astro 中的 Open Graph / Twitter Card 元数据
+- 确认所有页面的 `<title>` 和 `<meta description>` 正确
+
+#### 3. 视觉打磨与体验优化
+- 浏览器中实际浏览所有页面，检查排版、间距、响应式表现
+- 优化移动端体验（文章详情页、分类列表页、关于页）
+- 检查中英文排版细节（字体渲染、行高、间距）
+
+#### 4. 进入 Phase 2：内容系统
+- 将 mock 数据迁移到 MDX content collections（真正的文件驱动内容）
+- 创建第一批真实文章（利用采集器获取素材）
+- 集成 Giscus 评论系统
+
+**注意事项**：
+- 当前所有数据仍来自 `src/data/mock*.ts`，正文 HTML 在 `mockArticleBodies.ts` 中（4 篇完整 + 占位）
+- i18n 翻译中新增的 `article_detail` / `category_page` / `about` 分组使用了 `(t as any)` 类型断言访问（因为 TypeScript 类型推断基于 en.json 的原始结构），后续可考虑统一类型定义
+- 分类列表页的 formatTag 筛选为纯客户端 JS，无服务端过滤
 
 ### Phase 2: 内容系统
 
-1. MDX 文章模板和 frontmatter 规范落地
-2. 文章卡片组件（含分类标签+形式标签+Agent署名）
-3. 分类筛选和标签过滤功能
-4. 相关文章推荐逻辑
-5. Giscus 评论集成
+| # | 任务 | 状态 | 说明 |
+|---|------|------|------|
+| 1 | MDX 文章模板和 frontmatter 规范落地 | 待开始 | 将 mock 数据迁移到 MDX content collections |
+| 2 | 文章卡片组件（含分类标签+形式标签+Agent署名） | ✅ 已完成 | Phase 1 提前完成 |
+| 3 | 分类筛选和标签过滤功能 | ✅ 已完成 | Phase 1 #7 中实现，客户端 JS 按 formatTag 显隐 |
+| 4 | 相关文章推荐逻辑 | ✅ 已完成 | Phase 1 #6 中实现，同分类+标签交集评分算法 |
+| 5 | Giscus 评论集成 | 待开始 | — |
 
 ### Phase 3: 采集器
 
-1. Python 项目初始化
-2. RSS 采集模块
-3. Gmail 采集模块
-4. 去重引擎（SQLite + SimHash）
-5. AI 评分模块（国内大模型API）
-6. 主动选题采集模块
-7. Cron 调度配置
-8. 采集结果 → workflow/inbox 输出
+| # | 任务 | 状态 |
+|---|------|------|
+| 1 | Python 项目初始化 | 待开始 |
+| 2 | RSS 采集模块 | 待开始 |
+| 3 | Gmail 采集模块 | 待开始 |
+| 4 | 去重引擎（SQLite + SimHash） | 待开始 |
+| 5 | AI 评分模块（本地 Ollama） | 待开始 |
+| 6 | 主动选题采集模块 | 待开始 |
+| 7 | Cron 调度配置 | 待开始 |
+| 8 | 采集结果 → workflow/inbox 输出 | 待开始 |
 
 ### Phase 4: 完善
 
-1. 深色模式
-2. 响应式移动端适配
-3. RSS 输出（让读者可订阅）
-4. 邮件订阅功能接入
-5. 性能优化
+| # | 任务 | 状态 |
+|---|------|------|
+| 1 | 深色模式 | 待开始 |
+| 2 | 响应式移动端适配 | 待开始 |
+| 3 | RSS 输出（让读者可订阅） | 待开始 |
+| 4 | 邮件订阅功能接入 | 待开始 |
+| 5 | 性能优化 | 待开始 |
 
 ---
 

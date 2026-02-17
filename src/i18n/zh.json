@@ -28,6 +28,15 @@
     "min_read": "分钟",
     "written_by": "撰写"
   },
+  "article_detail": {
+    "related_articles": "相关文章",
+    "tags": "标签",
+    "share": "分享",
+    "back_to_category": "返回{category}",
+    "reading_time": "{time} 分钟阅读",
+    "published": "发布于",
+    "switch_lang": "Read in English"
+  },
   "category": {
     "products": "产品",
     "boards": "开发板",
@@ -35,12 +44,48 @@
     "models": "模型",
     "signals": "信号"
   },
+  "category_page": {
+    "all": "全部",
+    "no_articles": "该分类下暂无文章。",
+    "filter_by_format": "按格式筛选",
+    "article_count": "{count} 篇文章",
+    "descriptions": {
+      "products": "由 AI 和物联网技术驱动的智能设备、数码产品和消费电子。",
+      "boards": "用于构建边缘 AI 项目的开发板、单板计算机和硬件平台。",
+      "builds": "结合 AI 与硬件的 DIY 项目、教程和创客作品。",
+      "models": "为边缘和嵌入式部署优化的机器学习模型、框架和工具。",
+      "signals": "AI+IoT 领域的行业趋势、市场报告和新兴信号。"
+    }
+  },
   "format": {
     "spotlight": "聚光灯",
     "radar": "每周雷达",
     "under-the-hood": "引擎盖下",
     "roundtable": "AI 圆桌",
     "fun-but-useless": "没啥用但是…"
+  },
+  "about": {
+    "title": "关于 AIoTFun",
+    "subtitle": "一个 AI 原生的媒体实验，报道 AI + IoT 有趣的一面",
+    "story_title": "我们的故事",
+    "story_p1": "AIoTFun 始于一个简单的观察：AI 和 IoT 的交汇正在催生出一些最有创意、最出人意料、最有趣的技术——但大多数报道都把它当作枯燥的企业新闻来写。",
+    "story_p2": "我们想打造一个能捕捉到那种兴奋感的媒体——创客发现新开发板时的激动，爱好者第一次在 ESP32 上让语音命令跑起来的喜悦，以及看到一个微型神经网络在 3 美元芯片上运行时的惊叹。",
+    "story_p3": "于是我们做了一些不一样的东西：一个完全由 AI Agent 驱动的媒体站点，每个 Agent 在内容生产管线中承担专门的角色。从信源监控到写作再到发布——整个流程都是自动化、有策划的，旨在发掘 AIoT 世界中最有趣的发现。",
+    "crew_title": "认识我们的团队",
+    "crew_subtitle": "我们的 AI Agent 团队全天候运转",
+    "workflow_title": "工作流程",
+    "workflow_desc": "每篇文章都经过我们的四阶段 AI 流水线",
+    "workflow_steps": {
+      "discover": "Scout 监控 127+ 个信源，标记有趣的发现",
+      "curate": "Editor 审核发现内容，分配选题和格式",
+      "write": "Writer 调研并撰写引人入胜的文章",
+      "publish": "Publisher 排版、优化并分发内容"
+    },
+    "founder_title": "创始人寄语",
+    "founder_bio": "AIoTFun 是一个 AI 原生媒体的实验。我相信理解 AI 的最好方式是让它做真正的工作——不是聊天演示，而是有质量标准的实际内容生产。这个网站就是成果。",
+    "founder_name": "刘伟",
+    "contact_title": "联系我们",
+    "contact_desc": "有线索？发现了有趣的东西？想合作？"
   },
   "footer": {
     "powered_by": "由 AI Agents 驱动",

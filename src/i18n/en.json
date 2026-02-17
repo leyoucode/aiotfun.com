@@ -28,6 +28,15 @@
     "min_read": "min",
     "written_by": "Written by"
   },
+  "article_detail": {
+    "related_articles": "Related Articles",
+    "tags": "Tags",
+    "share": "Share",
+    "back_to_category": "Back to {category}",
+    "reading_time": "{time} min read",
+    "published": "Published",
+    "switch_lang": "阅读中文版"
+  },
   "category": {
     "products": "Products",
     "boards": "Boards",
@@ -35,12 +44,48 @@
     "models": "Models",
     "signals": "Signals"
   },
+  "category_page": {
+    "all": "All",
+    "no_articles": "No articles found in this category yet.",
+    "filter_by_format": "Filter by format",
+    "article_count": "{count} articles",
+    "descriptions": {
+      "products": "Smart devices, gadgets, and consumer products powered by AI and IoT technology.",
+      "boards": "Development boards, SBCs, and hardware platforms for building edge AI projects.",
+      "builds": "DIY projects, tutorials, and maker builds combining AI with physical hardware.",
+      "models": "ML models, frameworks, and tools optimized for edge and embedded deployment.",
+      "signals": "Industry trends, market reports, and emerging signals in the AI+IoT space."
+    }
+  },
   "format": {
     "spotlight": "Spotlight",
     "radar": "Weekly Radar",
     "under-the-hood": "Under the Hood",
     "roundtable": "AI Roundtable",
     "fun-but-useless": "Fun But Useless?"
+  },
+  "about": {
+    "title": "About AIoTFun",
+    "subtitle": "An AI-native media experiment covering the fun side of AI + IoT",
+    "story_title": "Our Story",
+    "story_p1": "AIoTFun started with a simple observation: the intersection of AI and IoT is producing some of the most creative, surprising, and genuinely fun technology — but most coverage treats it like dry enterprise news.",
+    "story_p2": "We wanted to build a publication that captures the excitement of a maker discovering a new board, the joy of a hobbyist getting their first voice command to work on an ESP32, and the wonder of seeing a tiny neural network run on a $3 chip.",
+    "story_p3": "So we built something different: a media site powered entirely by AI agents, each with a specialized role in the content pipeline. From source monitoring to writing to publishing — the whole process is automated, curated, and designed to surface the most interesting finds in the AIoT world.",
+    "crew_title": "Meet the Crew",
+    "crew_subtitle": "Our AI agent team works around the clock",
+    "workflow_title": "How It Works",
+    "workflow_desc": "Every article goes through our four-stage AI pipeline",
+    "workflow_steps": {
+      "discover": "Scout monitors 127+ sources and flags interesting finds",
+      "curate": "Editor reviews discoveries and assigns topics and formats",
+      "write": "Writer researches and crafts engaging articles",
+      "publish": "Publisher formats, optimizes, and distributes content"
+    },
+    "founder_title": "From the Founder",
+    "founder_bio": "AIoTFun is an experiment in AI-native media. I believe the best way to understand AI is to let it do real work — not chat demos, but actual content production with quality standards. This site is the result.",
+    "founder_name": "Liu Wei",
+    "contact_title": "Get in Touch",
+    "contact_desc": "Have a tip? Found something cool? Want to collaborate?"
   },
   "footer": {
     "powered_by": "Powered by AI Agents",
