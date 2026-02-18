@@ -257,7 +257,7 @@ tags: ["esp32", "voice", "llm", "edge-ai"]
 │ │  ████████████████████████████████████████ │    │
 │ │  ▓▓ 底部渐变遮罩 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ │    │
 │ │  [标签] 标题（单行截断）                    │    │
-│ │  摘要（单行截断）· 日期 · Agent    ● ● ● ● │    │
+│ │  摘要（单行截断）· 日期 · 阅读时间  ● ● ● ● │    │
 │ └──────────────────────────────────────────┘    │
 │  共4张卡片，鼠标/触摸左右滑动，右下角圆点指示器     │
 ├─────────────────────────────────────────────────┤
@@ -298,7 +298,7 @@ tags: ["esp32", "voice", "llm", "edge-ai"]
 - 结构：
   - 分类标签 + 形式标签
   - 标题（大号衬线体）
-  - 元信息行：日期 · 阅读时间 · Agent署名（几何头像+名称） · **语言切换（ZH ⟷ EN）**
+  - 元信息行：日期 · 阅读时间 · **语言切换（ZH ⟷ EN）**
   - 封面大图
   - 正文（最大宽度 720px，居中，优化阅读体验）
   - 文章标签
@@ -333,9 +333,9 @@ tags: ["esp32", "voice", "llm", "edge-ai"]
 
 | 标签 | 英文 | 中文 | 说明 |
 |------|------|------|------|
-| spotlight | Spotlight | 聚光灯 | 深入一个让人「哇」的东西 |
-| radar | Weekly Radar | 每周雷达 | 一周发现速览 |
-| under-the-hood | Under the Hood | 引擎盖下 | 工程师视角拆解 |
+| spotlight | Spotlight | 焦点 | 深入一个让人「哇」的东西 |
+| radar | Weekly Radar | 风向 | 一周发现速览 |
+| under-the-hood | Under the Hood | 技术拆解 | 工程师视角拆解 |
 | roundtable | AI Roundtable | AI 圆桌 | 多Agent讨论热点 |
 | fun-but-useless | Fun But Useless? | 没啥用但是… | 让人会心一笑的存在 |
 
@@ -352,13 +352,13 @@ tags: ["esp32", "voice", "llm", "edge-ai"]
 │ 标题：Someone Built a       │
 │ Talking Plant Waterer...    │
 │ 一行摘要文字...              │
-│ ◆ Writer · May 14 · 6 min  │
+│ May 14 · 6 min              │
 └─────────────────────────────┘
 ```
 
 - 分类标签（Builds）：实色背景，白色文字，使用分类色
 - 形式标签（Spotlight）：描边或淡背景
-- Agent署名：几何图标 + 名称，等宽字体
+- Agent署名已移除（文章由 AI 生成，UI 不展示作者信息）
 
 ---
 
@@ -625,10 +625,10 @@ collected: []           # 采集器自动填入搜索结果
 | 组件 | 文件 | 说明 |
 |------|------|------|
 | Hero 轮播 | `HeroSection.astro` | ViewPager 式轮播，4张文章卡片（featured+3张），鼠标/触摸拖拽滑动，右下角圆点指示器 |
-| 文章卡片 | `ArticleCard.astro` | 4种变体：featured（全幅图+底部渐变叠加白色文字）/ large / medium / small；标题和摘要单行截断+title悬浮 |
+| 文章卡片 | `ArticleCard.astro` | 4种变体：featured（全幅图+底部渐变叠加白色文字）/ large / medium / small；标题和摘要单行截断+title悬浮；不展示 Agent 作者 |
 | 分类标签 | `CategoryTag.astro` | 实色背景，5种分类色 |
 | 形式标签 | `FormatTag.astro` | 描边/淡背景 |
-| Agent 头像 | `AgentAvatar.astro` | 几何图标 + 名称 |
+| Agent 头像 | `AgentAvatar.astro` | 几何图标 + 名称（仅关于页使用，文章卡片和详情页已移除） |
 | 最新发现 | `DiscoveryStream.astro` | 3列等高网格，标题加粗 |
 | 每周雷达 | `WeeklyRadar.astro` | 编号列表，标题加粗 |
 | AI 圆桌 | `AIRoundtable.astro` | 话题 + Agent头像组 + 讨论摘要，标题加粗 |
@@ -640,15 +640,15 @@ collected: []           # 采集器自动填入搜索结果
 - 所有卡片标题/摘要单行截断（`truncate`），鼠标悬浮显示完整内容（`title` 属性），确保卡片等高
 - Featured 卡片：图片 `absolute inset-0` 铺满，文字区 `absolute bottom-0` + `bg-gradient-to-t` 暗色渐变，白色文字
 
-**Mock 数据（临时占位，后期替换为 MDX 内容查询）：**
+**内容数据：**
 
-| 文件 | 说明 |
+| 文件/目录 | 说明 |
 |------|------|
-| `src/data/mockArticles.ts` | 文章数据，含中英文各 24 篇（原 12 + 补充 12），支持 featured/latest/bySlug/byCategory/related 查询 |
-| `src/data/mockArticleBodies.ts` | 文章 HTML 正文，4 篇完整中英文正文 + 通用占位内容 |
+| `src/content/en/*.mdx` | 英文文章（MDX content collections，25 篇） |
+| `src/content/zh/*.mdx` | 中文文章（MDX content collections，25 篇） |
 | `src/data/mockAgents.ts` | Agent 团队详细资料（Scout/Editor/Writer/Publisher），关于页用 |
-| `src/data/mockRadar.ts` | 每周雷达条目 |
-| `src/data/mockRoundtable.ts` | AI 圆桌讨论数据 |
+| `src/data/mockRadar.ts` | 每周雷达条目（首页 WeeklyRadar 组件用） |
+| `src/data/mockRoundtable.ts` | AI 圆桌讨论数据（首页 AIRoundtable 组件用） |
 
 **文章详情页（#6，已完成）：**
 
@@ -658,7 +658,7 @@ collected: []           # 采集器自动填入搜索结果
 | `src/pages/en/[category]/[slug].astro` | 英文文章详情动态路由 |
 | `src/pages/zh/[category]/[slug].astro` | 中文文章详情动态路由 |
 
-- 结构：返回分类链接 → 标签行（CategoryTag + FormatTag） → 大标题（font-display，3xl~5xl） → 元信息行（日期·阅读时间·Agent·语言切换） → 封面大图（max-h-480px） → 正文（`.article-body`，max-w-prose 居中，`set:html`） → 标签云（`#tag` 圆角胶囊） → 相关文章（3列 ArticleCard medium）
+- 结构：返回分类链接 → 标签行（CategoryTag + FormatTag） → 大标题（font-display，3xl~5xl） → 元信息行（日期·阅读时间·语言切换） → 封面大图（max-h-480px） → 正文（`.article-body`，max-w-prose 居中，`set:html`） → 标签云（`#tag` 圆角胶囊） → 相关文章（3列 ArticleCard medium）
 - 正文排版样式 `.article-body` 在 `global.css` 的 `@layer components` 中定义，覆盖 h2/h3/p/ul/ol/pre/code/figure/figcaption/blockquote/a/strong/em/hr
 - body 数据独立在 `mockArticleBodies.ts`，页面层按需注入，避免 mockArticles.ts 膨胀
 - 相关文章算法：同分类 +10 分，每个共同标签 +1 分，取前 3 篇
@@ -706,7 +706,7 @@ collected: []           # 采集器自动填入搜索结果
 
 ### 下一步开发计划（新会话从这里开始）
 
-> **当前状态**：Phase 1 全部完成（#1~#10）。网站已部署到 Cloudflare Pages，自定义域名 `aiotfun.com` 已绑定。共 64 个静态页面，sitemap/robots.txt/OG 元标签等 SEO 基础已就绪。Phase 2 的分类筛选（#3）和相关文章推荐（#4）也已提前完成。
+> **当前状态**：Phase 1 全部完成（#1~#10），Phase 2 大部分完成（MDX 迁移 ✅、分类筛选 ✅、相关文章 ✅、Agent 作者显示已移除 ✅、中文 format 标签优化 ✅）。剩余：Giscus 评论集成。网站已部署到 Cloudflare Pages，自定义域名 `aiotfun.com` 已绑定。共 65 个静态页面。
 
 **部署信息：**
 - GitHub 仓库：`leyoucode/aiotfun.com`（master 分支）
@@ -716,10 +716,17 @@ collected: []           # 采集器自动填入搜索结果
 - 构建命令：`pnpm build`，输出 `dist/`，由 `wrangler.toml` 配置静态资源
 
 **SEO 配置：**
-- `@astrojs/sitemap`：构建时自动生成 `sitemap-index.xml`（64 个 URL）
+- `@astrojs/sitemap`：构建时自动生成 `sitemap-index.xml`
 - `public/robots.txt`：允许所有爬虫，指向 sitemap
 - BaseHead.astro：canonical URL / hreflang / OG / Twitter Card / sitemap link
 - 默认 OG 图片 `public/og-default.png`（1200×630 占位，后续替换为品牌设计图）
+
+**已完成的优化：**
+- ✅ 文章卡片和详情页移除 Agent 作者显示（AgentAvatar 组件保留，仅关于页使用）
+- ✅ 中文 format 标签本地化优化：聚光灯→焦点、每周雷达→风向、引擎盖下→技术拆解
+- ✅ MDX content collections 迁移完成，25 篇中英文文章
+- ✅ 根路径消除重定向空白页，直接渲染英文首页
+- ✅ Favicon 替换为多尺寸 ICO + Header 和关于页添加 Logo 图片
 
 **接下来的优先级排序：**
 
@@ -729,22 +736,28 @@ collected: []           # 采集器自动填入搜索结果
 - 检查中英文排版细节（字体渲染、行高、间距）
 - 替换 `og-default.png` 为品牌设计的正式 OG 图片
 
-#### 2. 进入 Phase 2：内容系统
-- 将 mock 数据迁移到 MDX content collections（真正的文件驱动内容）
-- 创建第一批真实文章（利用采集器获取素材）
+#### 2. 完成 Phase 2 剩余
 - 集成 Giscus 评论系统
+- 创建第一批真实文章（利用采集器获取素材）
+
+#### 3. 进入 Phase 3：采集器
+- Python 项目初始化 + RSS 采集模块
+- 去重引擎（SQLite + SimHash）
+- AI 评分模块（本地 Ollama）
+- 主动选题采集 + Cron 调度
 
 **注意事项**：
-- 当前所有数据仍来自 `src/data/mock*.ts`，正文 HTML 在 `mockArticleBodies.ts` 中（4 篇完整 + 占位）
-- i18n 翻译中新增的 `article_detail` / `category_page` / `about` 分组使用了 `(t as any)` 类型断言访问（因为 TypeScript 类型推断基于 en.json 的原始结构），后续可考虑统一类型定义
-- 分类列表页的 formatTag 筛选和分页均为纯客户端 JS（方案 B），所有文章一次性渲染到 DOM，JS 控制显隐分页。文章增长到几百篇以上时可考虑迁移到 Astro `paginate()` 静态分页
+- 文章数据已从 mock 迁移到 `src/content/` 下的 MDX 文件，但 `src/data/mock*.ts` 文件仍保留（部分首页组件如 WeeklyRadar/AIRoundtable 仍引用）
+- i18n 翻译中 `article_detail` / `category_page` / `about` 分组使用了 `(t as any)` 类型断言访问，后续可考虑统一类型定义
+- 分类列表页的 formatTag 筛选和分页均为纯客户端 JS，文章增长到几百篇以上时可考虑迁移到 Astro `paginate()` 静态分页
+- MDX frontmatter 中的 `agent` 字段保留（数据层不删），但 UI 不再展示作者信息
 
 ### Phase 2: 内容系统
 
 | # | 任务 | 状态 | 说明 |
 |---|------|------|------|
-| 1 | MDX 文章模板和 frontmatter 规范落地 | 待开始 | 将 mock 数据迁移到 MDX content collections |
-| 2 | 文章卡片组件（含分类标签+形式标签+Agent署名） | ✅ 已完成 | Phase 1 提前完成 |
+| 1 | MDX 文章模板和 frontmatter 规范落地 | ✅ 已完成 | mock 数据已迁移到 MDX content collections，25 篇中英文文章 |
+| 2 | 文章卡片组件（含分类标签+形式标签） | ✅ 已完成 | Phase 1 提前完成；Agent署名已移除 |
 | 3 | 分类筛选和标签过滤功能 | ✅ 已完成 | Phase 1 #7 中实现，客户端 JS 按 formatTag 显隐 |
 | 4 | 相关文章推荐逻辑 | ✅ 已完成 | Phase 1 #6 中实现，同分类+标签交集评分算法 |
 | 5 | Giscus 评论集成 | 待开始 | — |
