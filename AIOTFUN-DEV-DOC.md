@@ -107,11 +107,12 @@
 ### 3.1 网站技术栈
 
 ```
-框架:       Astro v4+
-样式:       Tailwind CSS v3+
+框架:       Astro v5
+样式:       Tailwind CSS v3
 内容:       MDX (Markdown + JSX 组件)
 国际化:     Astro 原生 i18n 路由
-部署:       Cloudflare Pages
+SEO:        @astrojs/sitemap（自动生成 sitemap）
+部署:       Cloudflare Pages（Git 自动部署）
 评论:       Giscus (GitHub Discussions)
 统计:       Cloudflare Web Analytics
 包管理:     pnpm
@@ -124,10 +125,13 @@ aiotfun.com/
 ├── astro.config.mjs          # Astro 配置（含 i18n）
 ├── tailwind.config.mjs       # Tailwind 配置（含自定义色彩/字体）
 ├── package.json
+├── wrangler.toml              # Cloudflare Pages 部署配置
 ├── public/
 │   ├── favicon.svg
-│   ├── fonts/                # 自托管字体文件
-│   └── images/               # 静态图片资源
+│   ├── og-default.png         # 默认 Open Graph 图片（1200×630）
+│   ├── robots.txt             # 搜索引擎爬虫规则
+│   ├── fonts/                 # 自托管字体文件
+│   └── images/                # 静态图片资源
 ├── src/
 │   ├── components/           # 通用组件
 │   │   ├── BaseHead.astro    # <head> 公共部分（SEO/字体/样式）
@@ -195,10 +199,11 @@ aiotfun.com/
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://aiotfun.com',
-  integrations: [tailwind(), mdx()],
+  integrations: [tailwind(), mdx(), sitemap()],
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'zh'],
@@ -612,8 +617,8 @@ collected: []           # 采集器自动填入搜索结果
 | 6 | 文章详情页开发 | ✅ 已完成 | ArticleLayout + 动态路由，见下方详情 |
 | 7 | 分类列表页开发 | ✅ 已完成 | 动态路由 + 客户端 formatTag 筛选 |
 | 8 | 关于页开发 | ✅ 已完成 | 品牌故事 + Agent 团队 + 工作流 + 创始人 |
-| 9 | 部署到 Cloudflare Pages | 待开始 | — |
-| 10 | SEO 基础（sitemap / robots.txt / OG） | 待开始 | — |
+| 9 | 部署到 Cloudflare Pages | ✅ 已完成 | GitHub 仓库 + Cloudflare 自动部署 + 自定义域名 |
+| 10 | SEO 基础（sitemap / robots.txt / OG） | ✅ 已完成 | @astrojs/sitemap + robots.txt + OG 默认图片 |
 
 **首页组件清单（全部已完成）：**
 
@@ -701,28 +706,30 @@ collected: []           # 采集器自动填入搜索结果
 
 ### 下一步开发计划（新会话从这里开始）
 
-> **当前状态**：Phase 1 核心页面全部完成（#1~#8），共 64 个静态页面（中英各 24 篇文章）。网站已从「一张首页」变成「可浏览的站点」，首页→详情→列表（含分页）→关于的完整浏览链路已打通。Phase 2 的分类筛选（#3）和相关文章推荐（#4）也已提前完成。当前剩余 Phase 1 的 #9 部署和 #10 SEO。
+> **当前状态**：Phase 1 全部完成（#1~#10）。网站已部署到 Cloudflare Pages，自定义域名 `aiotfun.com` 已绑定。共 64 个静态页面，sitemap/robots.txt/OG 元标签等 SEO 基础已就绪。Phase 2 的分类筛选（#3）和相关文章推荐（#4）也已提前完成。
+
+**部署信息：**
+- GitHub 仓库：`leyoucode/aiotfun.com`（master 分支）
+- Cloudflare 项目名：`aiotfun-com`
+- 线上地址：`https://aiotfun.com`
+- 自动部署：`git push` → Cloudflare 自动构建发布
+- 构建命令：`pnpm build`，输出 `dist/`，由 `wrangler.toml` 配置静态资源
+
+**SEO 配置：**
+- `@astrojs/sitemap`：构建时自动生成 `sitemap-index.xml`（64 个 URL）
+- `public/robots.txt`：允许所有爬虫，指向 sitemap
+- BaseHead.astro：canonical URL / hreflang / OG / Twitter Card / sitemap link
+- 默认 OG 图片 `public/og-default.png`（1200×630 占位，后续替换为品牌设计图）
 
 **接下来的优先级排序：**
 
-#### 1. 部署到 Cloudflare Pages（Phase 1 #9）
-- 在 Cloudflare Pages 创建项目，关联 GitHub 仓库
-- 构建命令：`pnpm build`，输出目录：`dist/`
-- 配置自定义域名 `aiotfun.com`
-- 验证所有 64 个页面在线上正常渲染
-
-#### 2. SEO 基础（Phase 1 #10）
-- 添加 `@astrojs/sitemap` 集成，自动生成 sitemap.xml
-- 创建 `public/robots.txt`
-- 完善 BaseHead.astro 中的 Open Graph / Twitter Card 元数据
-- 确认所有页面的 `<title>` 和 `<meta description>` 正确
-
-#### 3. 视觉打磨与体验优化
+#### 1. 视觉打磨与体验优化
 - 浏览器中实际浏览所有页面，检查排版、间距、响应式表现
 - 优化移动端体验（文章详情页、分类列表页、关于页）
 - 检查中英文排版细节（字体渲染、行高、间距）
+- 替换 `og-default.png` 为品牌设计的正式 OG 图片
 
-#### 4. 进入 Phase 2：内容系统
+#### 2. 进入 Phase 2：内容系统
 - 将 mock 数据迁移到 MDX content collections（真正的文件驱动内容）
 - 创建第一批真实文章（利用采集器获取素材）
 - 集成 Giscus 评论系统
