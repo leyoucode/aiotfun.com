@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
+    "@astrojs/sitemap": "^3.7.0",
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.17.2",
     "tailwindcss": "3"

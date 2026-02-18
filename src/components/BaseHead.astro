@@ -13,6 +13,7 @@ const locale = getLocaleFromUrl(Astro.url);
 const altLocale = locale === 'en' ? 'zh' : 'en';
 const altUrl = Astro.url.pathname.replace(`/${locale}`, `/${altLocale}`);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = image ? new URL(image, Astro.site) : new URL('/og-default.png', Astro.site);
 ---
 
 <meta charset="utf-8" />
@@ -30,6 +31,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
 
+<!-- Sitemap -->
+<link rel="sitemap" href="/sitemap-index.xml" />
+
 <!-- hreflang -->
 <link rel="alternate" hreflang={locale} href={canonicalURL} />
 <link rel="alternate" hreflang={altLocale} href={new URL(altUrl, Astro.site)} />
@@ -40,10 +44,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:locale" content={locale === 'zh' ? 'zh_CN' : 'en_US'} />
-{image && <meta property="og:image" content={new URL(image, Astro.site)} />}
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content="AIoTFun" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-{image && <meta name="twitter:image" content={new URL(image, Astro.site)} />}
+<meta name="twitter:image" content={ogImage} />
