@@ -40,14 +40,14 @@ const formatTags = [...new Set(articles.map((a) => a.formatTag))];
     {formatTags.length > 1 && (
       <div class="mb-8 flex flex-wrap gap-2" id="format-filter">
         <button
-          class="filter-btn active rounded-full border border-accent bg-accent/10 px-4 py-1.5 text-sm font-mono text-accent transition-colors"
+          class="filter-btn active rounded-full border border-accent bg-accent/10 px-4 py-1.5 text-sm font-body text-accent transition-colors"
           data-format="all"
         >
           {cp.all}
         </button>
         {formatTags.map((tag) => (
           <button
-            class="filter-btn rounded-full border border-border px-4 py-1.5 text-sm font-mono text-text-muted hover:border-accent hover:text-accent transition-colors"
+            class="filter-btn rounded-full border border-border px-4 py-1.5 text-sm font-body text-text-muted hover:border-accent hover:text-accent transition-colors"
             data-format={tag}
           >
             {t.format[tag as keyof typeof t.format] || tag}
@@ -147,7 +147,7 @@ const formatTags = [...new Set(articles.map((a) => a.formatTag))];
     let html = '';
 
     // 上一页
-    html += `<button class="page-btn rounded-lg border border-border px-3 py-1.5 text-sm font-mono text-text-muted hover:border-accent hover:text-accent transition-colors ${currentPage === 1 ? 'opacity-40 pointer-events-none' : ''}" data-page="${currentPage - 1}">${i18n.prev}</button>`;
+    html += `<button class="page-btn rounded-lg border border-border px-3 py-1.5 text-sm font-body text-text-muted hover:border-accent hover:text-accent transition-colors ${currentPage === 1 ? 'opacity-40 pointer-events-none' : ''}" data-page="${currentPage - 1}">${i18n.prev}</button>`;
 
     // 页码
     const pages = getPageNumbers(currentPage, totalPages);
@@ -156,12 +156,12 @@ const formatTags = [...new Set(articles.map((a) => a.formatTag))];
         html += `<span class="px-1 text-text-muted">…</span>`;
       } else {
         const isActive = p === currentPage;
-        html += `<button class="page-btn rounded-lg border ${isActive ? 'border-accent bg-accent/10 text-accent' : 'border-border text-text-muted hover:border-accent hover:text-accent'} w-9 h-9 text-sm font-mono transition-colors" data-page="${p}">${p}</button>`;
+        html += `<button class="page-btn rounded-lg border ${isActive ? 'border-accent bg-accent/10 text-accent' : 'border-border text-text-muted hover:border-accent hover:text-accent'} w-9 h-9 text-sm font-body transition-colors" data-page="${p}">${p}</button>`;
       }
     });
 
     // 下一页
-    html += `<button class="page-btn rounded-lg border border-border px-3 py-1.5 text-sm font-mono text-text-muted hover:border-accent hover:text-accent transition-colors ${currentPage === totalPages ? 'opacity-40 pointer-events-none' : ''}" data-page="${currentPage + 1}">${i18n.next}</button>`;
+    html += `<button class="page-btn rounded-lg border border-border px-3 py-1.5 text-sm font-body text-text-muted hover:border-accent hover:text-accent transition-colors ${currentPage === totalPages ? 'opacity-40 pointer-events-none' : ''}" data-page="${currentPage + 1}">${i18n.next}</button>`;
 
     pagination.innerHTML = html;
 

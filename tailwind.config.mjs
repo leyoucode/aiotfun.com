@@ -17,11 +17,9 @@ export default {
         signals: '#6B7280',
       },
       fontFamily: {
-        display: ['Instrument Serif', 'Noto Serif SC', 'serif'],
-        hero: ['Playfair Display', 'Noto Serif SC', 'serif'],
+        display: ['Instrument Serif', 'Noto Sans SC', 'sans-serif'],
         mono: ['JetBrains Mono', 'IBM Plex Mono', 'monospace'],
         body: ['Inter', 'Noto Sans SC', '-apple-system', 'sans-serif'],
-        logo: ['Space Grotesk', 'Inter', 'sans-serif'],
       },
       maxWidth: {
         content: '1200px',

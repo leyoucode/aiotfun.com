@@ -8,12 +8,12 @@ const t = useTranslations(locale);
 <footer class="border-t border-border bg-bg py-8">
   <div class="mx-auto flex max-w-content flex-col items-center justify-between gap-4 px-4 sm:flex-row md:px-6">
     <!-- Logo -->
-    <a href={localePath('/', locale)} class="font-logo text-lg font-bold tracking-tight">
+    <a href={localePath('/', locale)} class="font-body text-lg font-bold tracking-tight">
       <span class="text-text">AIoT</span><span class="text-accent">Fun</span>
     </a>
 
     <!-- 链接 + 状态 -->
-    <div class="flex flex-wrap justify-center items-center gap-4 font-mono text-xs text-text-muted">
+    <div class="flex flex-wrap justify-center items-center gap-4 font-body text-xs text-text-muted">
       <a href="/rss.xml" class="transition-colors hover:text-accent">RSS</a>
       <span class="text-border">·</span>
       <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-accent">GitHub</a>
@@ -28,6 +28,6 @@ const t = useTranslations(locale);
     </div>
 
     <!-- 版权 -->
-    <p class="font-mono text-xs text-text-muted">{t.footer.copyright}</p>
+    <p class="font-body text-xs text-text-muted">{t.footer.copyright}</p>
   </div>
 </footer>

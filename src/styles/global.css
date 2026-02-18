@@ -36,12 +36,14 @@
     line-height: 1.75;
   }
   html[lang="zh"] h1,
-  html[lang="zh"] h2,
+  html[lang="zh"] h2 {
+    line-height: 1.4;
+  }
   html[lang="zh"] h3,
   html[lang="zh"] h4,
   html[lang="zh"] h5,
   html[lang="zh"] h6 {
-    line-height: 1.4;
+    line-height: 1.5;
   }
 }
 
