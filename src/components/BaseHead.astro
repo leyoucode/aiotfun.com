@@ -16,7 +16,7 @@ const altUrl = hasLocalePrefix
   ? Astro.url.pathname.replace(`/${locale}`, `/${altLocale}`)
   : `/${altLocale}${Astro.url.pathname === '/' ? '/' : Astro.url.pathname}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImage = image ? new URL(image, Astro.site) : new URL('/og-default.png', Astro.site);
+const ogImage = image ? new URL(image, Astro.site) : new URL('/og-default.jpg', Astro.site);
 ---
 
 <meta charset="utf-8" />
