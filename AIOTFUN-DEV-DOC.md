@@ -639,7 +639,7 @@ collected: []           # 采集器自动填入搜索结果
 
 | 文件 | 说明 |
 |------|------|
-| `src/data/mockArticles.ts` | 文章数据，含中英文各 12 篇，支持 featured/latest/bySlug/byCategory/related 查询 |
+| `src/data/mockArticles.ts` | 文章数据，含中英文各 24 篇（原 12 + 补充 12），支持 featured/latest/bySlug/byCategory/related 查询 |
 | `src/data/mockArticleBodies.ts` | 文章 HTML 正文，4 篇完整中英文正文 + 通用占位内容 |
 | `src/data/mockAgents.ts` | Agent 团队详细资料（Scout/Editor/Writer/Publisher），关于页用 |
 | `src/data/mockRadar.ts` | 每周雷达条目 |
@@ -666,8 +666,14 @@ collected: []           # 采集器自动填入搜索结果
 | `src/pages/zh/[category]/index.astro` | 中文分类列表动态路由 |
 
 - `getStaticPaths()` 返回 5 个分类路径（products/boards/builds/models/signals）
-- 结构：分类名称（font-display） + 描述（从 i18n `category_page.descriptions` 取） + 文章数量 → 筛选栏（按 formatTag 过滤，客户端 JS 切换显隐） → 3 列文章网格（复用 ArticleCard medium） → 空状态提示
-- 筛选为客户端 JS，数据量小，比生成 25 个静态页面更高效
+- 结构：分类名称（font-display） + 描述（从 i18n `category_page.descriptions` 取） + 文章数量 → 筛选栏（按 formatTag 过滤） → 3 列文章网格（复用 ArticleCard medium） → 分页导航 → 空状态提示
+- **客户端分页**：每页 12 篇（`perPage: 12`），筛选+分页统一由客户端 JS 处理
+  - 切换 formatTag 筛选时自动回到第 1 页，计数文案动态更新
+  - 分页导航：`← 上一页` / 页码（7 页以内全部显示，超过则首尾+省略号） / `下一页 →`
+  - 当前页高亮，首尾页按钮自动禁用，总页数 ≤1 时分页栏隐藏
+  - 翻页后平滑滚动到网格顶部
+- i18n 新增分页文案：`showing_count` / `prev` / `next` / `page_of`
+- 设计决策：方案 B（客户端分页），所有文章一次性渲染到 DOM，JS 控制显隐。与 formatTag 筛选完美配合，数据量可预见（百篇级别）时 DOM 开销可接受
 
 **关于页（#8，已完成）：**
 
@@ -687,14 +693,15 @@ collected: []           # 采集器自动填入搜索结果
 
 **构建验证：**
 
-- `pnpm build` 成功生成 **38 个静态页面**（Phase 1 之前为 3 个）
-- 完整浏览链路已打通：首页卡片 → 文章详情 → 相关文章 → 分类列表 → 关于页
+- `pnpm build` 成功生成 **64 个静态页面**（首页 3 + 文章详情 48 + 分类列表 10 + 关于 2 + 根重定向 1）
+- 完整浏览链路已打通：首页卡片 → 文章详情 → 相关文章 → 分类列表（含分页） → 关于页
 - 导航栏所有链接均指向有效页面
 - 中英文切换在所有页面正常工作
+- builds 分类 16 篇文章，分页效果正常（第 1 页 12 篇 + 第 2 页 4 篇）
 
 ### 下一步开发计划（新会话从这里开始）
 
-> **当前状态**：Phase 1 核心页面全部完成（#1~#8），共 38 个静态页面。网站已从「一张首页」变成「可浏览的站点」，首页→详情→列表→关于的完整浏览链路已打通。Phase 2 的分类筛选（#3）和相关文章推荐（#4）也已提前完成。当前剩余 Phase 1 的 #9 部署和 #10 SEO。
+> **当前状态**：Phase 1 核心页面全部完成（#1~#8），共 64 个静态页面（中英各 24 篇文章）。网站已从「一张首页」变成「可浏览的站点」，首页→详情→列表（含分页）→关于的完整浏览链路已打通。Phase 2 的分类筛选（#3）和相关文章推荐（#4）也已提前完成。当前剩余 Phase 1 的 #9 部署和 #10 SEO。
 
 **接下来的优先级排序：**
 
@@ -702,7 +709,7 @@ collected: []           # 采集器自动填入搜索结果
 - 在 Cloudflare Pages 创建项目，关联 GitHub 仓库
 - 构建命令：`pnpm build`，输出目录：`dist/`
 - 配置自定义域名 `aiotfun.com`
-- 验证所有 38 个页面在线上正常渲染
+- 验证所有 64 个页面在线上正常渲染
 
 #### 2. SEO 基础（Phase 1 #10）
 - 添加 `@astrojs/sitemap` 集成，自动生成 sitemap.xml
@@ -723,7 +730,7 @@ collected: []           # 采集器自动填入搜索结果
 **注意事项**：
 - 当前所有数据仍来自 `src/data/mock*.ts`，正文 HTML 在 `mockArticleBodies.ts` 中（4 篇完整 + 占位）
 - i18n 翻译中新增的 `article_detail` / `category_page` / `about` 分组使用了 `(t as any)` 类型断言访问（因为 TypeScript 类型推断基于 en.json 的原始结构），后续可考虑统一类型定义
-- 分类列表页的 formatTag 筛选为纯客户端 JS，无服务端过滤
+- 分类列表页的 formatTag 筛选和分页均为纯客户端 JS（方案 B），所有文章一次性渲染到 DOM，JS 控制显隐分页。文章增长到几百篇以上时可考虑迁移到 Astro `paginate()` 静态分页
 
 ### Phase 2: 内容系统
 

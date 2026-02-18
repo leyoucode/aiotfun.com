@@ -49,6 +49,10 @@
     "no_articles": "No articles found in this category yet.",
     "filter_by_format": "Filter by format",
     "article_count": "{count} articles",
+    "showing_count": "Showing {from}–{to} of {total}",
+    "prev": "← Previous",
+    "next": "Next →",
+    "page_of": "Page {current} of {total}",
     "descriptions": {
       "products": "Smart devices, gadgets, and consumer products powered by AI and IoT technology.",
       "boards": "Development boards, SBCs, and hardware platforms for building edge AI projects.",
