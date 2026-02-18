@@ -10,7 +10,7 @@
 
 - **名称**: AIoTFun（AI + IoT + Fun）
 - **英文 Slogan**: Discover Fun Things in AI & IoT
-- **中文 Slogan**: 发现 AI + IoT 里那些好玩、有灵感的东西
+- **中文 Slogan**: 发现 AI + IoT 里那些有趣的东西
 - **定位**: 不是资讯站、不是评测站、不是教程站 — 是「发现感 + 好玩 + 工程师审美」的 AIoT 聚合地
 - **差异化**: 全球首个由 AI Agent 团队运营的 AIoT 媒体，网站本身就是 AIoT 的活案例
 - **内容调性**: "卧槽这也行" > "专业测评"，发现感、奇思妙想、玩儿就完了
@@ -52,7 +52,7 @@
   --color-boards: #CA8A04;       /* 开发板 - 深琥珀 */
   --color-builds: #0D9488;       /* 创造 - 青绿 */
   --color-models: #7C3AED;       /* 模型 - 靛蓝 */
-  --color-signals: #6B7280;      /* 信号 - 灰蓝 */
+  --color-signals: #6B7280;      /* 风向 - 灰蓝 */
 
   /* 深色模式（后期实现） */
   --color-bg-dark: #0F1117;
@@ -326,7 +326,7 @@ tags: ["esp32", "voice", "llm", "edge-ai"]
 | Boards | Boards | 开发板 | 芯片、模组、开发套件、计算平台 |
 | Builds | Builds | 创造 | DIY项目、Hack、实验、创客作品 |
 | Models | Models | 模型 | 端侧AI模型、推理框架、工具链 |
-| Signals | Signals | 信号 | 趋势、行业事件、融资、生态变化 |
+| Signals | Signals | 风向 | 趋势、行业事件、融资、生态变化 |
 | About | About | 关于 | 品牌故事 + AI Agent 团队 |
 
 ### 5.2 内容形式标签（附着在文章上）
@@ -573,11 +573,11 @@ collected: []           # 采集器自动填入搜索结果
     "boards": "开发板",
     "builds": "创造",
     "models": "模型",
-    "signals": "信号",
+    "signals": "风向",
     "about": "关于"
   },
   "home": {
-    "hero_title": "发现 AI + IoT 里那些好玩、有灵感的东西",
+    "hero_title": "发现 AI + IoT 里那些有趣的东西",
     "discovery_stream": "最新发现",
     "view_all": "查看全部 →",
     "weekly_radar": "每周雷达",
@@ -687,14 +687,14 @@ collected: []           # 采集器自动填入搜索结果
 | `src/pages/en/about.astro` | 英文关于页 |
 | `src/pages/zh/about.astro` | 中文关于页 |
 
-- 结构：品牌故事（3 段） → Meet the Crew（4 个 Agent 卡片网格：放大几何头像 + 名称 + 角色 + 简介 + 在线状态） → 工作流简图（Scout → Editor → Writer → Publisher 的 4 步流程卡片） → 创始人寄语 → 联系链接（GitHub + Email）
+- 结构：品牌故事（3 段） → Meet the Crew（4 个 Agent 卡片网格：放大几何头像 + 名称 + 角色 + 简介 + 在线状态） → 工作流简图（Scout → Editor → Writer → Publisher 的 4 步流程卡片） → 创始人寄语（仅引用语，不显示姓名） → 联系链接（GitHub + Email）
 
 **i18n 扩展（已完成）：**
 
 `en.json` / `zh.json` 新增 3 个翻译分组：
 - `article_detail`：related_articles / tags / back_to_category / reading_time / published / switch_lang
 - `category_page`：all / no_articles / filter_by_format / article_count / descriptions（5 个分类描述）
-- `about`：title / subtitle / story_title / story_p1~p3 / crew_title / crew_subtitle / workflow_title / workflow_desc / workflow_steps / founder_title / founder_bio / founder_name / contact_title / contact_desc
+- `about`：title / subtitle / story_title / story_p1~p3 / crew_title / crew_subtitle / workflow_title / workflow_desc / workflow_steps / founder_title / founder_bio / founder_name（i18n 保留但页面不展示） / contact_title / contact_desc
 
 **构建验证：**
 
@@ -706,7 +706,7 @@ collected: []           # 采集器自动填入搜索结果
 
 ### 下一步开发计划（新会话从这里开始）
 
-> **当前状态**：Phase 1 全部完成（#1~#10），Phase 2 大部分完成（MDX 迁移 ✅、分类筛选 ✅、相关文章 ✅、Agent 作者显示已移除 ✅、中文 format 标签优化 ✅）。剩余：Giscus 评论集成。网站已部署到 Cloudflare Pages，自定义域名 `aiotfun.com` 已绑定。共 65 个静态页面。
+> **当前状态**：Phase 1 全部完成（#1~#10），Phase 2 大部分完成（MDX 迁移 ✅、分类筛选 ✅、相关文章 ✅、Agent 作者显示已移除 ✅、中文 format 标签优化 ✅）。剩余：Giscus 评论集成。网站已部署到 Cloudflare Pages，自定义域名 `aiotfun.com` 已绑定。
 
 **部署信息：**
 - GitHub 仓库：`leyoucode/aiotfun.com`（master 分支）
@@ -727,6 +727,10 @@ collected: []           # 采集器自动填入搜索结果
 - ✅ MDX content collections 迁移完成，25 篇中英文文章
 - ✅ 根路径消除重定向空白页，直接渲染英文首页
 - ✅ Favicon 替换为多尺寸 ICO + Header 和关于页添加 Logo 图片
+- ✅ Hero 标题精简为"发现 AI + IoT 里那些有趣的东西"，使用 `clamp()` 实现单行自适应缩放
+- ✅ 导航菜单"信号"改为"风向"，分类描述文案全面升级为更专业有趣的风格
+- ✅ 关于页创始人寄语移除创始人名称显示
+- ✅ 新增标签聚合页：文章标签可点击跳转到对应标签文章列表
 
 **接下来的优先级排序：**
 
