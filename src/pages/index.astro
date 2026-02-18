@@ -1,17 +1,25 @@
 ---
-// 根路径：检测浏览器语言偏好，重定向到 /en/ 或 /zh/
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AgentStatusBar from '../components/AgentStatusBar.astro';
+import HeroSection from '../components/HeroSection.astro';
+import DiscoveryStream from '../components/DiscoveryStream.astro';
+import WeeklyRadar from '../components/WeeklyRadar.astro';
+import AIRoundtable from '../components/AIRoundtable.astro';
+import Newsletter from '../components/Newsletter.astro';
 ---
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>AIoTFun - Redirecting...</title>
-    <script is:inline>
-      const lang = navigator.language || navigator.languages?.[0] || 'en';
-      const target = lang.startsWith('zh') ? '/zh/' : '/en/';
-      window.location.replace(target);
-    </script>
-    <meta http-equiv="refresh" content="0;url=/en/" />
-  </head>
-  <body></body>
-</html>
+<BaseLayout title="AIoTFun — Discover Fun Things in AI & IoT">
+  <AgentStatusBar />
+  <HeroSection />
+  <DiscoveryStream />
+
+  <!-- Weekly Radar + AI Roundtable 并排 -->
+  <section class="mx-auto max-w-content px-4 py-8 md:px-6">
+    <div class="grid gap-6 md:grid-cols-2">
+      <WeeklyRadar />
+      <AIRoundtable />
+    </div>
+  </section>
+
+  <Newsletter />
+</BaseLayout>

@@ -21,6 +21,10 @@ export function useTranslations(locale: Locale) {
 export function getLanguageSwitchUrl(url: URL): string {
   const locale = getLocaleFromUrl(url);
   const targetLocale = locale === 'en' ? 'zh' : 'en';
+  const hasLocalePrefix = url.pathname.startsWith(`/${locale}/`) || url.pathname === `/${locale}`;
+  if (!hasLocalePrefix) {
+    return `/${targetLocale}${url.pathname === '/' ? '/' : url.pathname}`;
+  }
   const path = url.pathname.replace(`/${locale}`, `/${targetLocale}`);
   return path || `/${targetLocale}/`;
 }

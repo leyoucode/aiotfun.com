@@ -11,7 +11,10 @@ interface Props {
 const { title, description = 'Discover Fun Things in AI & IoT', image } = Astro.props;
 const locale = getLocaleFromUrl(Astro.url);
 const altLocale = locale === 'en' ? 'zh' : 'en';
-const altUrl = Astro.url.pathname.replace(`/${locale}`, `/${altLocale}`);
+const hasLocalePrefix = Astro.url.pathname.startsWith(`/${locale}/`) || Astro.url.pathname === `/${locale}`;
+const altUrl = hasLocalePrefix
+  ? Astro.url.pathname.replace(`/${locale}`, `/${altLocale}`)
+  : `/${altLocale}${Astro.url.pathname === '/' ? '/' : Astro.url.pathname}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImage = image ? new URL(image, Astro.site) : new URL('/og-default.png', Astro.site);
 ---
