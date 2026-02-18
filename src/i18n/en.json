@@ -54,11 +54,11 @@
     "next": "Next →",
     "page_of": "Page {current} of {total}",
     "descriptions": {
-      "products": "Smart devices, gadgets, and consumer products powered by AI and IoT technology.",
-      "boards": "Development boards, SBCs, and hardware platforms for building edge AI projects.",
-      "builds": "DIY projects, tutorials, and maker builds combining AI with physical hardware.",
-      "models": "ML models, frameworks, and tools optimized for edge and embedded deployment.",
-      "signals": "Industry trends, market reports, and emerging signals in the AI+IoT space."
+      "products": "Cool AI+IoT gadgets and smart devices that make you go \"wait, that exists?\"",
+      "boards": "From ESP32 to Jetson — the dev boards and platforms makers love to tinker with.",
+      "builds": "Step-by-step DIY projects that bring AI and hardware together.",
+      "models": "AI that runs on chips: lightweight models, inference frameworks, and deployment guides.",
+      "signals": "What's next in AI+IoT — trends, reports, and signals worth watching."
     }
   },
   "tag_page": {
