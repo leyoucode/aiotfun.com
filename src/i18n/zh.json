@@ -61,6 +61,11 @@
       "signals": "AI+IoT 领域的行业趋势、市场报告和新兴信号。"
     }
   },
+  "tag_page": {
+    "title": "标签：#{tag}",
+    "article_count": "{count} 篇文章",
+    "back_home": "← 返回首页"
+  },
   "format": {
     "spotlight": "焦点",
     "radar": "风向",

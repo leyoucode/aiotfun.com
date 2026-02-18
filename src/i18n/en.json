@@ -61,6 +61,11 @@
       "signals": "Industry trends, market reports, and emerging signals in the AI+IoT space."
     }
   },
+  "tag_page": {
+    "title": "Tag: #{tag}",
+    "article_count": "{count} articles",
+    "back_home": "← Back to Home"
+  },
   "format": {
     "spotlight": "Spotlight",
     "radar": "Weekly Radar",

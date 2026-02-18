@@ -67,6 +67,18 @@ export async function getRelatedArticles(article: Article, lang: 'en' | 'zh', co
   return withScore.slice(0, count).map((w) => w.article);
 }
 
+/** 获取指定标签的所有文章 */
+export async function getArticlesByTag(tag: string, lang: 'en' | 'zh'): Promise<Article[]> {
+  const articles = await getArticles(lang);
+  return articles.filter((a) => a.tags.includes(tag));
+}
+
+/** 获取所有唯一标签 */
+export async function getAllTags(lang: 'en' | 'zh'): Promise<string[]> {
+  const articles = await getArticles(lang);
+  return [...new Set(articles.flatMap((a) => a.tags))];
+}
+
 /** 返回所有分类 key */
 export function getAllCategories(): Category[] {
   return ['products', 'boards', 'builds', 'models', 'signals'];

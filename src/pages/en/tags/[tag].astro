@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import { getArticlesByTag, getAllTags } from '../../../utils/articles';
+import { useTranslations, localePath } from '../../../utils/i18n';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const tags = await getAllTags('en');
+  return tags.map((tag) => ({
+    params: { tag },
+  }));
+};
+
+const locale = 'en';
+const { tag } = Astro.params;
+const t = useTranslations(locale);
+const articles = await getArticlesByTag(tag!, locale);
+const tp = (t as any).tag_page;
+---
+
+<BaseLayout title={`${tp.title.replace('{tag}', tag)} — AIoTFun`} description={`Articles tagged with #${tag}`}>
+  <div class="mx-auto max-w-content px-4 md:px-6 py-8">
+    <!-- 返回首页 -->
+    <a href={localePath('/', locale)} class="inline-flex items-center gap-1 text-sm text-text-muted hover:text-accent transition-colors mb-6">
+      {tp.back_home}
+    </a>
+
+    <!-- 标签标题 -->
+    <div class="mb-8">
+      <h1 class="font-display text-3xl md:text-4xl font-bold text-text mb-3">
+        {tp.title.replace('{tag}', tag)}
+      </h1>
+      <p class="font-mono text-sm text-text-muted">
+        {tp.article_count.replace('{count}', String(articles.length))}
+      </p>
+    </div>
+
+    <!-- 文章网格 -->
+    {articles.length > 0 ? (
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {articles.map((article) => (
+          <ArticleCard article={article} variant="medium" />
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-16">
+        <p class="text-text-muted text-lg">No articles found with this tag.</p>
+      </div>
+    )}
+  </div>
+</BaseLayout>
