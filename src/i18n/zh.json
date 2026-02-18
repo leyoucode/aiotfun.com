@@ -62,9 +62,9 @@
     }
   },
   "format": {
-    "spotlight": "聚光灯",
-    "radar": "每周雷达",
-    "under-the-hood": "引擎盖下",
+    "spotlight": "焦点",
+    "radar": "风向",
+    "under-the-hood": "技术拆解",
     "roundtable": "AI 圆桌",
     "fun-but-useless": "没啥用但是…"
   },

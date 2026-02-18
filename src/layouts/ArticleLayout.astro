@@ -2,7 +2,6 @@
 import BaseLayout from './BaseLayout.astro';
 import CategoryTag from '../components/CategoryTag.astro';
 import FormatTag from '../components/FormatTag.astro';
-import AgentAvatar from '../components/AgentAvatar.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import { getLocaleFromUrl, useTranslations, getLanguageSwitchUrl, localePath } from '../utils/i18n';
 import { getRelatedArticles } from '../utils/articles';
@@ -45,8 +44,6 @@ const backHref = localePath(`/${article.category}/`, locale);
       <span>{(t as any).article_detail.published} {article.date}</span>
       <span>·</span>
       <span>{(t as any).article_detail.reading_time.replace('{time}', String(article.readingTime))}</span>
-      <span>·</span>
-      <AgentAvatar agent={article.agent} />
       <span>·</span>
       <a href={switchUrl} class="text-accent hover:underline">
         {(t as any).article_detail.switch_lang}
