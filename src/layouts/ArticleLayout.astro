@@ -40,18 +40,15 @@ const backHref = localePath(`/${article.category}/`, locale);
     </h1>
 
     <!-- 元信息行 -->
-    <div class="flex flex-wrap items-center gap-3 text-sm text-text-muted font-mono mb-8">
-      <span>{(t as any).article_detail.published} {article.date}</span>
-      <span>·</span>
-      <span>{(t as any).article_detail.reading_time.replace('{time}', String(article.readingTime))}</span>
-      <span>·</span>
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-text-muted font-mono mb-8">
+      <span>{(t as any).article_detail.published} {article.date} · {(t as any).article_detail.reading_time.replace('{time}', String(article.readingTime))}</span>
       <a href={switchUrl} class="text-accent hover:underline">
         {(t as any).article_detail.switch_lang}
       </a>
     </div>
 
     <!-- 封面大图 -->
-    <div class="mb-10 overflow-hidden rounded-lg" style="max-height: 480px;">
+    <div class="mb-10 overflow-hidden rounded-lg aspect-[2/1]">
       <img
         src={article.cover}
         alt={article.title}

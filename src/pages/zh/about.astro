@@ -85,7 +85,7 @@ const workflowSteps = [
         <h2 class="font-display text-2xl md:text-3xl font-bold text-text mb-2">{about.workflow_title}</h2>
         <p class="text-text-muted">{about.workflow_desc}</p>
       </div>
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 pt-4">
         {workflowSteps.map((step, i) => (
           <div class="relative rounded-card border border-border bg-white p-6 shadow-card">
             <!-- 步骤编号 -->
@@ -109,7 +109,7 @@ const workflowSteps = [
     <!-- 创始人 -->
     <section class="mb-20 max-w-prose mx-auto">
       <h2 class="font-display text-2xl md:text-3xl font-bold text-text mb-6">{about.founder_title}</h2>
-      <blockquote class="border-l-4 border-accent pl-4 py-2 italic text-text/80 text-lg leading-relaxed mb-4">
+      <blockquote class="border-l-4 border-accent pl-4 py-2 text-text/80 text-lg leading-relaxed mb-4">
         {about.founder_bio}
       </blockquote>
       <p class="font-body font-semibold text-text">— {about.founder_name}</p>

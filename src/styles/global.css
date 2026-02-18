@@ -30,6 +30,19 @@
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
   }
+
+  /* 中文排版优化：更宽松的行高 */
+  html[lang="zh"] body {
+    line-height: 1.75;
+  }
+  html[lang="zh"] h1,
+  html[lang="zh"] h2,
+  html[lang="zh"] h3,
+  html[lang="zh"] h4,
+  html[lang="zh"] h5,
+  html[lang="zh"] h6 {
+    line-height: 1.4;
+  }
 }
 
 @layer components {
@@ -37,6 +50,10 @@
   .article-body {
     @apply text-text leading-relaxed;
     font-size: 1.0625rem;
+  }
+
+  html[lang="zh"] .article-body {
+    line-height: 1.8;
   }
 
   .article-body h2 {
@@ -100,7 +117,18 @@
   }
 
   .article-body blockquote {
-    @apply mb-6 border-l-4 border-accent pl-4 py-2 italic;
+    @apply mb-6 border-l-4 border-accent pl-4 py-2;
+    font-style: italic;
+  }
+
+  /* 中文不使用 italic（无真实斜体字形，浏览器强制倾斜效果差） */
+  html[lang="zh"] .article-body blockquote {
+    font-style: normal;
+  }
+
+  html[lang="zh"] .article-body em {
+    font-style: normal;
+    @apply text-accent;
   }
 
   .article-body blockquote p {

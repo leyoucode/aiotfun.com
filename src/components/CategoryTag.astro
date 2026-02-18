@@ -12,6 +12,6 @@ const colorClass = getCategoryColorClass(category);
 const label = t.category[category as keyof typeof t.category] || category;
 ---
 
-<span class:list={['inline-block rounded px-2 py-0.5 font-mono text-xs font-medium text-white', colorClass]}>
+<span class:list={['inline-block rounded px-2 py-0.5 text-xs font-medium text-white', colorClass]}>
   {label}
 </span>
