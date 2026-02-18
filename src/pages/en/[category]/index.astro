@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ArticleCard from '../../../components/ArticleCard.astro';
-import { getArticlesByCategory, getAllCategories } from '../../../data/mockArticles';
+import { getArticlesByCategory, getAllCategories } from '../../../utils/articles';
 import { useTranslations, localePath } from '../../../utils/i18n';
 import type { GetStaticPaths } from 'astro';
 
@@ -14,7 +14,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 const locale = 'en';
 const { category } = Astro.params;
 const t = useTranslations(locale);
-const articles = getArticlesByCategory(category!, locale);
+const articles = await getArticlesByCategory(category!, locale);
 const categoryLabel = t.category[category as keyof typeof t.category] || category;
 const description = (t as any).category_page.descriptions[category as string] || '';
 const cp = (t as any).category_page;

@@ -5,8 +5,8 @@ import FormatTag from '../components/FormatTag.astro';
 import AgentAvatar from '../components/AgentAvatar.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import { getLocaleFromUrl, useTranslations, getLanguageSwitchUrl, localePath } from '../utils/i18n';
-import { getRelatedArticles } from '../data/mockArticles';
-import type { Article } from '../data/mockArticles';
+import { getRelatedArticles } from '../utils/articles';
+import type { Article } from '../types/article';
 
 interface Props {
   article: Article;
@@ -16,7 +16,7 @@ const { article } = Astro.props;
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 const switchUrl = getLanguageSwitchUrl(Astro.url);
-const related = getRelatedArticles(article, locale);
+const related = await getRelatedArticles(article, locale);
 const categoryLabel = t.category[article.category as keyof typeof t.category];
 const backHref = localePath(`/${article.category}/`, locale);
 ---
@@ -64,7 +64,7 @@ const backHref = localePath(`/${article.category}/`, locale);
 
     <!-- 正文 -->
     <div class="mx-auto max-w-prose">
-      <div class="article-body" set:html={article.body} />
+      <div class="article-body"><slot /></div>
 
       <!-- 标签云 -->
       <div class="mt-12 pt-8 border-t border-border">

@@ -1,26 +1,25 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
-import { getArticles, getArticleBySlug } from '../../../data/mockArticles';
-import { getArticleBody } from '../../../data/mockArticleBodies';
+import { render } from 'astro:content';
+import { getArticles, getArticleBySlug, getArticleEntry } from '../../../utils/articles';
 import type { GetStaticPaths } from 'astro';
 
-export const getStaticPaths: GetStaticPaths = () => {
-  const articles = getArticles('zh');
+export const getStaticPaths: GetStaticPaths = async () => {
+  const articles = await getArticles('zh');
   return articles.map((article) => ({
     params: { category: article.category, slug: article.slug },
   }));
 };
 
 const { category, slug } = Astro.params;
-const article = getArticleBySlug(slug!, 'zh');
+const article = await getArticleBySlug(slug!, 'zh');
 
 if (!article) {
   return Astro.redirect('/zh/');
 }
 
-// 注入 body
-const body = getArticleBody(slug!, 'zh');
-const articleWithBody = { ...article, body };
+const entry = await getArticleEntry(slug!, 'zh');
+const { Content } = await render(entry!);
 ---
 
-<ArticleLayout article={articleWithBody} />
+<ArticleLayout article={article}><Content /></ArticleLayout>

@@ -1,12 +1,12 @@
 ---
 import ArticleCard from './ArticleCard.astro';
 import { getLocaleFromUrl, useTranslations } from '../utils/i18n';
-import { getFeaturedArticles, getLatestArticles } from '../data/mockArticles';
+import { getFeaturedArticles, getLatestArticles } from '../utils/articles';
 
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
-const featured = getFeaturedArticles(locale);
-const latest = getLatestArticles(locale, 6);
+const featured = await getFeaturedArticles(locale);
+const latest = await getLatestArticles(locale, 6);
 const sideArticles = latest.filter((a) => !a.featured).slice(0, 3);
 const heroArticles = [featured[0], ...sideArticles].filter(Boolean);
 ---

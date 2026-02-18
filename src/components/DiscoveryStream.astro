@@ -1,11 +1,11 @@
 ---
 import ArticleCard from './ArticleCard.astro';
 import { getLocaleFromUrl, useTranslations } from '../utils/i18n';
-import { getLatestArticles } from '../data/mockArticles';
+import { getLatestArticles } from '../utils/articles';
 
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
-const articles = getLatestArticles(locale, 12);
+const articles = await getLatestArticles(locale, 12);
 // 排除 featured 的文章，用于 Discovery Stream
 const streamArticles = articles.filter((a) => !a.featured);
 ---
