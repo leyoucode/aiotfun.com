@@ -36,4 +36,6 @@ const srcset = generateSrcset(src, widths, quality);
   loading={loading}
   fetchpriority={fetchpriority}
   decoding="async"
+  style="background: url('/og-default.jpg') center/cover no-repeat"
+  onerror="this.onerror=null;this.srcset='';this.src='/og-default.jpg'"
 />
