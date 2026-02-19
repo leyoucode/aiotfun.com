@@ -1,16 +1,44 @@
 ---
-title: "Off-Grid Messaging with a DIY LoRa Mesh Network"
-description: "Three ESP32 boards, some LoRa modules, and you have a text messaging system that works without internet."
-date: "2026-01-28"
+title: "When the Power Grid Goes Down, This Ukrainian Controls Home Assistant Over LoRa"
+description: "A Meshtastic mesh network keeps smart home automation alive during Ukraine's blackouts — no internet, no power grid, no problem."
+date: "2026-02-18"
 cover: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=450&fit=crop"
 category: "builds"
 formatTag: "spotlight"
 agent: "writer"
-readingTime: 9
+readingTime: 7
 lang: "en"
-tags: ["lora", "mesh", "esp32", "off-grid"]
+tags: ["lora", "meshtastic", "home-assistant", "off-grid", "ukraine"]
 ---
 
-## Article Coming Soon
-Our AI agents are still working on the full version of this article. Check back soon for the complete deep-dive, including detailed analysis, benchmarks, and hands-on impressions.
-In the meantime, feel free to explore our other articles in the Discovery Stream.
+## Smart Home Without a Grid
+
+When most of us lose internet, we just wait it out. In Ukraine, power grid failures are a regular occurrence due to the ongoing conflict, and "waiting it out" isn't always an option. One resourceful maker found a way to keep their Home Assistant smart home running over LoRa radio — no internet connection, no grid power required.
+
+The setup uses **Meshtastic**, an open-source mesh networking platform built on LoRa (Long Range) radio modules. These tiny boards form a self-healing mesh network that can relay messages over impressive distances — 1 to 3 km in urban areas with stock antennas, and the community has pushed ground-to-ground links as far as **331 km**.
+
+## How It Works
+
+The architecture is surprisingly straightforward. A Meshtastic node near the Home Assistant server connects via MQTT, acting as a gateway between the LoRa mesh and the home automation system. Remote nodes let you send commands and receive status updates from anywhere in the mesh network's range.
+
+The clever bit: to work within LoRa's bandwidth constraints, sensor data gets **bit-packed into 32 bytes** per transmission. That's enough to carry temperature readings, switch states, and basic control commands — everything you need to keep the lights on (literally) when everything else goes dark.
+
+## More Than Just Home Automation
+
+The build taps into a much larger network. Ukraine's Meshtastic community has built an extensive mesh that goes far beyond smart home control. The same infrastructure relays **air strike warnings** to communities that might otherwise miss them during blackouts.
+
+A public dashboard at mesh.in.ua shows the real-time network activity, with privacy protections that randomize node locations to a 5.8 km radius. The network keeps growing because Meshtastic has a killer feature: **nodes forward packets even if they can't decrypt them**, as long as they're on the same channel. Every new node extends range for everyone.
+
+## Hardware Choices
+
+The community has settled on a few preferred setups:
+
+- **T-Echo** — Popular and affordable, but drains battery even when "off" (not ideal for always-on deployment)
+- **RAK4631 with solar panel** — The long-term winner. One user reported a full year of continuous uptime on solar power alone
+- **ESP32 + LoRa modules** — Budget-friendly DIY option for those comfortable with soldering
+
+## Why This Hits Different
+
+There's no shortage of LoRa hobby projects out there, but this one isn't a hobby. It's a real person keeping their home running during a real crisis using open-source hardware and software that anyone can replicate. The fact that the same mesh network doubles as a community early warning system makes it one of the most impactful DIY IoT builds we've seen.
+
+Sometimes the most impressive engineering isn't about pushing performance numbers — it's about keeping things working when everything around you is falling apart.

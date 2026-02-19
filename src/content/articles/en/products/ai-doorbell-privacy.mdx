@@ -1,16 +1,49 @@
 ---
-title: "The AI Doorbell That Processes Everything Locally — No Cloud, No Subscription"
-description: "A new product promises face recognition, package detection, and anomaly alerts with zero data leaving your home."
-date: "2026-02-04"
+title: "xSDR: A Full Software-Defined Radio Crammed Into an M.2 2230 Module"
+description: "An FPGA-powered SDR the size of a WiFi card — 2x2 MIMO, 30 MHz to 3.8 GHz, and it fits in your laptop."
+date: "2026-02-16"
 cover: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&h=450&fit=crop"
 category: "products"
 formatTag: "spotlight"
 agent: "writer"
 readingTime: 6
 lang: "en"
-tags: ["doorbell", "privacy", "edge-ai"]
+tags: ["sdr", "fpga", "rf", "open-source", "crowdfunding"]
 ---
 
-## Article Coming Soon
-Our AI agents are still working on the full version of this article. Check back soon for the complete deep-dive, including detailed analysis, benchmarks, and hands-on impressions.
-In the meantime, feel free to explore our other articles in the Discovery Stream.
+## A Full SDR on a WiFi Card
+
+Wavelet Lab has done something absurd: they crammed a complete software-defined radio into an **M.2 2230 module** — the same form factor as the WiFi card in your laptop. The xSDR measures just 30 x 22 x 2 mm, sits on a single-sided PCB, and packs more RF capability than SDR dongles ten times its size.
+
+The "x" stands for "extended," and it's a fitting upgrade from the company's previous uSDR. This time around you get **2x2 MIMO** support and a frequency range that covers **30 MHz to 3.8 GHz** — broad enough for everything from HF amateur radio to LTE and low-band 5G.
+
+## What's Inside
+
+The hardware is genuinely impressive for the size:
+
+- **FPGA:** AMD Artix-7 XC7A50T with 52,160 logic cells
+- **RFIC:** Lime Microsystems LMS7002M programmable transceiver
+- **Bandwidth:** 0.5 MHz to 90 MHz
+- **Sample rates:** 122.88 MSPS (SISO) / 80 MSPS (MIMO)
+- **Clock stability:** 0.5 PPM
+- **Connectors:** 4x MHF4 RF + M.2 A+E key (USB 2.0 + PCIe 2.0 x2)
+- **GPIO:** 12+2 pin 1.8V header
+- **Power:** 2.85 to 5.5V
+
+There's also an EEPROM, a temperature sensor, and a 26 MHz crystal oscillator on board. The Artix-7 FPGA is the same one found in the LimeNET Micro, which means existing gateware and toolchains carry over.
+
+## Software Ecosystem
+
+xSDR is fully open-source: host libraries are MIT-licensed and FPGA gateware is under CERN-OHL-P-2.0. It works with the tools you'd expect — **GNU Radio**, **SoapySDR**, **srsRAN** — plus Wavelet Lab's own **wsdr.io** web-based SDR environment that lets you control the radio from a browser.
+
+That browser-based interface is a nice touch: plug the xSDR into a Raspberry Pi or any edge device, and you have a remotely accessible SDR station.
+
+## Pricing and Availability
+
+The xSDR is live on **Crowd Supply** at **$549** for the module alone. A breakout board that converts M.2 to PCIe with four MHF4-to-SMA cables runs an additional **$89**. Shipping is expected in **July 2026**.
+
+Not cheap, but consider what you're getting: a MIMO-capable, FPGA-based SDR that fits inside a laptop. The LimeSDR Mini 2.0 is cheaper but lacks MIMO and the Artix-7's flexibility. The USRP B210 has similar specs but costs twice as much and is the size of a paperback book.
+
+## Who Needs This
+
+If you're doing cellular research, spectrum analysis, satellite tracking, or building high-speed data links, the xSDR's combination of size, capability, and open-source tooling is hard to beat. Two modules can be combined for 4x4 MIMO setups. Slip it into an M.2 slot on an embedded system and you have an SDR platform that goes wherever you go.

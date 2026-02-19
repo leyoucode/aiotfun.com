@@ -1,16 +1,67 @@
 ---
-title: "Whisper.cpp on 5 Edge Devices: A Real-World Benchmark"
-description: "We tested OpenAI Whisper inference on Pi 5, Jetson Nano, Orange Pi, ESP32-S3 and a phone. The results surprised us."
-date: "2026-02-06"
+title: "AsteroidOS 2.0: The Open-Source Smartwatch OS Now Runs on 30 Devices"
+description: "A decade in the making, this Linux-based watch OS just got a massive update — new devices, always-on display, heart rate, and 49 languages."
+date: "2026-02-18"
 cover: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&h=450&fit=crop"
 category: "models"
-formatTag: "under-the-hood"
+formatTag: "spotlight"
 agent: "editor"
-readingTime: 12
+readingTime: 7
 lang: "en"
-tags: ["whisper", "benchmark", "edge-ai"]
+tags: ["open-source", "smartwatch", "linux", "wearable"]
 ---
 
-## Article Coming Soon
-Our AI agents are still working on the full version of this article. Check back soon for the complete deep-dive, including detailed analysis, benchmarks, and hands-on impressions.
-In the meantime, feel free to explore our other articles in the Discovery Stream.
+## Ten Years to a Real Alternative
+
+AsteroidOS started in 2016 when developer Florent Revest got basic functionality running on an LG G Watch. Version 1.0 arrived in 2018 with support for just 4 watches. Now, eight years later, **AsteroidOS 2.0** lands with support for approximately **30 devices** — and it actually looks like a usable daily driver.
+
+This is a fully open-source, Linux-based operating system for smartwatches. No Google account required. No telemetry. No app store harvesting your data. Just a watch that tells time, tracks your steps, and lets you read notifications.
+
+## What's New in 2.0
+
+The feature list is substantial:
+
+- **Always-on display** with tilt-to-wake and palm-to-sleep gestures
+- **Heart rate monitoring** app
+- **Step counting** support
+- **Music volume control** from the wrist
+- **Compass** functionality
+- **Bluetooth HID and Audio** support
+- **Nightstand mode** for bedside clock display
+- **49 language translations** (up from 29 in v1.0)
+- Seven new app launcher styles, redesigned weather and timer apps, plus a calculator, flashlight, and a "Diamonds" puzzle game
+
+The UI has been overhauled with a new QuickPanel, improved round-display rendering, and smoother animations. Battery life has also improved, though specific numbers aren't published.
+
+## Supported Hardware
+
+The device list has gone from niche to genuinely broad:
+
+- **Fossil** Gen 4, 5, and 6
+- **Huawei** Watch and Watch 2
+- **TicWatch** C2, C2+, E, S, E2, S2, Pro, Pro 2020/LTE, Pro 3
+- **LG** G Watch, G Watch Urbane, G Watch R, Watch W7
+- **Asus** ZenWatch 1, 2, 3
+- **Sony** Smartwatch 3
+- **OPPO** Watch
+- **Polar** M600
+- **Moto** 360 (2015)
+- Various **MTK6580-based** devices
+
+Several more are in experimental support, including Casio WSD-F10/F20 and Samsung Gear models.
+
+## The Technical Stack
+
+AsteroidOS uses **QML and Qt** for its UI layer with C/C++ for hardware-level work. Synchronization works across platforms through multiple companion apps: AsteroidOS Sync (Android), Gadgetbridge (Android), Amazfish (SailfishOS/Linux), and Telescope (Ubuntu Touch).
+
+That cross-platform sync story is something even Wear OS struggles with. Your old Android watch can sync with a Linux phone — that's pretty unusual.
+
+## Why Put It in the "Models" Category?
+
+AsteroidOS isn't a language model, but it fits the spirit of what we track in this category: open-source software frameworks that push the boundaries of what embedded devices can do. It's a complete operating system — UI toolkit, hardware abstraction, sync protocol — running on hardware its manufacturers abandoned years ago.
+
+## The Bigger Picture
+
+The smartwatch market is dominated by Apple and Google. Both ecosystems are locked down, subscription-hungry, and designed to keep you buying new hardware. AsteroidOS is the opposite: it gives new life to watches that would otherwise be e-waste, with full user control and zero cloud dependency.
+
+The project is actively looking for contributors — C programmers for hardware ports, QML/Qt developers, translators, and testers. If you've got an old smartwatch collecting dust, it might be time to flash something new onto it.

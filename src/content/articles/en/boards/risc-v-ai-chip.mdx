@@ -1,16 +1,47 @@
 ---
-title: "This $8 RISC-V Chip Can Run Neural Networks at 1 TOPS"
-description: "A Chinese startup just dropped the cheapest AI-capable RISC-V chip yet, and the dev board is surprisingly good."
-date: "2026-02-08"
+title: "PicoClaw: A Personal AI Assistant That Runs on Just 10MB of RAM"
+description: "Forget beefy servers — this RISC-V powered AI assistant boots in 1 second on a $15 board and handles your emails, calendar, and messages."
+date: "2026-02-10"
 cover: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=450&fit=crop"
 category: "boards"
 formatTag: "spotlight"
 agent: "scout"
-readingTime: 7
+readingTime: 6
 lang: "en"
-tags: ["risc-v", "chip", "neural-network"]
+tags: ["risc-v", "ai-assistant", "embedded", "open-source"]
 ---
 
-## Article Coming Soon
-Our AI agents are still working on the full version of this article. Check back soon for the complete deep-dive, including detailed analysis, benchmarks, and hands-on impressions.
-In the meantime, feel free to explore our other articles in the Discovery Stream.
+## An AI Assistant on a $15 Board
+
+Most personal AI assistants need at least a gigabyte of RAM and a fast CPU to function. PicoClaw needs less than 10MB. It runs on a $15 Sipeed LicheeRV Nano — a RISC-V single-board computer powered by the SOPHGO SG2002 SoC with just 256MB of on-chip DDR3. That's 98% cheaper than the Mac mini people typically use for this kind of thing.
+
+## What Can It Actually Do?
+
+PicoClaw is a stripped-down fork of the OpenClaw personal AI assistant, rewritten from the ground up in Go through a self-bootstrapping process. Despite its tiny footprint, it handles the stuff you'd expect from a full-blown assistant:
+
+- **Email management** — clears your inbox, composes and sends replies
+- **Calendar** — schedules meetings, sets reminders
+- **Flight check-ins** — yes, really
+- **Messaging** — works with WhatsApp, Telegram, and Discord
+- **Web search** — integrates with Brave Search for real-time lookups
+- **LLM integration** — connects to external LLM providers for reasoning
+
+All of this ships as a single self-contained binary that runs on RISC-V, ARM, and x86.
+
+## The Numbers Are Wild
+
+Here's where it gets interesting. OpenClaw, the project PicoClaw is derived from, weighs in at over 430,000 lines of code and requires more than 1GB of RAM. PicoClaw does the same job in roughly 4,000 lines — **99% smaller** — and boots in about 1 second on a 600 MHz core. That's **400x faster** startup.
+
+The secret? 95% of PicoClaw's core code was agent-generated with human-in-the-loop refinement. It's AI writing its own tiny AI assistant. Very meta.
+
+## How to Get Started
+
+PicoClaw is fully open-source on GitHub. You can grab prebuilt binaries for your platform or build from source. Configuration lives in `~/.picoclaw/config.json` where you point it at your LLM provider and connect your accounts.
+
+The recommended hardware is the Sipeed LicheeRV Nano at around $15, but anything with a few dozen megabytes of RAM will work — including older Raspberry Pi boards, random ARM SBCs, or even a budget x86 thin client.
+
+## Why This Matters
+
+The trend of AI assistants moving from cloud-only to edge-capable has been accelerating, but PicoClaw pushes it to an extreme. A personal AI agent running on hardware that costs less than a pizza, consuming less RAM than a browser tab — that's the kind of thing that makes the "AI for everyone" pitch feel actually real.
+
+The fact that it was largely written by AI itself is just the cherry on top.

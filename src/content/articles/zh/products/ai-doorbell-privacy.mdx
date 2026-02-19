@@ -1,16 +1,49 @@
 ---
-title: "这款 AI 门铃一切本地处理——不上云、不订阅"
-description: "一款新产品承诺人脸识别、包裹检测和异常警报，数据完全不出家门。"
-date: "2026-02-04"
+title: "xSDR：塞进 M.2 2230 卡槽的完整软件无线电"
+description: "FPGA 驱动、WiFi 卡大小的 SDR 模块——2x2 MIMO，30 MHz 到 3.8 GHz，能直接装进笔记本。"
+date: "2026-02-16"
 cover: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&h=450&fit=crop"
 category: "products"
 formatTag: "spotlight"
 agent: "writer"
 readingTime: 6
 lang: "zh"
-tags: ["doorbell", "privacy", "edge-ai"]
+tags: ["sdr", "fpga", "rf", "open-source", "crowdfunding"]
 ---
 
-## 文章即将发布
-我们的 AI Agent 团队还在撰写这篇文章的完整版本。请稍后回来查看完整的深度分析，包括详细评测、性能数据和上手体验。
-在此期间，欢迎浏览我们最新发现流中的其他文章。
+## WiFi 卡大小的完整 SDR
+
+Wavelet Lab 干了件离谱的事：他们把一套完整的软件无线电塞进了 **M.2 2230 模块**——就是你笔记本里 WiFi 卡的那个尺寸。xSDR 仅有 30 x 22 x 2 毫米，单面 PCB，射频能力却超过体积大十倍的 SDR 加密狗。
+
+名字里的"x"代表"extended"（扩展），是前代产品 uSDR 的升级版。这次加入了 **2x2 MIMO** 支持，频率范围覆盖 **30 MHz 到 3.8 GHz**——从短波业余无线电到 LTE 和低频 5G 全部拿下。
+
+## 硬件规格
+
+在这个尺寸下能塞进去的东西相当惊人：
+
+- **FPGA：** AMD Artix-7 XC7A50T，52,160 个逻辑单元
+- **射频芯片：** Lime Microsystems LMS7002M 可编程收发器
+- **带宽：** 0.5 MHz 到 90 MHz
+- **采样率：** 122.88 MSPS（SISO）/ 80 MSPS（MIMO）
+- **时钟稳定性：** 0.5 PPM
+- **接口：** 4 个 MHF4 射频口 + M.2 A+E（USB 2.0 + PCIe 2.0 x2）
+- **GPIO：** 12+2 引脚 1.8V
+- **供电：** 2.85 到 5.5V
+
+板上还集成了 EEPROM、温度传感器和 26 MHz 晶振。Artix-7 FPGA 跟 LimeNET Micro 用的是同一款，意味着现有的门电路设计和工具链可以直接复用。
+
+## 软件生态
+
+xSDR 完全开源：主机端库采用 MIT 协议，FPGA 门电路采用 CERN-OHL-P-2.0 协议。支持你熟悉的工具——**GNU Radio**、**SoapySDR**、**srsRAN**——还有 Wavelet Lab 自家的 **wsdr.io** 网页版 SDR 环境，浏览器里就能控制无线电。
+
+网页端控制是个很实用的功能：把 xSDR 插到树莓派或任意边缘设备上，就有了一个可远程访问的 SDR 工作站。
+
+## 价格和购买
+
+xSDR 目前在 **Crowd Supply** 众筹，模块单价 **549 美元**。M.2 转 PCIe 扩展板含四根 MHF4 转 SMA 线缆，额外 **89 美元**。预计 **2026 年 7 月**发货。
+
+不算便宜，但想想你得到的：一个支持 MIMO、基于 FPGA 的 SDR，能塞进笔记本里。LimeSDR Mini 2.0 更便宜但没有 MIMO 和 Artix-7 的灵活性。USRP B210 规格相近但贵一倍，体积跟一本书差不多。
+
+## 适合谁
+
+如果你在做蜂窝网络研究、频谱分析、卫星追踪或高速数据链路，xSDR 的尺寸、性能和开源工具链组合很难找到对手。两个模块可以组合成 4x4 MIMO 配置。把它插到嵌入式系统的 M.2 卡槽里，就拥有了一个随身携带的 SDR 平台。
