@@ -6,9 +6,10 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  preloadImage?: string;
 }
 
-const { title, description = 'Discover Fun Things in AI & IoT', image } = Astro.props;
+const { title, description = 'Discover Fun Things in AI & IoT', image, preloadImage } = Astro.props;
 const locale = getLocaleFromUrl(Astro.url);
 const altLocale = locale === 'en' ? 'zh' : 'en';
 const hasLocalePrefix = Astro.url.pathname.startsWith(`/${locale}/`) || Astro.url.pathname === `/${locale}`;
@@ -23,13 +24,30 @@ const ogImage = image ? new URL(image, Astro.site) : new URL('/og-default.jpg', 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32" />
 
-<!-- Google Fonts: preconnect + load -->
+<!-- Google Fonts: preconnect + async load -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+/>
+<link
   href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap"
   rel="stylesheet"
+  media="print"
+  onload="this.media='all'"
 />
+<noscript>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+</noscript>
+
+<!-- Unsplash CDN preconnect -->
+<link rel="dns-prefetch" href="https://images.unsplash.com" />
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin />
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
@@ -55,3 +73,8 @@ const ogImage = image ? new URL(image, Astro.site) : new URL('/og-default.jpg', 
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
+
+{/* LCP 图片预加载 */}
+{preloadImage && (
+  <link rel="preload" as="image" href={preloadImage} />
+)}

@@ -1,6 +1,7 @@
 ---
 import CategoryTag from './CategoryTag.astro';
 import FormatTag from './FormatTag.astro';
+import OptimizedImage from './OptimizedImage.astro';
 import { getLocaleFromUrl, useTranslations, localePath } from '../utils/i18n';
 import type { Article } from '../types/article';
 
@@ -22,10 +23,12 @@ const isSmall = variant === 'small';
 {isFeatured ? (
   <!-- Featured 卡片：图片铺满 + 文字叠在底部渐变上 -->
   <a href={href} class="group relative block h-80 md:h-[400px] overflow-hidden rounded-card shadow-card transition-shadow hover:shadow-md">
-    <img
+    <OptimizedImage
       src={article.cover}
       alt={article.title}
       class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+      widths={[600, 800, 1200, 1600]}
+      sizes="100vw"
       loading="lazy"
     />
     <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 md:p-6 pt-20">
@@ -53,10 +56,12 @@ const isSmall = variant === 'small';
       'overflow-hidden',
       isSmall ? 'h-28' : isLarge ? 'h-56' : 'h-44',
     ]}>
-      <img
+      <OptimizedImage
         src={article.cover}
         alt={article.title}
         class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        widths={[300, 400, 600]}
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
         loading="lazy"
       />
     </div>

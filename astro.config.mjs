@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://aiotfun.com',
+  compressHTML: true,
   integrations: [tailwind(), mdx(), sitemap()],
   i18n: {
     defaultLocale: 'en',

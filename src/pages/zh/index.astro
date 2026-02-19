@@ -6,9 +6,14 @@ import DiscoveryStream from '../../components/DiscoveryStream.astro';
 import WeeklyRadar from '../../components/WeeklyRadar.astro';
 import AIRoundtable from '../../components/AIRoundtable.astro';
 import Newsletter from '../../components/Newsletter.astro';
+import { getFeaturedArticles } from '../../utils/articles';
+import { optimizeImageUrl } from '../../utils/image';
+
+const featured = await getFeaturedArticles('zh');
+const heroImage = featured[0]?.cover ? optimizeImageUrl(featured[0].cover, 1200, 75) : undefined;
 ---
 
-<BaseLayout title="AIoTFun — 发现 AI + IoT 里那些有趣的东西">
+<BaseLayout title="AIoTFun — 发现 AI + IoT 里那些有趣的东西" preloadImage={heroImage}>
   <AgentStatusBar />
   <HeroSection />
   <DiscoveryStream />

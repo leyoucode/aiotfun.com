@@ -1,0 +1,39 @@
+---
+import { optimizeImageUrl, generateSrcset } from '../utils/image';
+
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  widths?: number[];
+  sizes?: string;
+  quality?: number;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+}
+
+const {
+  src,
+  alt,
+  class: className = '',
+  widths = [400, 600, 800, 1200],
+  sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 800px',
+  quality = 75,
+  loading = 'lazy',
+  fetchpriority,
+} = Astro.props;
+
+const optimizedSrc = optimizeImageUrl(src, widths[widths.length - 1], quality);
+const srcset = generateSrcset(src, widths, quality);
+---
+
+<img
+  src={optimizedSrc}
+  srcset={srcset || undefined}
+  sizes={srcset ? sizes : undefined}
+  alt={alt}
+  class={className}
+  loading={loading}
+  fetchpriority={fetchpriority}
+  decoding="async"
+/>

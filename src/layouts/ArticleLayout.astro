@@ -3,6 +3,7 @@ import BaseLayout from './BaseLayout.astro';
 import CategoryTag from '../components/CategoryTag.astro';
 import FormatTag from '../components/FormatTag.astro';
 import ArticleCard from '../components/ArticleCard.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import { getLocaleFromUrl, useTranslations, getLanguageSwitchUrl, localePath } from '../utils/i18n';
 import { getRelatedArticles } from '../utils/articles';
 import type { Article } from '../types/article';
@@ -49,10 +50,14 @@ const backHref = localePath(`/${article.category}/`, locale);
 
     <!-- 封面大图 -->
     <div class="mb-10 overflow-hidden rounded-lg aspect-[2/1]">
-      <img
+      <OptimizedImage
         src={article.cover}
         alt={article.title}
         class="w-full h-full object-cover"
+        widths={[600, 800, 1200, 1600]}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+        loading="eager"
+        fetchpriority="high"
       />
     </div>
 
