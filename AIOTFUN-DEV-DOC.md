@@ -127,14 +127,16 @@ aiotfun.com/
 ├── package.json
 ├── wrangler.toml              # Cloudflare Pages 部署配置
 ├── public/
-│   ├── favicon.svg
-│   ├── og-default.png         # 默认 Open Graph 图片（1200×630）
+│   ├── favicon.ico            # 优化后 16x16+32x32 ICO（~2KB）
+│   ├── logo.png               # 导航栏 Logo（48KB）
+│   ├── logo-512.png           # 关于页 Logo 原图（330KB，作为 WebP fallback）
+│   ├── logo-512.webp          # 关于页 Logo WebP 版（3KB）
+│   ├── og-default.jpg         # 默认 Open Graph 图片（1200×630，70KB）
 │   ├── robots.txt             # 搜索引擎爬虫规则
-│   ├── fonts/                 # 自托管字体文件
 │   └── images/                # 静态图片资源
 ├── src/
 │   ├── components/           # 通用组件
-│   │   ├── BaseHead.astro    # <head> 公共部分（SEO/字体/样式）
+│   │   ├── BaseHead.astro    # <head> 公共部分（SEO/字体异步加载/Unsplash预连接/LCP preload）
 │   │   ├── Header.astro      # 导航栏（含语言切换）
 │   │   ├── Footer.astro      # 页脚
 │   │   ├── AgentStatusBar.astro  # Agent 状态条
@@ -146,6 +148,7 @@ aiotfun.com/
 │   │   ├── DiscoveryStream.astro # 最新发现流（文章网格）
 │   │   ├── WeeklyRadar.astro     # 每周雷达区块
 │   │   ├── AIRoundtable.astro    # AI 圆桌区块
+│   │   ├── OptimizedImage.astro  # 响应式图片组件（自动 WebP/AVIF + srcset + sizes）
 │   │   └── Newsletter.astro      # 邮件订阅组件
 │   ├── data/                     # Mock 数据（后期迁移到 MDX content collections）
 │   │   ├── mockArticles.ts       # 文章数据（中英各12篇） + 查询函数
@@ -179,7 +182,8 @@ aiotfun.com/
 │   ├── styles/
 │   │   └── global.css            # 全局样式 + .article-body 排版样式
 │   └── utils/
-│       └── i18n.ts               # i18n 工具函数
+│       ├── i18n.ts               # i18n 工具函数
+│       └── image.ts              # Unsplash 图片 URL 优化工具（auto=format/srcset 生成）
 ├── design/                       # 设计参考文件
 │   └── homepage.png              # 最终确认的首页设计图
 └── workflow/                     # AI Agent 工作流目录（见第6节）
@@ -203,6 +207,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://aiotfun.com',
+  compressHTML: true,             // 压缩 HTML 输出
   integrations: [tailwind(), mdx(), sitemap()],
   i18n: {
     defaultLocale: 'en',
@@ -632,6 +637,7 @@ collected: []           # 采集器自动填入搜索结果
 | 最新发现 | `DiscoveryStream.astro` | 3列等高网格，标题加粗 |
 | 每周雷达 | `WeeklyRadar.astro` | 编号列表，标题加粗 |
 | AI 圆桌 | `AIRoundtable.astro` | 话题 + Agent头像组 + 讨论摘要，标题加粗 |
+| 响应式图片 | `OptimizedImage.astro` | 自动优化 Unsplash URL（WebP/AVIF + srcset + sizes），支持 loading/fetchpriority 配置 |
 | 邮件订阅 | `Newsletter.astro` | 邮箱输入 + 订阅按钮 |
 
 **首页样式规范（已落地）：**
@@ -731,6 +737,14 @@ collected: []           # 采集器自动填入搜索结果
 - ✅ 导航菜单"信号"改为"风向"，分类描述文案全面升级为更专业有趣的风格
 - ✅ 关于页创始人寄语移除创始人名称显示
 - ✅ 新增标签聚合页：文章标签可点击跳转到对应标签文章列表
+- ✅ 前端性能优化（Lighthouse Performance 55→75+ 目标）：
+  - Google Fonts 异步加载：`media="print"` + `onload` 模式，消除 render-blocking（FCP -1~2s）
+  - Unsplash CDN 预连接：`dns-prefetch` + `preconnect`，减少连接延迟（FCP -0.5~1s）
+  - 响应式图片组件 `OptimizedImage.astro`：Unsplash 图片自动 `auto=format`（WebP/AVIF）+ `srcset` + `sizes` + `decoding="async"`（LCP -3~5s）
+  - 首页 LCP 图片 `<link rel="preload">`：index.astro → BaseLayout → BaseHead 透传链路
+  - 本地图片压缩：`logo-512.png` 330KB → WebP 3KB，`favicon.ico` 97KB → 2.4KB（减少 ~420KB）
+  - `compressHTML: true` 压缩 HTML 输出
+  - 图片工具 `src/utils/image.ts`：`optimizeImageUrl()` + `generateSrcset()` 函数
 
 **接下来的优先级排序：**
 
@@ -787,7 +801,7 @@ collected: []           # 采集器自动填入搜索结果
 | 2 | 响应式移动端适配 | 待开始 |
 | 3 | RSS 输出（让读者可订阅） | 待开始 |
 | 4 | 邮件订阅功能接入 | 待开始 |
-| 5 | 性能优化 | 待开始 |
+| 5 | 性能优化 | ✅ 已完成 | 字体异步加载、Unsplash 预连接+图片响应式优化、LCP preload、本地图片压缩、HTML 压缩 |
 
 ---
 
