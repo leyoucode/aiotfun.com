@@ -35,7 +35,8 @@
     "back_to_category": "Back to {category}",
     "reading_time": "{time} min read",
     "published": "Published",
-    "switch_lang": "阅读中文版"
+    "switch_lang": "阅读中文版",
+    "comments": "Comments"
   },
   "category": {
     "products": "Products",

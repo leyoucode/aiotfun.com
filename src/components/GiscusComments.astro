@@ -1,0 +1,27 @@
+---
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const giscusLang = locale === 'zh' ? 'zh-CN' : 'en';
+---
+
+<section class="giscus-wrapper">
+  <script
+    src="https://giscus.app/client.js"
+    data-repo="leyoucode/aiotfun.com"
+    data-repo-id="R_kgDORTLoyw"
+    data-category="Comments"
+    data-category-id="DIC_kwDORTLoy84C2yiU"
+    data-mapping="pathname"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light"
+    data-lang={giscusLang}
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async
+  ></script>
+</section>

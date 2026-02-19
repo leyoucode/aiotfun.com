@@ -35,7 +35,8 @@
     "back_to_category": "返回{category}",
     "reading_time": "{time} 分钟阅读",
     "published": "发布于",
-    "switch_lang": "Read in English"
+    "switch_lang": "Read in English",
+    "comments": "评论"
   },
   "category": {
     "products": "产品",
