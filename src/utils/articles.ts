@@ -28,7 +28,11 @@ export async function getArticles(lang: 'en' | 'zh'): Promise<Article[]> {
   const entries = await getCollection('articles', ({ data }) => data.lang === lang);
   return entries
     .map(entryToArticle)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    .sort((a, b) => {
+      const dateDiff = new Date(b.date).getTime() - new Date(a.date).getTime();
+      if (dateDiff !== 0) return dateDiff;
+      return a.slug.localeCompare(b.slug);
+    });
 }
 
 /** 获取 featured 文章 */
