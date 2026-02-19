@@ -15,7 +15,7 @@ AIoTFun.com is a bilingual (EN/ZH) static site built with Astro 5, covering fun 
 ```bash
 # Astro website (Module B)
 pnpm dev        # Dev server at localhost:4321
-pnpm build      # Production build → dist/ (~65 static pages)
+pnpm build      # Production build → dist/ (~79 static pages)
 pnpm preview    # Preview built site
 
 # Python collector (Module A)
@@ -55,7 +55,7 @@ aiotfun.com/
 │   ├── components/            # Astro components (see Key Components)
 │   ├── content/
 │   │   └── articles/          # MDX articles: [lang]/[category]/slug.mdx
-│   ├── data/                  # Mock data (mockAgents, mockRadar, mockRoundtable)
+│   ├── data/                  # Data files (mockAgents, mockRoundtable; mockRadar unused)
 │   ├── i18n/                  # en.json, zh.json
 │   ├── layouts/               # BaseLayout.astro, ArticleLayout.astro
 │   ├── pages/                 # Route pages (en/, zh/, index.astro)
@@ -135,7 +135,8 @@ Article querying utilities in `src/utils/articles.ts` — all functions take `la
 - `ArticleCard.astro` — 4 variants: featured (full-bleed image + gradient overlay), large, medium, small
 - `CategoryTag.astro` / `FormatTag.astro` — Styled labels with category colors
 - `DiscoveryStream.astro` — Latest articles grid on home page
-- `WeeklyRadar.astro` / `AIRoundtable.astro` — Still using mock data from `src/data/`
+- `WeeklyRadar.astro` — Queries content collection for `formatTag: "radar"` articles, displays up to 5 as a list
+- `AIRoundtable.astro` — Pro/Con debate format, data from `src/data/mockRoundtable.ts`
 - `OptimizedImage.astro` — Responsive image component (auto WebP/AVIF + srcset + sizes)
 - `GiscusComments.astro` — Giscus comments (GitHub Discussions, bilingual)
 - `Newsletter.astro` — Email subscription component
@@ -190,8 +191,8 @@ Python RSS collector in `collector/` — auto-fetches articles, deduplicates, AI
 
 ### Data Sources
 
-- **Articles:** `src/content/articles/` (MDX, 5 per language, all with real content)
-- **Mock data:** `src/data/mockAgents.ts`, `mockRadar.ts`, `mockRoundtable.ts` — used by home page sections and about page
+- **Articles:** `src/content/articles/` (MDX, 6 per language, all with real content)
+- **Mock data:** `src/data/mockAgents.ts` (about page), `mockRoundtable.ts` (AIRoundtable component); `mockRadar.ts` is unused (WeeklyRadar now queries content collection directly)
 - **Collector inbox:** `workflow/inbox/` — daily JSON files from the collector
 
 ### AI Agent Team
@@ -265,32 +266,36 @@ Active:  /topics → Scout searches ─────────────┘
 
 **Phase 2 (Content System):** Fully complete. MDX content collections, category filtering, related articles, Giscus comments, tag aggregation pages.
 
-**Phase 3 (Collector):** Core skeleton complete (RSS fetching, dedup engine, AI scoring, inbox JSON output). First batch of real articles published (5 articles × 2 languages = 10 MDX files covering all 5 categories). Remaining: Gmail channel, web crawling, active topic search, Cron scheduling.
+**Phase 3 (Collector):** Core skeleton complete (RSS fetching, dedup engine, AI scoring, inbox JSON output). Real articles published (6 articles × 2 languages = 12 MDX files covering all 5 categories). Remaining: Gmail channel, web crawling, active topic search, Cron scheduling.
 
 **Phase 4 (Polish):** Not started. Dark mode, responsive mobile optimization, RSS output for readers, newsletter integration.
 
-**Current articles (5 real articles, each in EN + ZH):**
+**Current articles (6 real articles, each in EN + ZH):**
 
-| Category | Slug | Topic | Source | Featured |
-|----------|------|-------|--------|----------|
-| boards | `picoclaw-risc-v-ai-assistant` | PicoClaw 10MB AI assistant | CNX Software | |
-| builds | `ukraine-lora-home-assistant` | Ukraine LoRa Home Assistant | Reddit + HN | **yes** |
-| products | `xsdr-m2-sdr-fpga` | xSDR M.2 2230 SDR module | CNX Software | |
-| models | `asteroidos-2-smartwatch-os` | AsteroidOS 2.0 open-source watch OS | CNX Software | |
-| signals | `nvidia-gtc-2026-new-chips` | NVIDIA GTC 2026 new chips | 36Kr | |
+| Category | Slug | Topic | FormatTag | Featured |
+|----------|------|-------|-----------|----------|
+| boards | `picoclaw-risc-v-ai-assistant` | PicoClaw 10MB AI assistant | spotlight | |
+| builds | `ukraine-lora-home-assistant` | Ukraine LoRa Home Assistant | spotlight | **yes** |
+| products | `xsdr-m2-sdr-fpga` | xSDR M.2 2230 SDR module | spotlight | |
+| models | `asteroidos-2-smartwatch-os` | AsteroidOS 2.0 open-source watch OS | spotlight | |
+| signals | `weekly-radar-2026-w08` | Weekly Radar #1 (5 items) | radar | |
+| signals | `edge-ai-hardware-debate` | Edge AI hardware Pro/Con debate | roundtable | |
 
 **Completed optimizations:**
 - Font async loading, Unsplash CDN preconnect + responsive images, LCP preload
 - Local image compression (logo WebP 3KB, favicon 2.4KB), HTML compression
 - Logo rounded corners (20px), Hero title single-line responsive scaling
 - Tag aggregation pages, root path direct render (no redirect blank page)
+- WeeklyRadar: from mock data to real content collection queries (formatTag="radar")
+- AIRoundtable: from Agent avatar discussion to Pro/Con debate card format
 
 **Notes:**
-- `src/data/mock*.ts` files still used by WeeklyRadar/AIRoundtable/About page
+- `src/data/mockAgents.ts` used by About page; `mockRoundtable.ts` used by AIRoundtable component (Pro/Con debate format); `mockRadar.ts` is unused legacy
+- WeeklyRadar queries content collection for `formatTag: "radar"` articles (up to 5), no mock data needed
+- AIRoundtable uses Pro/Con debate format (RoundtableSide: label/icon/color/summary) instead of original Agent avatars
 - i18n `article_detail`/`category_page`/`about` groups use `(t as any)` type assertion
 - Client-side pagination works for current scale; consider Astro `paginate()` when articles exceed hundreds
 - `agent` field kept in frontmatter data layer but not displayed in UI
 - `collector/data/collector.db` and `collector/.venv/` are gitignored
 - Collector needs local Ollama service; falls back gracefully when unavailable
 - HeroSection relies on `featured: true` articles — always ensure at least one article per language is marked featured
-- All old placeholder/test articles (25/lang) have been deleted; only 5 real articles remain
