@@ -9,18 +9,24 @@ AIoTFun.com is a bilingual (EN/ZH) static site built with Astro 5, covering fun 
 ## Commands
 
 ```bash
+# Astro website (Module B)
 pnpm dev        # Dev server at localhost:4321
 pnpm build      # Production build → dist/
 pnpm preview    # Preview built site
+
+# Python collector (Module A)
+cd collector && source .venv/bin/activate
+python -m collector   # Run RSS → dedup → AI score → inbox JSON
 ```
 
-No test framework is configured. Validate changes with `pnpm build` (generates ~64 static pages).
+No test framework is configured. Validate Astro changes with `pnpm build` (generates ~64 static pages).
 
 ## Architecture
 
-**Framework:** Astro 5 (SSG) + Tailwind CSS 3 + MDX content collections
+**Module B (Website):** Astro 5 (SSG) + Tailwind CSS 3 + MDX content collections
+**Module A (Collector):** Python 3 + Pydantic + feedparser + httpx + Ollama (local AI)
 **Deployment:** Cloudflare Pages (auto-deploy on push to master via `wrangler.toml`)
-**Package manager:** pnpm
+**Package manager:** pnpm (website), pip/venv (collector)
 
 ### Routing
 
@@ -69,10 +75,44 @@ Article querying utilities in `src/utils/articles.ts` — all functions take `la
 - `DiscoveryStream.astro` — Latest articles grid on home page
 - `WeeklyRadar.astro` / `AIRoundtable.astro` — Still using mock data from `src/data/`
 
+### Collector System (Module A)
+
+Python RSS collector in `collector/` — auto-fetches articles, deduplicates, AI-scores, outputs structured JSON.
+
+```
+collector/
+├── config.yaml               # RSS feeds + scoring params
+├── requirements.txt           # Python deps (pydantic, httpx, feedparser, openai, etc.)
+├── collector/
+│   ├── __main__.py            # Entry: python -m collector
+│   ├── config.py              # Pydantic config from YAML
+│   ├── models.py              # FeedItem, ScoredItem
+│   ├── feeds/
+│   │   ├── base.py            # Abstract fetcher base class
+│   │   └── rss.py             # RSS fetcher (feedparser + httpx)
+│   ├── dedup/
+│   │   ├── engine.py          # 4-layer dedup (URL → SimHash → content hash → time window)
+│   │   ├── simhash.py         # SimHash impl (CJK bigrams + Latin words)
+│   │   └── store.py           # SQLite seen_items storage
+│   ├── scoring/
+│   │   └── scorer.py          # Ollama AI scoring via OpenAI SDK, graceful fallback
+│   └── output/
+│       └── writer.py          # JSON output to workflow/inbox/YYYY-MM-DD.json
+└── data/
+    └── collector.db           # SQLite dedup database (gitignored)
+```
+
+**Data flow:** RSS feeds → feedparser → FeedItem list → DedupEngine (SQLite) → AIScorer (Ollama qwen2:7b) → InboxWriter → `workflow/inbox/YYYY-MM-DD.json`
+
+**Config:** `collector/config.yaml` — 5 RSS sources (HN, Hackaday, CNX Software, 36Kr, 少数派), dedup thresholds, Ollama endpoint, output path.
+
+**AI Scoring:** Uses local Ollama via OpenAI-compatible API. Scores each item on novelty/fun/relevance (1-10), suggests category + tags + Chinese title translation. Falls back gracefully (score=0) when Ollama is unavailable.
+
 ### Data Sources
 
 - **Articles:** `src/content/articles/` (MDX, 25 per language)
 - **Mock data:** `src/data/mockAgents.ts`, `mockRadar.ts`, `mockRoundtable.ts` — used by home page sections and about page
+- **Collector inbox:** `workflow/inbox/` — daily JSON files from the collector, format per AIOTFUN-DEV-DOC.md §7.6
 
 ## Design Tokens (Tailwind)
 
@@ -93,4 +133,4 @@ Article querying utilities in `src/utils/articles.ts` — all functions take `la
 
 ## Current Status
 
-Phase 1 (site skeleton) and most of Phase 2 (content system) complete. Remaining: Giscus comments integration. Phase 3 (Python source collector) and Phase 4 (dark mode, RSS output, newsletter) not started. Full roadmap in `AIOTFUN-DEV-DOC.md`.
+Phase 1 (site skeleton) and Phase 2 (content system) fully complete. Phase 3 core skeleton (RSS collector MVP) complete — RSS fetching, dedup engine, AI scoring, and inbox JSON output all working end-to-end. Remaining Phase 3 work: Gmail channel, web crawling, active topic search, Cron scheduling. Phase 4 (dark mode, RSS output, newsletter) not started. Full roadmap in `AIOTFUN-DEV-DOC.md`.

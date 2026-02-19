@@ -126,6 +126,26 @@ aiotfun.com/
 ├── tailwind.config.mjs       # Tailwind 配置（含自定义色彩/字体）
 ├── package.json
 ├── wrangler.toml              # Cloudflare Pages 部署配置
+├── collector/                 # Module A: Python 信源采集器
+│   ├── config.yaml            # RSS 源 + 评分参数等配置
+│   ├── requirements.txt       # Python 依赖（pydantic/httpx/feedparser/openai 等）
+│   ├── collector/             # Python 包
+│   │   ├── __main__.py        # 入口：python -m collector
+│   │   ├── config.py          # Pydantic 配置加载
+│   │   ├── models.py          # 数据模型（FeedItem, ScoredItem）
+│   │   ├── feeds/             # 采集模块
+│   │   │   ├── base.py        # 抽象基类
+│   │   │   └── rss.py         # RSS 采集（feedparser + httpx）
+│   │   ├── dedup/             # 去重模块
+│   │   │   ├── engine.py      # 4 层去重引擎
+│   │   │   ├── simhash.py     # SimHash 实现
+│   │   │   └── store.py       # SQLite 存储层
+│   │   ├── scoring/           # AI 评分模块
+│   │   │   └── scorer.py      # Ollama 评分（OpenAI 兼容 API）
+│   │   └── output/            # 输出模块
+│   │       └── writer.py      # JSON 文件输出
+│   └── data/
+│       └── collector.db       # SQLite 去重数据库（gitignored）
 ├── public/
 │   ├── favicon.ico            # 优化后 16x16+32x32 ICO（~2KB）
 │   ├── logo.png               # 导航栏 Logo（48KB）
@@ -149,6 +169,7 @@ aiotfun.com/
 │   │   ├── WeeklyRadar.astro     # 每周雷达区块
 │   │   ├── AIRoundtable.astro    # AI 圆桌区块
 │   │   ├── OptimizedImage.astro  # 响应式图片组件（自动 WebP/AVIF + srcset + sizes）
+│   │   ├── GiscusComments.astro  # Giscus 评论组件（GitHub Discussions，中英双语）
 │   │   └── Newsletter.astro      # 邮件订阅组件
 │   ├── data/                     # Mock 数据（后期迁移到 MDX content collections）
 │   │   ├── mockArticles.ts       # 文章数据（中英各12篇） + 查询函数
@@ -664,7 +685,7 @@ collected: []           # 采集器自动填入搜索结果
 | `src/pages/en/[category]/[slug].astro` | 英文文章详情动态路由 |
 | `src/pages/zh/[category]/[slug].astro` | 中文文章详情动态路由 |
 
-- 结构：返回分类链接 → 标签行（CategoryTag + FormatTag） → 大标题（font-display，3xl~5xl） → 元信息行（日期·阅读时间·语言切换） → 封面大图（max-h-480px） → 正文（`.article-body`，max-w-prose 居中，`set:html`） → 标签云（`#tag` 圆角胶囊） → 相关文章（3列 ArticleCard medium）
+- 结构：返回分类链接 → 标签行（CategoryTag + FormatTag） → 大标题（font-display，3xl~5xl） → 元信息行（日期·阅读时间·语言切换） → 封面大图（max-h-480px） → 正文（`.article-body`，max-w-prose 居中，`set:html`） → 标签云（`#tag` 圆角胶囊） → 评论区（Giscus，基于 GitHub Discussions，`data-mapping="pathname"`，中英文自动切换 UI 语言） → 相关文章（3列 ArticleCard medium）
 - 正文排版样式 `.article-body` 在 `global.css` 的 `@layer components` 中定义，覆盖 h2/h3/p/ul/ol/pre/code/figure/figcaption/blockquote/a/strong/em/hr
 - body 数据独立在 `mockArticleBodies.ts`，页面层按需注入，避免 mockArticles.ts 膨胀
 - 相关文章算法：同分类 +10 分，每个共同标签 +1 分，取前 3 篇
@@ -698,7 +719,7 @@ collected: []           # 采集器自动填入搜索结果
 **i18n 扩展（已完成）：**
 
 `en.json` / `zh.json` 新增 3 个翻译分组：
-- `article_detail`：related_articles / tags / back_to_category / reading_time / published / switch_lang
+- `article_detail`：related_articles / tags / comments / back_to_category / reading_time / published / switch_lang
 - `category_page`：all / no_articles / filter_by_format / article_count / descriptions（5 个分类描述）
 - `about`：title / subtitle / story_title / story_p1~p3 / crew_title / crew_subtitle / workflow_title / workflow_desc / workflow_steps / founder_title / founder_bio / founder_name（i18n 保留但页面不展示） / contact_title / contact_desc
 
@@ -712,7 +733,7 @@ collected: []           # 采集器自动填入搜索结果
 
 ### 下一步开发计划（新会话从这里开始）
 
-> **当前状态**：Phase 1 全部完成（#1~#10），Phase 2 大部分完成（MDX 迁移 ✅、分类筛选 ✅、相关文章 ✅、Agent 作者显示已移除 ✅、中文 format 标签优化 ✅）。剩余：Giscus 评论集成。网站已部署到 Cloudflare Pages，自定义域名 `aiotfun.com` 已绑定。
+> **当前状态**：Phase 1 全部完成（#1~#10），Phase 2 全部完成（MDX 迁移 ✅、分类筛选 ✅、相关文章 ✅、Agent 作者显示已移除 ✅、中文 format 标签优化 ✅、Giscus 评论集成 ✅），Phase 3 核心骨架已完成（RSS 采集 ✅、去重引擎 ✅、AI 评分 ✅、inbox 输出 ✅）。网站已部署到 Cloudflare Pages，自定义域名 `aiotfun.com` 已绑定。采集器 MVP 已可运行（`python -m collector`），从 5 个 RSS 源抓取文章并输出到 `workflow/inbox/`。
 
 **部署信息：**
 - GitHub 仓库：`leyoucode/aiotfun.com`（master 分支）
@@ -745,6 +766,14 @@ collected: []           # 采集器自动填入搜索结果
   - 本地图片压缩：`logo-512.png` 330KB → WebP 3KB，`favicon.ico` 97KB → 2.4KB（减少 ~420KB）
   - `compressHTML: true` 压缩 HTML 输出
   - 图片工具 `src/utils/image.ts`：`optimizeImageUrl()` + `generateSrcset()` 函数
+- ✅ Giscus 评论系统集成：基于 GitHub Discussions（仓库 `leyoucode/aiotfun.com`），按 pathname 映射，延迟加载（`data-loading="lazy"`），中英文 UI 自动切换
+- ✅ Logo 圆角化：logo.png / logo-512.png / logo-512.webp 统一为 20px 等比圆角正方形
+- ✅ Phase 3 核心骨架：Python 信源采集器 MVP（`collector/`）
+  - RSS 采集：feedparser + httpx，5 个信源（HN/Hackaday/CNX Software/36Kr/少数派），单次采集约 99 条
+  - 去重引擎：4 层过滤（URL→SimHash→内容哈希→时间窗口），SQLite 持久化，重复运行 0 条新增
+  - AI 评分：本地 Ollama qwen2:7b，评分维度 novelty/fun/relevance，自动分类+标签+中文翻译，不可用时 graceful fallback
+  - inbox 输出：`workflow/inbox/YYYY-MM-DD.json`，符合 §7.6 规范，支持合并追加，按 score 降序
+  - 运行方式：`cd collector && source .venv/bin/activate && python -m collector`
 
 **接下来的优先级排序：**
 
@@ -754,21 +783,23 @@ collected: []           # 采集器自动填入搜索结果
 - 检查中英文排版细节（字体渲染、行高、间距）
 - 替换 `og-default.png` 为品牌设计的正式 OG 图片
 
-#### 2. 完成 Phase 2 剩余
-- 集成 Giscus 评论系统
-- 创建第一批真实文章（利用采集器获取素材）
+#### 2. 创建第一批真实文章
+- 利用采集器获取素材，撰写真实内容
 
-#### 3. 进入 Phase 3：采集器
-- Python 项目初始化 + RSS 采集模块
-- 去重引擎（SQLite + SimHash）
-- AI 评分模块（本地 Ollama）
-- 主动选题采集 + Cron 调度
+#### 3. 完善 Phase 3：采集器扩展
+- Gmail 采集模块（Newsletter 邮件自动采集）
+- 主动选题采集模块（读取 workflow/topics/ YAML，定向搜索）
+- Cron 调度配置（Mac Mini M4 Pro 定时执行）
+- 更多 RSS 信源接入（Arduino、RPi、Reddit 等）
 
 **注意事项**：
 - 文章数据已从 mock 迁移到 `src/content/` 下的 MDX 文件，但 `src/data/mock*.ts` 文件仍保留（部分首页组件如 WeeklyRadar/AIRoundtable 仍引用）
 - i18n 翻译中 `article_detail` / `category_page` / `about` 分组使用了 `(t as any)` 类型断言访问，后续可考虑统一类型定义
 - 分类列表页的 formatTag 筛选和分页均为纯客户端 JS，文章增长到几百篇以上时可考虑迁移到 Astro `paginate()` 静态分页
 - MDX frontmatter 中的 `agent` 字段保留（数据层不删），但 UI 不再展示作者信息
+- 采集器 `collector/data/collector.db`（SQLite 去重数据库）和 `collector/.venv/` 不提交 Git
+- 采集器运行需要本地 Ollama 服务（`http://localhost:11434`），不可用时 AI 评分会 graceful fallback（score=0）
+- 采集器输出的 `workflow/inbox/*.json` 包含 `score_detail`（novelty/fun/relevance 分项分数）字段，为 §7.6 规范的超集
 
 ### Phase 2: 内容系统
 
@@ -778,20 +809,20 @@ collected: []           # 采集器自动填入搜索结果
 | 2 | 文章卡片组件（含分类标签+形式标签） | ✅ 已完成 | Phase 1 提前完成；Agent署名已移除 |
 | 3 | 分类筛选和标签过滤功能 | ✅ 已完成 | Phase 1 #7 中实现，客户端 JS 按 formatTag 显隐 |
 | 4 | 相关文章推荐逻辑 | ✅ 已完成 | Phase 1 #6 中实现，同分类+标签交集评分算法 |
-| 5 | Giscus 评论集成 | 待开始 | — |
+| 5 | Giscus 评论集成 | ✅ 已完成 | GiscusComments.astro 组件，基于 GitHub Discussions，支持中英双语 UI |
 
 ### Phase 3: 采集器
 
-| # | 任务 | 状态 |
-|---|------|------|
-| 1 | Python 项目初始化 | 待开始 |
-| 2 | RSS 采集模块 | 待开始 |
-| 3 | Gmail 采集模块 | 待开始 |
-| 4 | 去重引擎（SQLite + SimHash） | 待开始 |
-| 5 | AI 评分模块（本地 Ollama） | 待开始 |
-| 6 | 主动选题采集模块 | 待开始 |
-| 7 | Cron 调度配置 | 待开始 |
-| 8 | 采集结果 → workflow/inbox 输出 | 待开始 |
+| # | 任务 | 状态 | 说明 |
+|---|------|------|------|
+| 1 | Python 项目初始化 | ✅ 已完成 | `collector/` 目录结构、requirements.txt、config.yaml、Pydantic 配置 + 数据模型 |
+| 2 | RSS 采集模块 | ✅ 已完成 | feedparser + httpx，5 个信源（HN/Hackaday/CNX Software/36Kr/少数派） |
+| 3 | Gmail 采集模块 | 待开始 | |
+| 4 | 去重引擎（SQLite + SimHash） | ✅ 已完成 | 4 层过滤：URL精确→SimHash汉明距离→内容摘要哈希→7天时间窗口，SQLite 持久化 |
+| 5 | AI 评分模块（本地 Ollama） | ✅ 已完成 | Ollama qwen2:7b 通过 OpenAI SDK，评分维度：novelty/fun/relevance，含 graceful fallback |
+| 6 | 主动选题采集模块 | 待开始 | |
+| 7 | Cron 调度配置 | 待开始 | |
+| 8 | 采集结果 → workflow/inbox 输出 | ✅ 已完成 | 按日期生成 JSON，支持合并追加，items 按 score 降序，符合 §7.6 规范 |
 
 ### Phase 4: 完善
 
