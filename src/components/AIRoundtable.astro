@@ -13,23 +13,26 @@ const roundtable = getRoundtable(locale);
     {t.home.ai_roundtable}
   </h3>
 
-  <!-- 话题标题 -->
+  <!-- Topic title -->
   <p class="mb-3 font-display text-lg text-text">
     {roundtable.topic}
   </p>
 
-  <!-- Agent 头像组 -->
-  <div class="mb-3 flex items-center gap-3">
-    {roundtable.agents.map((agent) => (
-      <span class="inline-flex items-center gap-1 font-mono text-xs">
-        <span style={`color: ${agent.color}`} class="text-base">{agent.icon}</span>
-        <span class="text-text-muted">{agent.name}</span>
-      </span>
+  <!-- Debate sides -->
+  <div class="mb-3 space-y-2">
+    {roundtable.sides.map((side) => (
+      <div class="rounded-lg border border-border p-3">
+        <div class="mb-1 flex items-center gap-2">
+          <span style={`color: ${side.color}`} class="text-base">{side.icon}</span>
+          <span style={`color: ${side.color}`} class="font-mono text-sm font-bold">{side.label}</span>
+        </div>
+        <p class="text-sm text-text-muted">{side.summary}</p>
+      </div>
     ))}
   </div>
 
-  <!-- 讨论摘要 -->
-  <p class="mb-4 text-sm text-text-muted line-clamp-3">
+  <!-- Discussion summary -->
+  <p class="mb-4 text-sm text-text-muted line-clamp-2">
     {roundtable.summary}
   </p>
 

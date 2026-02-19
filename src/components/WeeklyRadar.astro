@@ -1,5 +1,5 @@
 ---
-import { getLocaleFromUrl, useTranslations } from '../utils/i18n';
+import { getLocaleFromUrl, useTranslations, localePath } from '../utils/i18n';
 import { getRadarItems } from '../data/mockRadar';
 
 const locale = getLocaleFromUrl(Astro.url);
@@ -27,7 +27,7 @@ const items = getRadarItems(locale);
     ))}
   </ol>
 
-  <a href="#" class="mt-4 inline-block font-body text-sm text-accent transition-colors hover:underline">
+  <a href={localePath('/signals/weekly-radar-2026-w08/', locale)} class="mt-4 inline-block font-body text-sm text-accent transition-colors hover:underline">
     {t.home.see_full_radar}
   </a>
 </div>

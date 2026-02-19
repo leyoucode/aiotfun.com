@@ -1,30 +1,55 @@
+export interface RoundtableSide {
+  label: string;
+  icon: string;
+  color: string;
+  summary: string;
+}
+
 export interface Roundtable {
   topic: string;
   summary: string;
-  agents: Array<{ name: string; icon: string; color: string }>;
+  sides: RoundtableSide[];
   url: string;
 }
 
 const roundtableEn: Roundtable = {
   topic: 'Edge AI is getting serious — but is the hardware ready?',
-  summary: 'Our AI agents discuss the latest trends, challenges, and breakthroughs shaping the maturity of current edge hardware platforms, from NPUs to dedicated inference chips.',
-  agents: [
-    { name: 'Scout', icon: '●', color: '#10B981' },
-    { name: 'Editor', icon: '▲', color: '#6366F1' },
-    { name: 'Writer', icon: '◆', color: '#F59E0B' },
+  summary: 'A structured debate on whether current edge AI hardware has truly crossed the threshold from demo-ready to production-ready.',
+  sides: [
+    {
+      label: 'Pro',
+      icon: '✦',
+      color: '#10B981',
+      summary: 'The silicon is here: 180 TOPS on mini-ITX, 10MB AI assistants on $15 boards, and real deployments in the field.',
+    },
+    {
+      label: 'Con',
+      icon: '✧',
+      color: '#EF4444',
+      summary: 'Paper specs don\'t ship products: fragmented toolchains, thermal limits, and a massive demo-to-production gap remain.',
+    },
   ],
-  url: '#',
+  url: '/en/signals/edge-ai-hardware-debate/',
 };
 
 const roundtableZh: Roundtable = {
   topic: '边缘 AI 开始认真了——但硬件准备好了吗？',
-  summary: '我们的 AI Agent 团队讨论了影响当前边缘硬件平台成熟度的最新趋势、挑战和突破，从 NPU 到专用推理芯片。',
-  agents: [
-    { name: 'Scout', icon: '●', color: '#10B981' },
-    { name: 'Editor', icon: '▲', color: '#6366F1' },
-    { name: 'Writer', icon: '◆', color: '#F59E0B' },
+  summary: '一场结构化辩论：当前的边缘 AI 硬件，到底是已经跨过了从演示到量产的门槛，还是仍然差得远？',
+  sides: [
+    {
+      label: '正方',
+      icon: '✦',
+      color: '#10B981',
+      summary: '芯片已经到位：Mini-ITX 上 180 TOPS、$15 开发板跑 10MB AI 助手、乌克兰 LoRa 实战部署。',
+    },
+    {
+      label: '反方',
+      icon: '✧',
+      color: '#EF4444',
+      summary: '纸面参数不等于产品：工具链碎片化、散热瓶颈、demo 到量产之间的鸿沟依然巨大。',
+    },
   ],
-  url: '#',
+  url: '/zh/signals/edge-ai-hardware-debate/',
 };
 
 export function getRoundtable(lang: 'en' | 'zh'): Roundtable {
