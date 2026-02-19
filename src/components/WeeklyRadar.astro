@@ -1,10 +1,13 @@
 ---
 import { getLocaleFromUrl, useTranslations, localePath } from '../utils/i18n';
-import { getRadarItems } from '../data/mockRadar';
+import { getArticles } from '../utils/articles';
 
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
-const items = getRadarItems(locale);
+const allArticles = await getArticles(locale);
+const radarArticles = allArticles
+  .filter((a) => a.formatTag === 'radar')
+  .slice(0, 5);
 ---
 
 <div class="rounded-card bg-bg-alt p-6">
@@ -14,20 +17,22 @@ const items = getRadarItems(locale);
   </h3>
 
   <ol class="space-y-3">
-    {items.map((item) => (
+    {radarArticles.map((article, index) => (
       <li class="flex gap-3">
-        <span class="font-mono text-sm font-medium text-accent">{item.id}.</span>
+        <span class="font-mono text-sm font-medium text-accent">{index + 1}.</span>
         <div>
-          <a href={item.url} class="text-sm font-medium text-text transition-colors hover:text-accent">
-            {item.title}
+          <a href={localePath(`/signals/${article.slug}/`, locale)} class="text-sm font-medium text-text transition-colors hover:text-accent" title={article.title}>
+            {article.title}
           </a>
-          <span class="ml-2 font-mono text-xs text-text-muted">{item.source}</span>
+          <span class="ml-2 font-mono text-xs text-text-muted">{article.date}</span>
         </div>
       </li>
     ))}
   </ol>
 
-  <a href={localePath('/signals/weekly-radar-2026-w08/', locale)} class="mt-4 inline-block font-body text-sm text-accent transition-colors hover:underline">
-    {t.home.see_full_radar}
-  </a>
+  {radarArticles.length > 0 && (
+    <a href={localePath('/signals/', locale)} class="mt-4 inline-block font-body text-sm text-accent transition-colors hover:underline">
+      {t.home.see_full_radar}
+    </a>
+  )}
 </div>
