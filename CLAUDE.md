@@ -232,6 +232,7 @@ Active:  /topics → Scout searches ─────────────┘
 - Related articles algorithm: same category = +10 points, each shared tag = +1 point, top 3
 - Article source links use `<a target="_blank" rel="noopener noreferrer">` to open in new tab
 - Article `date` field = publication date on AIoTFun (when we wrote it), not original source date
+- Article sorting: by date descending, then by slug alphabetically (ensures stable order across EN/ZH when dates are the same)
 
 ## Article Writing Guidelines
 
@@ -270,13 +271,13 @@ Active:  /topics → Scout searches ─────────────┘
 
 **Current articles (5 real articles, each in EN + ZH):**
 
-| Category | Slug | Topic | Source |
-|----------|------|-------|--------|
-| boards | `picoclaw-risc-v-ai-assistant` | PicoClaw 10MB AI assistant | CNX Software |
-| builds | `ukraine-lora-home-assistant` | Ukraine LoRa Home Assistant | Reddit + HN |
-| products | `xsdr-m2-sdr-fpga` | xSDR M.2 2230 SDR module | CNX Software |
-| models | `asteroidos-2-smartwatch-os` | AsteroidOS 2.0 open-source watch OS | CNX Software |
-| signals | `nvidia-gtc-2026-new-chips` | NVIDIA GTC 2026 new chips | 36Kr |
+| Category | Slug | Topic | Source | Featured |
+|----------|------|-------|--------|----------|
+| boards | `picoclaw-risc-v-ai-assistant` | PicoClaw 10MB AI assistant | CNX Software | |
+| builds | `ukraine-lora-home-assistant` | Ukraine LoRa Home Assistant | Reddit + HN | **yes** |
+| products | `xsdr-m2-sdr-fpga` | xSDR M.2 2230 SDR module | CNX Software | |
+| models | `asteroidos-2-smartwatch-os` | AsteroidOS 2.0 open-source watch OS | CNX Software | |
+| signals | `nvidia-gtc-2026-new-chips` | NVIDIA GTC 2026 new chips | 36Kr | |
 
 **Completed optimizations:**
 - Font async loading, Unsplash CDN preconnect + responsive images, LCP preload
@@ -291,3 +292,5 @@ Active:  /topics → Scout searches ─────────────┘
 - `agent` field kept in frontmatter data layer but not displayed in UI
 - `collector/data/collector.db` and `collector/.venv/` are gitignored
 - Collector needs local Ollama service; falls back gracefully when unavailable
+- HeroSection relies on `featured: true` articles — always ensure at least one article per language is marked featured
+- All old placeholder/test articles (25/lang) have been deleted; only 5 real articles remain
