@@ -152,7 +152,7 @@ Article querying utilities in `src/utils/articles.ts` — all functions take `la
 | Products | Products | 产品 | Finished devices, smart hardware, consumer AI products |
 | Boards | Boards | 开发板 | Chips, modules, dev kits, compute platforms |
 | Builds | Builds | 创造 | DIY projects, hacks, experiments, maker builds |
-| Models | Models | 模型 | Edge AI models, inference frameworks, toolchains |
+| Models | Models | 模型 | AIoT-related AI models and frameworks (edge + cloud, device-connected) |
 | Signals | Signals | 风向 | Trends, industry events, funding, ecosystem changes |
 | About | About | 关于 | Brand story + AI Agent team |
 
@@ -311,6 +311,7 @@ Active:  /topics → Scout searches ─────────────┘
 - 返回顶部按钮 (BackToTop)：滚动 300px 出现，bg-card-bg + border + shadow-card，dark mode 自适应
 - 自定义 404 页面：独立页面（无 Header/Footer），navigator.language 自动中英文切换
 - 全站搜索 (Pagefind)：build 时生成索引，SearchModal 懒加载 PagefindUI，Cmd+K 快捷键，双语索引，dark mode 适配
+- 分类描述优化：去掉教程暗示（step-by-step/手把手/deployment guides）、具体型号（ESP32/Jetson），统一发现+聚合调性；Models 范围扩展为 AIoT 相关模型（不限边缘）
 
 **Notes:**
 - `src/data/mockAgents.ts` used by About page; `mockRoundtable.ts` used by AIRoundtable component (Pro/Con debate format); `mockRadar.ts` is unused legacy
