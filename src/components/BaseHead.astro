@@ -90,6 +90,9 @@ const ogImage = image ? new URL(image, Astro.site) : new URL('/og-default.jpg', 
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
 
+{/* Pagefind UI styles (404 in dev, harmless) */}
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+
 {/* LCP 图片预加载 */}
 {preloadImage && (
   <link rel="preload" as="image" href={preloadImage} />

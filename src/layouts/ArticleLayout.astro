@@ -24,7 +24,7 @@ const backHref = localePath(`/${article.category}/`, locale);
 ---
 
 <BaseLayout title={article.title} description={article.description} image={article.cover}>
-  <article class="mx-auto max-w-content px-4 md:px-6 py-8">
+  <article class="mx-auto max-w-content px-4 md:px-6 py-8" data-pagefind-body>
     <!-- 返回分类 -->
     <a href={backHref} class="inline-flex items-center gap-1 text-sm text-text-muted hover:text-accent transition-colors mb-6">
       <span>←</span>
@@ -38,7 +38,7 @@ const backHref = localePath(`/${article.category}/`, locale);
     </div>
 
     <!-- 大标题 -->
-    <h1 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-text mb-6">
+    <h1 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-text mb-6" data-pagefind-meta="title">
       {article.title}
     </h1>
 
@@ -83,7 +83,7 @@ const backHref = localePath(`/${article.category}/`, locale);
       </div>
 
       <!-- 评论区 -->
-      <div class="mt-12 pt-8 border-t border-border">
+      <div class="mt-12 pt-8 border-t border-border" data-pagefind-ignore>
         <h3 class="text-sm font-mono text-text-muted mb-3">{(t as any).article_detail.comments}</h3>
         <GiscusComments locale={locale} />
       </div>
@@ -91,7 +91,7 @@ const backHref = localePath(`/${article.category}/`, locale);
 
     <!-- 相关文章 -->
     {related.length > 0 && (
-      <section class="mt-16">
+      <section class="mt-16" data-pagefind-ignore>
         <h2 class="font-display text-2xl font-bold text-text mb-6">
           {(t as any).article_detail.related_articles}
         </h2>

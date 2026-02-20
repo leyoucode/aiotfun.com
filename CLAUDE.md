@@ -15,7 +15,7 @@ AIoTFun.com is a bilingual (EN/ZH) static site built with Astro 5, covering fun 
 ```bash
 # Astro website (Module B)
 pnpm dev        # Dev server at localhost:4321
-pnpm build      # Production build → dist/ (~79 static pages + 2 RSS feeds)
+pnpm build      # Production build → dist/ (~80 static pages + 2 RSS feeds + Pagefind index)
 pnpm preview    # Preview built site
 
 # Python collector (Module A)
@@ -143,6 +143,7 @@ Article querying utilities in `src/utils/articles.ts` — all functions take `la
 - `ReadingProgress.astro` — Article reading progress bar (fixed top, z-60, accent color)
 - `TableOfContents.astro` — Article TOC sidebar (xl only, sticky, IntersectionObserver)
 - `BackToTop.astro` — Scroll-to-top button (fixed bottom-right, z-50, appears after 300px)
+- `SearchModal.astro` — Full-site search modal (Pagefind, z-[70], lazy load, bilingual, Cmd+K shortcut)
 
 ### Navigation & Categories
 
@@ -278,7 +279,7 @@ Active:  /topics → Scout searches ─────────────┘
 
 **Phase 3 (Collector):** Core skeleton complete (RSS fetching, dedup engine, AI scoring, inbox JSON output). Real articles published (6 articles × 2 languages = 12 MDX files covering all 5 categories). Remaining: Gmail channel, web crawling, active topic search, Cron scheduling.
 
-**Phase 4 (Polish):** Core complete. Dark mode, mobile polish, bilingual RSS feeds, View Transitions (SPA), reading progress bar, article TOC, back-to-top button, custom 404 page. Remaining: newsletter backend integration.
+**Phase 4 (Polish):** Core complete. Dark mode, mobile polish, bilingual RSS feeds, View Transitions (SPA), reading progress bar, article TOC, back-to-top button, custom 404 page, full-site search (Pagefind). Remaining: newsletter backend integration.
 
 **Current articles (6 real articles, each in EN + ZH):**
 
@@ -309,6 +310,7 @@ Active:  /topics → Scout searches ─────────────┘
 - 文章目录 TOC (TableOfContents)：桌面端 xl (≥1280px) 侧边栏，IntersectionObserver 高亮当前章节
 - 返回顶部按钮 (BackToTop)：滚动 300px 出现，bg-card-bg + border + shadow-card，dark mode 自适应
 - 自定义 404 页面：独立页面（无 Header/Footer），navigator.language 自动中英文切换
+- 全站搜索 (Pagefind)：build 时生成索引，SearchModal 懒加载 PagefindUI，Cmd+K 快捷键，双语索引，dark mode 适配
 
 **Notes:**
 - `src/data/mockAgents.ts` used by About page; `mockRoundtable.ts` used by AIRoundtable component (Pro/Con debate format); `mockRadar.ts` is unused legacy
@@ -328,3 +330,5 @@ Active:  /topics → Scout searches ─────────────┘
 - View Transitions 下模块 `<script>` 只执行一次，DOM 操作需包在 `document.addEventListener('astro:page-load', ...)` 中，用 `dataset.init` 防 morph 后重复绑定
 - `define:vars` 脚本（分类页）和 `is:inline` 脚本（BaseHead theme / GiscusComments）无需 `astro:page-load` 适配
 - 404 页面是独立页面，不使用 BaseLayout，直接引入 global.css + inline dark mode 脚本
+- Pagefind：build 脚本为 `astro build && npx pagefind --site dist`，索引只覆盖 `data-pagefind-body` 标记的文章页，SearchModal 用 `is:inline` 脚本 + `window.__searchInit` 防重复初始化
+- SearchModal 的 PagefindUI JS 通过 `import('/pagefind/pagefind-ui.js')` 懒加载（首次打开搜索时），dev 模式下无索引会显示提示
