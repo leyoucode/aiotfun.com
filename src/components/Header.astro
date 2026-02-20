@@ -99,60 +99,65 @@ const navItems = [
 </header>
 
 <script>
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  const lines = btn?.querySelectorAll('.hamburger-line');
+  document.addEventListener('astro:page-load', () => {
+    const btn = document.getElementById('mobile-menu-btn');
+    if (!btn || btn.dataset.init) return;
+    btn.dataset.init = 'true';
 
-  btn?.addEventListener('click', () => {
-    const isOpen = !menu?.classList.contains('hidden');
-    menu?.classList.toggle('hidden');
-    document.body.style.overflow = isOpen ? '' : 'hidden';
+    const menu = document.getElementById('mobile-menu');
+    const lines = btn.querySelectorAll('.hamburger-line');
 
-    if (lines && lines.length === 3) {
-      if (isOpen) {
-        (lines[0] as HTMLElement).style.transform = '';
-        (lines[1] as HTMLElement).style.opacity = '1';
-        (lines[2] as HTMLElement).style.transform = '';
-      } else {
-        (lines[0] as HTMLElement).style.transform = 'translateY(4px) rotate(45deg)';
-        (lines[1] as HTMLElement).style.opacity = '0';
-        (lines[2] as HTMLElement).style.transform = 'translateY(-4px) rotate(-45deg)';
-      }
-    }
-  });
+    btn.addEventListener('click', () => {
+      const isOpen = !menu?.classList.contains('hidden');
+      menu?.classList.toggle('hidden');
+      document.body.style.overflow = isOpen ? '' : 'hidden';
 
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 1024) {
-      menu?.classList.add('hidden');
-      document.body.style.overflow = '';
       if (lines && lines.length === 3) {
-        (lines[0] as HTMLElement).style.transform = '';
-        (lines[1] as HTMLElement).style.opacity = '1';
-        (lines[2] as HTMLElement).style.transform = '';
+        if (isOpen) {
+          (lines[0] as HTMLElement).style.transform = '';
+          (lines[1] as HTMLElement).style.opacity = '1';
+          (lines[2] as HTMLElement).style.transform = '';
+        } else {
+          (lines[0] as HTMLElement).style.transform = 'translateY(4px) rotate(45deg)';
+          (lines[1] as HTMLElement).style.opacity = '0';
+          (lines[2] as HTMLElement).style.transform = 'translateY(-4px) rotate(-45deg)';
+        }
       }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024) {
+        menu?.classList.add('hidden');
+        document.body.style.overflow = '';
+        if (lines && lines.length === 3) {
+          (lines[0] as HTMLElement).style.transform = '';
+          (lines[1] as HTMLElement).style.opacity = '1';
+          (lines[2] as HTMLElement).style.transform = '';
+        }
+      }
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('theme-sun');
+    const moonIcon = document.getElementById('theme-moon');
+
+    function updateIcons() {
+      const isDark = document.documentElement.classList.contains('dark');
+      sunIcon?.classList.toggle('hidden', !isDark);
+      moonIcon?.classList.toggle('hidden', isDark);
     }
-  });
-
-  // Theme toggle
-  const themeToggle = document.getElementById('theme-toggle');
-  const sunIcon = document.getElementById('theme-sun');
-  const moonIcon = document.getElementById('theme-moon');
-
-  function updateIcons() {
-    const isDark = document.documentElement.classList.contains('dark');
-    sunIcon?.classList.toggle('hidden', !isDark);
-    moonIcon?.classList.toggle('hidden', isDark);
-  }
-  updateIcons();
-
-  themeToggle?.addEventListener('click', () => {
-    const isDark = document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
     updateIcons();
-    const f = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
-    f?.contentWindow?.postMessage(
-      { giscus: { setConfig: { theme: isDark ? 'dark' : 'light' } } },
-      'https://giscus.app'
-    );
+
+    themeToggle?.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateIcons();
+      const f = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
+      f?.contentWindow?.postMessage(
+        { giscus: { setConfig: { theme: isDark ? 'dark' : 'light' } } },
+        'https://giscus.app'
+      );
+    });
   });
 </script>

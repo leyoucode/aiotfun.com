@@ -1,7 +1,10 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ReadingProgress from '../components/ReadingProgress.astro';
+import BackToTop from '../components/BackToTop.astro';
 import { getLocaleFromUrl } from '../utils/i18n';
 
 interface Props {
@@ -19,12 +22,15 @@ const locale = getLocaleFromUrl(Astro.url);
 <html lang={locale}>
   <head>
     <BaseHead title={title} description={description} image={image} preloadImage={preloadImage} />
+    <ClientRouter />
   </head>
   <body class="flex min-h-screen flex-col">
+    <ReadingProgress />
     <Header />
     <main class="flex-1">
       <slot />
     </main>
     <Footer />
+    <BackToTop />
   </body>
 </html>

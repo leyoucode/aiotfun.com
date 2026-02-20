@@ -5,6 +5,7 @@ import FormatTag from '../components/FormatTag.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import GiscusComments from '../components/GiscusComments.astro';
+import TableOfContents from '../components/TableOfContents.astro';
 import { getLocaleFromUrl, useTranslations, getLanguageSwitchUrl, localePath } from '../utils/i18n';
 import { getRelatedArticles } from '../utils/articles';
 import type { Article } from '../types/article';
@@ -63,7 +64,10 @@ const backHref = localePath(`/${article.category}/`, locale);
     </div>
 
     <!-- 正文 -->
-    <div class="mx-auto max-w-prose">
+    <div class="relative mx-auto max-w-prose">
+      <div class="absolute left-full top-0 ml-8 hidden xl:block w-52">
+        <TableOfContents />
+      </div>
       <div class="article-body"><slot /></div>
 
       <!-- 标签云 -->

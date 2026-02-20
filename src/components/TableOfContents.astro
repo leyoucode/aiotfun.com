@@ -1,0 +1,71 @@
+---
+import { getLocaleFromUrl, useTranslations } from '../utils/i18n';
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+---
+
+<nav id="toc" class="sticky top-24" aria-label="Table of contents">
+  <h4 class="text-xs font-mono font-semibold text-text-muted uppercase tracking-wider mb-3">
+    {(t as any).article_detail.toc}
+  </h4>
+  <ul id="toc-list" class="space-y-1.5 text-sm border-l border-border"></ul>
+</nav>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const tocList = document.getElementById('toc-list');
+    const toc = document.getElementById('toc');
+    if (!tocList || !toc) return;
+    if (toc.dataset.init) return;
+    toc.dataset.init = 'true';
+
+    const body = document.querySelector('.article-body');
+    if (!body) return;
+
+    const headings = body.querySelectorAll('h2, h3');
+    if (headings.length === 0) { toc.style.display = 'none'; return; }
+
+    tocList.innerHTML = '';
+    headings.forEach((h) => {
+      if (!h.id) {
+        h.id = h.textContent!.trim().toLowerCase().replace(/[^a-z0-9\u4e00-\u9fff]+/g, '-').replace(/(^-|-$)/g, '');
+      }
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent!.trim();
+      a.className = 'block py-0.5 text-text-muted hover:text-accent transition-colors truncate';
+      if (h.tagName === 'H3') {
+        a.classList.add('pl-3');
+      } else {
+        a.classList.add('pl-2');
+      }
+      li.appendChild(a);
+      tocList.appendChild(li);
+    });
+
+    // IntersectionObserver to highlight current heading
+    const links = tocList.querySelectorAll('a');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            links.forEach((l) => {
+              l.classList.remove('text-accent', 'font-medium', 'border-l-accent');
+              l.classList.add('text-text-muted');
+            });
+            const active = tocList.querySelector(`a[href="#${entry.target.id}"]`);
+            if (active) {
+              active.classList.remove('text-text-muted');
+              active.classList.add('text-accent', 'font-medium');
+            }
+          }
+        });
+      },
+      { rootMargin: '0px 0px -70% 0px', threshold: 0 }
+    );
+
+    headings.forEach((h) => observer.observe(h));
+  });
+</script>
