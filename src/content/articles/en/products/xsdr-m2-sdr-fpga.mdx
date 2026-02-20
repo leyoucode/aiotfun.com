@@ -11,43 +11,38 @@ lang: "en"
 tags: ["sdr", "fpga", "rf", "open-source", "crowdfunding"]
 ---
 
-## A Full SDR on a WiFi Card
+## A Complete SDR That Disappears Into Your Laptop
 
-Wavelet Lab has done something absurd: they crammed a complete software-defined radio into an **M.2 2230 module** — the same form factor as the WiFi card in your laptop. The xSDR measures just 30 x 22 x 2 mm, sits on a single-sided PCB, and packs more RF capability than SDR dongles ten times its size.
+They crammed a complete software-defined radio — FPGA, transceiver, 2x2 MIMO, the works — into an **M.2 2230 card**. That's the same slot your laptop uses for WiFi. The xSDR measures 30 x 22 x 2 mm, sits on a single-sided PCB, and covers **30 MHz to 3.8 GHz**. Everything from HF amateur radio to LTE and low-band 5G, on something you could lose in your pocket.
 
-The "x" stands for "extended," and it's a fitting upgrade from the company's previous uSDR. This time around you get **2x2 MIMO** support and a frequency range that covers **30 MHz to 3.8 GHz** — broad enough for everything from HF amateur radio to LTE and low-band 5G.
+Wavelet Lab's previous uSDR was already impressively small. The xSDR adds MIMO support and doubles down on the "disappearing radio" concept: plug it into a Framework 16 expansion bay or any M.2-equipped edge device, and you have a full SDR station with no external hardware visible.
 
-## What's Inside
+## What You Can Actually Do With It
 
-The hardware is genuinely impressive for the size:
+The AMD Artix-7 FPGA at the heart of xSDR is the same family used in test equipment costing 10x more — and here it's sharing a card smaller than a stick of gum with a Lime Microsystems LMS7002M transceiver. The bandwidth goes up to 90 MHz instantaneous, which means you can capture an entire FM broadcast band or a full LTE channel in one shot.
 
-- **FPGA:** AMD Artix-7 XC7A50T with 52,160 logic cells
-- **RFIC:** Lime Microsystems LMS7002M programmable transceiver
-- **Bandwidth:** 0.5 MHz to 90 MHz
-- **Sample rates:** 122.88 MSPS (SISO) / 80 MSPS (MIMO)
-- **Clock stability:** 0.5 PPM
-- **Connectors:** 4x MHF4 RF + M.2 A+E key (USB 2.0 + PCIe 2.0 x2)
-- **GPIO:** 12+2 pin 1.8V header
-- **Power:** 2.85 to 5.5V
+Pair it with a Raspberry Pi and you get a remotely accessible SDR station — Wavelet Lab's **wsdr.io** lets you control the radio from a browser. Plug two modules into the same system and you have a **4x4 MIMO** setup for serious cellular research. The entire software stack is open-source: MIT-licensed host libraries, CERN-OHL-P-2.0 gateware, and compatibility with **GNU Radio**, **SoapySDR**, and **srsRAN** out of the box.
 
-There's also an EEPROM, a temperature sensor, and a 26 MHz crystal oscillator on board. The Artix-7 FPGA is the same one found in the LimeNET Micro, which means existing gateware and toolchains carry over.
+## What the RF Community Is Saying
 
-## Software Ecosystem
+Over on the Framework Community forums, user Korvin captured the most exciting use case: an SDR that literally lives inside your laptop. "Previously our community showed a decent interest in embeddable SDRs," they wrote, calling the xSDR "an ideal candidate to be placed inside a Framework 16" — though they noted the **$549 price tag** makes it "definitely not an everyone's choice."
 
-xSDR is fully open-source: host libraries are MIT-licensed and FPGA gateware is under CERN-OHL-P-2.0. It works with the tools you'd expect — **GNU Radio**, **SoapySDR**, **srsRAN** — plus Wavelet Lab's own **wsdr.io** web-based SDR environment that lets you control the radio from a browser.
+On the RTL-SDR blog, a commenter saw a different angle: "You could probably build an extremely capable radio by combining it with a Raspberry Pi, an up/downconverter for HF, and some amplifiers — for a fraction of the cost of what FlexRadio provides." For context, FlexRadio's comparable products run $2,000 to $6,000+.
 
-That browser-based interface is a nice touch: plug the xSDR into a Raspberry Pi or any edge device, and you have a remotely accessible SDR station.
+The Hacker News thread has been quieter — the campaign is barely two weeks old — but the Crowd Supply page is live and the SDR community is still evaluating.
 
-## Pricing and Availability
+## Price and the Competition
 
-The xSDR is live on **Crowd Supply** at **$549** for the module alone. A breakout board that converts M.2 to PCIe with four MHF4-to-SMA cables runs an additional **$89**. Shipping is expected in **July 2026**.
+At **$549** for the module (plus $89 for a breakout board with SMA cables), the xSDR isn't impulse-buy territory. But consider what it replaces: the **USRP B210** has similar specs, costs twice as much, and is the size of a paperback book. The **LimeSDR Mini 2.0** is cheaper but trades away MIMO and the Artix-7's FPGA flexibility. Nothing else in this price range fits in an M.2 slot.
 
-Not cheap, but consider what you're getting: a MIMO-capable, FPGA-based SDR that fits inside a laptop. The LimeSDR Mini 2.0 is cheaper but lacks MIMO and the Artix-7's flexibility. The USRP B210 has similar specs but costs twice as much and is the size of a paperback book.
+Shipping is estimated for **July 2026** via Crowd Supply. This is crowdfunding, so the usual caveats apply — but Wavelet Lab shipped the uSDR successfully, which is more track record than most hardware campaigns can claim.
 
-## Who Needs This
+## Who Would Actually Want This
 
-If you're doing cellular research, spectrum analysis, satellite tracking, or building high-speed data links, the xSDR's combination of size, capability, and open-source tooling is hard to beat. Two modules can be combined for 4x4 MIMO setups. Slip it into an M.2 slot on an embedded system and you have an SDR platform that goes wherever you go.
+A ham radio operator who wants a portable HF-to-UHF station that disappears into a laptop. A cellular researcher who needs MIMO captures in the field without lugging a USRP. A penetration tester building a discreet RF toolkit. A satellite tracker who needs wideband reception on a drone or remote site. Anyone building a permanent monitoring station where space and power are constrained — the xSDR sips 2.85 to 5.5V and needs no fans.
+
+If you've ever thought "I wish my SDR was smaller," this is the answer.
 
 ---
 
-**Source:** <a href="https://www.cnx-software.com/2026/02/16/xsdr-a-tiny-m-2-2230-sdr-with-artix-7-fpga-and-lms7002m-rfic/" target="_blank" rel="noopener noreferrer">CNX Software</a>
+**Source:** <a href="https://www.cnx-software.com/2026/02/16/xsdr-a-tiny-m-2-2230-sdr-with-artix-7-fpga-and-lms7002m-rfic/" target="_blank" rel="noopener noreferrer">CNX Software</a> | <a href="https://www.crowdsupply.com/wavelet-lab/xsdr" target="_blank" rel="noopener noreferrer">Crowd Supply</a>

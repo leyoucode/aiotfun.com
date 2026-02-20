@@ -34,17 +34,25 @@ Here's where it gets interesting. OpenClaw, the project PicoClaw is derived from
 
 The secret? 95% of PicoClaw's core code was agent-generated with human-in-the-loop refinement. It's AI writing its own tiny AI assistant. Very meta.
 
+## What People Are Saying
+
+Not everyone's convinced. On Hacker News, RISC-V community figure **brucehoult** pushed back on the novelty: "If [OpenClaw is] intrinsically heavy, that's only because it's Javascript running in Node.js" — suggesting PicoClaw's tiny footprint is more about ditching Node than a fundamentally new approach. Fair point, but the result speaks for itself: 4,000 lines of Go that actually runs on a $15 board.
+
+On X, analyst Aakash Gupta saw a bigger story: "Sipeed built PicoClaw to run on their own $9.90 LicheeRV Nano boards. The company that wrote the software also manufactures the hardware. That's the part worth paying attention to." He went further: "PicoClaw running on RISC-V means AI agents on chips with zero Western IP licensing dependencies." The vertical integration play out of Shenzhen is real.
+
+Meanwhile, a Hacker News user already ported PicoClaw to a **32-bit Windows laptop with 2GB RAM** — vibe-coded with Claude and Copilot, no less. "Fair warning: I don't fully understand every change I made," they wrote. It runs. The tinkerer community is already hacking on it, and PicoClaw has racked up over **16,000 GitHub stars** in under two weeks.
+
 ## How to Get Started
 
 PicoClaw is fully open-source on GitHub. You can grab prebuilt binaries for your platform or build from source. Configuration lives in `~/.picoclaw/config.json` where you point it at your LLM provider and connect your accounts.
 
-The recommended hardware is the Sipeed LicheeRV Nano at around $15, but anything with a few dozen megabytes of RAM will work — including older Raspberry Pi boards, random ARM SBCs, or even a budget x86 thin client.
+The recommended hardware is the Sipeed LicheeRV Nano at around $15, but anything with a few dozen megabytes of RAM will work — including older Raspberry Pi boards, random ARM SBCs, or even a budget x86 thin client. Community members are already experimenting with connecting PicoClaw to local Ollama instances for fully offline operation.
 
 ## Why This Matters
 
 The trend of AI assistants moving from cloud-only to edge-capable has been accelerating, but PicoClaw pushes it to an extreme. A personal AI agent running on hardware that costs less than a pizza, consuming less RAM than a browser tab — that's the kind of thing that makes the "AI for everyone" pitch feel actually real.
 
-The fact that it was largely written by AI itself is just the cherry on top.
+One skeptic put it bluntly: "The $10 board runs the chat client. The cloud runs the AI." That's technically true — PicoClaw still calls out to external LLM providers for reasoning. But the fact that the orchestration layer itself is this light opens the door to a world where a billion IoT devices in emerging markets each run a personal agent for under $10 in hardware. That's worth watching.
 
 ---
 

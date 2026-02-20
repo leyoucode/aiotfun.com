@@ -19,42 +19,29 @@ This is a fully open-source, Linux-based operating system for smartwatches. No G
 
 ## What's New in 2.0
 
-The feature list is substantial:
+The update reads less like a point release and more like the version where AsteroidOS stopped being a tech demo. **Always-on display** with tilt-to-wake and palm-to-sleep means it finally behaves like a real watch — you don't have to tap the screen every time you want to check the time. **Heart rate monitoring** and **step counting** cover the two features most people actually want from a smartwatch. **Bluetooth audio** support means you can control music from your wrist without needing a Google account.
 
-- **Always-on display** with tilt-to-wake and palm-to-sleep gestures
-- **Heart rate monitoring** app
-- **Step counting** support
-- **Music volume control** from the wrist
-- **Compass** functionality
-- **Bluetooth HID and Audio** support
-- **Nightstand mode** for bedside clock display
-- **49 language translations** (up from 29 in v1.0)
-- Seven new app launcher styles, redesigned weather and timer apps, plus a calculator, flashlight, and a "Diamonds" puzzle game
-
-The UI has been overhauled with a new QuickPanel, improved round-display rendering, and smoother animations. Battery life has also improved, though specific numbers aren't published.
+The smaller additions add up: nightstand mode turns it into a bedside clock, a compass app appeared, and the language count jumped from 29 to **49** — a sign that translators around the world are actively contributing. The UI got a full overhaul with a new QuickPanel, smoother round-display rendering, and seven new launcher styles. Battery life improved too, though the team hasn't published specific numbers.
 
 ## Supported Hardware
 
-The device list has gone from niche to genuinely broad:
+The device list went from "a few LG watches" to covering most of the Wear OS graveyard. **Fossil** Gen 4 through 6, the **TicWatch** lineup (nearly every model), **Huawei** Watch 1 and 2, the entire **LG** G Watch family, all three **Asus** ZenWatches, **Sony** Smartwatch 3, **OPPO** Watch, and various **MTK6580-based** Chinese watches. About 30 devices total, with more in experimental support including Casio and Samsung Gear models.
 
-- **Fossil** Gen 4, 5, and 6
-- **Huawei** Watch and Watch 2
-- **TicWatch** C2, C2+, E, S, E2, S2, Pro, Pro 2020/LTE, Pro 3
-- **LG** G Watch, G Watch Urbane, G Watch R, Watch W7
-- **Asus** ZenWatch 1, 2, 3
-- **Sony** Smartwatch 3
-- **OPPO** Watch
-- **Polar** M600
-- **Moto** 360 (2015)
-- Various **MTK6580-based** devices
-
-Several more are in experimental support, including Casio WSD-F10/F20 and Samsung Gear models.
+That breadth matters because most of these watches were abandoned by their manufacturers years ago. A Fossil Gen 4 running Wear OS is a dead end — running AsteroidOS, it's a functional Linux computer on your wrist.
 
 ## The Technical Stack
 
 AsteroidOS uses **QML and Qt** for its UI layer with C/C++ for hardware-level work. Synchronization works across platforms through multiple companion apps: AsteroidOS Sync (Android), Gadgetbridge (Android), Amazfish (SailfishOS/Linux), and Telescope (Ubuntu Touch).
 
 That cross-platform sync story is something even Wear OS struggles with. Your old Android watch can sync with a Linux phone — that's pretty unusual.
+
+## What the Community Thinks
+
+The Show HN thread pulled in a mix of excitement and honest frustration. One user immediately planned to flash it on a Fossil Gen 6 to "bring the watch back from the dead." Another called the project "seriously impressive" and said the gesture responsiveness compared favorably to Samsung's interface.
+
+But not everyone found their watch on the list. "Neither of my Samsung watches are supported," lamented a Lemmy user. A Hacker News commenter was disappointed the Galaxy Watch 4 didn't make the cut. Another joked about having "a superpower for buying unsupported hardware" — a familiar feeling for anyone in the alternative OS world.
+
+The most telling sign that people are actually daily-driving this: a long-time user filed bug reports and feature requests (WiFi improvements, a stopwatch bug) directly in the HN thread. When someone questioned whether Qt/QML was too heavy for a watch, an AsteroidOS developer responded that Qt is "quite lean and fast" compared to Android Wear. Perhaps the best reframing came from a commenter who argued the point isn't competing with Wear OS — it's **extending the lifespan of abandoned smartwatches** beyond their manufacturer's support window.
 
 ## Why Put It in the "Models" Category?
 

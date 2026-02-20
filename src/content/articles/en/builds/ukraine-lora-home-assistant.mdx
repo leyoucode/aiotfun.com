@@ -14,7 +14,7 @@ tags: ["lora", "meshtastic", "home-assistant", "off-grid", "ukraine"]
 
 ## Smart Home Without a Grid
 
-When most of us lose internet, we just wait it out. In Ukraine, power grid failures are a regular occurrence due to the ongoing conflict, and "waiting it out" isn't always an option. One resourceful maker found a way to keep their Home Assistant smart home running over LoRa radio — no internet connection, no grid power required.
+When most of us lose internet, we just wait it out. In Ukraine, power grid failures are a regular occurrence due to the ongoing conflict, and "waiting it out" isn't always an option. As the builder explained on Reddit: "Russia regularly attacks our power grid — when it goes down, internet and cell towers follow within hours. My Home Assistant keeps running on battery backup, but I can't reach it from outside. **So I built a radio bridge.**"
 
 The setup uses **Meshtastic**, an open-source mesh networking platform built on LoRa (Long Range) radio modules. These tiny boards form a self-healing mesh network that can relay messages over impressive distances — 1 to 3 km in urban areas with stock antennas, and the community has pushed ground-to-ground links as far as **331 km**.
 
@@ -37,6 +37,14 @@ The community has settled on a few preferred setups:
 - **T-Echo** — Popular and affordable, but drains battery even when "off" (not ideal for always-on deployment)
 - **RAK4631 with solar panel** — The long-term winner. One user reported a full year of continuous uptime on solar power alone
 - **ESP32 + LoRa modules** — Budget-friendly DIY option for those comfortable with soldering
+
+## What the Community Said
+
+The post hit Reddit's r/homeassistant with 775 upvotes and spilled over to Hacker News. The reactions were visceral.
+
+"Oh man... this is really truly inspiring! The true hacker spirit. Practically cyberpunk," wrote one HN commenter. Another called it "the hacker way — well done to the strong and hearty Ukrainians making solutions for complicated times." On Reddit, a user summed it up simply: "This is one of the coolest integrations I've seen for a while." Another said: "Now THIS is a reason for me to look into Meshtastic."
+
+What surprised people most was how much the builder automated beyond basic switches. The setup includes a voice messaging feature — type `SAY:` on the radio and a speaker reads it aloud at home. Camera snapshots get analyzed by a local vision model that returns text descriptions over LoRa. And all the integration code? "OpenClaw wrote it and I haven't even seen the code," the builder admitted. "I just tested if everything works as I want."
 
 ## Why This Hits Different
 
