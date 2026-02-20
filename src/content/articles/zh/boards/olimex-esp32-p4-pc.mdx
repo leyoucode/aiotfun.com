@@ -1,0 +1,54 @@
+---
+title: "Olimex ESP32-P4-PC：两杯奶茶的钱，跑 Quake、输出 HDMI、USB 口比 MacBook Air 还多"
+description: "ESP32 最强芯片的 PC 形态——HDMI、4 个 USB、以太网、摄像头、电池 UPS。没有 Wi-Fi，而且是故意的。"
+date: "2026-02-20"
+cover: "https://images.unsplash.com/photo-1562408590-e32931084e23?w=800&h=450&fit=crop"
+category: "boards"
+formatTag: "spotlight"
+agent: "writer"
+readingTime: 7
+lang: "zh"
+tags: ["esp32-p4", "risc-v", "olimex", "open-source-hardware", "retro-gaming"]
+---
+
+## 砍掉 Wi-Fi 的 ESP32 反而更猛了
+
+ESP32-P4 是乐鑫做过的最奇怪的芯片。它是家族里最快的——双核 RISC-V 跑到 400 MHz，带 AI 指令扩展——但**没有 Wi-Fi，没有蓝牙**。故意的。乐鑫把无线模块的面积让给了 ESP32 从未有过的东西：MIPI 显示和摄像头接口、硬件 H.264 视频编码器、480 Mbps 的 USB 2.0、768 KB 片上 SRAM。
+
+保加利亚开源硬件厂商 Olimex 拿这颗芯片做了一块离谱的板子。**ESP32-P4-PC** 售价 **24.95 欧元（约 ¥190）**，板上有 **HDMI 输出**、**四个 USB 2.0 主机口**、**10/100 以太网**、摄像头接口、音频口、锂电池充电器（自动 UPS 切换）和 microSD 卡槽。开源硬件（CERN OHL v2 协议），2 月 23 日发货，接口比贵五倍的板子还多。
+
+## 这块板子打开了什么可能性
+
+P4 的原始算力大约是 ESP32-S3 的 2.3 倍——CoreMark 跑分 2,768 对 1,181——而这块板子用丰富的 I/O 把算力变成了实际能力。
+
+**HDMI 输出**是最大的卖点。通过板载 MIPI 转 HDMI 转换芯片驱动，最高 1080p。仅这一项就改变了 ESP32 项目的天花板：你可以直接驱动电视、显示器、投影仪。再加上四个 USB 口——本地多人复古游戏、数字标牌、Home Assistant 墙上面板——全在一块比银行卡还小的板子上实现。
+
+**摄像头通路**同样有意思。MIPI CSI 输入带集成 ISP（图像信号处理器），直通硬件 H.264 编码器，**1080p@30fps**。这就是一个自包含的 IP 摄像头节点：采集、处理、编码、通过以太网推流。不依赖云端，没有 Wi-Fi 断连——纯有线可靠性。Olimex 的 OV5647 500 万像素摄像头模组只要 7 欧元。
+
+**锂电池充电器**带自动故障切换容易被忽略但很实用。断电时板子自动切到电池供电，不重启。对安防摄像头或工业面板来说，这是"卡一下"和"挂了"的区别。
+
+## 大家在拿它做什么
+
+复古游戏社区冲在最前面。有人已经给商品化的 GB300 掌机做了"换脑手术"，把 CPU 换成 ESP32-P4——现在能跑 NES、SNES、MD、Game Boy 的 RetroGo 模拟器。乐鑫自己发布了官方 **Quake 移植版**，支持以太网联机对战。社区的 SNES 模拟器也已经跑起来了。
+
+Olimex 博客下面，一位评论者立刻意识到这块板子是 "ESPectrum 和 CPCESP 模拟器未来进化的完美载体"——在一块两杯奶茶钱的板子上跑 ZX Spectrum 和 Amstrad CPC 模拟，HDMI 输出，四个手柄口。
+
+Home Assistant 社区在探索用 P4 板做下一代智能家居面板：4 英寸触摸屏搭配双降噪麦克风做语音控制，跑 ESPHome。ESP32-P4-PC 的以太网 + MIPI 显示接口正好对口。
+
+但也有人泼冷水。NotebookCheck 明确指出"这不是树莓派替代品"——说得对。768 KB SRAM + 32 MB PSRAM，你不可能在上面跑 Linux。这是微控制器板子：裸机或 RTOS，ESP-IDF 框架，专用固件。它的力量在于用极低的成本把一件事做到极致。
+
+## 生态系统实话实说
+
+ESP32-P4 还很年轻。ESP-IDF 支持到位了，但你找不到 ESP32-S3 那样铺天盖地的 Arduino 库和教程。如果需要 Wi-Fi，要通过 UEXT 扩展口外接一个 ESP32-C6 模块——能用，但谈不上无缝。ESPHome 支持正在铺开（Waveshare P4-Nano 已经有官方文档），Rust + Slint 框架可用于 UI 开发。
+
+Olimex 的生态优势：**一切都是开源的**，文档齐全。GitHub 上有完整的 KiCad 硬件源文件、PDF 原理图、用户手册，CERN OHL v2 协议。如果哪里不对劲，你可以真的去看原理图搞清楚为什么。这种待遇，大多数 200 块钱的板子给不了你。
+
+## 怎么上手
+
+去 Olimex 官网下单（**24.95 欧元**，2 月 23 日起发货）。准备一根 USB-C 线供电兼烧录。HDMI 接任意显示器或电视，马上就有画面反馈。刷乐鑫 GitHub 上的 Quake Demo 可以秒享成就感，或者从 ESP-IDF 的显示和摄像头示例开始摸索。
+
+如果想要完整体验：加一个 **OV5647 摄像头**（7 欧元）、一块 **MIPI 2.8 英寸 LCD**（24.95 欧元）、或一个 **PoE 模块**（4.95 欧元）实现单线以太网部署。再配四个 USB 手柄搞复古多人对战。一套完整复古游戏站的总成本：不到 400 块人民币。
+
+---
+
+**来源：** <a href="https://www.cnx-software.com/2026/02/17/olimex-esp32-p4-pc-board-offers-hdmi-video-output-ethernet-four-usb-2-0-ports-and-more/" target="_blank" rel="noopener noreferrer">CNX Software</a> | <a href="https://olimex.wordpress.com/2026/02/17/esp32-p4-pc-open-source-hardware-board-the-most-comprehensive-and-feature-rich-esp32-p4-board-on-the-market/" target="_blank" rel="noopener noreferrer">Olimex Blog</a> | <a href="https://github.com/OLIMEX/ESP32-P4-PC" target="_blank" rel="noopener noreferrer">GitHub</a>

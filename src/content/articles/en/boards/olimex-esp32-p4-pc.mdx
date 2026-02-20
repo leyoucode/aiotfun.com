@@ -1,0 +1,54 @@
+---
+title: "Olimex ESP32-P4-PC: A $29 Board That Runs Quake and Has More USB Ports Than a MacBook Air"
+description: "ESP32's most powerful chip gets a proper PC layout — HDMI, 4x USB, Ethernet, camera, battery backup. No Wi-Fi included, and that's the point."
+date: "2026-02-20"
+cover: "https://images.unsplash.com/photo-1562408590-e32931084e23?w=800&h=450&fit=crop"
+category: "boards"
+formatTag: "spotlight"
+agent: "writer"
+readingTime: 7
+lang: "en"
+tags: ["esp32-p4", "risc-v", "olimex", "open-source-hardware", "retro-gaming"]
+---
+
+## The ESP32 That Gave Up Wi-Fi and Got Superpowers
+
+The ESP32-P4 is the weirdest chip Espressif has ever made. It's their fastest — dual-core RISC-V at 400 MHz with AI instruction extensions — but it has **no Wi-Fi and no Bluetooth**. On purpose. Espressif stripped out wireless to make room for things no ESP32 ever had: MIPI display and camera interfaces, a hardware H.264 video encoder, USB 2.0 at 480 Mbps, and 768 KB of on-chip SRAM.
+
+Olimex took this chip and built the most absurd board around it. The **ESP32-P4-PC** costs **EUR 24.95 (~$29)**, comes with **HDMI output**, **four USB 2.0 host ports**, **10/100 Ethernet**, a camera connector, audio jack, LiPo battery charger with UPS failover, and a microSD slot. It's open-source hardware (CERN OHL v2), ships February 23, and has more I/O than boards costing five times as much.
+
+## What This Board Unlocks
+
+The P4 chip is roughly 2.3x the raw compute of an ESP32-S3 — 2,768 CoreMark versus 1,181 — and the board puts that power to work with I/O that no other ESP32 board has.
+
+**HDMI output** is the headliner. Driven by an on-board MIPI-to-HDMI converter, it pushes up to 1080p. That alone changes what an ESP32 project can be: suddenly you can drive a TV, a monitor, a projector. Combine it with the four USB ports and you have a platform for local multiplayer retro gaming, digital signage, or a Home Assistant wall panel — all on a board smaller than a credit card.
+
+**The camera path** is equally interesting. MIPI CSI input with an integrated ISP (image signal processor) feeds into a hardware H.264 encoder that does **1080p at 30fps**. That's a self-contained IP camera node: capture, process, encode, and stream over Ethernet. No cloud, no Wi-Fi drops — just wired reliability. An OV5647 5MP camera module from Olimex costs EUR 7.
+
+The **LiPo battery charger** with automatic failover is an underappreciated feature. If power drops, the board switches to battery without rebooting. For a security camera or an industrial panel, that's the difference between a brief hiccup and a dead system.
+
+## What People Are Building
+
+The retro gaming community got here first. Someone already performed a "brain transplant" on a commercial GB300 handheld, swapping its CPU for an ESP32-P4 — and it now runs NES, SNES, Genesis, and Game Boy games through RetroGo. Espressif themselves published an official **Quake port** that runs with network multiplayer over Ethernet. A community SNES emulator is up and running.
+
+On the Olimex blog, a commenter immediately recognized the board as "the perfect fit to host the future evolution of ESPectrum and CPCESP emulators" — ZX Spectrum and Amstrad CPC emulation on a $29 board with HDMI output and four controller ports.
+
+The Home Assistant community is exploring P4 boards as next-generation smart home panels: a 4-inch touchscreen with dual noise-canceling microphones for voice control, running ESPHome. The ESP32-P4-PC's Ethernet + MIPI display connector makes it a strong candidate.
+
+But not everyone is sold. "This isn't a Raspberry Pi replacement," cautioned NotebookCheck — and they're right. With 768 KB of SRAM and 32 MB of PSRAM, you're not running Linux here. This is a microcontroller board: bare-metal or RTOS, ESP-IDF framework, purpose-built firmware. The power lies in doing one thing incredibly well at incredibly low cost.
+
+## Ecosystem Reality Check
+
+The ESP32-P4 is still young. ESP-IDF support is there, but you won't find the ocean of Arduino libraries and tutorials that surround the ESP32-S3. If you need Wi-Fi, you'll bolt on an ESP32-C6 module via the UEXT connector — functional but not seamless. ESPHome support is emerging (the Waveshare P4-Nano is already documented), and Rust + Slint framework support is available for UI development.
+
+Olimex's ecosystem advantage: **everything is open-source** and documented. Full KiCad hardware files on GitHub, PDF schematics, user manual, CERN OHL v2 license. If something doesn't work, you can actually look at the schematic and figure out why. That's a luxury most $29 boards don't offer.
+
+## Getting Started
+
+Order the board from Olimex (**EUR 24.95**, shipping February 23). Grab a USB-C cable for power and programming. Connect HDMI to any monitor or TV for immediate visual feedback. Flash the Quake demo from Espressif's GitHub for instant gratification, or start with ESP-IDF examples for the display and camera pipelines.
+
+If you want the full experience: add the **OV5647 camera** (EUR 7), a **MIPI 2.8" LCD** (EUR 24.95), or a **PoE module** (EUR 4.95) for single-cable Ethernet installation. Four USB game controllers for retro multiplayer. Total cost for a complete retro gaming station: under $50.
+
+---
+
+**Source:** <a href="https://www.cnx-software.com/2026/02/17/olimex-esp32-p4-pc-board-offers-hdmi-video-output-ethernet-four-usb-2-0-ports-and-more/" target="_blank" rel="noopener noreferrer">CNX Software</a> | <a href="https://olimex.wordpress.com/2026/02/17/esp32-p4-pc-open-source-hardware-board-the-most-comprehensive-and-feature-rich-esp32-p4-board-on-the-market/" target="_blank" rel="noopener noreferrer">Olimex Blog</a> | <a href="https://github.com/OLIMEX/ESP32-P4-PC" target="_blank" rel="noopener noreferrer">GitHub</a>
