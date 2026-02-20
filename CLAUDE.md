@@ -15,7 +15,7 @@ AIoTFun.com is a bilingual (EN/ZH) static site built with Astro 5, covering fun 
 ```bash
 # Astro website (Module B)
 pnpm dev        # Dev server at localhost:4321
-pnpm build      # Production build → dist/ (~79 static pages)
+pnpm build      # Production build → dist/ (~79 static pages + 2 RSS feeds)
 pnpm preview    # Preview built site
 
 # Python collector (Module A)
@@ -37,7 +37,7 @@ No test framework is configured. Validate Astro changes with `pnpm build`.
 ```
 aiotfun.com/
 ├── astro.config.mjs          # Astro config (i18n, mdx, sitemap, tailwind)
-├── tailwind.config.mjs       # Tailwind config (custom colors/fonts)
+├── tailwind.config.mjs       # Tailwind config (darkMode:'class', CSS variable colors, fonts)
 ├── wrangler.toml              # Cloudflare Pages deployment
 ├── collector/                 # Module A: Python collector
 │   ├── config.yaml            # RSS feeds + scoring params
@@ -59,7 +59,7 @@ aiotfun.com/
 │   ├── i18n/                  # en.json, zh.json
 │   ├── layouts/               # BaseLayout.astro, ArticleLayout.astro
 │   ├── pages/                 # Route pages (en/, zh/, index.astro)
-│   ├── styles/                # global.css (.article-body styles)
+│   ├── styles/                # global.css (:root/:dark CSS vars, .article-body styles)
 │   └── utils/                 # i18n.ts, articles.ts, image.ts
 ├── design/                    # Design reference (homepage.png)
 └── workflow/                  # AI Agent workflow directories
@@ -138,8 +138,8 @@ Article querying utilities in `src/utils/articles.ts` — all functions take `la
 - `WeeklyRadar.astro` — Queries content collection for `formatTag: "radar"` articles, displays up to 5 as a list
 - `AIRoundtable.astro` — Pro/Con debate format, data from `src/data/mockRoundtable.ts`
 - `OptimizedImage.astro` — Responsive image component (auto WebP/AVIF + srcset + sizes)
-- `GiscusComments.astro` — Giscus comments (GitHub Discussions, bilingual)
-- `Newsletter.astro` — Email subscription component
+- `GiscusComments.astro` — Giscus comments (GitHub Discussions, bilingual, theme-aware)
+- `Newsletter.astro` — Email subscription component (UI shell, no backend yet)
 
 ### Navigation & Categories
 
@@ -213,11 +213,17 @@ Active:  /topics → Scout searches ─────────────┘
 
 ## Design Tokens (Tailwind)
 
-**Colors:** bg (#F6F5F1), accent (#10B981 teal), plus 5 category colors (products=#DC6843, boards=#CA8A04, builds=#0D9488, models=#7C3AED, signals=#6B7280)
+**Dark mode:** `darkMode: 'class'` — toggle adds/removes `.dark` on `<html>`. Theme persisted in `localStorage('theme')`, defaults to system preference. FOUC prevented by inline script in `BaseHead.astro`.
+
+**Colors (CSS variables, RGB space-separated format for alpha support):**
+- Light: bg `246 245 241` (#F6F5F1), text `26 26 26`, card-bg `255 255 255`, border `232 230 225`
+- Dark: bg `18 18 18` (#121212), text `232 230 225`, card-bg `26 26 26`, border `55 55 55`
+- Tailwind usage: `bg-bg`, `text-text`, `bg-card-bg`, `text-text-muted`, `border-border` (all support `/<alpha>` modifier)
+- Fixed colors (no dark variant): accent (#10B981), category colors (products=#DC6843, boards=#CA8A04, builds=#0D9488, models=#7C3AED, signals=#6B7280)
 
 **Fonts:** `font-display` (Instrument Serif — headings), `font-body` (Inter — body text), `font-mono` (JetBrains Mono — metadata/dates/tags), `font-logo` (Space Grotesk)
 
-**Layout:** `max-w-content` (1200px), `max-w-prose` (720px article body), `rounded-card` (8px), `shadow-card`
+**Layout:** `max-w-content` (1200px), `max-w-prose` (720px article body), `rounded-card` (8px), `shadow-card` (CSS variable, lighter in light mode, darker in dark mode)
 
 **Spacing:** 8px base unit, common: 16/24/32/48/64px
 
@@ -241,7 +247,7 @@ Active:  /topics → Scout searches ─────────────┘
 - **Structure**: Hook intro → technical/product details (specs, data) → quotes/community reactions → outlook/summary
 - **Length**: 5-8 min read (300-600 words)
 - **Format**: Markdown H2 sections, no italics, bold titles
-- **Cover**: Unsplash image URL with `w=800&h=450&fit=crop`
+- **Cover**: Unsplash image URL with `w=800&h=450&fit=crop`; publish 前用 `curl -sI <url>` 验证图片返回 200 且 content-type 为 image/*
 - **Bilingual**: Full independent writing per language (not mechanical translation)
 - **Source**: Every article ends with `---` + source link(s) in `<a target="_blank">` format
 
@@ -253,12 +259,13 @@ Active:  /topics → Scout searches ─────────────┘
 - **Auto-deploy:** `git push` → Cloudflare auto-build
 - **Build command:** `pnpm build`, output `dist/`, configured via `wrangler.toml`
 
-**SEO:**
+**SEO & Feeds:**
 - `@astrojs/sitemap`: auto-generates `sitemap-index.xml`
+- `@astrojs/rss`: bilingual RSS feeds — `/rss.xml` (EN), `/zh/rss.xml` (ZH)
 - `public/robots.txt`: allows all crawlers, points to sitemap
-- `BaseHead.astro`: canonical URL / hreflang / OG / Twitter Card
+- `BaseHead.astro`: canonical URL / hreflang / OG / Twitter Card / RSS auto-discovery
 - Default OG image: `public/og-default.jpg` (1200x630)
-- Giscus comments: GitHub Discussions (`leyoucode/aiotfun.com`), pathname mapping, lazy loading, bilingual UI
+- Giscus comments: GitHub Discussions (`leyoucode/aiotfun.com`), pathname mapping, lazy loading, bilingual UI, theme-aware
 
 ## Current Status
 
@@ -268,7 +275,7 @@ Active:  /topics → Scout searches ─────────────┘
 
 **Phase 3 (Collector):** Core skeleton complete (RSS fetching, dedup engine, AI scoring, inbox JSON output). Real articles published (6 articles × 2 languages = 12 MDX files covering all 5 categories). Remaining: Gmail channel, web crawling, active topic search, Cron scheduling.
 
-**Phase 4 (Polish):** Not started. Dark mode, responsive mobile optimization, RSS output for readers, newsletter integration.
+**Phase 4 (Polish):** Core complete. Dark mode (CSS variable color system + class toggle + localStorage persistence + FOUC prevention), mobile polish (scroll lock + touch targets), bilingual RSS feeds. Remaining: newsletter backend integration.
 
 **Current articles (6 real articles, each in EN + ZH):**
 
@@ -288,6 +295,12 @@ Active:  /topics → Scout searches ─────────────┘
 - Tag aggregation pages, root path direct render (no redirect blank page)
 - WeeklyRadar: from mock data to real content collection queries (formatTag="radar")
 - AIRoundtable: from Agent avatar discussion to Pro/Con debate card format
+- OptimizedImage: CSS background 占位图 + onerror 回退 `/og-default.jpg`，防止封面图加载失败显示裂图
+- Dark mode: Tailwind colors → CSS variables (RGB format), `.dark` class toggle, localStorage 持久化, FOUC 防闪
+- Giscus 评论区跟随 dark mode 切换（inline script 初始化 + postMessage 运行时同步）
+- 移动端汉堡菜单 body scroll lock + resize 重置
+- 分类页筛选按钮 touch target ≥ 44px (py-1.5→py-2)
+- 双语 RSS feeds (`/rss.xml` EN + `/zh/rss.xml` ZH)，Footer RSS 链接语言感知
 
 **Notes:**
 - `src/data/mockAgents.ts` used by About page; `mockRoundtable.ts` used by AIRoundtable component (Pro/Con debate format); `mockRadar.ts` is unused legacy
@@ -299,3 +312,8 @@ Active:  /topics → Scout searches ─────────────┘
 - `collector/data/collector.db` and `collector/.venv/` are gitignored
 - Collector needs local Ollama service; falls back gracefully when unavailable
 - HeroSection relies on `featured: true` articles — always ensure at least one article per language is marked featured
+- OptimizedImage 有 onerror 兜底，但 Unsplash 404 可能返回 text/html 不触发 onerror，所以封面图 URL 必须在发布前验证可用
+- Dark mode 颜色通过 CSS 变量 (RGB 空格分隔) 实现，支持 Tailwind `text-text/90` 等透明度修饰符
+- 新增组件/页面使用 `bg-card-bg` 代替 `bg-white`（HeroSection 的白色 dot 例外，它在深色背景上）
+- `@astrojs/rss` 是工具库，不需要加到 `astro.config.mjs` integrations
+- Header theme toggle 通过 `postMessage` 同步 Giscus iframe 主题，BaseHead inline script 防 FOUC
