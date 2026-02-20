@@ -44,7 +44,8 @@
     "boards": "开发板",
     "builds": "创造",
     "models": "模型",
-    "signals": "风向"
+    "signals": "风向",
+    "weekly": "AIoT 周刊"
   },
   "category_page": {
     "no_articles": "该分类下暂无文章。",
@@ -58,17 +59,13 @@
       "boards": "最新的芯片、开发板和硬件平台——工程师的新玩具到货了。",
       "builds": "AI + 硬件的野生项目和神奇操作。有人真把这玩意儿造出来了。",
       "models": "AIoT 世界的 AI 模型和框架——跑在设备上的，或者跟设备对话的。",
-      "signals": "AI+IoT 圈子的风吹草动——值得盯住的趋势和变化。"
+      "signals": "AI+IoT 圈子的风吹草动——值得盯住的趋势和变化。",
+      "weekly": "每周最值得关注的 AIoT 动态速览。"
     }
   },
   "tag_page": {
     "title": "标签：#{tag}",
     "article_count": "{count} 篇文章",
-    "back_home": "← 返回首页"
-  },
-  "weekly_page": {
-    "title": "AIoT 周刊",
-    "description": "每周最值得关注的 AIoT 动态速览。",
     "back_home": "← 返回首页"
   },
   "about": {

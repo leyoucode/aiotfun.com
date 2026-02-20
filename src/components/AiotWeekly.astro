@@ -1,13 +1,10 @@
 ---
 import { getLocaleFromUrl, useTranslations, localePath } from '../utils/i18n';
-import { getArticles } from '../utils/articles';
+import { getArticlesByCategory } from '../utils/articles';
 
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
-const allArticles = await getArticles(locale);
-const weeklyArticles = allArticles
-  .filter((a) => a.tags.includes('weekly'))
-  .slice(0, 5);
+const weeklyArticles = (await getArticlesByCategory('weekly', locale)).slice(0, 5);
 ---
 
 <div class="rounded-card bg-bg-alt p-6">
@@ -21,7 +18,7 @@ const weeklyArticles = allArticles
       <li class="flex gap-3">
         <span class="font-mono text-sm font-medium text-accent">{index + 1}.</span>
         <div>
-          <a href={localePath(`/signals/${article.slug}/`, locale)} class="text-sm font-medium text-text transition-colors hover:text-accent" title={article.title}>
+          <a href={localePath(`/${article.category}/${article.slug}/`, locale)} class="text-sm font-medium text-text transition-colors hover:text-accent" title={article.title}>
             {article.title}
           </a>
           <span class="ml-2 font-mono text-xs text-text-muted">{article.date}</span>

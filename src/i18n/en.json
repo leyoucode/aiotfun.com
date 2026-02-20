@@ -44,7 +44,8 @@
     "boards": "Boards",
     "builds": "Builds",
     "models": "Models",
-    "signals": "Signals"
+    "signals": "Signals",
+    "weekly": "AIoT Weekly"
   },
   "category_page": {
     "no_articles": "No articles found in this category yet.",
@@ -58,17 +59,13 @@
       "boards": "The latest chips, dev boards, and platforms — new toys for engineers and makers.",
       "builds": "Wild hacks and creative projects where AI meets hardware. Someone actually built that.",
       "models": "AI models and frameworks for the AIoT world — running on devices, or talking to them.",
-      "signals": "What's shifting in AI+IoT — trends, moves, and changes worth watching."
+      "signals": "What's shifting in AI+IoT — trends, moves, and changes worth watching.",
+      "weekly": "A weekly roundup of the most interesting AIoT stories."
     }
   },
   "tag_page": {
     "title": "Tag: #{tag}",
     "article_count": "{count} articles",
-    "back_home": "← Back to Home"
-  },
-  "weekly_page": {
-    "title": "AIoT Weekly",
-    "description": "A weekly roundup of the most interesting AIoT stories.",
     "back_home": "← Back to Home"
   },
   "about": {

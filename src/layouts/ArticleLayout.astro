@@ -18,13 +18,8 @@ const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 const switchUrl = getLanguageSwitchUrl(Astro.url);
 const related = await getRelatedArticles(article, locale);
-const isWeekly = article.tags.includes('weekly');
-const categoryLabel = isWeekly
-  ? (t as any).weekly_page.title
-  : t.category[article.category as keyof typeof t.category];
-const backHref = isWeekly
-  ? localePath('/weekly/', locale)
-  : localePath(`/${article.category}/`, locale);
+const categoryLabel = t.category[article.category as keyof typeof t.category];
+const backHref = localePath(`/${article.category}/`, locale);
 ---
 
 <BaseLayout title={article.title} description={article.description} image={article.cover}>
@@ -37,7 +32,7 @@ const backHref = isWeekly
 
     <!-- 标签行 -->
     <div class="mb-4">
-      <CategoryTag category={article.category} weekly={isWeekly} />
+      <CategoryTag category={article.category} />
     </div>
 
     <!-- 大标题 -->

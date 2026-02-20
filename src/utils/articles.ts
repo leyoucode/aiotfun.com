@@ -52,10 +52,10 @@ export async function getArticleBySlug(slug: string, lang: 'en' | 'zh'): Promise
   return articles.find((a) => a.slug === slug);
 }
 
-/** 按分类筛选文章（排除 weekly 标签文章，它们有独立列表页） */
+/** 按分类筛选文章 */
 export async function getArticlesByCategory(category: string, lang: 'en' | 'zh'): Promise<Article[]> {
   const articles = await getArticles(lang);
-  return articles.filter((a) => a.category === category && !a.tags.includes('weekly'));
+  return articles.filter((a) => a.category === category);
 }
 
 /** 获取相关文章（同分类或同标签） */
@@ -84,7 +84,7 @@ export async function getAllTags(lang: 'en' | 'zh'): Promise<string[]> {
 
 /** 返回所有分类 key */
 export function getAllCategories(): Category[] {
-  return ['products', 'boards', 'builds', 'models', 'signals'];
+  return ['products', 'boards', 'builds', 'models', 'signals', 'weekly'];
 }
 
 /** 获取 CollectionEntry（用于 render()） */

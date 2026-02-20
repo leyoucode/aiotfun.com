@@ -42,6 +42,7 @@ const categoryColors: Record<string, string> = {
   builds: '#0D9488',
   models: '#7C3AED',
   signals: '#6B7280',
+  weekly: '#10B981',
 };
 
 /** 获取分类对应的颜色值 */
@@ -57,6 +58,7 @@ export function getCategoryColorClass(category: string): string {
     builds: 'bg-builds',
     models: 'bg-models',
     signals: 'bg-signals',
+    weekly: 'bg-weekly',
   };
   return map[category] || 'bg-signals';
 }

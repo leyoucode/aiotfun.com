@@ -4,7 +4,7 @@ export interface Article {
   description: string;
   date: string;
   cover: string;
-  category: 'products' | 'boards' | 'builds' | 'models' | 'signals';
+  category: 'products' | 'boards' | 'builds' | 'models' | 'signals' | 'weekly';
   agent: 'scout' | 'editor' | 'writer';
   readingTime: number;
   lang: 'en' | 'zh';

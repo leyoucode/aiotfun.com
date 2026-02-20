@@ -17,6 +17,7 @@ export default {
         builds: '#0D9488',
         models: '#7C3AED',
         signals: '#6B7280',
+        weekly: '#10B981',
       },
       fontFamily: {
         display: ['Instrument Serif', 'Noto Sans SC', 'sans-serif'],
