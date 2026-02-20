@@ -300,7 +300,7 @@ Active:  /topics → Scout searches ─────────────┘
 - WeeklyRadar: from mock data to real content collection queries (formatTag="radar")
 - AIRoundtable: from Agent avatar discussion to Pro/Con debate card format
 - OptimizedImage: CSS background 占位图 + onerror 回退 `/og-default.jpg`，防止封面图加载失败显示裂图
-- Dark mode: Tailwind colors → CSS variables (RGB format), `.dark` class toggle, localStorage 持久化, FOUC 防闪
+- Dark mode: Tailwind colors → CSS variables (RGB format), `.dark` class toggle, localStorage 持久化, FOUC 防闪, `astro:after-swap` 恢复 dark class
 - Giscus 评论区跟随 dark mode 切换（inline script 初始化 + postMessage 运行时同步）
 - 移动端汉堡菜单 body scroll lock + resize 重置
 - 分类页筛选按钮 touch target ≥ 44px (py-1.5→py-2)
@@ -329,6 +329,8 @@ Active:  /topics → Scout searches ─────────────┘
 - Header theme toggle 通过 `postMessage` 同步 Giscus iframe 主题，BaseHead inline script 防 FOUC
 - View Transitions 下模块 `<script>` 只执行一次，DOM 操作需包在 `document.addEventListener('astro:page-load', ...)` 中，用 `dataset.init` 防 morph 后重复绑定
 - `define:vars` 脚本（分类页）和 `is:inline` 脚本（BaseHead theme / GiscusComments）无需 `astro:page-load` 适配
+- View Transitions 导航会重置 `<html>` 属性（包括 class），`is:inline` 同内容脚本不会重新执行，需用 `astro:after-swap` 事件恢复 dark class
 - 404 页面是独立页面，不使用 BaseLayout，直接引入 global.css + inline dark mode 脚本
 - Pagefind：build 脚本为 `astro build && npx pagefind --site dist`，索引只覆盖 `data-pagefind-body` 标记的文章页，SearchModal 用 `is:inline` 脚本 + `window.__searchInit` 防重复初始化
 - SearchModal 的 PagefindUI JS 通过 `import('/pagefind/pagefind-ui.js')` 懒加载（首次打开搜索时），dev 模式下无索引会显示提示
+- `pagefind-ui.js` 是 IIFE（非 ES module），`import()` 加载后通过 `window.PagefindUI` 访问，不能用模块导出
