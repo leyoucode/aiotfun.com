@@ -55,7 +55,7 @@ aiotfun.com/
 │   ├── components/            # Astro components (see Key Components)
 │   ├── content/
 │   │   └── articles/          # MDX articles: [lang]/[category]/slug.mdx
-│   ├── data/                  # Data files (mockAgents; mockRadar unused)
+│   ├── data/                  # Data files (mockAgents)
 │   ├── i18n/                  # en.json, zh.json
 │   ├── layouts/               # BaseLayout.astro, ArticleLayout.astro
 │   ├── pages/                 # Route pages (en/, zh/, index.astro)
@@ -195,7 +195,7 @@ Python RSS collector in `collector/` — auto-fetches articles, deduplicates, AI
 ### Data Sources
 
 - **Articles:** `src/content/articles/` (MDX, 6 per language, all with real content)
-- **Mock data:** `src/data/mockAgents.ts` (about page); `mockRadar.ts` is unused (AiotWeekly queries content collection directly)
+- **Mock data:** `src/data/mockAgents.ts` (about page)
 - **Collector inbox:** `workflow/inbox/` — daily JSON files from the collector
 
 ### AI Agent Team
@@ -332,7 +332,7 @@ Quick reference (details in skills):
 - WeeklyRadar 重命名为 AiotWeekly，weekly 升级为正式 category（不再用 tag hack）
 
 **Notes:**
-- `src/data/mockAgents.ts` used by About page; `mockRadar.ts` is unused legacy
+- `src/data/mockAgents.ts` used by About page
 - AiotWeekly queries `weekly` category (up to 5), no mock data needed
 - i18n `article_detail`/`category_page`/`about` groups use `(t as any)` type assertion
 - Client-side pagination works for current scale; consider Astro `paginate()` when articles exceed hundreds
