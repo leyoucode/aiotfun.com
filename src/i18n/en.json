@@ -66,6 +66,11 @@
     "article_count": "{count} articles",
     "back_home": "← Back to Home"
   },
+  "weekly_page": {
+    "title": "AIoT Weekly",
+    "description": "A weekly roundup of the most interesting AIoT stories.",
+    "back_home": "← Back to Home"
+  },
   "about": {
     "title": "About AIoTFun",
     "subtitle": "An AI-native media experiment covering the fun side of AI + IoT",

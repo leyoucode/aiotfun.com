@@ -81,6 +81,7 @@ All pages are language-prefixed: `/en/*` and `/zh/*`. Root `/` redirects to `/en
 - `src/pages/[lang]/[category]/index.astro` — Category listing (5 categories)
 - `src/pages/[lang]/[category]/[slug].astro` — Article detail
 - `src/pages/[lang]/tags/[tag].astro` — Tag aggregation page
+- `src/pages/[lang]/weekly/index.astro` — AIoT Weekly listing page
 
 Dynamic routes use `getStaticPaths()` to generate pages at build time.
 
@@ -133,7 +134,7 @@ Article querying utilities in `src/utils/articles.ts` — all functions take `la
 - `ArticleCard.astro` — 4 variants: featured (full-bleed image + gradient overlay), large, medium, small
 - `CategoryTag.astro` — Styled label with category colors
 - `DiscoveryStream.astro` — Latest articles grid on home page
-- `AiotWeekly.astro` — Queries articles with `weekly` tag, displays up to 5 as a list
+- `AiotWeekly.astro` — Queries articles with `weekly` tag, displays up to 5 as a list, links to `/weekly/`
 - `AIRoundtable.astro` — Pro/Con debate format, data from `src/data/mockRoundtable.ts`
 - `OptimizedImage.astro` — Responsive image component (auto WebP/AVIF + srcset + sizes)
 - `GiscusComments.astro` — Giscus comments (GitHub Discussions, bilingual, theme-aware)
@@ -305,7 +306,7 @@ Quick reference (details in skills):
 | products | `xsdr-m2-sdr-fpga` | xSDR M.2 2230 SDR module | |
 | products | `repebble-smartwatch-comeback` | rePebble smartwatch comeback | |
 | models | `asteroidos-2-smartwatch-os` | AsteroidOS 2.0 open-source watch OS | |
-| signals | `weekly-radar-2026-w08` | AIoT Weekly #1 (5 items) | |
+| signals | `weekly-radar-2026-w08` | AIoT Weekly Feb 9-15 (5 items) | |
 | signals | `edge-ai-hardware-debate` | Edge AI hardware Pro/Con debate | |
 
 **Completed optimizations:**

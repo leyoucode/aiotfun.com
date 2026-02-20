@@ -11,7 +11,7 @@
     "hero_title": "发现 AI + IoT 里那些有趣的东西",
     "discovery_stream": "最新发现",
     "view_all": "查看全部 →",
-    "aiot_weekly": "AIoT Weekly",
+    "aiot_weekly": "AIoT 周刊",
     "see_all_weekly": "查看全部周刊 →",
     "ai_roundtable": "AI 圆桌",
     "read_discussion": "阅读讨论 →",
@@ -64,6 +64,11 @@
   "tag_page": {
     "title": "标签：#{tag}",
     "article_count": "{count} 篇文章",
+    "back_home": "← 返回首页"
+  },
+  "weekly_page": {
+    "title": "AIoT 周刊",
+    "description": "每周最值得关注的 AIoT 动态速览。",
     "back_home": "← 返回首页"
   },
   "about": {
