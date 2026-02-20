@@ -23,9 +23,15 @@ const ogImage = image ? new URL(image, Astro.site) : new URL('/og-default.jpg', 
 <meta charset="utf-8" />
 <script is:inline>
 (function(){
-  var s = localStorage.getItem('theme');
-  if (s === 'dark' || (!s && matchMedia('(prefers-color-scheme:dark)').matches))
-    document.documentElement.classList.add('dark');
+  function applyTheme() {
+    var s = localStorage.getItem('theme');
+    if (s === 'dark' || (!s && matchMedia('(prefers-color-scheme:dark)').matches))
+      document.documentElement.classList.add('dark');
+    else
+      document.documentElement.classList.remove('dark');
+  }
+  applyTheme();
+  document.addEventListener('astro:after-swap', applyTheme);
 })();
 </script>
 <meta name="color-scheme" content="light dark" />

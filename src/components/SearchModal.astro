@@ -54,9 +54,8 @@
       if (titleEl) titleEl.textContent = tr.title;
 
       try {
-        var mod = await import('/pagefind/pagefind-ui.js');
-        var PagefindUI = mod.PagefindUI || mod.default;
-        new PagefindUI({
+        await import('/pagefind/pagefind-ui.js');
+        new window.PagefindUI({
           element: '#pagefind-container',
           showSubResults: true,
           showImages: false,
