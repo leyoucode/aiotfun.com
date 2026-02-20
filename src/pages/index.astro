@@ -1,25 +1,14 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import AgentStatusBar from '../components/AgentStatusBar.astro';
-import HeroSection from '../components/HeroSection.astro';
-import DiscoveryStream from '../components/DiscoveryStream.astro';
-import WeeklyRadar from '../components/WeeklyRadar.astro';
-import AIRoundtable from '../components/AIRoundtable.astro';
-import Newsletter from '../components/Newsletter.astro';
+// Redirect root to /en/ — keeps all navigation within locale-prefixed URLs
+// for correct ClientRouter (View Transitions) history management.
 ---
-
-<BaseLayout title="AIoTFun — Discover Fun Things in AI & IoT">
-  <AgentStatusBar />
-  <HeroSection />
-  <DiscoveryStream />
-
-  <!-- Weekly Radar + AI Roundtable 并排 -->
-  <section class="mx-auto max-w-content px-4 py-8 md:px-6">
-    <div class="grid gap-6 md:grid-cols-2">
-      <WeeklyRadar />
-      <AIRoundtable />
-    </div>
-  </section>
-
-  <Newsletter />
-</BaseLayout>
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script is:inline>window.location.replace('/en/')</script>
+  <meta http-equiv="refresh" content="0;url=/en/" />
+  <title>Redirecting…</title>
+</head>
+<body></body>
+</html>

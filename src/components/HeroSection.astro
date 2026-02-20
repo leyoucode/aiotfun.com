@@ -121,11 +121,13 @@ const heroArticles = [featured[0], ...sideArticles].filter(Boolean);
       }, true);
 
       // 鼠标事件
+      function onMouseMove(e: MouseEvent) { onMove(e.pageX); }
+
       pager.addEventListener('mousedown', (e) => {
         e.preventDefault();
         onStart((e as MouseEvent).pageX);
       });
-      window.addEventListener('mousemove', (e) => onMove(e.pageX));
+      window.addEventListener('mousemove', onMouseMove);
       window.addEventListener('mouseup', onEnd);
 
       // 触摸事件
@@ -136,6 +138,12 @@ const heroArticles = [featured[0], ...sideArticles].filter(Boolean);
         onMove((e as TouchEvent).touches[0].pageX);
       }, { passive: true });
       pager.addEventListener('touchend', onEnd);
+
+      // Cleanup window-level listeners when navigating away
+      document.addEventListener('astro:before-swap', () => {
+        window.removeEventListener('mousemove', onMouseMove);
+        window.removeEventListener('mouseup', onEnd);
+      }, { once: true });
     });
   });
 </script>
