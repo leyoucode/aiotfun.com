@@ -13,6 +13,35 @@ Your voice: "Holy crap, look what someone built / shipped / figured out."
 
 **Test every sentence**: Would an engineer say this to a colleague over coffee? If it reads like a press release or product listing, rewrite it.
 
+## Factual Accuracy — Non-Negotiable
+
+**AIoTFun 的信誉建立在事实之上。有趣的写法不等于编造内容。**
+
+### 铁律
+
+1. **所有技术参数必须来自一手源**（官方文档、产品页面、数据手册、GitHub repo）。不确定的参数不要写，写了就要能指出出处。
+2. **社区引用必须真实存在**。引号内的内容必须是原话或忠实转述，标明来源平台和用户名。**绝对禁止编造引用。** 找不到社区讨论就用创作者自己的话（README / 博客 / 文档），并注明来源。
+3. **对比和类比必须准确**。"比 X 便宜 98%" 这种数字要可验证。"same FPGA family as 10x more expensive equipment" 要确认是同一系列。模糊的类比（"roughly comparable"）优于错误的精确数字。
+4. **不确定的信息要标注**。众筹产品注明 "crowdfunding, usual caveats apply"；未经独立验证的厂商声明注明 "according to the manufacturer"；预期发货日期注明 "estimated"。
+5. **不做无依据的预测**。"这将改变行业" 需要证据支撑。"值得关注" 比 "必将颠覆" 更诚实。
+6. **价格和可用性要注明时效**。写明查询日期或来源日期，众筹标注阶段（pre-order / shipping / fulfilled）。
+
+### 写作前研究要求
+
+- 必须读原始来源文章（不能只看 inbox 的 summary）
+- 技术参数从官方产品页或数据手册交叉验证
+- 社区引用必须从实际的 Reddit/HN/GitHub/论坛帖子中提取
+- 如果 WebFetch 无法访问原始来源，注明并降低确定性语气
+
+### 违规示例
+
+| 违规 | 问题 |
+|------|------|
+| "Community members praised the board's performance" （无具体引用） | 模糊归因，可能是编造 |
+| "The chip delivers 500 TOPS" （实际是厂商峰值理论值） | 缺少 "peak theoretical" 限定 |
+| "One Reddit user said 'this is amazing'" （实际没找到这条评论） | 捏造引用，最严重的违规 |
+| "This will replace Raspberry Pi" （无任何证据） | 无依据预测 |
+
 ## Output Format
 
 Every article produces **two MDX files** — one EN, one ZH. Both go in `src/content/articles/{lang}/{category}/`.
@@ -155,6 +184,9 @@ After following this base skill, **read the category overlay file** for category
 
 ## Pre-Publish Checklist
 
+- [ ] **事实核查**：所有技术参数已从一手源验证（官方页面 / 数据手册 / GitHub）
+- [ ] **引用真实**：所有社区引用可追溯到具体帖子，无编造内容
+- [ ] **对比准确**：数字对比（百分比、倍数、价格差）已验算
 - [ ] Frontmatter passes Zod schema (all required fields, valid category/formatTag/agent/lang)
 - [ ] Cover image URL verified with `curl -sI` (HTTP 200, image content-type)
 - [ ] Community voice present (at least one quote/paraphrase for spotlight/under-the-hood/fun-but-useless)

@@ -261,6 +261,7 @@ Skills architecture:
 ```
 
 Quick reference (details in skills):
+- **Factual accuracy**: 所有参数来自一手源，社区引用必须真实可追溯，禁止编造任何内容
 - **Tone**: Discovery + fun + engineer aesthetics ("wow, that actually works!")
 - **Structure**: Hook → technical substance → community voice (mandatory) → why it matters → source
 - **Spec rule**: Every number must answer "so what?" with a familiar comparison
