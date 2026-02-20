@@ -4,7 +4,6 @@ import AgentStatusBar from '../../components/AgentStatusBar.astro';
 import HeroSection from '../../components/HeroSection.astro';
 import DiscoveryStream from '../../components/DiscoveryStream.astro';
 import AiotWeekly from '../../components/AiotWeekly.astro';
-import AIRoundtable from '../../components/AIRoundtable.astro';
 import Newsletter from '../../components/Newsletter.astro';
 import { getFeaturedArticles } from '../../utils/articles';
 import { optimizeImageUrl } from '../../utils/image';
@@ -18,12 +17,9 @@ const heroImage = featured[0]?.cover ? optimizeImageUrl(featured[0].cover, 1200,
   <HeroSection />
   <DiscoveryStream />
 
-  <!-- AIoT Weekly + AI 圆桌 并排 -->
+  <!-- AIoT 周刊 -->
   <section class="mx-auto max-w-content px-4 py-8 md:px-6">
-    <div class="grid gap-6 md:grid-cols-2">
-      <AiotWeekly />
-      <AIRoundtable />
-    </div>
+    <AiotWeekly />
   </section>
 
   <Newsletter />

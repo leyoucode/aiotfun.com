@@ -55,7 +55,7 @@ aiotfun.com/
 │   ├── components/            # Astro components (see Key Components)
 │   ├── content/
 │   │   └── articles/          # MDX articles: [lang]/[category]/slug.mdx
-│   ├── data/                  # Data files (mockAgents, mockRoundtable; mockRadar unused)
+│   ├── data/                  # Data files (mockAgents; mockRadar unused)
 │   ├── i18n/                  # en.json, zh.json
 │   ├── layouts/               # BaseLayout.astro, ArticleLayout.astro
 │   ├── pages/                 # Route pages (en/, zh/, index.astro)
@@ -134,7 +134,6 @@ Article querying utilities in `src/utils/articles.ts` — all functions take `la
 - `CategoryTag.astro` — Styled label with category colors
 - `DiscoveryStream.astro` — Latest articles grid on home page
 - `AiotWeekly.astro` — Queries `weekly` category articles, displays up to 5 as a list, links to `/weekly/`
-- `AIRoundtable.astro` — Pro/Con debate format, data from `src/data/mockRoundtable.ts`
 - `OptimizedImage.astro` — Responsive image component (auto WebP/AVIF + srcset + sizes)
 - `GiscusComments.astro` — Giscus comments (GitHub Discussions, bilingual, theme-aware)
 - `Newsletter.astro` — Email subscription component (UI shell, no backend yet)
@@ -196,7 +195,7 @@ Python RSS collector in `collector/` — auto-fetches articles, deduplicates, AI
 ### Data Sources
 
 - **Articles:** `src/content/articles/` (MDX, 6 per language, all with real content)
-- **Mock data:** `src/data/mockAgents.ts` (about page), `mockRoundtable.ts` (AIRoundtable component); `mockRadar.ts` is unused (AiotWeekly queries content collection directly)
+- **Mock data:** `src/data/mockAgents.ts` (about page); `mockRadar.ts` is unused (AiotWeekly queries content collection directly)
 - **Collector inbox:** `workflow/inbox/` — daily JSON files from the collector
 
 ### AI Agent Team
@@ -317,7 +316,6 @@ Quick reference (details in skills):
 - Logo rounded corners (20px), Hero title single-line responsive scaling
 - Tag aggregation pages, root path direct render (no redirect blank page)
 - AiotWeekly (formerly WeeklyRadar): from mock data to real content collection queries (tag="weekly")
-- AIRoundtable: from Agent avatar discussion to Pro/Con debate card format
 - OptimizedImage: CSS background 占位图 + onerror 回退 `/og-default.jpg`，防止封面图加载失败显示裂图
 - Dark mode: Tailwind colors → CSS variables (RGB format), `.dark` class toggle, localStorage 持久化, FOUC 防闪, `astro:after-swap` 恢复 dark class
 - Giscus 评论区跟随 dark mode 切换（inline script 初始化 + postMessage 运行时同步）
@@ -330,13 +328,12 @@ Quick reference (details in skills):
 - 自定义 404 页面：独立页面（无 Header/Footer），navigator.language 自动中英文切换
 - 全站搜索 (Pagefind)：build 时生成索引，SearchModal 懒加载 PagefindUI，Cmd+K 快捷键，双语索引，dark mode 适配
 - 分类描述优化：去掉教程暗示（step-by-step/手把手/deployment guides）、具体型号（ESP32/Jetson），统一发现+聚合调性；Models 范围扩展为 AIoT 相关模型（不限边缘）
-- formatTag 已移除（spotlight/radar/under-the-hood/roundtable/fun-but-useless），FormatTag 组件已删除，分类页筛选栏已移除
+- formatTag 已移除（spotlight/radar/under-the-hood/fun-but-useless），FormatTag 组件已删除，分类页筛选栏已移除
 - WeeklyRadar 重命名为 AiotWeekly，weekly 升级为正式 category（不再用 tag hack）
 
 **Notes:**
-- `src/data/mockAgents.ts` used by About page; `mockRoundtable.ts` used by AIRoundtable component (Pro/Con debate format); `mockRadar.ts` is unused legacy
+- `src/data/mockAgents.ts` used by About page; `mockRadar.ts` is unused legacy
 - AiotWeekly queries `weekly` category (up to 5), no mock data needed
-- AIRoundtable uses Pro/Con debate format (RoundtableSide: label/icon/color/summary) instead of original Agent avatars
 - i18n `article_detail`/`category_page`/`about` groups use `(t as any)` type assertion
 - Client-side pagination works for current scale; consider Astro `paginate()` when articles exceed hundreds
 - `agent` field kept in frontmatter data layer but not displayed in UI
