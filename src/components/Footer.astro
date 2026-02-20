@@ -14,7 +14,7 @@ const t = useTranslations(locale);
 
     <!-- 链接 + 状态 -->
     <div class="flex flex-wrap justify-center items-center gap-4 font-body text-xs text-text-muted">
-      <a href="/rss.xml" class="transition-colors hover:text-accent">RSS</a>
+      <a href={locale === 'zh' ? '/zh/rss.xml' : '/rss.xml'} class="transition-colors hover:text-accent">RSS</a>
       <span class="text-border">·</span>
       <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-accent">GitHub</a>
       <span class="text-border">·</span>

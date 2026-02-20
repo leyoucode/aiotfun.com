@@ -1,15 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
       colors: {
-        bg: '#F6F5F1',
-        'bg-alt': '#F0EFEB',
-        text: '#1A1A1A',
-        'text-muted': '#6B7280',
-        border: '#E8E6E1',
+        bg: 'rgb(var(--color-bg) / <alpha-value>)',
+        'bg-alt': 'rgb(var(--color-bg-alt) / <alpha-value>)',
+        text: 'rgb(var(--color-text) / <alpha-value>)',
+        'text-muted': 'rgb(var(--color-text-muted) / <alpha-value>)',
+        border: 'rgb(var(--color-border) / <alpha-value>)',
         accent: '#10B981',
+        'card-bg': 'rgb(var(--color-card-bg) / <alpha-value>)',
         products: '#DC6843',
         boards: '#CA8A04',
         builds: '#0D9488',
@@ -26,7 +28,7 @@ export default {
         prose: '720px',
       },
       boxShadow: {
-        card: '0 1px 3px rgba(0,0,0,0.04)',
+        card: 'var(--shadow-card)',
       },
       borderRadius: {
         card: '8px',

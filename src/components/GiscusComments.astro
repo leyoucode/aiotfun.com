@@ -8,6 +8,13 @@ const giscusLang = locale === 'zh' ? 'zh-CN' : 'en';
 ---
 
 <section class="giscus-wrapper">
+  <script is:inline>
+  (function(){
+    var d = document.documentElement.classList.contains('dark');
+    var s = document.currentScript.nextElementSibling;
+    if (s) s.setAttribute('data-theme', d ? 'dark' : 'light');
+  })();
+  </script>
   <script
     src="https://giscus.app/client.js"
     data-repo="leyoucode/aiotfun.com"

@@ -59,11 +59,11 @@ const workflowSteps = [
       </div>
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {agentProfiles.map((agent) => (
-          <div class="rounded-card border border-border bg-white p-6 text-center shadow-card hover:shadow-md transition-shadow">
+          <div class="rounded-card border border-border bg-card-bg p-6 text-center shadow-card hover:shadow-md transition-shadow">
             <!-- 几何头像 -->
             <div
               class="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full text-4xl"
-              style={`background: ${agent.color}15; color: ${agent.color}`}
+              style={`background: ${agent.color}20; color: ${agent.color}`}
             >
               {agent.icon}
             </div>
@@ -90,7 +90,7 @@ const workflowSteps = [
       </div>
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 pt-4">
         {workflowSteps.map((step, i) => (
-          <div class="relative rounded-card border border-border bg-white p-6 shadow-card">
+          <div class="relative rounded-card border border-border bg-card-bg p-6 shadow-card">
             <!-- 步骤编号 -->
             <div class="absolute -top-3 left-4 rounded-full bg-bg px-2 font-mono text-xs text-text-muted">
               Step {i + 1}
