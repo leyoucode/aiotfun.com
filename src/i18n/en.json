@@ -11,8 +11,8 @@
     "hero_title": "Discover Fun Things in AI & IoT",
     "discovery_stream": "Discovery Stream",
     "view_all": "View all →",
-    "weekly_radar": "Weekly Radar",
-    "see_full_radar": "See full radar →",
+    "aiot_weekly": "AIoT Weekly",
+    "see_all_weekly": "See all weekly →",
     "ai_roundtable": "AI Roundtable",
     "read_discussion": "Read the discussion →",
     "newsletter_title": "Get the weekly dose of AIoT fun.",
@@ -47,9 +47,7 @@
     "signals": "Signals"
   },
   "category_page": {
-    "all": "All",
     "no_articles": "No articles found in this category yet.",
-    "filter_by_format": "Filter by format",
     "article_count": "{count} articles",
     "showing_count": "Showing {from}–{to} of {total}",
     "prev": "← Previous",
@@ -67,13 +65,6 @@
     "title": "Tag: #{tag}",
     "article_count": "{count} articles",
     "back_home": "← Back to Home"
-  },
-  "format": {
-    "spotlight": "Spotlight",
-    "radar": "Weekly Radar",
-    "under-the-hood": "Under the Hood",
-    "roundtable": "AI Roundtable",
-    "fun-but-useless": "Fun But Useless?"
   },
   "about": {
     "title": "About AIoTFun",

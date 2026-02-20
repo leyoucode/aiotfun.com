@@ -18,9 +18,6 @@ const articles = await getArticlesByCategory(category!, locale);
 const categoryLabel = t.category[category as keyof typeof t.category] || category;
 const description = (t as any).category_page.descriptions[category as string] || '';
 const cp = (t as any).category_page;
-
-// 收集该分类下的所有 formatTag
-const formatTags = [...new Set(articles.map((a) => a.formatTag))];
 ---
 
 <BaseLayout title={`${categoryLabel} — AIoTFun`} description={description}>
@@ -36,31 +33,11 @@ const formatTags = [...new Set(articles.map((a) => a.formatTag))];
       </p>
     </div>
 
-    <!-- 筛选栏 -->
-    {formatTags.length > 1 && (
-      <div class="mb-8 flex flex-wrap gap-2" id="format-filter">
-        <button
-          class="filter-btn active rounded-full border border-accent bg-accent/10 px-4 py-2 text-sm font-body text-accent transition-colors"
-          data-format="all"
-        >
-          {cp.all}
-        </button>
-        {formatTags.map((tag) => (
-          <button
-            class="filter-btn rounded-full border border-border px-4 py-2 text-sm font-body text-text-muted hover:border-accent hover:text-accent transition-colors"
-            data-format={tag}
-          >
-            {t.format[tag as keyof typeof t.format] || tag}
-          </button>
-        ))}
-      </div>
-    )}
-
     <!-- 文章网格 -->
     {articles.length > 0 ? (
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" id="articles-grid">
         {articles.map((article) => (
-          <div class="article-item" data-format={article.formatTag}>
+          <div class="article-item">
             <ArticleCard article={article} variant="medium" />
           </div>
         ))}
@@ -71,7 +48,7 @@ const formatTags = [...new Set(articles.map((a) => a.formatTag))];
       </div>
     )}
 
-    <!-- 空状态（筛选后无结果） -->
+    <!-- 空状态 -->
     <div class="hidden text-center py-16" id="empty-state">
       <p class="text-text-muted text-lg">{cp.no_articles}</p>
     </div>
@@ -88,14 +65,11 @@ const formatTags = [...new Set(articles.map((a) => a.formatTag))];
   const pagination = document.getElementById('pagination');
   const countEl = document.getElementById('article-count');
   const emptyState = document.getElementById('empty-state');
-  const buttons = document.querySelectorAll('.filter-btn');
 
-  let currentFormat = 'all';
   let currentPage = 1;
 
   function getFilteredItems() {
-    if (currentFormat === 'all') return allItems;
-    return allItems.filter((el) => el.dataset.format === currentFormat);
+    return allItems;
   }
 
   function render() {
@@ -200,24 +174,6 @@ const formatTags = [...new Set(articles.map((a) => a.formatTag))];
     pages.push(total);
     return pages;
   }
-
-  // 筛选按钮事件
-  buttons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      currentFormat = btn.dataset.format || 'all';
-      currentPage = 1;
-
-      // 更新按钮样式
-      buttons.forEach((b) => {
-        b.classList.remove('active', 'border-accent', 'bg-accent/10', 'text-accent');
-        b.classList.add('border-border', 'text-text-muted');
-      });
-      btn.classList.add('active', 'border-accent', 'bg-accent/10', 'text-accent');
-      btn.classList.remove('border-border', 'text-text-muted');
-
-      render();
-    });
-  });
 
   // 初始渲染
   render();

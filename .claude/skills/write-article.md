@@ -55,7 +55,6 @@ description: ""  # One line, < 120 chars, hook the reader
 date: "YYYY-MM-DD"  # Publication date on AIoTFun (today)
 cover: "https://images.unsplash.com/photo-xxx?w=800&h=450&fit=crop"
 category: ""  # products | boards | builds | models | signals
-formatTag: ""  # spotlight | radar | under-the-hood | roundtable | fun-but-useless
 agent: "writer"
 readingTime: 0  # Estimate: ~150 words/min EN, ~300 chars/min ZH
 lang: ""  # en | zh
@@ -66,9 +65,7 @@ tags: []  # 3-5 kebab-case tags
 
 **Cover image**: Must be Unsplash with `w=800&h=450&fit=crop` params. Before publishing, verify with `curl -sI <url>` — must return HTTP 200 and `content-type: image/*`.
 
-## Article Structure by Format Tag
-
-### `spotlight` (default — single topic deep dive)
+## Article Structure
 
 | Section | Purpose | Length |
 |---------|---------|--------|
@@ -78,39 +75,7 @@ tags: []  # 3-5 kebab-case tags
 | **Why it matters** | Connect to bigger trend. Forward-looking close. | 1 paragraph |
 | **Source** | `---` divider + source links | Links only |
 
-Target: 5-8 min read (300-600 words EN).
-
-### `radar` (weekly roundup — signals category only)
-
-- 3-5 items, each with its own H2
-- Each item: 1-2 paragraphs, own hook + significance
-- Items are independently interesting but collectively suggest a direction
-- Close with a meta observation tying them together
-- Target: 4-5 min read
-
-### `roundtable` (debate format — signals category only)
-
-- H2: The Question (frame the debate)
-- H2: The Case For (2-3 subsections, steel-manned)
-- H2: The Case Against (2-3 subsections, steel-manned)
-- H2: Where We Land (nuanced synthesis, not a cop-out)
-- Both sides must use real evidence. No straw men.
-- Target: 6-8 min read
-
-### `under-the-hood` (technical deep dive)
-
-- Extended spotlight structure with more technical depth
-- Architecture diagrams welcome (describe in text)
-- Can go deeper into implementation details
-- Target: 8-10 min read
-
-### `fun-but-useless` (celebration of absurdity)
-
-- Short, light, celebratory
-- Hook: the absurdity itself
-- Middle: how they pulled it off
-- Close: why we love it even though it's pointless
-- Target: 3-5 min read
+Target: 5-8 min read (300-600 words EN). See category overlays for category-specific structure variations.
 
 ## The Spec-Listing Rule
 
@@ -127,7 +92,7 @@ Comparisons must use **familiar references** the reader already understands.
 
 ## Community Voice — Mandatory
 
-Every `spotlight`, `under-the-hood`, and `fun-but-useless` article **must** include at least one real community voice:
+Every article **must** include at least one real community voice:
 
 - Reddit comment or thread reaction
 - Hacker News discussion point
@@ -194,9 +159,9 @@ After following this base skill, **read the category overlay file** for category
 - [ ] **事实核查**：所有技术参数已从一手源验证（官方页面 / 数据手册 / GitHub）
 - [ ] **引用真实**：所有社区引用可追溯到具体帖子，无编造内容
 - [ ] **对比准确**：数字对比（百分比、倍数、价格差）已验算
-- [ ] Frontmatter passes Zod schema (all required fields, valid category/formatTag/agent/lang)
+- [ ] Frontmatter passes Zod schema (all required fields, valid category/agent/lang)
 - [ ] Cover image URL verified with `curl -sI` (HTTP 200, image content-type)
-- [ ] Community voice present (at least one quote/paraphrase for spotlight/under-the-hood/fun-but-useless)
+- [ ] Community voice present (at least one quote/paraphrase)
 - [ ] No naked specs — every number has a "so what?" comparison
 - [ ] EN file is pure English, ZH file has culturally localized comparisons
 - [ ] Source section present with `---` divider and working links

@@ -11,8 +11,8 @@
     "hero_title": "发现 AI + IoT 里那些有趣的东西",
     "discovery_stream": "最新发现",
     "view_all": "查看全部 →",
-    "weekly_radar": "每周雷达",
-    "see_full_radar": "查看完整雷达 →",
+    "aiot_weekly": "AIoT Weekly",
+    "see_all_weekly": "查看全部周刊 →",
     "ai_roundtable": "AI 圆桌",
     "read_discussion": "阅读讨论 →",
     "newsletter_title": "每周一份 AIoT 好玩速递",
@@ -47,9 +47,7 @@
     "signals": "风向"
   },
   "category_page": {
-    "all": "全部",
     "no_articles": "该分类下暂无文章。",
-    "filter_by_format": "按格式筛选",
     "article_count": "{count} 篇文章",
     "showing_count": "显示第 {from}–{to} 篇，共 {total} 篇",
     "prev": "← 上一页",
@@ -67,13 +65,6 @@
     "title": "标签：#{tag}",
     "article_count": "{count} 篇文章",
     "back_home": "← 返回首页"
-  },
-  "format": {
-    "spotlight": "焦点",
-    "radar": "风向",
-    "under-the-hood": "技术拆解",
-    "roundtable": "AI 圆桌",
-    "fun-but-useless": "没啥用但是…"
   },
   "about": {
     "title": "关于 AIoTFun",

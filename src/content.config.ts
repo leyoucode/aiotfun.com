@@ -9,7 +9,6 @@ const articles = defineCollection({
     date: z.string(),
     cover: z.string(),
     category: z.enum(['products', 'boards', 'builds', 'models', 'signals']),
-    formatTag: z.enum(['spotlight', 'radar', 'under-the-hood', 'roundtable', 'fun-but-useless']),
     agent: z.enum(['scout', 'editor', 'writer']),
     readingTime: z.number(),
     lang: z.enum(['en', 'zh']),

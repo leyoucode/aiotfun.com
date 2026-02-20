@@ -5,19 +5,19 @@ import { getArticles } from '../utils/articles';
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 const allArticles = await getArticles(locale);
-const radarArticles = allArticles
-  .filter((a) => a.formatTag === 'radar')
+const weeklyArticles = allArticles
+  .filter((a) => a.tags.includes('weekly'))
   .slice(0, 5);
 ---
 
 <div class="rounded-card bg-bg-alt p-6">
   <h3 class="mb-4 font-display text-xl font-bold">
     <span class="mr-2 text-accent">◈</span>
-    {t.home.weekly_radar}
+    {t.home.aiot_weekly}
   </h3>
 
   <ol class="space-y-3">
-    {radarArticles.map((article, index) => (
+    {weeklyArticles.map((article, index) => (
       <li class="flex gap-3">
         <span class="font-mono text-sm font-medium text-accent">{index + 1}.</span>
         <div>
@@ -30,9 +30,9 @@ const radarArticles = allArticles
     ))}
   </ol>
 
-  {radarArticles.length > 0 && (
+  {weeklyArticles.length > 0 && (
     <a href={localePath('/signals/', locale)} class="mt-4 inline-block font-body text-sm text-accent transition-colors hover:underline">
-      {t.home.see_full_radar}
+      {t.home.see_all_weekly}
     </a>
   )}
 </div>

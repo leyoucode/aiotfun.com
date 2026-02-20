@@ -1,7 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import CategoryTag from '../components/CategoryTag.astro';
-import FormatTag from '../components/FormatTag.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import GiscusComments from '../components/GiscusComments.astro';
@@ -32,9 +31,8 @@ const backHref = localePath(`/${article.category}/`, locale);
     </a>
 
     <!-- 标签行 -->
-    <div class="mb-4 flex flex-wrap gap-2">
+    <div class="mb-4">
       <CategoryTag category={article.category} />
-      <FormatTag format={article.formatTag} />
     </div>
 
     <!-- 大标题 -->

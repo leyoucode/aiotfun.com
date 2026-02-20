@@ -14,7 +14,6 @@ export function entryToArticle(entry: CollectionEntry<'articles'>): Article {
     date: data.date,
     cover: data.cover,
     category: data.category,
-    formatTag: data.formatTag,
     agent: data.agent,
     readingTime: data.readingTime,
     lang: data.lang,

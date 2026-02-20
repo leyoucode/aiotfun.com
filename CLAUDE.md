@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 AIoTFun.com is a bilingual (EN/ZH) static site built with Astro 5, covering fun AI + IoT discoveries. It positions itself as the first AI Agent-operated AIoT media — not a news/review/tutorial site, but a "discovery + fun + engineer aesthetics" aggregator.
 
 - **Content tone**: "Wow, that actually works!" over formal reviews ("卧槽这也行" > "专业测评")
-- **Content scope**: Products / dev boards / hack projects / failed experiments / fun-but-useless — if it's interesting, we write about it
+- **Content scope**: Products / dev boards / hack projects / failed experiments / fun-but-useless builds — if it's interesting, we write about it
 - **Bilingual**: Full EN/ZH, independent writing per language (not machine translation)
 
 ## Commands
@@ -89,7 +89,6 @@ Dynamic routes use `getStaticPaths()` to generate pages at build time.
 Articles are MDX files in `src/content/articles/[lang]/[category]/`. Schema defined in `src/content.config.ts` with Zod validation:
 
 - **Categories:** products, boards, builds, models, signals
-- **Format tags:** spotlight, radar, under-the-hood, roundtable, fun-but-useless
 - **Agents:** scout, editor, writer (kept in data, not displayed in UI)
 
 Frontmatter schema:
@@ -100,7 +99,6 @@ description: "One-line description"
 date: "2026-02-19"
 cover: "https://images.unsplash.com/photo-xxx?w=800&h=450&fit=crop"
 category: "builds"        # products | boards | builds | models | signals
-formatTag: "spotlight"    # spotlight | radar | under-the-hood | roundtable | fun-but-useless
 agent: "writer"           # scout | editor | writer
 readingTime: 6
 lang: "en"                # en | zh
@@ -133,9 +131,9 @@ Article querying utilities in `src/utils/articles.ts` — all functions take `la
 
 - `HeroSection.astro` — ViewPager-style carousel with drag/swipe, dot indicators
 - `ArticleCard.astro` — 4 variants: featured (full-bleed image + gradient overlay), large, medium, small
-- `CategoryTag.astro` / `FormatTag.astro` — Styled labels with category colors
+- `CategoryTag.astro` — Styled label with category colors
 - `DiscoveryStream.astro` — Latest articles grid on home page
-- `WeeklyRadar.astro` — Queries content collection for `formatTag: "radar"` articles, displays up to 5 as a list
+- `AiotWeekly.astro` — Queries articles with `weekly` tag, displays up to 5 as a list
 - `AIRoundtable.astro` — Pro/Con debate format, data from `src/data/mockRoundtable.ts`
 - `OptimizedImage.astro` — Responsive image component (auto WebP/AVIF + srcset + sizes)
 - `GiscusComments.astro` — Giscus comments (GitHub Discussions, bilingual, theme-aware)
@@ -196,7 +194,7 @@ Python RSS collector in `collector/` — auto-fetches articles, deduplicates, AI
 ### Data Sources
 
 - **Articles:** `src/content/articles/` (MDX, 6 per language, all with real content)
-- **Mock data:** `src/data/mockAgents.ts` (about page), `mockRoundtable.ts` (AIRoundtable component); `mockRadar.ts` is unused (WeeklyRadar now queries content collection directly)
+- **Mock data:** `src/data/mockAgents.ts` (about page), `mockRoundtable.ts` (AIRoundtable component); `mockRadar.ts` is unused (AiotWeekly queries content collection directly)
 - **Collector inbox:** `workflow/inbox/` — daily JSON files from the collector
 
 ### AI Agent Team
@@ -237,7 +235,7 @@ Active:  /topics → Scout searches ─────────────┘
 
 - No italics anywhere — titles use `font-bold`
 - Card titles/descriptions are single-line truncated with `title` attribute for hover reveal
-- Category listing pages use client-side JS for formatTag filtering and pagination (12 per page)
+- Category listing pages use client-side JS for pagination (12 per page)
 - Article body styling is in `src/styles/global.css` under `.article-body` class in `@layer components`
 - Path alias: `@/*` maps to `src/*`
 - Related articles algorithm: same category = +10 points, each shared tag = +1 point, top 3
@@ -265,7 +263,7 @@ Quick reference (details in skills):
 - **Tone**: Discovery + fun + engineer aesthetics ("wow, that actually works!")
 - **Structure**: Hook → technical substance → community voice (mandatory) → why it matters → source
 - **Spec rule**: Every number must answer "so what?" with a familiar comparison
-- **Community voice**: Mandatory for spotlight/under-the-hood/fun-but-useless (Reddit/HN/GitHub/forums)
+- **Community voice**: Mandatory (Reddit/HN/GitHub/forums)
 - **Length**: 5-8 min read (300-600 words), varies by format tag
 - **Cover**: Unsplash image URL with `w=800&h=450&fit=crop`; publish 前用 `curl -sI <url>` 验证图片返回 200 且 content-type 为 image/*
 - **Bilingual**: Full independent writing per language (not mechanical translation); ZH uses culturally native comparisons
@@ -299,27 +297,28 @@ Quick reference (details in skills):
 
 **Current articles (6 real articles, each in EN + ZH):**
 
-| Category | Slug | Topic | FormatTag | Featured |
-|----------|------|-------|-----------|----------|
-| boards | `picoclaw-risc-v-ai-assistant` | PicoClaw 10MB AI assistant | spotlight | |
-| builds | `ukraine-lora-home-assistant` | Ukraine LoRa Home Assistant | spotlight | **yes** |
-| products | `xsdr-m2-sdr-fpga` | xSDR M.2 2230 SDR module | spotlight | |
-| models | `asteroidos-2-smartwatch-os` | AsteroidOS 2.0 open-source watch OS | spotlight | |
-| signals | `weekly-radar-2026-w08` | Weekly Radar #1 (5 items) | radar | |
-| signals | `edge-ai-hardware-debate` | Edge AI hardware Pro/Con debate | roundtable | |
+| Category | Slug | Topic | Featured |
+|----------|------|-------|----------|
+| boards | `picoclaw-risc-v-ai-assistant` | PicoClaw 10MB AI assistant | |
+| boards | `olimex-esp32-p4-pc` | Olimex ESP32-P4-PC | |
+| builds | `ukraine-lora-home-assistant` | Ukraine LoRa Home Assistant | **yes** |
+| products | `xsdr-m2-sdr-fpga` | xSDR M.2 2230 SDR module | |
+| products | `repebble-smartwatch-comeback` | rePebble smartwatch comeback | |
+| models | `asteroidos-2-smartwatch-os` | AsteroidOS 2.0 open-source watch OS | |
+| signals | `weekly-radar-2026-w08` | AIoT Weekly #1 (5 items) | |
+| signals | `edge-ai-hardware-debate` | Edge AI hardware Pro/Con debate | |
 
 **Completed optimizations:**
 - Font async loading, Unsplash CDN preconnect + responsive images, LCP preload
 - Local image compression (logo WebP 3KB, favicon 2.4KB), HTML compression
 - Logo rounded corners (20px), Hero title single-line responsive scaling
 - Tag aggregation pages, root path direct render (no redirect blank page)
-- WeeklyRadar: from mock data to real content collection queries (formatTag="radar")
+- AiotWeekly (formerly WeeklyRadar): from mock data to real content collection queries (tag="weekly")
 - AIRoundtable: from Agent avatar discussion to Pro/Con debate card format
 - OptimizedImage: CSS background 占位图 + onerror 回退 `/og-default.jpg`，防止封面图加载失败显示裂图
 - Dark mode: Tailwind colors → CSS variables (RGB format), `.dark` class toggle, localStorage 持久化, FOUC 防闪, `astro:after-swap` 恢复 dark class
 - Giscus 评论区跟随 dark mode 切换（inline script 初始化 + postMessage 运行时同步）
 - 移动端汉堡菜单 body scroll lock + resize 重置
-- 分类页筛选按钮 touch target ≥ 44px (py-1.5→py-2)
 - 双语 RSS feeds (`/rss.xml` EN + `/zh/rss.xml` ZH)，Footer RSS 链接语言感知
 - View Transitions (ClientRouter from `astro:transitions`)：全站 SPA 过渡，页面间导航平滑
 - 阅读进度条 (ReadingProgress)：文章页顶部 accent 色细条，z-60，仅 `.article-body` 页面激活
@@ -328,10 +327,12 @@ Quick reference (details in skills):
 - 自定义 404 页面：独立页面（无 Header/Footer），navigator.language 自动中英文切换
 - 全站搜索 (Pagefind)：build 时生成索引，SearchModal 懒加载 PagefindUI，Cmd+K 快捷键，双语索引，dark mode 适配
 - 分类描述优化：去掉教程暗示（step-by-step/手把手/deployment guides）、具体型号（ESP32/Jetson），统一发现+聚合调性；Models 范围扩展为 AIoT 相关模型（不限边缘）
+- formatTag 已移除（spotlight/radar/under-the-hood/roundtable/fun-but-useless），FormatTag 组件已删除，分类页筛选栏已移除
+- WeeklyRadar 重命名为 AiotWeekly，使用 tag="weekly" 查询而非 formatTag="radar"
 
 **Notes:**
 - `src/data/mockAgents.ts` used by About page; `mockRoundtable.ts` used by AIRoundtable component (Pro/Con debate format); `mockRadar.ts` is unused legacy
-- WeeklyRadar queries content collection for `formatTag: "radar"` articles (up to 5), no mock data needed
+- AiotWeekly queries content collection for articles with `weekly` tag (up to 5), no mock data needed
 - AIRoundtable uses Pro/Con debate format (RoundtableSide: label/icon/color/summary) instead of original Agent avatars
 - i18n `article_detail`/`category_page`/`about` groups use `(t as any)` type assertion
 - Client-side pagination works for current scale; consider Astro `paginate()` when articles exceed hundreds
