@@ -151,6 +151,7 @@ After following this base skill, **read the category overlay file** for category
 | builds | `.claude/skills/write-builds.md` |
 | models | `.claude/skills/write-models.md` |
 | signals | `.claude/skills/write-signals.md` |
+| weekly | `.claude/skills/write-weekly.md` |
 
 **Always read the relevant overlay before writing.** The overlay contains the category's specific voice, hook formula, what to emphasize, and what to avoid.
 

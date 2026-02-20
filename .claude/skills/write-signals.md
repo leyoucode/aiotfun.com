@@ -13,13 +13,12 @@ We don't report news ("Intel announced X"). We identify patterns ("Three compani
 
 ## Format Tags
 
-Signals is the only category that regularly uses all three non-spotlight format tags:
-
 | Format Tag | Usage | Frequency |
 |------------|-------|-----------|
-| `radar` | Weekly roundup of 3-5 notable items | Weekly |
 | `roundtable` | Pro/con debate on a polarizing trend | When a pattern demands debate |
 | `spotlight` | Deep analysis of a significant pattern | When a single signal deserves full treatment |
+
+**Note:** Weekly roundups have moved to the `weekly` category — see `.claude/skills/write-weekly.md`.
 
 ## Hook Formula
 
@@ -35,19 +34,6 @@ Signals is the only category that regularly uses all three non-spotlight format 
 |----------|-------------|
 | "Intel has announced a new Panther Lake processor." | Single event, no pattern |
 | "This week in AI news..." | Generic, no editorial voice |
-
-## Radar Structure
-
-Each radar item should be independently interesting but collectively suggestive of a direction.
-
-For each item:
-1. **Headline stat or fact** — The hook for this specific item
-2. **Context** — Why this matters beyond the announcement
-3. **AIoTFun take** — One sentence of editorial perspective
-
-Close the radar with a brief meta-observation: "If you squint, this week's theme is..." or "We'll be watching X — if it grows legs, expect a full spotlight."
-
-**Reference:** Weekly Radar #1 (`signals/weekly-radar-2026-w08`) — good item selection with personality.
 
 ## Roundtable Structure
 

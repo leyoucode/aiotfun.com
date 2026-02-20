@@ -257,7 +257,8 @@ Skills architecture:
 ├── write-boards.md        # Boards: "New toy for engineers" — capability + ecosystem
 ├── write-builds.md        # Builds: "Someone actually built that" — human-first storytelling
 ├── write-models.md        # Models: "This changes what's possible" — software/framework layer
-└── write-signals.md       # Signals: "The pattern, not the noise" — dot-connecting
+├── write-signals.md       # Signals: "The pattern, not the noise" — dot-connecting
+└── write-weekly.md        # Weekly: "This week on AIoTFun" — site-internal article roundup
 ```
 
 Quick reference (details in skills):
@@ -307,7 +308,7 @@ Quick reference (details in skills):
 | products | `xsdr-m2-sdr-fpga` | xSDR M.2 2230 SDR module | |
 | products | `repebble-smartwatch-comeback` | rePebble smartwatch comeback | |
 | models | `asteroidos-2-smartwatch-os` | AsteroidOS 2.0 open-source watch OS | |
-| weekly | `weekly-radar-2026-w08` | AIoT Weekly Feb 9-15 (5 items) | |
+| weekly | `aiot-weekly-2026-w08` | AIoT Weekly Feb 16-22 (7 items) | |
 | signals | `edge-ai-hardware-debate` | Edge AI hardware Pro/Con debate | |
 
 **Completed optimizations:**
