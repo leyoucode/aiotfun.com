@@ -247,12 +247,27 @@ Active:  /topics → Scout searches ─────────────┘
 
 ## Article Writing Guidelines
 
+**When writing articles, invoke the `/write-article` skill** — it provides the full writing framework (voice, structure, frontmatter template, bilingual rules, spec-listing rules, community voice requirements) and directs you to the category-specific overlay.
+
+Skills architecture:
+```
+.claude/skills/
+├── write-article.md       # Base skill: voice, structure, frontmatter, bilingual rules
+├── write-products.md      # Products: "Wait, that exists?" — discovery, not review
+├── write-boards.md        # Boards: "New toy for engineers" — capability + ecosystem
+├── write-builds.md        # Builds: "Someone actually built that" — human-first storytelling
+├── write-models.md        # Models: "This changes what's possible" — software/framework layer
+└── write-signals.md       # Signals: "The pattern, not the noise" — dot-connecting
+```
+
+Quick reference (details in skills):
 - **Tone**: Discovery + fun + engineer aesthetics ("wow, that actually works!")
-- **Structure**: Hook intro → technical/product details (specs, data) → quotes/community reactions → outlook/summary
-- **Length**: 5-8 min read (300-600 words)
-- **Format**: Markdown H2 sections, no italics, bold titles
+- **Structure**: Hook → technical substance → community voice (mandatory) → why it matters → source
+- **Spec rule**: Every number must answer "so what?" with a familiar comparison
+- **Community voice**: Mandatory for spotlight/under-the-hood/fun-but-useless (Reddit/HN/GitHub/forums)
+- **Length**: 5-8 min read (300-600 words), varies by format tag
 - **Cover**: Unsplash image URL with `w=800&h=450&fit=crop`; publish 前用 `curl -sI <url>` 验证图片返回 200 且 content-type 为 image/*
-- **Bilingual**: Full independent writing per language (not mechanical translation)
+- **Bilingual**: Full independent writing per language (not mechanical translation); ZH uses culturally native comparisons
 - **Source**: Every article ends with `---` + source link(s) in `<a target="_blank">` format
 
 ## Deployment

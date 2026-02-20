@@ -31,11 +31,11 @@ Respond with this exact JSON structure:
 }}
 
 Category guidelines:
-- products: Consumer AI/IoT products, gadgets, smart devices
-- boards: Development boards, SBCs, microcontrollers, chips
-- builds: DIY projects, maker builds, hacks, tutorials
-- models: AI models, LLMs, ML frameworks, algorithms
-- signals: Industry trends, funding, policy, market analysis
+- products: AI-powered gadgets and smart devices — "wait, that exists?" moments
+- boards: Chips, dev boards, compute platforms — new toys for engineers
+- builds: Wild hacks and creative projects where AI meets hardware — someone actually built that
+- models: AI models and frameworks for AIoT — running on devices, or talking to them (includes device OS, inference frameworks, toolchains)
+- signals: Trends, shifts, and patterns in AI+IoT worth watching
 
 Tags should be kebab-case, 3-5 tags."""
 
