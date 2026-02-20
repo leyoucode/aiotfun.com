@@ -155,6 +155,13 @@ If you genuinely cannot find community discussion, note this in your research an
   - "data-center-grade" → "机房级"
   - Find ZH-native reference points for comparisons.
 - The ZH article should feel like it was **written by a Chinese engineer**, not translated from English.
+- **禁止翻译腔**。写完 ZH 版后逐句朗读，任何读起来别扭的句子必须重写。常见翻译腔陷阱：
+  - "健康的质疑" ← "healthy skepticism" → 改成"泼冷水的也不少"
+  - "微妙的张力" ← "subtle tension" → 改成"绕不开的问题"或"闹了矛盾"
+  - "情感浓度" ← "emotional intensity" → 改成"怀旧情绪拉满"
+  - "捕捉到...的魅力" ← "capture the charm" → 改成"比得上"
+  - "社区劳动的果实" ← "fruits of community labor" → 改成"社区的心血"
+  - 判断标准：这句话发到 V2EX 或者朋友圈，别人读着顺不顺？不顺就重写。
 
 ## Source Section
 
