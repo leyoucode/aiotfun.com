@@ -56,11 +56,11 @@
     "next": "Next →",
     "page_of": "Page {current} of {total}",
     "descriptions": {
-      "products": "Cool AI+IoT gadgets and smart devices that make you go \"wait, that exists?\"",
-      "boards": "From ESP32 to Jetson — the dev boards and platforms makers love to tinker with.",
-      "builds": "Step-by-step DIY projects that bring AI and hardware together.",
-      "models": "AI that runs on chips: lightweight models, inference frameworks, and deployment guides.",
-      "signals": "What's next in AI+IoT — trends, reports, and signals worth watching."
+      "products": "AI-powered gadgets and smart devices — the kind that make you stop and say 'wait, that exists?'",
+      "boards": "The latest chips, dev boards, and platforms — new toys for engineers and makers.",
+      "builds": "Wild hacks and creative projects where AI meets hardware. Someone actually built that.",
+      "models": "AI models and frameworks for the AIoT world — running on devices, or talking to them.",
+      "signals": "What's shifting in AI+IoT — trends, moves, and changes worth watching."
     }
   },
   "tag_page": {
