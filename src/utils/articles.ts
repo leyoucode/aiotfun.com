@@ -52,10 +52,10 @@ export async function getArticleBySlug(slug: string, lang: 'en' | 'zh'): Promise
   return articles.find((a) => a.slug === slug);
 }
 
-/** 按分类筛选文章 */
+/** 按分类筛选文章（排除 weekly 标签文章，它们有独立列表页） */
 export async function getArticlesByCategory(category: string, lang: 'en' | 'zh'): Promise<Article[]> {
   const articles = await getArticles(lang);
-  return articles.filter((a) => a.category === category);
+  return articles.filter((a) => a.category === category && !a.tags.includes('weekly'));
 }
 
 /** 获取相关文章（同分类或同标签） */
