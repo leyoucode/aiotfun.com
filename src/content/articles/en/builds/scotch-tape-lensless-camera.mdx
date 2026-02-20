@@ -1,0 +1,48 @@
+---
+title: "This Engineer Replaced a Camera Lens with Scotch Tape and Math"
+description: "A piece of tape, a bare sensor, and a deconvolution algorithm — that's all you need to take a photo without a lens."
+date: "2026-02-21"
+cover: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=450&fit=crop"
+category: "builds"
+agent: "writer"
+readingTime: 6
+lang: "en"
+featured: false
+tags: ["lensless-imaging", "raspberry-pi", "computational-photography", "diy", "optics"]
+---
+
+Jon Bumstead designs precision optics for a living — he's worked at Carl Zeiss and currently builds optical systems at MITRE. So naturally, his latest camera uses a two-cent piece of scotch tape instead of a lens.
+
+## The Setup Is Almost Insulting
+
+Strip the lens off a Raspberry Pi HQ Camera. Stick a 10mm square of clear scotch tape about 3mm from the bare sensor, held in place with electrical tape and a 3D-printed spacer. That's it. That's the camera.
+
+Point it at a subject. The raw image looks like someone breathed on the sensor — a blurry caustic mess that wouldn't pass as abstract art, let alone photography. But run that mess through a Wiener deconvolution algorithm, and a recognizable image appears. A cat. Text on a phone screen. A turtle silhouette. Captured by tape and math.
+
+## Why This Actually Works
+
+Scotch tape scatters light, but it scatters it the same way every time. Every point in a scene creates a unique blob on the sensor — its Point Spread Function, or PSF. The captured image is mathematically a convolution of the real scene with the tape's PSF.
+
+Calibrate the system once — tape over a uniform white surface to map the PSF — and you can reverse the process. In the frequency domain, convolution becomes multiplication. Divide by the PSF's Fourier transform, add noise regularization (that's the Wiener part), and you computationally undo the scattering to recover the original scene.
+
+This isn't just a clever parlor trick. It's based on the <a href="https://opg.optica.org/optica/fulltext.cfm?uri=optica-5-1-1" target="_blank" rel="noopener noreferrer">DiffuserCam paper</a> from UC Berkeley's Waller Lab (2018), which showed that a simple diffuser like scotch tape can encode 3D scene information in a single 2D capture. The technique is legitimate enough that Katie Bouman — yes, the black hole image Katie Bouman — used it as a homework assignment in her Caltech CS 101 course, where students built their own tape cameras with Raspberry Pis.
+
+## The Community Can't Look Away
+
+Bumstead's video landed on Hacker News with 134 points, and the comments went deep fast.
+
+"Honestly this is the best way to learn about inverse problems and it's what made convolution click for me a few years ago," wrote user daralthus. User amoorthy kept it simpler: "So cool. I wish I was 1% the engineer this guy is." User dekhn gave credit upstream: "A lot of the credit goes to Laura Waller, a professor at UC Berkeley who has been really innovative in this area."
+
+On Hackaday, the technical discussion got sharp. User jpa asked the key question: "Does this effectively have infinite depth-of-focus?" — because if the PSF doesn't depend on distance, you could refocus after the fact, like a light-field camera. User Lightislight brought the reality check: "The trick isn't that a rough aperture allows us to never need a lens again. It's more that 'wow we can actually still see an image.'"
+
+The privacy angle caught attention too. "Does this defeat the old tape over the webcam trick?" asked one commenter. Paul's response: you'd need to remove the webcam's lens, replace it with a specific type of tape at a precise distance, run a painstaking calibration process, and have a single well-lit target. In other words — your webcam cover is fine.
+
+## Why This Hits Different
+
+This is Bumstead's third project featured on Hackaday — after a single-pixel camera using compressed sensing and a projector-based light transport system. He runs a YouTube channel called okooptics with around 9,000 subscribers, and every project asks the same question: what happens when you strip optics down to almost nothing and let computation do the work?
+
+A lens is just one way to see. Scotch tape and a Fourier transform is another. And when a two-cent piece of office supplies can produce a recognizable photograph, it makes you wonder what else we've been overengineering.
+
+---
+
+**Source:** <a href="https://hackaday.com/2026/02/18/taking-photos-with-scotch-tape-instead-of-a-lens/" target="_blank" rel="noopener noreferrer">Hackaday — Taking Photos With Scotch Tape Instead Of A Lens</a> | <a href="https://www.youtube.com/watch?v=97f0nfU5Px0" target="_blank" rel="noopener noreferrer">okooptics — How to take a photo with scotch tape</a>

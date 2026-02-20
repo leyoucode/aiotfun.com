@@ -1,0 +1,44 @@
+---
+title: "Avalue Squeezes 180 TOPS of AI onto a Mini-ITX Board"
+description: "The EMX-PTLP packs Intel's Panther Lake-H into a 170mm square — edge AI inference just got serious."
+date: "2026-02-21"
+cover: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=450&fit=crop"
+category: "boards"
+agent: "writer"
+readingTime: 5
+lang: "en"
+featured: false
+tags: ["edge-ai", "intel", "panther-lake", "mini-itx", "npu"]
+---
+
+A 170mm square board. 270 grams. 180 TOPS of combined AI compute. Avalue's EMX-PTLP is one of the first industrial mini-ITX boards to ship with Intel's Panther Lake-H silicon, and the spec sheet reads like someone confused "embedded" with "workstation."
+
+## What's Under the Hood
+
+The headliner is Intel's Core Ultra 7 358H — 16 cores (4 Performance, 8 Efficiency, 4 Low Power Efficiency), turbo to 4.8 GHz, all on a 25W base power budget. Laptop-class power draw, desktop-class core count.
+
+The AI numbers need context. That "180 TOPS" comes from three engines working together: a 50 TOPS NPU (Intel's new NPU5 with sparsity support) for sustained low-power inference — think always-on defect detection on a factory line. A 122 TOPS GPU (Intel Arc B390, Xe3 architecture) for burst workloads like running a local LLM. And about 10 TOPS from the CPU itself. Two chip generations ago, Intel's Meteor Lake NPU delivered just 11 TOPS. That's a nearly 5x jump in NPU alone.
+
+The board doesn't cut corners either. Two M.2 NVMe slots with PCIe 5.0 and RAID. Up to 64GB DDR5-7200. Dual Ethernet (2.5GbE + Gigabit). Five RS-232 serial ports. A SIM card slot for cellular connectivity. And the real surprise: a PCIe Gen 5 x8 expansion slot — unusual on a thin mini-ITX, and it means you can add a discrete AI accelerator on top of the built-in 180 TOPS when your workload demands it.
+
+Four independent display outputs (HDMI 2.1, DisplayPort 1.4a, two USB-C) round out a board that clearly targets machine vision, robotic control, and industrial AI inference.
+
+## The Playing Field
+
+The EMX-PTLP isn't alone. AAEON's UP Xtreme PTL Edge, ASRock Industrial's NUC Ultra 300, and Vecow's stackable TGS-2000 all pack Panther Lake-H with similar TOPS numbers. NVIDIA's Jetson AGX Orin still leads on raw AI throughput at 275 TOPS, but costs $1,599 for the dev kit and locks you into the CUDA ecosystem. Intel's pitch: x86 compatibility and OpenVINO mean your existing software stack probably just works — no ARM porting headaches, no new toolchain to learn.
+
+## What Engineers Are Saying
+
+The board is too new for in-depth community review — mass production isn't until Q3 2026 — but it's already turning heads. "That is one sexy looking motherboard," one reader commented on Liliputing. "Too bad it's an industrial PC brand and it's most likely an expensive board."
+
+On Hacker News, the broader Panther Lake discussion has been spirited. "Intel-based chip that's on par with Apple Silicon is much desired," noted user orev, pointing out that Windows still doesn't run natively on Macs. User bryanlarsen countered AMD skeptics: "You don't get 22 hours of battery life out of a Ryzen laptop."
+
+## Why It Matters
+
+Two years ago, 180 TOPS of AI inference meant a discrete GPU pulling hundreds of watts. Now it fits on a board the size of a napkin at 25W base power. For shops already running x86 stacks, the leap from cloud inference to on-premise AI just got dramatically shorter.
+
+Fair warning: pricing is undisclosed (Avalue is an industrial vendor — expect quotes, not Amazon listings), and that Q3 2026 timeline means this is still a "coming soon." But the direction is clear — edge AI hardware is entering a phase where the compute is no longer the bottleneck.
+
+---
+
+**Source:** <a href="https://www.cnx-software.com/2026/02/13/avalue-emx-ptlp-a-thin-mini-itx-motherboard-powered-by-up-to-intel-core-ultra-7-358h-panther-lake-h-soc/" target="_blank" rel="noopener noreferrer">CNX Software — Avalue EMX-PTLP Thin Mini-ITX with Intel Core Ultra 7 358H</a>

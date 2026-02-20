@@ -1,0 +1,44 @@
+---
+title: "170mm 见方、180 TOPS 算力：Avalue 把 Panther Lake 塞进了工控板"
+description: "EMX-PTLP 搭载 Intel 最新 Panther Lake-H，边缘 AI 工控主板的算力天花板又被捅了一下。"
+date: "2026-02-21"
+cover: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=450&fit=crop"
+category: "boards"
+agent: "writer"
+readingTime: 5
+lang: "zh"
+featured: false
+tags: ["edge-ai", "intel", "panther-lake", "mini-itx", "npu"]
+---
+
+170mm 见方，270 克，180 TOPS AI 算力。Avalue 的 EMX-PTLP 是第一批搭载 Intel Panther Lake-H 芯片的工控级 Mini-ITX 主板，规格表看着像把工作站压扁了硬塞进去的。
+
+## 芯片拆解
+
+主角是 Intel Core Ultra 7 358H —— 16 核（4 大核 + 8 中核 + 4 小核），最高睿频 4.8 GHz，基础功耗才 25W。笔记本的功耗，台式机的核心数。
+
+重点说说 AI 算力。"180 TOPS"不是一个引擎的数字，是三个加一块儿：50 TOPS 的 NPU（Intel NPU5，支持稀疏加速）负责持续低功耗推理——比如产线上 7×24 小时跑缺陷检测。122 TOPS 的 GPU（Intel Arc B390，Xe3 架构）负责突发负载，比如本地跑大语言模型。CPU 本身再贡献约 10 TOPS。对比一下：两代之前的 Meteor Lake，NPU 只有 11 TOPS。两代芯片，NPU 算力翻了近 5 倍。
+
+板子本身也没偷工减料。双 M.2 NVMe（PCIe 5.0，支持 RAID）、最高 64GB DDR5-7200、双网口（2.5GbE + 千兆）、5 个 RS-232 串口、SIM 卡槽支持蜂窝网络。最亮眼的是一个 PCIe Gen 5 x8 扩展槽——在薄型 Mini-ITX 上非常少见，意味着 180 TOPS 还不够用的时候可以再插一张 AI 加速卡。
+
+四路独立显示输出（HDMI 2.1 + DisplayPort 1.4a + 两个 USB-C），板子摆明了就是冲着机器视觉、机器人控制和工业 AI 推理去的。
+
+## 竞品环伺
+
+EMX-PTLP 不是唯一的选择。AAEON 的 UP Xtreme PTL Edge、ASRock Industrial 的 NUC Ultra 300、Vecow 的可堆叠 TGS-2000 全都用了 Panther Lake-H，TOPS 数字差不多。NVIDIA Jetson AGX Orin 在纯 AI 吞吐上仍然领先（275 TOPS），但开发套件要 $1,599（约 ¥11,500），而且绑定 CUDA 生态。Intel 的卖点在于：x86 兼容 + OpenVINO，现有软件栈大概率直接跑，不用折腾 ARM 移植。
+
+## 工程师怎么说
+
+板子太新，还没法深入评测——量产要到 2026 年 Q3。但已经有人在流口水了。Liliputing 的一位读者评论："主板是真好看，可惜是工控品牌，大概率贵得离谱。要是普通消费者也能买到就好了。"
+
+Hacker News 上关于 Panther Lake 的讨论倒是很热闹。用户 orev 说："能和 Apple Silicon 掰手腕的 Intel 芯片，大家等太久了"——毕竟 Windows 至今没法原生跑在 Mac 上。也有人质疑 Intel 能不能打过 AMD 的笔记本生态，用户 bryanlarsen 反驳："AMD 的笔记本你见过 22 小时续航的吗？"
+
+## 为什么值得关注
+
+两年前，180 TOPS 的 AI 推理意味着一张独显加几百瓦的功耗。现在，25W 基础功耗的一块餐巾纸大小的板子就能做到。对于已经在跑 x86 技术栈的工厂和企业来说，从云端推理切换到本地 AI 的门槛一下子低了很多。
+
+提醒一句：价格未公布（Avalue 是工控厂商，要报价不要想着上淘宝买），Q3 2026 才量产。但方向很明确——边缘 AI 硬件正在进入"算力不再是瓶颈"的阶段。
+
+---
+
+**Source:** <a href="https://www.cnx-software.com/2026/02/13/avalue-emx-ptlp-a-thin-mini-itx-motherboard-powered-by-up-to-intel-core-ultra-7-358h-panther-lake-h-soc/" target="_blank" rel="noopener noreferrer">CNX Software — Avalue EMX-PTLP Thin Mini-ITX with Intel Core Ultra 7 358H</a>

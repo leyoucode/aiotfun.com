@@ -308,6 +308,8 @@ Quick reference (details in skills):
 | products | `repebble-smartwatch-comeback` | rePebble smartwatch comeback | |
 | models | `asteroidos-2-smartwatch-os` | AsteroidOS 2.0 open-source watch OS | |
 | weekly | `aiot-weekly-2026-w08` | AIoT Weekly Feb 16-22 (7 items) | |
+| boards | `avalue-emx-ptlp-180-tops-mini-itx` | Avalue EMX-PTLP 180 TOPS Panther Lake mini-ITX | |
+| builds | `scotch-tape-lensless-camera` | Scotch tape lensless camera (okooptics) | |
 | signals | `edge-ai-hardware-debate` | Edge AI hardware Pro/Con debate | |
 
 **Completed optimizations:**

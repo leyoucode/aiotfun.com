@@ -1,0 +1,48 @@
+---
+title: "这位光学工程师用一截透明胶带取代了镜头"
+description: "一截胶带、一个裸传感器、一段反卷积算法——谁说拍照一定要镜头？"
+date: "2026-02-21"
+cover: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=450&fit=crop"
+category: "builds"
+agent: "writer"
+readingTime: 6
+lang: "zh"
+featured: false
+tags: ["lensless-imaging", "raspberry-pi", "computational-photography", "diy", "optics"]
+---
+
+Jon Bumstead 白天在 MITRE 做光学系统设计，之前在蔡司工作过。按理说，这种人拍照应该用最顶级的镜头。结果他最新的"相机"，镜头是一截两毛钱的透明胶带。
+
+## 配置简单到让人怀疑人生
+
+把树莓派 HQ Camera 的镜头拧下来，传感器裸露。剪一小块透明胶带（大约 10mm 见方），用电工胶带和 3D 打印的垫片固定在传感器前方 3mm 处。完事了。这就是全部硬件。
+
+对着猫拍一张。原始图像看起来像传感器上哈了口气——一团模糊的散射光斑，别说摄影了，当抽象画都不够格。但把这团东西丢进 Wiener 反卷积算法跑一遍，猫出现了。能认出来。还挺清楚。用胶带和数学拍的。
+
+## 为什么这玩意儿能成
+
+透明胶带会散射光，但每次散射的方式是一样的。场景中每个点透过胶带会在传感器上形成一个独特的光斑——叫做点扩散函数（PSF）。拍到的图像在数学上就是真实场景和胶带 PSF 的卷积。
+
+先做一次标定：把胶带对着均匀白色表面拍一张，记录下 PSF。之后在频域里，卷积变成了乘法。除以 PSF 的傅里叶变换，加上噪声正则化（这就是 Wiener 的精髓），就能从一团模糊里算出原始画面。
+
+这不是花活儿。它基于 UC Berkeley Waller 实验室 2018 年发表的 <a href="https://opg.optica.org/optica/fulltext.cfm?uri=optica-5-1-1" target="_blank" rel="noopener noreferrer">DiffuserCam 论文</a>，证明了一张简单的散射片（比如透明胶带）就能在单次拍摄中编码三维场景信息。这个技术靠谱到什么程度呢——拍出黑洞照片的 Katie Bouman 在 Caltech 的 CS 101 课上，让学生用树莓派和透明胶带搭了同款相机当作业。
+
+## 社区反应
+
+Bumstead 的视频上了 Hacker News，拿了 134 分，评论区直接聊开了。
+
+用户 daralthus 说："说真的，这是学反问题最好的方式，几年前就是这东西让我终于搞懂了卷积。"用户 amoorthy 更直接："太酷了。我要是有这哥们儿 1% 的水平就好了。"用户 dekhn 把功劳往上游推了推："很大的功劳要归给 UC Berkeley 的 Laura Waller 教授，她在这个领域非常有创造力。"
+
+Hackaday 的评论区技术含量更高。用户 jpa 问了一个关键问题："这东西是不是等于无限景深？"——如果 PSF 不随距离变化，那就意味着可以拍完再对焦，跟光场相机一个原理。用户 Lightislight 泼了盆冷水："重点不是说有了粗糙光圈就不需要镜头了，而是'居然还能看到图像'这件事本身就很牛。"
+
+隐私话题也有人聊。"这是不是说贴在摄像头上的胶带也没用了？"有人问。Paul 回复：你得先把摄像头的镜头拆掉，换上特定类型的胶带，放在精确的距离上，做一遍繁琐的标定流程，而且场景里只能有一个光照充足的目标。换句话说——你的摄像头贴纸可以继续贴。
+
+## 为什么这个项目让人印象深刻
+
+这已经是 Bumstead 第三次登上 Hackaday 了——之前两次分别是用压缩感知做的单像素相机和一个投影仪光传输重建系统。他在 YouTube 上运营一个叫 okooptics 的频道，大约 9000 个订阅者，每个项目都在追问同一个问题：把光学系统精简到极致，让计算来补位，能走多远？
+
+镜头只是"看见"世界的一种方式。透明胶带加傅里叶变换是另一种。当两毛钱的办公用品能拍出可辨认的照片时，你会忍不住想：我们到底还在多少地方过度设计了？
+
+---
+
+**Source:** <a href="https://hackaday.com/2026/02/18/taking-photos-with-scotch-tape-instead-of-a-lens/" target="_blank" rel="noopener noreferrer">Hackaday — Taking Photos With Scotch Tape Instead Of A Lens</a> | <a href="https://www.youtube.com/watch?v=97f0nfU5Px0" target="_blank" rel="noopener noreferrer">okooptics — How to take a photo with scotch tape</a>
