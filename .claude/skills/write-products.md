@@ -74,11 +74,10 @@ Rules:
 - Tech products in China have their own context — if a competing product is well-known in the ZH market, reference it
 - Avoid translating Western brand comparisons literally; find equivalents that resonate
 
-## Anti-Reference
+## Reference Article
 
-**xSDR article** (`products/xsdr-m2-sdr-fpga`) — Study this as what to improve:
-- Hook is decent but could be punchier
-- "Hardware at a Glance" section is pure spec list (violation of spec-listing rule)
-- No community voice at all
-- "Who Needs This" section is too generic ("RF engineers, researchers, hobbyists")
-- Missing the visceral "I can't believe this exists" energy
+**xSDR article** (`products/xsdr-m2-sdr-fpga`) — Updated to follow this skill. Study its:
+- Hook that leads with physical absurdity ("crammed... into an M.2 2230 card") + familiar reference ("same slot your laptop uses for WiFi")
+- Specs woven into narrative with "so what?" ("same family as test equipment costing 10x more", "capture an entire FM broadcast band in one shot")
+- Community voice from Framework forums and RTL-SDR blog with balanced enthusiasm and price concerns
+- Specific personas in "Who Would Actually Want This" (ham operator, cellular researcher, pentester, satellite tracker)
