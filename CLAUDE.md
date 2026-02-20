@@ -140,6 +140,9 @@ Article querying utilities in `src/utils/articles.ts` — all functions take `la
 - `OptimizedImage.astro` — Responsive image component (auto WebP/AVIF + srcset + sizes)
 - `GiscusComments.astro` — Giscus comments (GitHub Discussions, bilingual, theme-aware)
 - `Newsletter.astro` — Email subscription component (UI shell, no backend yet)
+- `ReadingProgress.astro` — Article reading progress bar (fixed top, z-60, accent color)
+- `TableOfContents.astro` — Article TOC sidebar (xl only, sticky, IntersectionObserver)
+- `BackToTop.astro` — Scroll-to-top button (fixed bottom-right, z-50, appears after 300px)
 
 ### Navigation & Categories
 
@@ -275,7 +278,7 @@ Active:  /topics → Scout searches ─────────────┘
 
 **Phase 3 (Collector):** Core skeleton complete (RSS fetching, dedup engine, AI scoring, inbox JSON output). Real articles published (6 articles × 2 languages = 12 MDX files covering all 5 categories). Remaining: Gmail channel, web crawling, active topic search, Cron scheduling.
 
-**Phase 4 (Polish):** Core complete. Dark mode (CSS variable color system + class toggle + localStorage persistence + FOUC prevention), mobile polish (scroll lock + touch targets), bilingual RSS feeds. Remaining: newsletter backend integration.
+**Phase 4 (Polish):** Core complete. Dark mode, mobile polish, bilingual RSS feeds, View Transitions (SPA), reading progress bar, article TOC, back-to-top button, custom 404 page. Remaining: newsletter backend integration.
 
 **Current articles (6 real articles, each in EN + ZH):**
 
@@ -301,6 +304,11 @@ Active:  /topics → Scout searches ─────────────┘
 - 移动端汉堡菜单 body scroll lock + resize 重置
 - 分类页筛选按钮 touch target ≥ 44px (py-1.5→py-2)
 - 双语 RSS feeds (`/rss.xml` EN + `/zh/rss.xml` ZH)，Footer RSS 链接语言感知
+- View Transitions (ClientRouter from `astro:transitions`)：全站 SPA 过渡，页面间导航平滑
+- 阅读进度条 (ReadingProgress)：文章页顶部 accent 色细条，z-60，仅 `.article-body` 页面激活
+- 文章目录 TOC (TableOfContents)：桌面端 xl (≥1280px) 侧边栏，IntersectionObserver 高亮当前章节
+- 返回顶部按钮 (BackToTop)：滚动 300px 出现，bg-card-bg + border + shadow-card，dark mode 自适应
+- 自定义 404 页面：独立页面（无 Header/Footer），navigator.language 自动中英文切换
 
 **Notes:**
 - `src/data/mockAgents.ts` used by About page; `mockRoundtable.ts` used by AIRoundtable component (Pro/Con debate format); `mockRadar.ts` is unused legacy
@@ -317,3 +325,6 @@ Active:  /topics → Scout searches ─────────────┘
 - 新增组件/页面使用 `bg-card-bg` 代替 `bg-white`（HeroSection 的白色 dot 例外，它在深色背景上）
 - `@astrojs/rss` 是工具库，不需要加到 `astro.config.mjs` integrations
 - Header theme toggle 通过 `postMessage` 同步 Giscus iframe 主题，BaseHead inline script 防 FOUC
+- View Transitions 下模块 `<script>` 只执行一次，DOM 操作需包在 `document.addEventListener('astro:page-load', ...)` 中，用 `dataset.init` 防 morph 后重复绑定
+- `define:vars` 脚本（分类页）和 `is:inline` 脚本（BaseHead theme / GiscusComments）无需 `astro:page-load` 适配
+- 404 页面是独立页面，不使用 BaseLayout，直接引入 global.css + inline dark mode 脚本
