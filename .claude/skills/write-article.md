@@ -1,129 +1,116 @@
 ---
 name: write-article
-description: Personal-site writing skill for AIoTFun.com. Invoke this before writing any article — it establishes voice, structure, frontmatter, and bilingual rules for Wei Liu's indie hacker site.
+description: 单语中文个人站写作 skill。写文章或项目案例前先调用 —— 它定义语气、结构、frontmatter 和写作规则。
 ---
 
-# AIoTFun Writing — Personal Site Skill
+# AIoTFun 写作 Skill（单语中文站）
 
-## Voice & Identity
+## 语气与身份
 
-This site is Wei Liu's personal indie hacker site. The writer is Wei (the user), not an AI persona. You are helping Wei write — keep his voice, not yours.
+本站是Seek的个人独立开发者站。作者是Seek本人，不是 AI persona。你只是帮他把想法落成文字 —— 保留他的语气，不要套你的语气。
 
-**The voice**: An engineer talking to other engineers in plain language. Curious, specific, occasionally self-deprecating. No corporate gloss, no marketing voice, no "AI assistant" voice.
+**语气基线**：工程师跟工程师讲人话。具体、好奇、偶尔自嘲。**不要** 公司腔、营销腔、AI 助手腔。
 
-**Test every sentence**: Would Wei actually say this to a colleague over coffee? If it reads like a press release, a tutorial intro, or an AI summary, rewrite it.
+**判断标准**：每句话都问一遍 —— 这话工程师真的会跟同事讲吗？读起来像新闻稿、教程开场、AI 摘要的，全部重写。
 
-## Factual Accuracy — Non-Negotiable
+## 事实准确性 —— 不可妥协
 
-This is a hiring-credibility site. Fabrication is the worst possible failure mode.
+这是个招聘背书站。**捏造是最严重的失败模式**。
 
-### Hard rules
+### 铁律
 
-1. **No invented technical specifics**. Do not name specific chips, library versions, latency numbers, throughput, or production metrics unless Wei has confirmed them in this session or they are visible in the repo.
-2. **No invented community quotes**. If you cite Reddit / HN / GitHub, the link must be real and the quote must be a faithful paraphrase or direct quote.
-3. **No fabricated outcomes**. "Used by 10,000 merchants", "reduced latency by 70%" — never invent these. If unknown, write at the qualitative level ("live in production", "improved noticeably").
-4. **Mark uncertainty plainly**. "I think the bottleneck was X" is fine. "The bottleneck was X" requires evidence.
-5. **When in doubt, ask Wei or leave a TODO**. A TODO is better than a confident fabrication.
+1. **不编造具体技术参数**：芯片型号、库版本、延迟数字、吞吐量、上线指标 —— 除非用户在本会话明确确认过，或仓库里能直接看到，否则不写。
+2. **不编造社区引用**：引 Reddit / HN / GitHub 的话，链接必须真实存在，引文必须是原话或忠实转述。
+3. **不编造结果数据**："服务 1 万商户"、"延迟降低 70%" —— 这些数字不能编。不知道就只在定性层级写（"线上运行"、"明显改善"）。
+4. **不确定就标出来**："我猜瓶颈是 X" 可以，"瓶颈就是 X" 必须有依据。
+5. **拿不准就问Seek，或者留 TODO**。一个 TODO 比一个自信的捏造好一万倍。
 
-## When to Write Articles vs Project Pages
+## 写文章还是写项目案例？
 
-- **Project page** (`src/content/projects/{lang}/{slug}.mdx`): a stable case study of one project. Why it exists, key decisions, what was hard, current status. Updated occasionally.
-- **Article** (`src/content/articles/{lang}/{slug}.mdx`): time-stamped writing — debugging notes, technical investigations, opinions, project retrospectives. Once published, generally not edited.
+- **项目案例**（`src/content/projects/{slug}.mdx`）：一个项目的稳定 case study —— 为什么做、关键决策、踩过的坑、当前状态。偶尔更新。
+- **写作**（`src/content/articles/{slug}.mdx`）：带时间戳的内容 —— 调试笔记、技术探究、观点、项目复盘。一旦发布，一般不再编辑。
 
 ## Article Frontmatter
 
 ```yaml
 ---
-title: ""                # Hook the reader, not "How to X" / "Tutorial"
-description: ""          # One line, < 120 chars
-date: "YYYY-MM-DD"       # Publication date on AIoTFun
-cover: ""                # Optional. If present, Unsplash URL with w=800&h=450&fit=crop
-readingTime: 0           # ~150 words/min EN, ~300 chars/min ZH
-lang: ""                 # en | zh
-pinned: false            # Use sparingly — at most 1-2 per language
-tags: []                 # 3-5 kebab-case tags
+title: ""                # 钩住读者，不要"如何 X"/"教你 X"
+description: ""          # 一句话，< 60 个汉字 / 120 chars
+date: "YYYY-MM-DD"       # 在 AIoTFun 上发布的日期
+cover: ""                # 可选。Unsplash URL 配 w=800&h=450&fit=crop
+readingTime: 0           # 估算：约 300 chars/分钟（中文）
+pinned: false            # 慎用，最多 1-2 篇
+tags: []                 # 3-5 个 kebab-case 标签
 ---
 ```
 
-**Cover is optional.** Most personal articles do not need one. If used, verify with `curl -sI <url>` returning HTTP 200 and `content-type: image/*`.
+**Cover 是可选的**。大多数个人写作不需要封面图。如果用，发布前 `curl -sI <url>` 验证返回 200 + `content-type: image/*`。
 
 ## Project Frontmatter
 
 ```yaml
 ---
-title: ""                # Project's actual name
-oneLiner: ""             # One sentence: who it is for + what it does
+title: ""                # 项目真实名字
+oneLiner: ""             # 一句话：给谁用 + 解决什么
 status: ""               # active | shipped | open-source | paused | archived
-techStack: []            # 3-6 items max — show range, not exhaustive list
-cover: ""                # Optional
-startDate: "YYYY-MM"     # Or just "YYYY"
-endDate: "YYYY-MM"       # Optional, for shipped/archived projects
-repoUrl: ""              # Optional
-liveUrl: ""              # Optional
-featured: false          # Up to 4 featured per language — shown on home page
-order: 0                 # Smaller = earlier in lists. Featured uses 1-4
-lang: ""                 # en | zh
+techStack: []            # 3-6 项即可，展示广度而非穷尽
+cover: ""                # 可选
+startDate: "YYYY-MM"     # 或只写 "YYYY"
+endDate: "YYYY-MM"       # 可选，shipped/archived 项目用
+repoUrl: ""              # 可选
+liveUrl: ""              # 可选
+featured: false          # 至多 4 个 featured，会出现在首页
+order: 0                 # 越小越靠前。featured 用 1-4
 tags: []
 ---
 ```
 
 ## Article Structure
 
-There is no fixed template. Write what fits the topic.
+没有固定模板。看主题决定形态。
 
-Common shapes that work:
+常见有效形态：
 
-- **Debugging note**: problem → what I tried → what actually worked → why I was wrong before
-- **Investigation**: question I had → what I read / measured → what I concluded
-- **Project retrospective**: what I built → what I would do differently → what surprised me
-- **Opinion**: claim + reasons + counterexamples I considered
+- **调试笔记**：问题 → 试过什么 → 真正生效的是什么 → 之前我哪里想错了
+- **探究**：我有的疑问 → 读了什么/测了什么 → 结论是什么
+- **项目复盘**：做了什么 → 重做会怎么改 → 哪里出乎意料
+- **观点**：主张 + 理由 + 我考虑过的反例
 
-Length: usually 400–1500 words. Long enough to say something specific, short enough to read in 5 minutes.
+长度：通常 600 - 2000 字。够长到说出有具体内容，够短到 5 分钟看完。
 
 ## Project Case Study Structure
 
-A reasonable default — adapt as needed:
+合理默认结构（按需调整）：
 
-1. **What it does** — one paragraph, clear and specific
-2. **Why I built it** — the actual problem, not a marketing reframing
-3. **Key decisions** — 2–4 bullets on the choices that defined the project
-4. **Trade-offs / lessons** — what was hard, what surprised me
-5. **Status** — current state, links
+1. **这是什么** —— 一段，具体、清晰
+2. **为什么自己做** —— 真实问题，不是 marketing 重新包装
+3. **关键决策** —— 2-4 个 bullet，定义这个项目的选择
+4. **取舍/踩坑** —— 哪里难、哪里没想到
+5. **状态** —— 当前情况、链接
 
-## Bilingual Rules
+## 中文写作规则
 
-UI / About / Now / Home are mandatory bilingual. Articles and project case studies can be **either language only**.
+- 主语言中文，code 和品牌名保留英文（`ESP32`、`Cloudflare`、`AIoTFun`、`Anthropic`）
+- **绝不许翻译腔**。这站是中文原创，不是从英文翻过来的。每句读出来都得通顺。
+- 比喻和类比用中文母语者熟悉的（"一顿外卖钱" 不是 "less than a pizza"，"机房级 GPU" 不是 "data-center-grade"）
+- 标题点明角度，不卖关子。"为什么自己造一个 AI 闹钟" 比 "AI 闹钟" 好。
+- 段落不要太长。3-5 行一段。
 
-If you write both versions:
+## 不要写
 
-### English
+- 教程、step-by-step 指南 —— 自有专门教程站做这事
+- 新闻稿式的产品 review
+- 资讯综合 / 周报体
+- 没有具体经验支撑的泛观点
+- 任何缺少具体、难以伪造的细节的内容
 
-- Pure English. No Chinese characters.
-- Natural conversational engineering English. Contractions fine.
-- "I" and "we" are both fine — most personal articles will be "I".
+## 发布前 Checklist
 
-### Chinese (ZH)
-
-- Primary language. Keep brand names and code/identifiers in English.
-- **No translation-ese (翻译腔)**. The ZH version should read like Wei wrote it directly in Chinese, not like a translation.
-- Replace Western references with culturally native ones ("less than a pizza" → "一顿外卖钱").
-- Read it aloud — if any sentence reads awkwardly, rewrite it.
-
-## What NOT to write
-
-- Tutorials, "step-by-step guides" — there are better tutorial sites
-- Press-release-style product reviews
-- AI-summarised news roundups
-- Generic opinion takes that don't draw on personal experience
-- Anything that doesn't have specific, hard-to-fake detail
-
-## Pre-Publish Checklist
-
-- [ ] Title is specific (not "How to X")
-- [ ] Frontmatter passes Zod schema
-- [ ] Cover URL verified with `curl -sI` (if used)
-- [ ] No invented metrics, no invented quotes, no fabricated chip names
-- [ ] All TODO markers resolved
-- [ ] If bilingual: both versions written independently, not machine-translated
-- [ ] `pnpm build` succeeds
-- [ ] Slug is in kebab-case and matches across both languages (if bilingual)
+- [ ] 标题具体（不是"如何 X"）
+- [ ] Frontmatter 通过 Zod schema
+- [ ] Cover URL 用 `curl -sI` 验过（如果有 cover）
+- [ ] 没有编造的指标 / 引用 / 芯片型号 / 上线数字
+- [ ] 所有 TODO 标记已经处理完
+- [ ] `pnpm build` 通过
+- [ ] Slug 是 kebab-case
+- [ ] 中文读起来不像翻译稿

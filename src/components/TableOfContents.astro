@@ -1,8 +1,5 @@
 ---
-import { getLocaleFromUrl, useTranslations } from '../utils/i18n';
-
-const locale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(locale);
+import { t } from '../utils/i18n';
 ---
 
 <nav id="toc" class="sticky top-24" aria-label="Table of contents">

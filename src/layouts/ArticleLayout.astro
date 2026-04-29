@@ -4,7 +4,7 @@ import ArticleCard from '../components/ArticleCard.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import GiscusComments from '../components/GiscusComments.astro';
 import TableOfContents from '../components/TableOfContents.astro';
-import { getLocaleFromUrl, useTranslations, getLanguageSwitchUrl, localePath } from '../utils/i18n';
+import { t } from '../utils/i18n';
 import { getRelatedArticles } from '../utils/articles';
 import type { Article } from '../types/article';
 
@@ -13,16 +13,12 @@ interface Props {
 }
 
 const { article } = Astro.props;
-const locale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(locale);
-const switchUrl = getLanguageSwitchUrl(Astro.url);
-const related = await getRelatedArticles(article, locale);
-const backHref = localePath('/writing/', locale);
+const related = await getRelatedArticles(article);
 ---
 
 <BaseLayout title={article.title} description={article.description} image={article.cover}>
   <article class="mx-auto max-w-content px-4 md:px-6 py-8" data-pagefind-body>
-    <a href={backHref} class="inline-flex items-center gap-1 text-sm text-text-muted hover:text-accent transition-colors mb-6">
+    <a href="/writing/" class="inline-flex items-center gap-1 text-sm text-text-muted hover:text-accent transition-colors mb-6">
       <span>{(t as any).article_detail.back}</span>
     </a>
 
@@ -32,9 +28,6 @@ const backHref = localePath('/writing/', locale);
 
     <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-text-muted font-mono mb-8">
       <span>{(t as any).article_detail.published} {article.date} · {(t as any).article_detail.reading_time.replace('{time}', String(article.readingTime))}</span>
-      <a href={switchUrl} class="text-accent hover:underline">
-        {(t as any).article_detail.switch_lang}
-      </a>
     </div>
 
     {article.cover && (
@@ -72,7 +65,7 @@ const backHref = localePath('/writing/', locale);
 
       <div class="mt-12 pt-8 border-t border-border" data-pagefind-ignore>
         <h3 class="text-sm font-mono text-text-muted mb-3">{(t as any).article_detail.comments}</h3>
-        <GiscusComments locale={locale} />
+        <GiscusComments locale="zh" />
       </div>
     </div>
 

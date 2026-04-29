@@ -17,15 +17,14 @@ export function entryToProject(entry: CollectionEntry<'projects'>): Project {
     repoUrl: data.repoUrl,
     liveUrl: data.liveUrl,
     featured: data.featured,
-    lang: data.lang,
     tags: data.tags,
     order: data.order,
   };
 }
 
-/** 获取指定语言的所有项目（order 升序优先，否则 startDate 降序） */
-export async function getProjects(lang: 'en' | 'zh'): Promise<Project[]> {
-  const entries = await getCollection('projects', ({ data }) => data.lang === lang);
+/** 所有项目（order 升序优先，否则 startDate 降序） */
+export async function getProjects(): Promise<Project[]> {
+  const entries = await getCollection('projects');
   return entries
     .map(entryToProject)
     .sort((a, b) => {
@@ -38,17 +37,17 @@ export async function getProjects(lang: 'en' | 'zh'): Promise<Project[]> {
     });
 }
 
-export async function getFeaturedProjects(lang: 'en' | 'zh', count = 4): Promise<Project[]> {
-  const projects = await getProjects(lang);
+export async function getFeaturedProjects(count = 4): Promise<Project[]> {
+  const projects = await getProjects();
   return projects.filter((p) => p.featured).slice(0, count);
 }
 
-export async function getProjectBySlug(slug: string, lang: 'en' | 'zh'): Promise<Project | undefined> {
-  const projects = await getProjects(lang);
+export async function getProjectBySlug(slug: string): Promise<Project | undefined> {
+  const projects = await getProjects();
   return projects.find((p) => p.slug === slug);
 }
 
-export async function getProjectEntry(slug: string, lang: 'en' | 'zh'): Promise<CollectionEntry<'projects'> | undefined> {
-  const entries = await getCollection('projects', ({ data }) => data.lang === lang);
+export async function getProjectEntry(slug: string): Promise<CollectionEntry<'projects'> | undefined> {
+  const entries = await getCollection('projects');
   return entries.find((entry) => entry.id.split('/').pop() === slug);
 }

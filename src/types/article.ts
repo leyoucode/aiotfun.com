@@ -5,7 +5,6 @@ export interface Article {
   date: string;
   cover?: string;
   readingTime: number;
-  lang: 'en' | 'zh';
   pinned?: boolean;
   tags: string[];
 }
@@ -24,7 +23,6 @@ export interface Project {
   repoUrl?: string;
   liveUrl?: string;
   featured?: boolean;
-  lang: 'en' | 'zh';
   tags: string[];
   order?: number;
 }

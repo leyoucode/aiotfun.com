@@ -1,12 +1,10 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import ArticleCard from '../../../components/ArticleCard.astro';
-import { useTranslations } from '../../../utils/i18n';
-import { getArticles } from '../../../utils/articles';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { t } from '../../utils/i18n';
+import { getArticles } from '../../utils/articles';
 
-const locale = 'en';
-const t = useTranslations(locale);
-const articles = await getArticles(locale);
+const articles = await getArticles();
 ---
 
 <BaseLayout title={`${(t as any).writing.title} — ${t.site.name}`} description={(t as any).writing.subtitle}>

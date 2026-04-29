@@ -1,10 +1,10 @@
 ---
 import { getCollection, render } from 'astro:content';
-import ProjectLayout from '../../../layouts/ProjectLayout.astro';
-import { entryToProject } from '../../../utils/projects';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { entryToArticle } from '../../utils/articles';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('projects', ({ data }) => data.lang === 'zh');
+  const entries = await getCollection('articles');
   return entries.map((entry) => ({
     params: { slug: entry.id.split('/').pop() },
     props: { entry },
@@ -12,10 +12,10 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const project = entryToProject(entry);
+const article = entryToArticle(entry);
 const { Content } = await render(entry);
 ---
 
-<ProjectLayout project={project}>
+<ArticleLayout article={article}>
   <Content />
-</ProjectLayout>
+</ArticleLayout>

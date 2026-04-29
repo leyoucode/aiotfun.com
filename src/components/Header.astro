@@ -1,23 +1,20 @@
 ---
-import { getLocaleFromUrl, useTranslations, getLanguageSwitchUrl, localePath } from '../utils/i18n';
+import { t } from '../utils/i18n';
 
-const locale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(locale);
-const switchUrl = getLanguageSwitchUrl(Astro.url);
 const currentPath = Astro.url.pathname;
 
 const navItems = [
-  { key: 'projects', href: localePath('/projects/', locale) },
-  { key: 'writing', href: localePath('/writing/', locale) },
-  { key: 'now', href: localePath('/now/', locale) },
-  { key: 'about', href: localePath('/about/', locale) },
+  { key: 'projects', href: '/projects/' },
+  { key: 'writing', href: '/writing/' },
+  { key: 'now', href: '/now/' },
+  { key: 'about', href: '/about/' },
 ] as const;
 ---
 
 <header class="sticky top-0 z-50 border-b border-border bg-bg/95 backdrop-blur-md">
   <div class="mx-auto flex h-16 max-w-content items-center justify-between px-4 md:px-6">
     <!-- Logo -->
-    <a href={localePath('/', locale)} class="flex items-center gap-2 font-body text-xl font-bold tracking-tight">
+    <a href="/" class="flex items-center gap-2 font-body text-xl font-bold tracking-tight">
       <img src="/logo.png" alt="AIoTFun" class="h-8 w-8" />
       <span><span class="text-text">AIoT</span><span class="text-accent">Fun</span></span>
     </a>
@@ -41,15 +38,8 @@ const navItems = [
       })}
     </nav>
 
-    <!-- 右侧：语言切换 + 移动端汉堡 -->
+    <!-- 右侧：搜索 + 主题 + 移动端汉堡 -->
     <div class="flex items-center gap-4">
-      <a
-        href={switchUrl}
-        class="font-body text-xs text-text-muted transition-colors hover:text-accent"
-      >
-        {t.common.lang_switch}
-      </a>
-
       <!-- Search button -->
       <button id="search-btn" class="flex h-8 w-8 items-center justify-center rounded-full text-text-muted hover:text-accent transition-colors" aria-label="Search" title="⌘K">
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

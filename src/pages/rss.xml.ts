@@ -3,18 +3,18 @@ import type { APIContext } from 'astro';
 import { getArticles } from '../utils/articles';
 
 export async function GET(context: APIContext) {
-  const articles = await getArticles('en');
+  const articles = await getArticles();
   return rss({
-    title: 'AIoTFun — Wei Liu',
-    description: "Wei Liu's AI + IoT playground — projects, notes, and works-in-progress.",
+    title: 'AIoTFun — Seek',
+    description: 'Seek 的 AI + IoT 折腾园 —— 项目、笔记和正在进行的实验。',
     site: context.site!,
     items: articles.map((a) => ({
       title: a.title,
       description: a.description,
       pubDate: new Date(a.date),
-      link: `/en/writing/${a.slug}/`,
+      link: `/writing/${a.slug}/`,
       categories: a.tags,
     })),
-    customData: '<language>en</language>',
+    customData: '<language>zh-CN</language>',
   });
 }

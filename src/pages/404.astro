@@ -3,7 +3,7 @@ import '../styles/global.css';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <script is:inline>
@@ -19,7 +19,7 @@ import '../styles/global.css';
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <title>404 — AIoTFun</title>
@@ -32,33 +32,14 @@ import '../styles/global.css';
 
     <p class="font-mono text-8xl font-bold text-accent">404</p>
 
-    <p id="msg-main" class="mt-4 font-body text-lg text-text">
-      This page wandered off into the IoT void.
-    </p>
-    <p id="msg-sub" class="mt-1 text-sm text-text-muted">
-      Maybe the AI agents forgot to build it.
-    </p>
+    <p class="mt-4 font-body text-lg text-text">这个页面飘进了 IoT 的虚空。</p>
+    <p class="mt-1 text-sm text-text-muted">也许还没造出来。</p>
 
     <a
-      id="btn-home"
-      href="/en/"
+      href="/"
       class="mt-8 inline-block rounded-full bg-accent px-6 py-2.5 font-body text-sm font-semibold text-white transition-opacity hover:opacity-90"
     >
-      Back to Home
+      返回首页
     </a>
-
-    <script is:inline>
-      (function() {
-        var zh = /^zh/i.test(navigator.language || '');
-        if (zh) {
-          document.getElementById('msg-main').textContent = '这个页面飘进了 IoT 的虚空。';
-          document.getElementById('msg-sub').textContent = '也许 AI Agent 忘了生成它。';
-          var btn = document.getElementById('btn-home');
-          btn.textContent = '返回首页';
-          btn.href = '/zh/';
-          document.documentElement.lang = 'zh';
-        }
-      })();
-    </script>
   </body>
 </html>

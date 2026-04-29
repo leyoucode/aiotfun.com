@@ -7,12 +7,4 @@ export default defineConfig({
   site: 'https://aiotfun.com',
   compressHTML: true,
   integrations: [tailwind(), mdx(), sitemap()],
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'zh'],
-    routing: {
-      prefixDefaultLocale: true,
-      redirectToDefaultLocale: false,
-    },
-  },
 });

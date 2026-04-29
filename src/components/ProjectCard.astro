@@ -1,6 +1,6 @@
 ---
 import OptimizedImage from './OptimizedImage.astro';
-import { getLocaleFromUrl, useTranslations, localePath, getStatusColor } from '../utils/i18n';
+import { t, getStatusColor } from '../utils/i18n';
 import type { Project } from '../types/article';
 
 interface Props {
@@ -9,9 +9,7 @@ interface Props {
 }
 
 const { project, variant = 'medium' } = Astro.props;
-const locale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(locale);
-const href = localePath(`/projects/${project.slug}/`, locale);
+const href = `/projects/${project.slug}/`;
 
 const statusLabel = (t as any).project_status[project.status] ?? project.status;
 const statusColor = getStatusColor(project.status);

@@ -1,12 +1,10 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import ProjectCard from '../../../components/ProjectCard.astro';
-import { useTranslations } from '../../../utils/i18n';
-import { getProjects } from '../../../utils/projects';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { t } from '../../utils/i18n';
+import { getProjects } from '../../utils/projects';
 
-const locale = 'en';
-const t = useTranslations(locale);
-const projects = await getProjects(locale);
+const projects = await getProjects();
 ---
 
 <BaseLayout title={`${(t as any).projects.title} — ${t.site.name}`} description={(t as any).projects.subtitle}>

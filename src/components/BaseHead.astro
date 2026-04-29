@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import { getLocaleFromUrl } from '../utils/i18n';
 
 interface Props {
   title: string;
@@ -9,13 +8,7 @@ interface Props {
   preloadImage?: string;
 }
 
-const { title, description = "Wei Liu's AI + IoT playground", image, preloadImage } = Astro.props;
-const locale = getLocaleFromUrl(Astro.url);
-const altLocale = locale === 'en' ? 'zh' : 'en';
-const hasLocalePrefix = Astro.url.pathname.startsWith(`/${locale}/`) || Astro.url.pathname === `/${locale}`;
-const altUrl = hasLocalePrefix
-  ? Astro.url.pathname.replace(`/${locale}`, `/${altLocale}`)
-  : `/${altLocale}${Astro.url.pathname === '/' ? '/' : Astro.url.pathname}`;
+const { title, description = "Seek 的 AI + IoT 折腾园", image, preloadImage } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImage = image ? new URL(image, Astro.site) : new URL('/og-default.jpg', Astro.site);
 ---
@@ -70,23 +63,14 @@ const ogImage = image ? new URL(image, Astro.site) : new URL('/og-default.jpg', 
 <link rel="sitemap" href="/sitemap-index.xml" />
 
 <!-- RSS -->
-<link
-  rel="alternate"
-  type="application/rss+xml"
-  title={locale === 'zh' ? 'AIoTFun RSS (中文)' : 'AIoTFun RSS'}
-  href={locale === 'zh' ? '/zh/rss.xml' : '/rss.xml'}
-/>
-
-<!-- hreflang -->
-<link rel="alternate" hreflang={locale} href={canonicalURL} />
-<link rel="alternate" hreflang={altLocale} href={new URL(altUrl, Astro.site)} />
+<link rel="alternate" type="application/rss+xml" title="AIoTFun RSS" href="/rss.xml" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonicalURL} />
-<meta property="og:locale" content={locale === 'zh' ? 'zh_CN' : 'en_US'} />
+<meta property="og:locale" content="zh_CN" />
 <meta property="og:image" content={ogImage} />
 <meta property="og:site_name" content="AIoTFun" />
 

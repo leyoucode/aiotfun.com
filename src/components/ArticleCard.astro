@@ -1,6 +1,6 @@
 ---
 import OptimizedImage from './OptimizedImage.astro';
-import { getLocaleFromUrl, useTranslations, localePath } from '../utils/i18n';
+import { t } from '../utils/i18n';
 import type { Article } from '../types/article';
 
 interface Props {
@@ -9,9 +9,7 @@ interface Props {
 }
 
 const { article, variant = 'medium' } = Astro.props;
-const locale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(locale);
-const href = localePath(`/writing/${article.slug}/`, locale);
+const href = `/writing/${article.slug}/`;
 
 const isList = variant === 'list';
 const isSmall = variant === 'small';

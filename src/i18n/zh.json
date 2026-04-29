@@ -1,8 +1,8 @@
 {
   "site": {
     "name": "AIoTFun",
-    "tagline": "刘伟的 AI + IoT 折腾园",
-    "description": "刘伟 — 独立开发者，在 AI 与 IoT 交汇处折腾点小东西。这里是项目、写作和进行中的实验。"
+    "tagline": "Seek 的 AI + IoT 折腾园",
+    "description": "Seek — 独立开发者，在 AI 与 IoT 交汇处折腾点小东西。这里是项目、写作和进行中的实验。"
   },
   "nav": {
     "home": "首页",
@@ -56,7 +56,7 @@
   },
   "about": {
     "title": "关于",
-    "intro_title": "你好，我是刘伟",
+    "intro_title": "你好，我是 Seek",
     "intro_p1": "我是一个独立开发者，长期在 AI 和 IoT 的交汇处折腾。白天交付生产系统；业余时间研究 ESP32、语音 Agent，以及任何「居然真的能跑起来」的小东西。",
     "intro_p2": "AIoTFun 一开始是个杂志风格的 AIoT 资讯发现站。现在它变成了我自己的折腾园 —— 我造过的项目、踩过的坑写成的笔记、以及那些放别处不太合适的小实验。",
     "intro_p3": "如果你在招聘、想找人合作，或者想就我做过的某个东西交换点想法，欢迎来聊。",
@@ -64,7 +64,7 @@
     "now_title": "最近在忙",
     "now_link": "查看完整近况 →",
     "contact_title": "联系我",
-    "contact_desc": "正经事走邮件，看代码上 GitHub，半成品想法上 X。"
+    "contact_desc": "看代码上 GitHub，想聊上 X，私信不一定每条都回但都会看。"
   },
   "article": {
     "min_read": "分钟",
@@ -74,7 +74,6 @@
     "tags": "标签",
     "reading_time": "{time} 分钟阅读",
     "published": "发布于",
-    "switch_lang": "Read in English",
     "comments": "评论",
     "toc": "本页目录",
     "related": "相关写作",
@@ -86,11 +85,10 @@
     "back_home": "← 所有写作"
   },
   "footer": {
-    "tagline": "由刘伟独立打造、长期更新。",
+    "tagline": "由 Seek 独立打造、长期更新。",
     "copyright": "© {year} AIoTFun"
   },
   "common": {
-    "lang_switch": "EN",
     "search": "搜索"
   }
 }

@@ -4,228 +4,228 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-AIoTFun.com is **Wei Liu's personal indie hacker site** — a bilingual (EN/ZH) static site built with Astro 5. It hosts:
+AIoTFun.com 是 **Seek的个人 Indie Hacker 站** —— 单语中文站，基于 Astro 5。包含：
 
-- A **Projects** section: case studies of things Wei has built (production systems, side projects, hardware tinkering, this site itself).
-- A **Writing** section: debugging notes, technical investigations, project retrospectives, opinions.
-- A **Now** page: what Wei is currently working on.
-- An **About** page: Wei's story, tech stack, project timeline, contact info.
+- **Projects**：Seek做过的项目案例（生产系统、副业实验、硬件折腾、本站自身等）
+- **Writing**：调试笔记、技术探究、项目复盘、观点
+- **Now**：当前在做什么
+- **About**：自我介绍、技术栈、项目时间线、联系方式
 
-**Goal**: hiring credibility — a recruiter or potential collaborator should "get" Wei within 30 seconds.
+**目标**：招聘背书 —— 招聘方/合作方 30 秒内 get 到「这个人能做什么」。
 
-**Theme**: AI + IoT + Fun. The writing voice is "engineer talking to engineers in plain language," not corporate marketing or AI summary.
+**主线**：AI + IoT + Fun。语气是「工程师跟工程师讲人话」，不是 marketing，不是 AI 摘要。
 
-> **History**: This site started life as an "AI-agent-operated AIoT news magazine" (RSS scraping → AI scoring → automated writeups). It was rebuilt in 2026-04 into the current personal site. The pre-rebuild snapshot lives on the `archive/news-site` branch.
+> **历史**：本站最初是「AI Agent 自动运营的 AIoT 资讯站」（RSS 抓取 → AI 评分 → 自动写稿）。2026-04 重构为个人站。再之后改为单语中文站，删除全部 EN 路由 / EN 内容 / i18n 双语机制。完整历史快照保留在 `archive/news-site` 分支。
 
 ## Commands
 
 ```bash
 pnpm dev        # Dev server at localhost:4321
-pnpm build      # Production build → dist/ (static pages + RSS feeds + Pagefind index)
+pnpm build      # Production build → dist/ (静态页 + RSS + Pagefind 索引)
 pnpm preview    # Preview built site
 ```
 
-No test framework is configured. Validate Astro changes with `pnpm build`.
+无测试框架。Astro 改动用 `pnpm build` 验证。
 
 ## Architecture
 
-- **Framework**: Astro 5 (SSG) + Tailwind CSS 3 + MDX content collections
-- **Search**: Pagefind (build-time index, lazy-loaded UI)
-- **Comments**: Giscus (GitHub Discussions backed)
-- **Deployment**: Cloudflare Pages, auto-deployed on `git push` to master via `wrangler.toml`
-- **Package manager**: pnpm
+- **框架**：Astro 5 (SSG) + Tailwind CSS 3 + MDX content collections
+- **搜索**：Pagefind（build 时生成索引，运行时懒加载）
+- **评论**：Giscus（GitHub Discussions）
+- **部署**：Cloudflare Pages，`git push` 自动构建（`wrangler.toml`）
+- **包管理**：pnpm
+- **语言**：单语中文（`<html lang="zh-CN">`），不再有双语切换、hreflang、locale path 前缀
 
 ### Directory Structure
 
 ```
 aiotfun.com/
-├── astro.config.mjs       # Astro config (i18n, mdx, sitemap, tailwind)
-├── tailwind.config.mjs    # Tailwind config (darkMode:'class', CSS variable colors)
-├── wrangler.toml          # Cloudflare Pages deployment
-├── public/                # Static assets (favicon, logo, og-default, robots.txt)
+├── astro.config.mjs       # Astro config（无 i18n 块）
+├── tailwind.config.mjs
+├── wrangler.toml
+├── public/                # 静态资源
 ├── src/
-│   ├── components/        # Astro components — see Key Components
+│   ├── components/        # 组件 — 见 Key Components
 │   ├── content/
-│   │   ├── articles/      # MDX writing: [lang]/slug.mdx
-│   │   └── projects/      # MDX project case studies: [lang]/slug.mdx
-│   ├── i18n/              # en.json, zh.json
-│   ├── layouts/           # BaseLayout, ArticleLayout, ProjectLayout
-│   ├── pages/             # Routes — see Routing
-│   ├── styles/            # global.css (CSS vars, .article-body styles)
-│   ├── types/             # Article + Project types
-│   └── utils/             # i18n.ts, articles.ts, projects.ts, image.ts
+│   │   ├── articles/      # 写作 MDX：slug.mdx
+│   │   └── projects/      # 项目案例 MDX：slug.mdx
+│   ├── i18n/zh.json       # 唯一文案文件
+│   ├── layouts/           # BaseLayout / ArticleLayout / ProjectLayout
+│   ├── pages/             # 路由 — 见 Routing
+│   ├── styles/            # global.css
+│   ├── types/             # Article + Project 类型
+│   └── utils/             # i18n.ts / articles.ts / projects.ts / image.ts
 └── .claude/skills/        # write-article skill
 ```
 
 ### Routing
 
-All pages are language-prefixed: `/en/*` and `/zh/*`. Root `/` redirects to `/en/`.
+URL 全是干净的根路径，无 locale 前缀。
 
-| Route | File | Notes |
-|-------|------|-------|
-| `/` | `pages/index.astro` | Redirect to `/en/` |
-| `/[lang]/` | `pages/[lang]/index.astro` | Personal home: Hero + Featured Projects + Recent Writing |
-| `/[lang]/about/` | `pages/[lang]/about.astro` | About page |
-| `/[lang]/now/` | `pages/[lang]/now.astro` | Now page (manually updated) |
-| `/[lang]/projects/` | `pages/[lang]/projects/index.astro` | Project listing |
-| `/[lang]/projects/[slug]/` | `pages/[lang]/projects/[slug].astro` | Project case study |
-| `/[lang]/writing/` | `pages/[lang]/writing/index.astro` | Writing list |
-| `/[lang]/writing/[slug]/` | `pages/[lang]/writing/[slug].astro` | Article detail |
-| `/rss.xml`, `/zh/rss.xml` | `pages/rss.xml.ts`, `pages/zh/rss.xml.ts` | RSS — feeds writing only |
+| Route | File |
+|-------|------|
+| `/` | `pages/index.astro` — Hero + Featured Projects + Recent Writing |
+| `/about/` | `pages/about.astro` |
+| `/now/` | `pages/now.astro` —（手动维护）|
+| `/projects/` | `pages/projects/index.astro` |
+| `/projects/[slug]/` | `pages/projects/[slug].astro` |
+| `/writing/` | `pages/writing/index.astro` |
+| `/writing/[slug]/` | `pages/writing/[slug].astro` |
+| `/rss.xml` | `pages/rss.xml.ts` —（只 feed writing）|
+| `/404` | `pages/404.astro` |
 
-Dynamic routes use `getStaticPaths()` to generate at build time.
+动态路由用 `getStaticPaths()` 在 build 时生成。
 
 ### Content System
 
-Two MDX content collections, both validated with Zod (see `src/content.config.ts`):
+两个 MDX collections，Zod 校验（见 `src/content.config.ts`）：
 
-#### `articles` — writing
+#### `articles` —— 写作
 
 ```yaml
 title: ""
 description: ""
 date: "YYYY-MM-DD"
-cover: ""           # Optional Unsplash URL with w=800&h=450&fit=crop
+cover: ""           # 可选 Unsplash URL，建议 w=800&h=450&fit=crop
 readingTime: 0
-lang: "en" | "zh"
-pinned: false       # Optional, used for surfacing on home page
+pinned: false       # 可选，首页可置顶
 tags: []
 ```
 
-#### `projects` — project case studies
+#### `projects` —— 项目案例
 
 ```yaml
 title: ""
 oneLiner: ""
 status: "active" | "shipped" | "open-source" | "paused" | "archived"
 techStack: []
-cover: ""           # Optional
+cover: ""           # 可选
 startDate: "YYYY-MM"
-endDate: "YYYY-MM"  # Optional
-repoUrl: ""         # Optional
-liveUrl: ""         # Optional
-featured: false     # Up to 4 featured per language — shown on home page
-order: 1            # Optional, smaller = earlier (featured uses 1-4)
-lang: "en" | "zh"
+endDate: "YYYY-MM"  # 可选
+repoUrl: ""         # 可选
+liveUrl: ""         # 可选
+featured: false     # 至多 4 个，会显示在首页 Featured 区
+order: 1            # 可选，越小越靠前（featured 用 1-4）
 tags: []
 ```
 
-**Important**: there is no longer a `category` field, no `agent` field. Tags are the only flat taxonomy.
+**关键改动**：不再有 `category` / `agent` / `lang` 字段。Tags 是唯一的扁平分类。
 
-Articles and projects can be written in **just one language** — UI / About / Now / Home are mandatory bilingual; individual articles and case studies are not.
+#### Helper functions
 
-Helper functions:
-- `src/utils/articles.ts` — `getArticles(lang)`, `getLatestArticles(lang, n)`, `getPinnedArticles(lang)`, `getRelatedArticles(article, lang)`, `getArticleEntry(slug, lang)`, `entryToArticle(entry)`
-- `src/utils/projects.ts` — `getProjects(lang)`, `getFeaturedProjects(lang, n)`, `getProjectEntry(slug, lang)`, `entryToProject(entry)`
+- `src/utils/articles.ts`：`getArticles()` / `getLatestArticles(n)` / `getPinnedArticles()` / `getRelatedArticles(article)` / `getArticleEntry(slug)` / `entryToArticle(entry)`
+- `src/utils/projects.ts`：`getProjects()` / `getFeaturedProjects(n)` / `getProjectEntry(slug)` / `entryToProject(entry)`
 
-### i18n
+所有函数**不再接受 lang 参数**。
 
-- Translation files: `src/i18n/en.json` and `src/i18n/zh.json`
-- Utilities in `src/utils/i18n.ts`: `getLocaleFromUrl()`, `useTranslations()`, `getLanguageSwitchUrl()`, `localePath()`, `getStatusColor()`
-- Pattern in components:
-  ```astro
-  const locale = getLocaleFromUrl(Astro.url);
-  const t = useTranslations(locale);
-  ```
-- Some i18n keys accessed via `(t as any)` — typed translations don't cover all nested groups yet.
+### i18n（其实只是文案集中管理）
+
+虽然是单语站，但 UI 文案仍集中在 `src/i18n/zh.json`，方便统一改文案。
+
+用法：
+```astro
+import { t } from '../utils/i18n';
+// 使用
+<h2>{t.home.featured_projects}</h2>
+<p>{(t as any).projects.subtitle}</p>
+```
+
+`src/utils/i18n.ts` 仅提供：
+- `t` —— 直接 import zh.json 的对象
+- `getStatusColor(status)` —— 项目状态颜色映射
 
 ### Layouts
 
-- `BaseLayout.astro` — Header + main slot + Footer + reading progress + back-to-top + search modal
-- `ArticleLayout.astro` — Writing detail layout (wraps BaseLayout): TOC + Giscus + related writing
-- `ProjectLayout.astro` — Project case study layout: status + tech stack + repo/live links + Giscus
+- `BaseLayout.astro` — Header + main + Footer + ReadingProgress + BackToTop + SearchModal；`<html lang="zh-CN">` 写死
+- `ArticleLayout.astro` — 写作详情布局，含 TOC / Giscus / 相关写作
+- `ProjectLayout.astro` — 项目案例布局，含状态徽章 / 技术栈 / repo&live 链接 / Giscus
 
 ### Key Components
 
-- `PersonalHero.astro` — Personal landing block (title + role + summary + social links + Now CTA)
-- `FeaturedProjects.astro` — Home page featured projects grid (uses `getFeaturedProjects`)
-- `RecentWriting.astro` — Home page recent writing list (uses `getLatestArticles`)
-- `ProjectCard.astro` — Project card (variants: `featured`, `medium`)
-- `ArticleCard.astro` — Article card (variants: `large`, `medium`, `small`, `list`)
-- `Header.astro` — Sticky nav with theme toggle, search, lang switch, mobile menu
-- `Footer.astro` — Social links + RSS + copyright
-- `BaseHead.astro` — Theme FOUC guard, fonts, SEO meta, OG, Twitter Card, hreflang, RSS link
-- `OptimizedImage.astro` — Responsive WebP/AVIF + srcset + sizes
-- `GiscusComments.astro` — Giscus (GitHub Discussions, theme-aware via postMessage)
-- `ReadingProgress.astro` — Article reading progress bar (top, accent color)
-- `TableOfContents.astro` — Article TOC sidebar (xl only, sticky, IntersectionObserver)
-- `BackToTop.astro` — Scroll-to-top button
-- `SearchModal.astro` — Pagefind UI modal (Cmd+K)
+- `PersonalHero.astro` — 首页 Hero（标题 + 角色 + 简介 + 社交链接 + Now CTA）
+- `FeaturedProjects.astro` — 首页精选项目（最多 4，调用 `getFeaturedProjects`）
+- `RecentWriting.astro` — 首页最近写作（最多 5，调用 `getLatestArticles`）
+- `ProjectCard.astro` — 项目卡（variants: `featured` / `medium`）
+- `ArticleCard.astro` — 文章卡（variants: `large` / `medium` / `small` / `list`）
+- `Header.astro` — sticky 导航 + 主题切换 + 搜索 + 移动端汉堡（**不再有语言切换**）
+- `Footer.astro` — GitHub / X / Email / RSS + copyright
+- `BaseHead.astro` — 主题 FOUC 守护、字体、SEO meta、OG、Twitter Card、RSS 自动发现（**不再有 hreflang**）
+- `OptimizedImage.astro` — 响应式 WebP/AVIF + srcset + sizes
+- `GiscusComments.astro` — Giscus（GitHub Discussions），仍以 `locale="zh"` 调用
+- `ReadingProgress.astro` / `TableOfContents.astro` / `BackToTop.astro` / `SearchModal.astro` —— 不变
 
 ### Navigation
 
-| Nav | EN | ZH | Route |
-|-----|----|----|-------|
-| Projects | Projects | 项目 | `/[lang]/projects/` |
-| Writing | Writing | 写作 | `/[lang]/writing/` |
-| Now | Now | 近况 | `/[lang]/now/` |
-| About | About | 关于 | `/[lang]/about/` |
+| Nav | Route |
+|-----|-------|
+| 项目 | `/projects/` |
+| 写作 | `/writing/` |
+| 近况 | `/now/` |
+| 关于 | `/about/` |
 
 ## Design Tokens (Tailwind)
 
-**Dark mode**: `darkMode: 'class'`. Theme persisted in `localStorage('theme')`, defaults to system preference. FOUC prevented by inline script in `BaseHead.astro` + restored on `astro:after-swap`.
+**Dark mode**: `darkMode: 'class'`，`localStorage('theme')` 持久化，inline script 防 FOUC + `astro:after-swap` 恢复。
 
-**Colors** (CSS variables, RGB space-separated for alpha support):
+**Colors** （CSS 变量，RGB 空格分隔，支持透明度修饰符）：
 - Light: bg `246 245 241` (#F6F5F1), text `26 26 26`, card-bg `255 255 255`, border `232 230 225`
 - Dark: bg `18 18 18` (#121212), text `232 230 225`, card-bg `26 26 26`, border `55 55 55`
-- Tailwind usage: `bg-bg`, `text-text`, `bg-card-bg`, `text-text-muted`, `border-border` — all support `/<alpha>` modifier
-- Fixed: accent `#10B981` (no dark variant)
+- Tailwind: `bg-bg`, `text-text`, `bg-card-bg`, `text-text-muted`, `border-border`（都支持 `/<alpha>`）
+- 固定：accent `#10B981`
 
-**Fonts**: `font-display` (Instrument Serif), `font-body` (Inter), `font-mono` (JetBrains Mono), `font-logo` (Space Grotesk)
+**Fonts**: `font-display` (Instrument Serif), `font-body` (Inter), `font-mono` (JetBrains Mono)，加载 Noto Sans SC 兜底中文
 
 **Layout**: `max-w-content` (1200px), `max-w-prose` (720px), `rounded-card` (8px), `shadow-card`
 
 **Project status colors** (from `src/utils/i18n.ts`):
-- active: `#10B981` (accent green)
-- shipped: `#6366F1` (indigo)
-- open-source: `#0D9488` (teal)
-- paused: `#CA8A04` (amber)
-- archived: `#6B7280` (gray)
+- active: `#10B981`
+- shipped: `#6366F1`
+- open-source: `#0D9488`
+- paused: `#CA8A04`
+- archived: `#6B7280`
 
 ## Conventions
 
-- No italics anywhere — titles use `font-bold`
-- Card titles/descriptions are single-line truncated with `title` attribute for hover reveal
-- Article body styling is in `src/styles/global.css` under `.article-body` class in `@layer components`
-- Path alias: `@/*` maps to `src/*`
-- Article sorting: by date descending, then by slug alphabetically
-- Project sorting: by `order` ascending (when set), otherwise by `startDate` descending, then slug
-- Related articles algorithm: each shared tag = +1 point, top 3 by score then date
+- 所有路径用 hard-coded 根路径（`/projects/`、`/writing/`、`/now/`...），不使用辅助函数生成
+- 标题不用斜体；卡片标题/描述单行截断 + `title` hover 显示
+- 文章正文样式在 `src/styles/global.css` 的 `.article-body @layer components`
+- 路径别名：`@/*` → `src/*`
+- 文章排序：`date` 降序 → `slug` 字母序
+- 项目排序：`order` 升序（如有）→ `startDate` 降序 → `slug`
+- 相关文章：每个共享 tag +1 分，按分数+日期取前 3
 
 ## Writing Guidelines
 
-When writing articles or project case studies, invoke the **`/write-article` skill**. It establishes:
+写文章或项目案例时调用 **`/write-article` skill**。它包括：
 
-- Voice (engineer to engineer, not marketing or AI summary)
-- Factual accuracy rules (no invented metrics, no invented quotes, no fabricated chip names)
-- Frontmatter templates for both articles and projects
-- Bilingual rules (no translation-ese in ZH)
-- Pre-publish checklist
-
-Articles and projects can be in just one language — there is no longer a "must publish in both" rule.
+- 写作语气（工程师对工程师，非 marketing 非 AI 摘要）
+- 事实准确性铁律（不编造指标、不编造引用、不编造芯片型号）
+- Article / Project frontmatter 模板
+- 单语中文写作风格规则
+- 发布前 checklist
 
 ## Deployment
 
-- **GitHub repo**: `leyoucode/aiotfun.com` (master branch)
+- **GitHub repo**: `leyoucode/aiotfun.com`（master 分支）
 - **Cloudflare project**: `aiotfun-com`
 - **Live URL**: `https://aiotfun.com`
-- **Auto-deploy**: `git push` → Cloudflare auto-build
-- **Build command**: `pnpm build`, output `dist/`, configured via `wrangler.toml`
+- **自动部署**: `git push` → Cloudflare 自动 build
+- **Build command**: `pnpm build`，输出 `dist/`，配置在 `wrangler.toml`
 
 **SEO & Feeds**:
-- `@astrojs/sitemap` auto-generates `sitemap-index.xml`
-- `@astrojs/rss` outputs bilingual RSS feeds — `/rss.xml` (EN), `/zh/rss.xml` (ZH); each feeds **writing only** (not projects)
-- `public/robots.txt` allows all crawlers, points to sitemap
-- `BaseHead.astro` sets canonical / hreflang / OG / Twitter Card / RSS auto-discovery
-- Default OG image: `public/og-default.jpg` (1200x630)
-- Giscus: GitHub Discussions (`leyoucode/aiotfun.com`), pathname mapping, lazy load, bilingual, theme-aware
+- `@astrojs/sitemap` 自动生成 `sitemap-index.xml`
+- `@astrojs/rss` 输出 `/rss.xml`（中文，只 feed writing）
+- `public/robots.txt` 允许所有爬虫，指向 sitemap
+- `BaseHead.astro` 设置 canonical / OG（zh_CN）/ Twitter Card / RSS 自动发现
+- 默认 OG 图：`public/og-default.jpg`（1200x630，可换成个人头像/logo）
+- Giscus：GitHub Discussions（`leyoucode/aiotfun.com`），pathname mapping，懒加载，主题感知
 
 ## Notes
 
-- The `archive/news-site` git branch holds the pre-rebuild snapshot (collector / workflow / 6 categories / 20 MDX articles / Newsletter / AI Agent team page) — recover from there if anything important was needed.
-- View Transitions: module `<script>` only runs once. DOM operations must be wrapped in `document.addEventListener('astro:page-load', ...)` with `dataset.init` guard.
-- View Transitions reset `<html>` attributes on navigation; theme class restored via `astro:after-swap` listener in BaseHead.
-- `pagefind-ui.js` is an IIFE (not ESM). After `import('/pagefind/pagefind-ui.js')`, access via `window.PagefindUI`.
-- Pagefind index only covers pages with `data-pagefind-body` (currently: writing detail + project detail pages).
-- HeroSection.astro from the news-site era is gone — `PersonalHero.astro` is its replacement.
-- Newsletter, AiotWeekly, AgentStatusBar, CategoryTag, DiscoveryStream — all removed. If you find references in old commits or other docs, those are stale.
+- `archive/news-site` 分支保留资讯站时代完整快照（collector / workflow / 6 大 category / Newsletter / AI Agent 团队页 / 20 篇 MDX 文章 / 双语 i18n）。需要旧内容回去翻。
+- View Transitions：模块 `<script>` 只跑一次，DOM 操作必须用 `document.addEventListener('astro:page-load', ...)` + `dataset.init` 守护。
+- View Transitions 重置 `<html>` 属性，主题 class 通过 BaseHead 的 `astro:after-swap` 监听器恢复。
+- `pagefind-ui.js` 是 IIFE（非 ESM）。`import('/pagefind/pagefind-ui.js')` 后通过 `window.PagefindUI` 访问。
+- Pagefind 索引只覆盖带 `data-pagefind-body` 的页（当前：writing 详情 + project 详情）。
+- 旧组件（HeroSection 轮播 / Newsletter / AiotWeekly / AgentStatusBar / CategoryTag / DiscoveryStream）和旧 utils（getLocaleFromUrl / useTranslations / getLanguageSwitchUrl / localePath / getCategoryColor）已全部移除。如果在旧 commit 或外部文档中看到引用，那是过期信息。
+- 单语化后 i18n 系统极简：`src/utils/i18n.ts` 仅 export `t` 和 `getStatusColor`。要加新文案就直接编辑 `src/i18n/zh.json`。
