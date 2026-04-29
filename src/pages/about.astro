@@ -11,12 +11,6 @@ const stack = [
   { group: '硬件', items: ['ESP32', 'ESP32-S3', 'Raspberry Pi', 'BLE / Wi-Fi / LoRa'] },
   { group: '后端 / 基础设施', items: ['Cloudflare Workers', 'SQLite', 'PostgreSQL', 'Docker', '阿里云'] },
 ];
-
-const projectTimeline = [
-  { year: '2026', items: ['AIoTFun.com — 你正在看的这个站', 'AI 智能闹钟 — 基于 ESP32 的语音闹钟'] },
-  { year: '2025', items: ['GEO 舆情平台 — 搜索 / 情感分析', 'MASF AI — 语音 / 翻译 / 文生图平台'] },
-  { year: '2024 及更早', items: ['云打印 POS', '吉时达物流', '美团网关转发', '3D 打印建模工具', '运动相机固件'] },
-];
 ---
 
 <BaseLayout title={`${about.title} — ${t.site.name}`} description={t.site.description}>
@@ -46,23 +40,6 @@ const projectTimeline = [
           </div>
         ))}
       </dl>
-    </section>
-
-    <section class="mt-16 max-w-prose">
-      <h2 class="font-display text-2xl font-bold text-text mb-6">项目时间线</h2>
-      <ol class="space-y-6 border-l border-border pl-6">
-        {projectTimeline.map((row) => (
-          <li>
-            <div class="font-mono text-xs uppercase tracking-wider text-text-muted">{row.year}</div>
-            <ul class="mt-1 space-y-1">
-              {row.items.map((item) => <li class="text-text/90">{item}</li>)}
-            </ul>
-          </li>
-        ))}
-      </ol>
-      <a href="/projects/" class="mt-6 inline-block font-body text-sm text-accent hover:underline">
-        查看所有项目 →
-      </a>
     </section>
 
     <section class="mt-16 max-w-prose">
