@@ -1,98 +1,93 @@
 {
+  "site": {
+    "name": "AIoTFun",
+    "tagline": "Wei Liu's AI + IoT playground",
+    "description": "Wei Liu — Indie hacker building things at the intersection of AI and IoT. Projects, writing, and works-in-progress."
+  },
   "nav": {
     "home": "Home",
-    "products": "Products",
-    "boards": "Boards",
-    "builds": "Builds",
-    "models": "Models",
-    "signals": "Signals",
+    "projects": "Projects",
+    "writing": "Writing",
+    "now": "Now",
     "about": "About"
   },
   "home": {
-    "hero_title": "Discover Fun Things in AI & IoT",
-    "discovery_stream": "Discovery Stream",
-    "view_all": "View all →",
-    "aiot_weekly": "AIoT Weekly",
-    "see_all_weekly": "See all weekly →",
-    "newsletter_title": "Get the weekly dose of AIoT fun.",
-    "newsletter_subtitle": "No spam, just cool stuff.",
-    "subscribe": "Subscribe"
+    "hero_role": "Indie hacker · AI + IoT tinkerer",
+    "hero_summary": "I build small, useful things at the intersection of AI and IoT. Sometimes they ship. Sometimes they teach me something. Either way, I write it down.",
+    "now_title": "Now",
+    "now_more": "More on Now →",
+    "featured_projects": "Featured Projects",
+    "all_projects": "All projects →",
+    "recent_writing": "Recent Writing",
+    "all_writing": "All writing →",
+    "no_writing": "Nothing here yet.",
+    "no_projects": "Nothing here yet."
   },
-  "agent_status": {
-    "monitoring": "Scout is monitoring {count} sources",
-    "last_discovery": "Last discovery: {time} ago"
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Things I have built — shipped products, side experiments, and ongoing tinkering.",
+    "no_projects": "No projects yet.",
+    "tech_stack": "Tech stack",
+    "links": "Links",
+    "started": "Started",
+    "ended": "Ended",
+    "ongoing": "Ongoing",
+    "back_to_projects": "← All projects",
+    "view_repo": "Repository",
+    "view_live": "Live"
+  },
+  "project_status": {
+    "active": "In progress",
+    "shipped": "Shipped",
+    "open-source": "Open source",
+    "paused": "Paused",
+    "archived": "Archived"
+  },
+  "writing": {
+    "title": "Writing",
+    "subtitle": "Notes from building, debugging, and thinking — mostly about AI and embedded hardware.",
+    "no_writing": "No writing yet.",
+    "back_to_writing": "← All writing"
+  },
+  "now": {
+    "title": "Now",
+    "subtitle": "What I am focused on right now.",
+    "footer_note": "Inspired by Derek Sivers' /now movement."
+  },
+  "about": {
+    "title": "About",
+    "intro_title": "Hi, I am Wei Liu",
+    "intro_p1": "I am an indie hacker building at the intersection of AI and IoT. By day I ship production systems; on the side I tinker with ESP32, voice agents, and anything that looks like it might surprise me when it works.",
+    "intro_p2": "AIoTFun started as a magazine-style site about other people's interesting AIoT discoveries. It has now turned into my own playground — projects I have built, notes from things I have learned, and a permanent home for the side experiments that don't fit anywhere else.",
+    "intro_p3": "If you are hiring, collaborating, or want to swap notes on something I have built, I would love to hear from you.",
+    "stack_title": "What I work with",
+    "now_title": "What I am up to",
+    "now_link": "See the full Now page →",
+    "contact_title": "Get in touch",
+    "contact_desc": "Email is best for serious things, GitHub for code, X for half-baked ideas."
   },
   "article": {
-    "read_more": "Read more",
     "min_read": "min",
-    "written_by": "Written by"
+    "read_more": "Read more"
   },
   "article_detail": {
-    "related_articles": "Related Articles",
     "tags": "Tags",
-    "share": "Share",
-    "back_to_category": "Back to {category}",
     "reading_time": "{time} min read",
     "published": "Published",
     "switch_lang": "阅读中文版",
     "comments": "Comments",
-    "toc": "On this page"
-  },
-  "category": {
-    "products": "Products",
-    "boards": "Boards",
-    "builds": "Builds",
-    "models": "Models",
-    "signals": "Signals",
-    "weekly": "AIoT Weekly"
-  },
-  "category_page": {
-    "no_articles": "No articles found in this category yet.",
-    "article_count": "{count} articles",
-    "showing_count": "Showing {from}–{to} of {total}",
-    "prev": "← Previous",
-    "next": "Next →",
-    "page_of": "Page {current} of {total}",
-    "descriptions": {
-      "products": "AI-powered gadgets and smart devices — the kind that make you stop and say 'wait, that exists?'",
-      "boards": "The latest chips, dev boards, and platforms — new toys for engineers and makers.",
-      "builds": "Wild hacks and creative projects where AI meets hardware. Someone actually built that.",
-      "models": "AI models and frameworks for the AIoT world — running on devices, or talking to them.",
-      "signals": "What's shifting in AI+IoT — trends, moves, and changes worth watching.",
-      "weekly": "A weekly roundup of the most interesting AIoT stories."
-    }
+    "toc": "On this page",
+    "related": "Related writing",
+    "back": "← All writing"
   },
   "tag_page": {
-    "title": "Tag: #{tag}",
+    "title": "#{tag}",
     "article_count": "{count} articles",
-    "back_home": "← Back to Home"
-  },
-  "about": {
-    "title": "About AIoTFun",
-    "subtitle": "An AI-native media experiment covering the fun side of AI + IoT",
-    "story_title": "Our Story",
-    "story_p1": "AIoTFun started with a simple observation: the intersection of AI and IoT is producing some of the most creative, surprising, and genuinely fun technology — but most coverage treats it like dry enterprise news.",
-    "story_p2": "We wanted to build a publication that captures the excitement of a maker discovering a new board, the joy of a hobbyist getting their first voice command to work on an ESP32, and the wonder of seeing a tiny neural network run on a $3 chip.",
-    "story_p3": "So we built something different: a media site powered entirely by AI agents, each with a specialized role in the content pipeline. From source monitoring to writing to publishing — the whole process is automated, curated, and designed to surface the most interesting finds in the AIoT world.",
-    "crew_title": "Meet the Crew",
-    "crew_subtitle": "Our AI agent team works around the clock",
-    "workflow_title": "How It Works",
-    "workflow_desc": "Every article goes through our four-stage AI pipeline",
-    "workflow_steps": {
-      "discover": "Scout monitors 127+ sources and flags interesting finds",
-      "curate": "Editor reviews discoveries and assigns topics and formats",
-      "write": "Writer researches and crafts engaging articles",
-      "publish": "Publisher formats, optimizes, and distributes content"
-    },
-    "founder_title": "From the Founder",
-    "founder_bio": "AIoTFun is an experiment in AI-native media. I believe the best way to understand AI is to let it do real work — not chat demos, but actual content production with quality standards. This site is the result.",
-    "founder_name": "Liu Wei",
-    "contact_title": "Get in Touch",
-    "contact_desc": "Have a tip? Found something cool? Want to collaborate?"
+    "back_home": "← All writing"
   },
   "footer": {
-    "powered_by": "Powered by AI Agents",
-    "copyright": "© 2026 AIoTFun. All rights reserved."
+    "tagline": "Built and maintained by Wei Liu.",
+    "copyright": "© {year} AIoTFun"
   },
   "common": {
     "lang_switch": "中文",

@@ -3,14 +3,28 @@ export interface Article {
   title: string;
   description: string;
   date: string;
-  cover: string;
-  category: 'products' | 'boards' | 'builds' | 'models' | 'signals' | 'weekly';
-  agent: 'scout' | 'editor' | 'writer';
+  cover?: string;
   readingTime: number;
   lang: 'en' | 'zh';
-  featured?: boolean;
+  pinned?: boolean;
   tags: string[];
-  body?: string;
 }
 
-export type Category = Article['category'];
+export type ProjectStatus = 'active' | 'shipped' | 'open-source' | 'paused' | 'archived';
+
+export interface Project {
+  slug: string;
+  title: string;
+  oneLiner: string;
+  status: ProjectStatus;
+  techStack: string[];
+  cover?: string;
+  startDate: string;
+  endDate?: string;
+  repoUrl?: string;
+  liveUrl?: string;
+  featured?: boolean;
+  lang: 'en' | 'zh';
+  tags: string[];
+  order?: number;
+}

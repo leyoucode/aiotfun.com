@@ -1,0 +1,35 @@
+---
+title: "GEO Brand Intelligence"
+oneLiner: "Search + AI-driven brand mention monitoring and sentiment analysis."
+status: "active"
+techStack: ["Python", "TypeScript", "LLM", "PostgreSQL", "Redis"]
+cover: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=450&fit=crop"
+startDate: "2025"
+featured: true
+order: 4
+lang: "en"
+tags: ["ai", "search", "sentiment", "saas"]
+---
+
+## What it is
+
+A GEO (Generative Engine Optimization) platform — monitor how a brand surfaces across search engines, AI assistants, and content platforms, then output actionable suggestions.
+
+## Hard parts
+
+It is not just scraping:
+
+- **Source coverage**: different search engines and different AI assistants (Doubao / Kimi / Perplexity / etc.) give different answers to the same query — all of them need to be ingested.
+- **Dedup**: a single news item gets republished by dozens of sites; you need to detect "different framings of the same event."
+- **Sentiment**: classic positive/negative classification is not enough. You need finer signals ("praised" vs "cited as a counterexample" vs "mentioned neutrally").
+- **Actionability**: telling a user "your brand performs poorly on AI X" is useless. You need to tell them **why**, and **what to change**.
+
+## What I worked on
+
+- Multi-source ingestion + dedup pipeline (SimHash + content hash + time-window heuristics).
+- Embedding LLMs into the analysis pipeline — not as a chatbot, but as "an intern who reads articles": classify, extract, judge tone.
+- Recommendation generator that maps analysis results to concrete SEO / content actions.
+
+## Status
+
+Active. This category (SEO in the AI era) is moving fast — the platform keeps adding sources and capabilities.

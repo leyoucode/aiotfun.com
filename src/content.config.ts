@@ -7,14 +7,31 @@ const articles = defineCollection({
     title: z.string(),
     description: z.string(),
     date: z.string(),
-    cover: z.string(),
-    category: z.enum(['products', 'boards', 'builds', 'models', 'signals', 'weekly']),
-    agent: z.enum(['scout', 'editor', 'writer']),
+    cover: z.string().optional(),
     readingTime: z.number(),
     lang: z.enum(['en', 'zh']),
-    featured: z.boolean().optional().default(false),
-    tags: z.array(z.string()),
+    pinned: z.boolean().optional().default(false),
+    tags: z.array(z.string()).default([]),
   }),
 });
 
-export const collections = { articles };
+const projects = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/content/projects' }),
+  schema: z.object({
+    title: z.string(),
+    oneLiner: z.string(),
+    status: z.enum(['active', 'shipped', 'open-source', 'paused', 'archived']),
+    techStack: z.array(z.string()).default([]),
+    cover: z.string().optional(),
+    startDate: z.string(),
+    endDate: z.string().optional(),
+    repoUrl: z.string().optional(),
+    liveUrl: z.string().optional(),
+    featured: z.boolean().optional().default(false),
+    lang: z.enum(['en', 'zh']),
+    tags: z.array(z.string()).default([]),
+    order: z.number().optional(),
+  }),
+});
+
+export const collections = { articles, projects };

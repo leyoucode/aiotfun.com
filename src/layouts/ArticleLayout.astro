@@ -1,6 +1,5 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import CategoryTag from '../components/CategoryTag.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import GiscusComments from '../components/GiscusComments.astro';
@@ -18,29 +17,19 @@ const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 const switchUrl = getLanguageSwitchUrl(Astro.url);
 const related = await getRelatedArticles(article, locale);
-const categoryLabel = t.category[article.category as keyof typeof t.category];
-const backHref = localePath(`/${article.category}/`, locale);
+const backHref = localePath('/writing/', locale);
 ---
 
 <BaseLayout title={article.title} description={article.description} image={article.cover}>
   <article class="mx-auto max-w-content px-4 md:px-6 py-8" data-pagefind-body>
-    <!-- 返回分类 -->
     <a href={backHref} class="inline-flex items-center gap-1 text-sm text-text-muted hover:text-accent transition-colors mb-6">
-      <span>←</span>
-      <span>{(t as any).article_detail.back_to_category.replace('{category}', categoryLabel)}</span>
+      <span>{(t as any).article_detail.back}</span>
     </a>
 
-    <!-- 标签行 -->
-    <div class="mb-4">
-      <CategoryTag category={article.category} />
-    </div>
-
-    <!-- 大标题 -->
     <h1 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-text mb-6" data-pagefind-meta="title">
       {article.title}
     </h1>
 
-    <!-- 元信息行 -->
     <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-text-muted font-mono mb-8">
       <span>{(t as any).article_detail.published} {article.date} · {(t as any).article_detail.reading_time.replace('{time}', String(article.readingTime))}</span>
       <a href={switchUrl} class="text-accent hover:underline">
@@ -48,50 +37,49 @@ const backHref = localePath(`/${article.category}/`, locale);
       </a>
     </div>
 
-    <!-- 封面大图 -->
-    <div class="mb-10 overflow-hidden rounded-lg aspect-[2/1]">
-      <OptimizedImage
-        src={article.cover}
-        alt={article.title}
-        class="w-full h-full object-cover"
-        widths={[600, 800, 1200, 1600]}
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-        loading="eager"
-        fetchpriority="high"
-      />
-    </div>
+    {article.cover && (
+      <div class="mb-10 overflow-hidden rounded-lg aspect-[2/1]">
+        <OptimizedImage
+          src={article.cover}
+          alt={article.title}
+          class="w-full h-full object-cover"
+          widths={[600, 800, 1200, 1600]}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    )}
 
-    <!-- 正文 -->
     <div class="relative mx-auto max-w-prose">
       <div class="absolute left-full top-0 ml-8 hidden xl:block w-52">
         <TableOfContents />
       </div>
       <div class="article-body"><slot /></div>
 
-      <!-- 标签云 -->
-      <div class="mt-12 pt-8 border-t border-border">
-        <h3 class="text-sm font-mono text-text-muted mb-3">{(t as any).article_detail.tags}</h3>
-        <div class="flex flex-wrap gap-2">
-          {article.tags.map((tag) => (
-            <a href={localePath(`/tags/${tag}/`, locale)} class="inline-block rounded-full border border-border bg-bg-alt px-3 py-1 text-sm text-text-muted hover:text-accent hover:border-accent transition-colors">
-              #{tag}
-            </a>
-          ))}
+      {article.tags.length > 0 && (
+        <div class="mt-12 pt-8 border-t border-border">
+          <h3 class="text-sm font-mono text-text-muted mb-3">{(t as any).article_detail.tags}</h3>
+          <div class="flex flex-wrap gap-2">
+            {article.tags.map((tag) => (
+              <span class="inline-block rounded-full border border-border bg-card-bg px-3 py-1 text-sm text-text-muted">
+                #{tag}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      <!-- 评论区 -->
       <div class="mt-12 pt-8 border-t border-border" data-pagefind-ignore>
         <h3 class="text-sm font-mono text-text-muted mb-3">{(t as any).article_detail.comments}</h3>
         <GiscusComments locale={locale} />
       </div>
     </div>
 
-    <!-- 相关文章 -->
     {related.length > 0 && (
       <section class="mt-16" data-pagefind-ignore>
         <h2 class="font-display text-2xl font-bold text-text mb-6">
-          {(t as any).article_detail.related_articles}
+          {(t as any).article_detail.related}
         </h2>
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((r) => (

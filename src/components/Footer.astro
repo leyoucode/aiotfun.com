@@ -3,31 +3,26 @@ import { getLocaleFromUrl, useTranslations, localePath } from '../utils/i18n';
 
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
+const year = new Date().getFullYear();
+const rssHref = locale === 'zh' ? '/zh/rss.xml' : '/rss.xml';
 ---
 
 <footer class="border-t border-border bg-bg py-8">
   <div class="mx-auto flex max-w-content flex-col items-center justify-between gap-4 px-4 sm:flex-row md:px-6">
-    <!-- Logo -->
     <a href={localePath('/', locale)} class="font-body text-lg font-bold tracking-tight">
       <span class="text-text">AIoT</span><span class="text-accent">Fun</span>
     </a>
 
-    <!-- 链接 + 状态 -->
     <div class="flex flex-wrap justify-center items-center gap-4 font-body text-xs text-text-muted">
-      <a href={locale === 'zh' ? '/zh/rss.xml' : '/rss.xml'} class="transition-colors hover:text-accent">RSS</a>
+      <a href="https://github.com/leyoucode" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-accent">GitHub</a>
       <span class="text-border">·</span>
-      <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-accent">GitHub</a>
+      <a href="https://x.com/notifywei" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-accent">X</a>
       <span class="text-border">·</span>
-      <span class="flex items-center gap-1.5">
-        {t.footer.powered_by}
-        <span class="relative flex h-2 w-2">
-          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
-          <span class="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
-        </span>
-      </span>
+      <a href="mailto:notifywei@gmail.com" class="transition-colors hover:text-accent">Email</a>
+      <span class="text-border">·</span>
+      <a href={rssHref} class="transition-colors hover:text-accent">RSS</a>
     </div>
 
-    <!-- 版权 -->
-    <p class="font-body text-xs text-text-muted">{t.footer.copyright}</p>
+    <p class="font-body text-xs text-text-muted">{t.footer.copyright.replace('{year}', String(year))}</p>
   </div>
 </footer>

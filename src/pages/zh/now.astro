@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../utils/i18n';
+
+const locale = 'zh';
+const t = useTranslations(locale);
+const now = (t as any).now;
+
+const lastUpdated = '2026-04-29';
+---
+
+<BaseLayout title={`${now.title} — ${t.site.name}`} description={now.subtitle}>
+  <div class="mx-auto max-w-content px-4 md:px-6 py-12 md:py-16">
+    <div class="max-w-prose">
+      <span class="font-mono text-xs uppercase tracking-wider text-text-muted">{now.title}</span>
+      <h1 class="mt-2 font-display text-3xl md:text-5xl font-bold text-text leading-tight">{now.subtitle}</h1>
+      <p class="mt-3 font-mono text-xs text-text-muted">最近更新：{lastUpdated}</p>
+
+      <div class="mt-10 article-body">
+        <h2>当前在做</h2>
+        <ul>
+          <li>把 <strong>aiotfun.com</strong> 从一个 AI 自动聚合的资讯站，改造成我自己的独立开发者站点 —— 写项目、写笔记、放一些没做完的实验。</li>
+          <li>一个基于 <strong>ESP32 的 AI 闹钟</strong> —— 支持语音交互和场景化的唤醒流程。</li>
+          <li>优化 GEO 平台的品牌提及链路 —— 搜索信源接入、去重、情感打分。</li>
+        </ul>
+
+        <h2>最近在想</h2>
+        <ul>
+          <li>一个真正能用的本地 Agent 能小到什么程度 —— 用 1B 以内的模型跑普通硬件。</li>
+          <li>"边缘 AI"哪些是炒作，哪些是真有价值的端侧推理。</li>
+          <li>独立开发者的"门面"，到底应该是项目列表，还是故事合集。</li>
+        </ul>
+
+        <h2>最近在看</h2>
+        <ul>
+          <li>每天早上的 Hacker News。</li>
+          <li>Anthropic 和 Hugging Face 的发布说明。</li>
+          <li>昨天某个有意思的人在推上随手发的东西。</li>
+        </ul>
+      </div>
+
+      <p class="mt-10 font-mono text-xs text-text-muted">{now.footer_note}</p>
+    </div>
+  </div>
+</BaseLayout>

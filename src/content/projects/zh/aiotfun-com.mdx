@@ -1,0 +1,45 @@
+---
+title: "AIoTFun.com（这个站）"
+oneLiner: "我自己的折腾园 —— 项目、写作、Now 页，一站全收。"
+status: "active"
+techStack: ["Astro 5", "TypeScript", "Tailwind CSS", "MDX", "Pagefind", "Cloudflare Pages"]
+cover: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&h=450&fit=crop"
+startDate: "2025-12"
+repoUrl: "https://github.com/leyoucode/aiotfun.com"
+liveUrl: "https://aiotfun.com"
+featured: true
+order: 1
+lang: "zh"
+tags: ["astro", "tailwind", "indie-hacker", "personal-site"]
+---
+
+## 为什么做这个
+
+这个站本来是个"AI 自动运营的 AIoT 资讯发现站"——爬 RSS、AI 评分、自动出文。跑了一段时间之后，我意识到自己更想要的不是又一个聚合站，而是一个能放下我所有项目和折腾笔记的地方。所以就改了。
+
+## 技术决策
+
+- **Astro 5 SSG**：所有页面静态化，部署到 Cloudflare Pages，响应快、CDN 全球分发。
+- **MDX content collections**：写作和项目都用 MDX，frontmatter schema 用 Zod 校验。
+- **Pagefind 全站搜索**：build 时生成索引，运行时按需懒加载，不依赖任何后端。
+- **双语 i18n**：路径前缀 `/en/` `/zh/`，每个 collection 用 `lang` 字段区分；UI 文案双语强制，文章可单语写。
+- **暗色模式**：Tailwind `darkMode: 'class'` + CSS 变量（RGB 空格分隔）支持透明度修饰符；`localStorage` 持久化，inline script 防 FOUC。
+- **View Transitions**：用 `astro:transitions/ClientRouter` 做 SPA 风格的页面切换。
+- **Giscus 评论**：底层用 GitHub Discussions，免维护、跟随暗色主题。
+
+## 设计取舍
+
+- **无后端**：评论、搜索、订阅都用第三方或 build-time，能 0 成本运行。
+- **不做 Newsletter / 分析后台**：招聘背书场景下，引流和订阅没意义。
+- **Category → Tags**：从原本 6 大固定 category（products/boards/...）改成扁平 tags，更适合个人写作的多样性。
+- **不强制每篇双译**：个人写作量有限，强制双译会拖延发布；改为单语即可，UI/About/Now 必须双语。
+
+## 现在的状态
+
+第二次大重构刚完成。骨架在，第一批种子内容（项目骨架 + 这篇）已经写好；后面持续添加每个项目的真实 case study 和折腾笔记。
+
+## 链接
+
+- 仓库：[github.com/leyoucode/aiotfun.com](https://github.com/leyoucode/aiotfun.com)
+- 上线：[aiotfun.com](https://aiotfun.com)
+- 第一篇正式开篇：[把 aiotfun.com 改造成个人站的几个想法](/zh/writing/why-rebuild-aiotfun/)

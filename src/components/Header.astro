@@ -7,12 +7,9 @@ const switchUrl = getLanguageSwitchUrl(Astro.url);
 const currentPath = Astro.url.pathname;
 
 const navItems = [
-  { key: 'home', href: localePath('/', locale) },
-  { key: 'products', href: localePath('/products/', locale) },
-  { key: 'boards', href: localePath('/boards/', locale) },
-  { key: 'builds', href: localePath('/builds/', locale) },
-  { key: 'models', href: localePath('/models/', locale) },
-  { key: 'signals', href: localePath('/signals/', locale) },
+  { key: 'projects', href: localePath('/projects/', locale) },
+  { key: 'writing', href: localePath('/writing/', locale) },
+  { key: 'now', href: localePath('/now/', locale) },
   { key: 'about', href: localePath('/about/', locale) },
 ] as const;
 ---
@@ -28,10 +25,8 @@ const navItems = [
     <!-- 桌面端导航 -->
     <nav class="hidden items-center gap-4 lg:flex lg:gap-6">
       {navItems.map((item) => {
-        const label = t.nav[item.key];
-        const isActive = item.key === 'home'
-          ? currentPath.replace(/\/$/, '') === item.href.replace(/\/$/, '')
-          : currentPath.startsWith(item.href.replace(/\/$/, ''));
+        const label = t.nav[item.key as keyof typeof t.nav];
+        const isActive = currentPath.startsWith(item.href.replace(/\/$/, ''));
         return (
           <a
             href={item.href}
@@ -91,10 +86,8 @@ const navItems = [
     class="hidden border-t border-border bg-bg px-4 pb-4 pt-2 lg:hidden"
   >
     {navItems.map((item) => {
-      const label = t.nav[item.key];
-      const isActive = item.key === 'home'
-        ? currentPath.replace(/\/$/, '') === item.href.replace(/\/$/, '')
-        : currentPath.startsWith(item.href.replace(/\/$/, ''));
+      const label = t.nav[item.key as keyof typeof t.nav];
+      const isActive = currentPath.startsWith(item.href.replace(/\/$/, ''));
       return (
         <a
           href={item.href}

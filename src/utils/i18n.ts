@@ -12,7 +12,7 @@ export function getLocaleFromUrl(url: URL): Locale {
   return 'en';
 }
 
-/** 获取翻译函数 */
+/** 获取翻译对象 */
 export function useTranslations(locale: Locale) {
   return translations[locale];
 }
@@ -35,30 +35,15 @@ export function localePath(path: string, locale: Locale): string {
   return `/${locale}${cleanPath}`;
 }
 
-/** 分类色映射 */
-const categoryColors: Record<string, string> = {
-  products: '#DC6843',
-  boards: '#CA8A04',
-  builds: '#0D9488',
-  models: '#7C3AED',
-  signals: '#6B7280',
-  weekly: '#10B981',
+/** 项目状态对应的颜色（CSS 颜色值） */
+const statusColors: Record<string, string> = {
+  active: '#10B981',
+  shipped: '#6366F1',
+  'open-source': '#0D9488',
+  paused: '#CA8A04',
+  archived: '#6B7280',
 };
 
-/** 获取分类对应的颜色值 */
-export function getCategoryColor(category: string): string {
-  return categoryColors[category] || '#6B7280';
-}
-
-/** 分类对应的 Tailwind 类名 */
-export function getCategoryColorClass(category: string): string {
-  const map: Record<string, string> = {
-    products: 'bg-products',
-    boards: 'bg-boards',
-    builds: 'bg-builds',
-    models: 'bg-models',
-    signals: 'bg-signals',
-    weekly: 'bg-weekly',
-  };
-  return map[category] || 'bg-signals';
+export function getStatusColor(status: string): string {
+  return statusColors[status] || '#6B7280';
 }

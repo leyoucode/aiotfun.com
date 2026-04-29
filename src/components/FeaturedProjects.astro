@@ -1,0 +1,26 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import { getLocaleFromUrl, useTranslations, localePath } from '../utils/i18n';
+import { getFeaturedProjects } from '../utils/projects';
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const featured = await getFeaturedProjects(locale, 4);
+---
+
+<section class="mx-auto max-w-content px-4 py-8 md:px-6 md:py-12">
+  <div class="mb-6 flex items-baseline justify-between">
+    <h2 class="font-display text-2xl md:text-3xl font-bold text-text">{t.home.featured_projects}</h2>
+    <a href={localePath('/projects/', locale)} class="font-body text-sm text-text-muted hover:text-accent transition-colors">
+      {t.home.all_projects}
+    </a>
+  </div>
+
+  {featured.length > 0 ? (
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {featured.map((p) => <ProjectCard project={p} variant="featured" />)}
+    </div>
+  ) : (
+    <p class="text-text-muted">{t.home.no_projects}</p>
+  )}
+</section>

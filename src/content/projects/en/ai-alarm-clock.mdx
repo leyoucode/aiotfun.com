@@ -1,0 +1,30 @@
+---
+title: "AI Smart Alarm Clock"
+oneLiner: "ESP32 + LLM. A clock that talks back, and wakes you according to context."
+status: "active"
+techStack: ["ESP32", "LLM", "Voice"]
+cover: "https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=800&h=450&fit=crop"
+startDate: "2026-01"
+featured: true
+order: 2
+lang: "en"
+tags: ["esp32", "ai", "voice", "iot", "hardware"]
+---
+
+## What it is
+
+Not another smart speaker. A **purpose-built piece of hardware for the act of waking up** — except the wake rules come from a conversation. You tell it last night, "Wake me at 7, but 15 min earlier if it rains," and the next morning it checks the weather and pulls you out of bed at 6:45.
+
+## Why I am building it
+
+Off-the-shelf smart alarms either let you set a fixed time or force you into someone's ecosystem (Mi / Alexa / Google). What I want is **conversational, local-first, no backend lock-in**: you state your intent, it understands, no wake-word, no app.
+
+## Open problems
+
+- **Latency**: from end-of-speech to first TTS sound, sub-1s.
+- **Multi-user**: same device recognising different voices and keeping separate schedules.
+- **Power**: deep sleep when idle.
+
+## Status
+
+The hardware prototype is on the desk and running. The software is still in flux. I will open-source the firmware once the architecture stabilises.

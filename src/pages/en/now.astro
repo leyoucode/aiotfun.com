@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../utils/i18n';
+
+const locale = 'en';
+const t = useTranslations(locale);
+const now = (t as any).now;
+
+// Manual updates — bump the lastUpdated date when you edit this content.
+const lastUpdated = '2026-04-29';
+---
+
+<BaseLayout title={`${now.title} — ${t.site.name}`} description={now.subtitle}>
+  <div class="mx-auto max-w-content px-4 md:px-6 py-12 md:py-16">
+    <div class="max-w-prose">
+      <span class="font-mono text-xs uppercase tracking-wider text-text-muted">{now.title}</span>
+      <h1 class="mt-2 font-display text-3xl md:text-5xl font-bold text-text leading-tight">{now.subtitle}</h1>
+      <p class="mt-3 font-mono text-xs text-text-muted">Last updated: {lastUpdated}</p>
+
+      <div class="mt-10 article-body">
+        <h2>Working on</h2>
+        <ul>
+          <li>Reshaping <strong>aiotfun.com</strong> from an AI-curated news site into my personal indie hacker site — projects, notes, and the occasional half-finished experiment.</li>
+          <li>An <strong>ESP32-based AI alarm clock</strong> with voice interaction and contextual wake routines.</li>
+          <li>Improving the GEO platform's brand-mention pipeline — search-source ingestion, dedup, and sentiment scoring.</li>
+        </ul>
+
+        <h2>Thinking about</h2>
+        <ul>
+          <li>How small a useful local-first agent can be — sub-1B-param models on commodity hardware.</li>
+          <li>Where the boundary really is between "edge AI" hype and useful on-device inference.</li>
+          <li>Whether the right shape for an indie maker's portfolio is a list of projects or a list of stories.</li>
+        </ul>
+
+        <h2>Reading</h2>
+        <ul>
+          <li>Hacker News, every morning.</li>
+          <li>Anthropic and Hugging Face release notes.</li>
+          <li>Whatever someone interesting tweeted yesterday.</li>
+        </ul>
+      </div>
+
+      <p class="mt-10 font-mono text-xs text-text-muted">{now.footer_note}</p>
+    </div>
+  </div>
+</BaseLayout>

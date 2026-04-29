@@ -1,0 +1,31 @@
+---
+title: "Cloud Print POS"
+oneLiner: "Remote ticket printing for small merchants — Meituan / Eleme orders, auto-printed at the storefront."
+status: "shipped"
+techStack: ["Go", "ESC/POS", "MQTT", "MySQL", "Aliyun"]
+cover: "https://images.unsplash.com/photo-1556742517-d8c7f9d4faf6?w=800&h=450&fit=crop"
+startDate: "2024"
+featured: true
+order: 3
+lang: "en"
+tags: ["pos", "iot", "saas", "openapi"]
+---
+
+## What it does
+
+Food-delivery platforms send orders that need to print as kitchen / counter receipts. But merchants run mismatched printer hardware on flaky networks (NAT, 4G, drifting Wi-Fi). Cloud Print POS does one boring thing well: **a cheap cloud-connected printer that just works — when an order lands, the ticket comes out**.
+
+## Key design
+
+- **Transport**: long-lived MQTT keeps a downstream channel open. Orders are pushed, not polled — better reliability and lower latency.
+- **Templates**: each platform's ticket layout (Meituan / Eleme / merchant-built) differs. Templates are configurable so adding a new platform is a config change, not a code release.
+- **Degradation**: when the device drops offline, orders queue locally and replay on reconnect; backend deduplication prevents double prints.
+
+## Lessons
+
+- Real merchant networks are worse than you think. "Connects" and "stays connected for an entire day" are very different problems.
+- The real value of a template system is not user-facing customisation — it is decoupling business change from code change. New platform = new config, not a release.
+
+## Status
+
+Live in production, serving a population of merchants.

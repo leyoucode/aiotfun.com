@@ -9,7 +9,7 @@ interface Props {
   preloadImage?: string;
 }
 
-const { title, description = 'Discover Fun Things in AI & IoT', image, preloadImage } = Astro.props;
+const { title, description = "Wei Liu's AI + IoT playground", image, preloadImage } = Astro.props;
 const locale = getLocaleFromUrl(Astro.url);
 const altLocale = locale === 'en' ? 'zh' : 'en';
 const hasLocalePrefix = Astro.url.pathname.startsWith(`/${locale}/`) || Astro.url.pathname === `/${locale}`;

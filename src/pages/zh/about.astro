@@ -1,141 +1,86 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { useTranslations } from '../../utils/i18n';
-import { agentProfiles } from '../../data/mockAgents';
+import { useTranslations, localePath } from '../../utils/i18n';
 
 const locale = 'zh';
 const t = useTranslations(locale);
 const about = (t as any).about;
 
-const statusColors = {
-  online: 'bg-green-500',
-  busy: 'bg-yellow-500',
-  idle: 'bg-gray-400',
-};
-const statusLabels = {
-  online: '在线',
-  busy: '忙碌',
-  idle: '空闲',
-};
+const stack = [
+  { group: '编程语言', items: ['TypeScript', 'Python', 'Go', 'C', 'MicroPython'] },
+  { group: '前端', items: ['Astro', 'React', 'Tailwind', 'Vite'] },
+  { group: 'AI / LLM', items: ['Anthropic API', 'OpenAI API', 'Ollama', '函数调用 Agent'] },
+  { group: '硬件', items: ['ESP32', 'ESP32-S3', 'Raspberry Pi', 'BLE / Wi-Fi / LoRa'] },
+  { group: '后端 / 基础设施', items: ['Cloudflare Workers', 'SQLite', 'PostgreSQL', 'Docker', '阿里云'] },
+];
 
-const workflowSteps = [
-  { icon: '●', color: '#10B981', label: '发现', agent: 'Scout', desc: about.workflow_steps.discover },
-  { icon: '▲', color: '#6366F1', label: '策划', agent: 'Editor', desc: about.workflow_steps.curate },
-  { icon: '◆', color: '#F59E0B', label: '撰写', agent: 'Writer', desc: about.workflow_steps.write },
-  { icon: '■', color: '#EC4899', label: '发布', agent: 'Publisher', desc: about.workflow_steps.publish },
+const projectTimeline = [
+  { year: '2026', items: ['AIoTFun.com — 你正在看的这个站', 'AI 智能闹钟 — 基于 ESP32 的语音闹钟'] },
+  { year: '2025', items: ['GEO 舆情平台 — 搜索 / 情感分析', 'MASF AI — 语音 / 翻译 / 文生图平台'] },
+  { year: '2024 及更早', items: ['云打印 POS', '吉时达物流', '美团网关转发', '3D 打印建模工具', '运动相机固件'] },
 ];
 ---
 
-<BaseLayout title={about.title} description={about.subtitle}>
-  <div class="mx-auto max-w-content px-4 md:px-6 py-8">
+<BaseLayout title={`${about.title} — ${t.site.name}`} description={t.site.description}>
+  <div class="mx-auto max-w-content px-4 md:px-6 py-12 md:py-16">
 
-    <!-- Hero -->
-    <div class="text-center mb-16 pt-8">
-      <h1 class="font-display text-4xl md:text-5xl font-bold text-text mb-4">{about.title}</h1>
-      <p class="text-lg text-text-muted max-w-2xl mx-auto">{about.subtitle}</p>
+    <div class="max-w-prose">
+      <span class="font-mono text-xs uppercase tracking-wider text-text-muted">{about.title}</span>
+      <h1 class="mt-2 font-display text-3xl md:text-5xl font-bold text-text leading-tight">{about.intro_title}</h1>
+      <div class="mt-6 space-y-4 text-text/90 leading-relaxed text-lg">
+        <p>{about.intro_p1}</p>
+        <p>{about.intro_p2}</p>
+        <p>{about.intro_p3}</p>
+      </div>
     </div>
 
-    <!-- 品牌故事 -->
-    <section class="mb-20 max-w-prose mx-auto">
-      <div class="flex justify-center mb-8">
-        <picture>
-          <source srcset="/logo-512.webp" type="image/webp" />
-          <img src="/logo-512.png" alt="AIoTFun Logo" class="h-32 w-32 rounded-2xl" loading="lazy" />
-        </picture>
-      </div>
-      <h2 class="font-display text-2xl md:text-3xl font-bold text-text mb-6">{about.story_title}</h2>
-      <div class="space-y-4 text-text/90 leading-relaxed text-lg">
-        <p>{about.story_p1}</p>
-        <p>{about.story_p2}</p>
-        <p>{about.story_p3}</p>
-      </div>
-    </section>
-
-    <!-- 认识团队 -->
-    <section class="mb-20">
-      <div class="text-center mb-10">
-        <h2 class="font-display text-2xl md:text-3xl font-bold text-text mb-2">{about.crew_title}</h2>
-        <p class="text-text-muted">{about.crew_subtitle}</p>
-      </div>
-      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {agentProfiles.map((agent) => (
-          <div class="rounded-card border border-border bg-card-bg p-6 text-center shadow-card hover:shadow-md transition-shadow">
-            <!-- 几何头像 -->
-            <div
-              class="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full text-4xl"
-              style={`background: ${agent.color}20; color: ${agent.color}`}
-            >
-              {agent.icon}
-            </div>
-            <!-- 名称 + 角色 -->
-            <h3 class="font-body text-lg font-bold text-text">{agent.name}</h3>
-            <p class="mt-1 text-sm text-text-muted">{agent.role[locale]}</p>
-            <!-- 简介 -->
-            <p class="mt-3 text-sm text-text/80 leading-relaxed">{agent.bio[locale]}</p>
-            <!-- 在线状态 -->
-            <div class="mt-4 inline-flex items-center gap-1.5">
-              <span class={`inline-block h-2 w-2 rounded-full ${statusColors[agent.status]}`}></span>
-              <span class="font-mono text-xs text-text-muted">{statusLabels[agent.status]}</span>
-            </div>
+    <section class="mt-16 max-w-prose">
+      <h2 class="font-display text-2xl font-bold text-text mb-6">{about.stack_title}</h2>
+      <dl class="space-y-4">
+        {stack.map((row) => (
+          <div class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-6">
+            <dt class="shrink-0 font-mono text-xs uppercase tracking-wider text-text-muted sm:w-32">{row.group}</dt>
+            <dd class="flex flex-wrap gap-2">
+              {row.items.map((item) => (
+                <span class="rounded-full border border-border bg-card-bg px-3 py-1 font-mono text-xs text-text-muted">{item}</span>
+              ))}
+            </dd>
           </div>
         ))}
-      </div>
+      </dl>
     </section>
 
-    <!-- 工作流 -->
-    <section class="mb-20">
-      <div class="text-center mb-10">
-        <h2 class="font-display text-2xl md:text-3xl font-bold text-text mb-2">{about.workflow_title}</h2>
-        <p class="text-text-muted">{about.workflow_desc}</p>
-      </div>
-      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 pt-4">
-        {workflowSteps.map((step, i) => (
-          <div class="relative rounded-card border border-border bg-card-bg p-6 shadow-card">
-            <!-- 步骤编号 -->
-            <div class="absolute -top-3 left-4 rounded-full bg-bg px-2 font-mono text-xs text-text-muted">
-              第 {i + 1} 步
-            </div>
-            <!-- 图标 -->
-            <div class="mb-3 text-2xl" style={`color: ${step.color}`}>{step.icon}</div>
-            <h3 class="font-body font-bold text-text mb-1">{step.label}</h3>
-            <p class="font-mono text-xs text-text-muted mb-2">{step.agent}</p>
-            <p class="text-sm text-text/80 leading-relaxed">{step.desc}</p>
-            <!-- 箭头连接线（非最后一步） -->
-            {i < workflowSteps.length - 1 && (
-              <div class="absolute -right-3 top-1/2 hidden text-text-muted lg:block">→</div>
-            )}
-          </div>
+    <section class="mt-16 max-w-prose">
+      <h2 class="font-display text-2xl font-bold text-text mb-6">项目时间线</h2>
+      <ol class="space-y-6 border-l border-border pl-6">
+        {projectTimeline.map((row) => (
+          <li>
+            <div class="font-mono text-xs uppercase tracking-wider text-text-muted">{row.year}</div>
+            <ul class="mt-1 space-y-1">
+              {row.items.map((item) => <li class="text-text/90">{item}</li>)}
+            </ul>
+          </li>
         ))}
-      </div>
+      </ol>
+      <a href={localePath('/projects/', locale)} class="mt-6 inline-block font-body text-sm text-accent hover:underline">
+        查看所有项目 →
+      </a>
     </section>
 
-    <!-- 创始人 -->
-    <section class="mb-20 max-w-prose mx-auto">
-      <h2 class="font-display text-2xl md:text-3xl font-bold text-text mb-6">{about.founder_title}</h2>
-      <blockquote class="border-l-4 border-accent pl-4 py-2 text-text/80 text-lg leading-relaxed mb-4">
-        {about.founder_bio}
-      </blockquote>
+    <section class="mt-16 max-w-prose">
+      <h2 class="font-display text-2xl font-bold text-text mb-3">{about.now_title}</h2>
+      <p class="text-text/90 leading-relaxed">
+        实时更新见 <a href={localePath('/now/', locale)} class="text-accent hover:underline">近况页</a>。
+      </p>
     </section>
 
-    <!-- 联系 -->
-    <section class="text-center pb-8">
+    <section class="mt-16 max-w-prose">
       <h2 class="font-display text-2xl font-bold text-text mb-3">{about.contact_title}</h2>
-      <p class="text-text-muted mb-6">{about.contact_desc}</p>
-      <div class="flex justify-center gap-4">
-        <a
-          href="https://github.com/aiotfun"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 rounded-full border border-border px-6 py-2 text-sm font-body text-text-muted hover:border-accent hover:text-accent transition-colors"
-        >
-          GitHub
-        </a>
-        <a
-          href="mailto:hello@aiotfun.com"
-          class="inline-flex items-center gap-2 rounded-full border border-border px-6 py-2 text-sm font-body text-text-muted hover:border-accent hover:text-accent transition-colors"
-        >
-          Email
-        </a>
+      <p class="text-text/90 leading-relaxed mb-4">{about.contact_desc}</p>
+      <div class="flex flex-wrap gap-3 font-mono text-sm">
+        <a href="mailto:notifywei@gmail.com" class="rounded-full border border-border bg-card-bg px-4 py-1.5 text-text-muted hover:border-accent hover:text-accent transition-colors">Email</a>
+        <a href="https://github.com/leyoucode" target="_blank" rel="noopener noreferrer" class="rounded-full border border-border bg-card-bg px-4 py-1.5 text-text-muted hover:border-accent hover:text-accent transition-colors">GitHub</a>
+        <a href="https://x.com/notifywei" target="_blank" rel="noopener noreferrer" class="rounded-full border border-border bg-card-bg px-4 py-1.5 text-text-muted hover:border-accent hover:text-accent transition-colors">X</a>
       </div>
     </section>
 

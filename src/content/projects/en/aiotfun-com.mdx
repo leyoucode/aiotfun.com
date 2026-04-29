@@ -1,0 +1,45 @@
+---
+title: "AIoTFun.com (this site)"
+oneLiner: "My playground — projects, writing, and a Now page, all in one place."
+status: "active"
+techStack: ["Astro 5", "TypeScript", "Tailwind CSS", "MDX", "Pagefind", "Cloudflare Pages"]
+cover: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&h=450&fit=crop"
+startDate: "2025-12"
+repoUrl: "https://github.com/leyoucode/aiotfun.com"
+liveUrl: "https://aiotfun.com"
+featured: true
+order: 1
+lang: "en"
+tags: ["astro", "tailwind", "indie-hacker", "personal-site"]
+---
+
+## Why I built it
+
+This site started life as an "AI-curated AIoT news magazine" — RSS scraping, AI scoring, automated writeups. After a while I realised what I actually wanted was not another aggregator but a single home for all my projects and tinkering notes. So I rebuilt it.
+
+## Technical decisions
+
+- **Astro 5 SSG**: every page rendered at build time, deployed to Cloudflare Pages — fast first paint, global CDN.
+- **MDX content collections**: writing and projects are both MDX with Zod-validated frontmatter.
+- **Pagefind**: search index built at build time, lazy-loaded UI at runtime — no server.
+- **Bilingual i18n**: `/en/` `/zh/` path prefixes, each collection entry tagged with `lang`. UI is fully bilingual; articles can be written in only one language.
+- **Dark mode**: Tailwind `darkMode: 'class'` over CSS variables (RGB triplets) so opacity modifiers still work; `localStorage` persistence; inline script prevents FOUC.
+- **View Transitions**: `astro:transitions/ClientRouter` for SPA-style navigation.
+- **Giscus comments**: backed by GitHub Discussions — zero maintenance, theme-aware.
+
+## Trade-offs
+
+- **No backend**: comments, search, subscriptions all run on third-party services or at build time. Costs effectively zero.
+- **No newsletter, no analytics dashboard**: the goal is hiring credibility, not growth metrics.
+- **Category → tags**: the original six fixed categories (products/boards/builds/...) were swapped for flat tags — better fit for a personal writing pace.
+- **No mandatory bilingual articles**: forced double-translation slows publishing too much. UI / About / Now stay bilingual; individual posts can be one language.
+
+## Where it is now
+
+Just finished the second major rebuild. The skeleton is in place; first batch of project stubs and this entry are live. Next up: filling in real case studies for each project and writing tinkering notes as they come.
+
+## Links
+
+- Repository: [github.com/leyoucode/aiotfun.com](https://github.com/leyoucode/aiotfun.com)
+- Live: [aiotfun.com](https://aiotfun.com)
+- Opening post: [Why I rebuilt aiotfun.com as a personal site](/en/writing/why-rebuild-aiotfun/)

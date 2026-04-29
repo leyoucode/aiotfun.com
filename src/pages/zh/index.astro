@@ -1,26 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AgentStatusBar from '../../components/AgentStatusBar.astro';
-import HeroSection from '../../components/HeroSection.astro';
-import DiscoveryStream from '../../components/DiscoveryStream.astro';
-import AiotWeekly from '../../components/AiotWeekly.astro';
-import Newsletter from '../../components/Newsletter.astro';
-import { getFeaturedArticles } from '../../utils/articles';
-import { optimizeImageUrl } from '../../utils/image';
+import PersonalHero from '../../components/PersonalHero.astro';
+import FeaturedProjects from '../../components/FeaturedProjects.astro';
+import RecentWriting from '../../components/RecentWriting.astro';
+import { useTranslations } from '../../utils/i18n';
 
-const featured = await getFeaturedArticles('zh');
-const heroImage = featured[0]?.cover ? optimizeImageUrl(featured[0].cover, 1200, 75) : undefined;
+const t = useTranslations('zh');
 ---
 
-<BaseLayout title="AIoTFun — 发现 AI + IoT 里那些有趣的东西" preloadImage={heroImage}>
-  <AgentStatusBar />
-  <HeroSection />
-  <DiscoveryStream />
-
-  <!-- AIoT 周刊 -->
-  <section class="mx-auto max-w-content px-4 py-8 md:px-6">
-    <AiotWeekly />
-  </section>
-
-  <Newsletter />
+<BaseLayout title={`${t.site.name} — ${t.site.tagline}`} description={t.site.description}>
+  <PersonalHero />
+  <FeaturedProjects />
+  <RecentWriting />
 </BaseLayout>

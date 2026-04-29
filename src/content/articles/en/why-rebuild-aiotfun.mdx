@@ -1,0 +1,44 @@
+---
+title: "Why I rebuilt aiotfun.com as a personal site"
+description: "An AI-curated news magazine — why throw it away and rebuild as a personal site?"
+date: "2026-04-29"
+readingTime: 5
+lang: "en"
+pinned: true
+tags: ["meta", "indie-hacker", "personal-site"]
+---
+
+The first version of aiotfun.com was an **AI-agent-operated AIoT news magazine** — RSS scraping, automated scoring, automated writeups, automated publishing. The skeleton was fun. I did not stay on that path. Here is why I rebuilt it.
+
+## What was wrong with the news-site path
+
+Not a technical problem. Technically it ran fine: 4–6 AI-summarised articles a day, dedup and scoring pipelines holding up. But the more it ran, the more wrong it felt:
+
+- **There is no "me" in it**. Everything aggregated was someone else's discovery; I was the rewriter. A reader — or a recruiter — finishes a piece and has no idea who wrote it.
+- **The ceiling on AI-written content is low**. AI can summarise; it cannot write "I spent three nights debugging this and found out that ESP32 pin cannot be wired that way." The latter is the content that actually matters.
+- **News has a short half-life**. Today's "huge launch" is dead in three months. A debugging note can still rank on Google two years later.
+
+## What I actually wanted
+
+Once I sat with it, the answer was clear: I did not want another content site. I wanted **a place that holds all my projects and tinkering**.
+
+- I have built 8+ AI/IoT projects. They are scattered across GitHub and effectively invisible to the outside world. That is a waste.
+- I keep hitting interesting bugs in the middle of the night. They live in private notes; nobody else sees them.
+- My interest in AI + IoT is genuine and matches the aiotfun domain. The subject just needed to flip from "what I curate" to "what I built."
+
+## Principles for the rebuild
+
+- **Keep the domain `aiotfun.com`**. The name has "Fun" in it, which doesn't read like a personal brand, but I don't want to pay for a new domain. AI + IoT + Fun, taken together, does describe the thing I want to tinker on.
+- **Keep every piece of stack that has earned its place**: Astro / Tailwind / MDX / bilingual / dark mode / Pagefind / Giscus / Cloudflare. Information architecture changes, infrastructure does not.
+- **Delete everything that existed to feed the automation**: the collector, the AI agent team page, the newsletter, the six fixed categories, the weekly digest. Cut it.
+- **Do not chase traffic**. There is exactly one goal: a recruiter or potential collaborator should "get" me within 30 seconds. Subscribers, growth, conversions — none of those are KPIs.
+
+## What is built so far
+
+The skeleton (Hero / Projects / Writing / Now / About) is in place. The next step is filling in case studies one project at a time. Not batch output — when something is ready to write, I write it.
+
+If you are reading this, the skeleton is live. Click around, see what you find.
+
+---
+
+If you are doing something similar, or want to compare notes on AI / IoT / indie hacking, [send me an email](mailto:notifywei@gmail.com) or [find me on X](https://x.com/notifywei).
