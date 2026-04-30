@@ -27,7 +27,7 @@ const isLarge = variant === 'large';
     <span class="shrink-0 font-mono text-xs text-text-muted">{article.date}</span>
   </a>
 ) : (
-  <a href={href} class="group block overflow-hidden rounded-card border border-border bg-card-bg shadow-card transition-shadow hover:shadow-md">
+  <a href={href} class="group block overflow-hidden rounded-card border border-border bg-card-bg transition-colors hover:border-accent">
     {article.cover && (
       <div class:list={['overflow-hidden', isSmall ? 'h-28' : isLarge ? 'h-56' : 'h-44']}>
         <OptimizedImage

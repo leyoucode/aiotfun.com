@@ -4,9 +4,7 @@ import { t } from '../utils/i18n';
 const currentPath = Astro.url.pathname;
 
 const navItems = [
-  { key: 'projects', href: '/projects/' },
-  { key: 'writing', href: '/writing/' },
-  { key: 'now', href: '/now/' },
+  { key: 'articles', href: '/' },
   { key: 'about', href: '/about/' },
 ] as const;
 ---
@@ -23,7 +21,9 @@ const navItems = [
     <nav class="hidden items-center gap-4 lg:flex lg:gap-6">
       {navItems.map((item) => {
         const label = t.nav[item.key as keyof typeof t.nav];
-        const isActive = currentPath.startsWith(item.href.replace(/\/$/, ''));
+        const isActive = item.href === '/'
+          ? currentPath === '/' || currentPath.startsWith('/writing/')
+          : currentPath.startsWith(item.href.replace(/\/$/, ''));
         return (
           <a
             href={item.href}

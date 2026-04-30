@@ -1,70 +1,26 @@
 {
   "site": {
     "name": "AIoTFun",
-    "tagline": "Seek 的 AI + IoT 折腾园",
-    "description": "Seek — 独立开发者，在 AI 与 IoT 交汇处折腾点小东西。这里是项目、写作和进行中的实验。"
+    "tagline": "发现 AI + IoT 那些有趣的事儿",
+    "description": "AIoTFun — 在 AI 与 IoT 交汇处的工程笔记和有意思的实验。"
   },
   "nav": {
-    "home": "首页",
-    "projects": "项目",
-    "writing": "写作",
-    "now": "近况",
+    "articles": "文章",
     "about": "关于"
   },
   "home": {
-    "hero_role": "Indie Hacker · AI + IoT 折腾家",
-    "hero_summary": "我在 AI 和 IoT 的交汇处造一些小而有用的东西。有些上线了，有些只教会了我点别的，但每一个都会写下来。",
-    "now_title": "近况",
-    "now_more": "查看完整近况 →",
-    "featured_projects": "精选项目",
-    "all_projects": "所有项目 →",
-    "recent_writing": "最近写作",
-    "all_writing": "所有写作 →",
-    "no_writing": "还没有内容。",
-    "no_projects": "还没有内容。"
-  },
-  "projects": {
-    "title": "项目",
-    "subtitle": "我做过的东西 —— 上线的产品、副业实验，以及还在持续折腾的玩意儿。",
-    "no_projects": "还没有项目。",
-    "tech_stack": "技术栈",
-    "links": "链接",
-    "started": "始于",
-    "ended": "结束于",
-    "ongoing": "进行中",
-    "back_to_projects": "← 所有项目",
-    "view_repo": "源代码",
-    "view_live": "上线版本"
-  },
-  "project_status": {
-    "active": "进行中",
-    "shipped": "已上线",
-    "open-source": "开源",
-    "paused": "暂停",
-    "archived": "已归档"
-  },
-  "writing": {
-    "title": "写作",
-    "subtitle": "造东西、调 bug、瞎想的笔记 —— 大多围绕 AI 和嵌入式硬件。",
-    "no_writing": "还没有文章。",
-    "back_to_writing": "← 所有写作"
-  },
-  "now": {
-    "title": "近况",
-    "subtitle": "当前在做的事。",
-    "footer_note": "灵感来自 Derek Sivers 的 /now 运动。"
+    "hero_summary": "我是 Seek，做 AI 和 IoT 方向的工程师。这里是我的笔记，还有一些自己做的小项目。",
+    "no_writing": "还没有内容。"
   },
   "about": {
     "title": "关于",
     "intro_title": "你好，我是 Seek",
-    "intro_p1": "我是一个独立开发者，长期在 AI 和 IoT 的交汇处折腾。白天交付生产系统；业余时间研究 ESP32、语音 Agent，以及任何「居然真的能跑起来」的小东西。",
-    "intro_p2": "AIoTFun 一开始是个杂志风格的 AIoT 资讯发现站。现在它变成了我自己的折腾园 —— 我造过的项目、踩过的坑写成的笔记、以及那些放别处不太合适的小实验。",
-    "intro_p3": "如果你在招聘、想找人合作，或者想就我做过的某个东西交换点想法，欢迎来聊。",
-    "stack_title": "用过的家伙事",
-    "now_title": "最近在忙",
-    "now_link": "查看完整近况 →",
-    "contact_title": "联系我",
-    "contact_desc": "看代码上 GitHub，想聊上 X，私信不一定每条都回但都会看。"
+    "intro_p1": "我是工程师，做 AI 和 IoT 方向。平时的工作主要是把模型跑到设备上，处理硬件和软件之间的各种细节。",
+    "intro_p2": "AIoTFun 是我自己的博客。这里写做过的实验、读过的论文、踩过的坑。",
+    "intro_p3": "想招人、找合作、或者聊某个技术话题，都可以来找我。",
+    "stack_title": "技术栈",
+    "contact_title": "联系方式",
+    "contact_desc": "看代码上 GitHub，技术讨论上 X。"
   },
   "article": {
     "min_read": "分钟",
@@ -76,13 +32,8 @@
     "published": "发布于",
     "comments": "评论",
     "toc": "本页目录",
-    "related": "相关写作",
-    "back": "← 所有写作"
-  },
-  "tag_page": {
-    "title": "#{tag}",
-    "article_count": "{count} 篇文章",
-    "back_home": "← 所有写作"
+    "related": "相关文章",
+    "back": "← 返回首页"
   },
   "footer": {
     "tagline": "由 Seek 独立打造、长期更新。",
