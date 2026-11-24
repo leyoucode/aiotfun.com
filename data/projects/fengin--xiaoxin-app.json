@@ -1,0 +1,16 @@
+{
+  "id": "fengin--xiaoxin-app",
+  "repo": "fengin/xiaoxin-app",
+  "status": "candidate",
+  "github": {
+    "stars": 38,
+    "license": "MIT",
+    "pushedAt": "2026-07-02T07:30:54Z",
+    "description": "小新 APP 是一个基于 Flutter 开发的跨平台语音交互客户端，实现了与 [xiaozhi-esp32](https://github.com/78/xiaozhi-esp32) 相同的通信协议，可连接 xiaozhi-esp32-server-java/python/golang 后端服务。",
+    "topics": [],
+    "language": "Dart",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

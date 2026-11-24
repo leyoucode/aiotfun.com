@@ -1,0 +1,63 @@
+{
+  "id": "ai-techsystems--deepC",
+  "repo": "ai-techsystems/deepC",
+  "status": "approved",
+  "github": {
+    "stars": 604,
+    "license": "Apache-2.0",
+    "pushedAt": "2025-07-22T16:28:27Z",
+    "description": "vendor independent TinyML deep learning library, compiler and inference framework microcomputers and micro-controllers",
+    "topics": [
+      "arduino",
+      "arduino-nano-33-ble-sense",
+      "arm64",
+      "deep-learning",
+      "edge-devices",
+      "esp32",
+      "esp8266",
+      "inference-framework",
+      "machine-learning",
+      "microcontrollers",
+      "nxp-cortex",
+      "odroid",
+      "onnx",
+      "raspberry-pi",
+      "raspberrypi",
+      "sparkfun-products",
+      "stm32",
+      "stm32f4",
+      "tinyml"
+    ],
+    "language": "C++",
+    "homepage": "https://cainvas.ai-tech.systems/"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "deepC",
+    "summary": "面向微控制器和边缘设备的开源TinyML推理框架与编译器，支持ONNX模型跨平台部署。",
+    "intro": "deepC是一个厂商无关的轻量级深度学习推理框架、编译器和运行时库，专为资源受限的嵌入式设备（如MCU、IoT节点、边缘计算板）设计，可将ONNX模型编译为高效本地可执行代码。\n\n它不直接绑定特定硬件，但通过LLVM后端生成针对ARM、RISC-V、x86等架构优化的机器码；AI模型在设备端（device）完成推理，无需联网或云端依赖，适用于无网络、低功耗、实时性要求高的场景。\n\n核心亮点包括：纯C++实现、支持ONNX前端、基于LLVM的AOT编译、极低内存占用（KB级RAM/ROM需求）、跨30+硬件平台（从STM32到Raspberry Pi）。\n\n适合嵌入式开发者、TinyML初学者及需要在MCU上部署自定义神经网络的研究者，尤其适配Arduino Nano 33 BLE Sense、SparkFun Edge、STM32F4、ESP32等典型AIoT开发板。",
+    "shelf": "tools",
+    "platform": "other",
+    "hardware": [],
+    "aiCapabilities": [
+      {
+        "name": "模型推理",
+        "where": "device"
+      },
+      {
+        "name": "模型编译",
+        "where": "edge"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "TinyML",
+      "模型编译",
+      "嵌入式AI",
+      "ONNX",
+      "LLVM",
+      "边缘推理"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:10.324Z"
+}

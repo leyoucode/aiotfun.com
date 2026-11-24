@@ -1,0 +1,16 @@
+{
+  "id": "ClimbSnail--HoloCubic_AIO",
+  "repo": "ClimbSnail/HoloCubic_AIO",
+  "status": "candidate",
+  "github": {
+    "stars": 1378,
+    "license": "GPL-3.0",
+    "pushedAt": "2025-03-30T16:42:25Z",
+    "description": "HoloCubic超多功能AIO固件 基于esp32-arduino的天气时钟、相册、视频播放、桌面投屏、web服务、bilibili粉丝等",
+    "topics": [],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

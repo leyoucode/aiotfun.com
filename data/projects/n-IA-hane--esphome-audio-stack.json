@@ -1,0 +1,27 @@
+{
+  "id": "n-IA-hane--esphome-audio-stack",
+  "repo": "n-IA-hane/esphome-audio-stack",
+  "status": "candidate",
+  "github": {
+    "stars": 31,
+    "license": "MIT",
+    "pushedAt": "2026-11-23T21:40:44Z",
+    "description": "Full-duplex audio for ESPHome on ESP32-S3 and ESP32-P4: shared or separate I2S buses, TDM, AEC/AFE and echo-cancelled microphone audio for wake word, Voice Assistant and calls.",
+    "topics": [
+      "acoustic-echo-cancellation",
+      "audio",
+      "esp32",
+      "esp32-p4",
+      "esp32-s3",
+      "esphome",
+      "full-duplex",
+      "i2s",
+      "tdm",
+      "voice-assistant"
+    ],
+    "language": "C++",
+    "homepage": "https://github.com/n-IA-hane/esphome-intercom"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

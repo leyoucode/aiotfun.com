@@ -1,0 +1,84 @@
+{
+  "id": "78--xiaozhi-esp32",
+  "repo": "78/xiaozhi-esp32",
+  "status": "approved",
+  "github": {
+    "stars": 33703,
+    "license": "MIT",
+    "pushedAt": "2026-11-24T00:10:27Z",
+    "description": "An MCP-based chatbot | 一个基于MCP的聊天机器人",
+    "topics": [
+      "chatbot",
+      "esp32",
+      "mcp"
+    ],
+    "language": "C++",
+    "homepage": "https://xiaozhi.me"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "小智AI聊天机器人",
+    "summary": "基于ESP32系列芯片的开源语音交互聊天机器人，支持离线唤醒、多模态输入与MCP协议设备控制。",
+    "intro": "这是一个面向嵌入式AI硬件的开源项目，将大语言模型（如Qwen/DeepSeek）能力通过ESP32系列主控落地为可交互的物理终端。\n\n硬件端集成麦克风、扬声器、屏幕（OLED/LCD）、摄像头（部分板型）及多种传感器，运行轻量ASR/TTS/唤醒引擎；AI推理主要在云端完成，设备端负责实时音频处理、指令解析与MCP协议驱动外设。\n\n支持171种硬件变体与138个开发板目录，提供免开发环境的一键烧录固件；独创MCP协议实现设备端与云侧双向控制，兼顾开放性与易用性。\n\n适合想实践AI+IoT融合的嵌入式开发者、教育者与创客——无需训练模型，接线烧录即可获得带语音、显示、设备联动能力的AI终端。",
+    "shelf": "voice",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "麦克风",
+        "role": "audio-in"
+      },
+      {
+        "name": "扬声器",
+        "role": "audio-out"
+      },
+      {
+        "name": "OLED/LCD显示屏",
+        "role": "display"
+      },
+      {
+        "name": "摄像头",
+        "role": "camera"
+      },
+      {
+        "name": "按键/触摸屏",
+        "role": "input"
+      },
+      {
+        "name": "LED/舵机/GPIO",
+        "role": "actuator"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "语音唤醒",
+        "where": "device"
+      },
+      {
+        "name": "语音识别",
+        "where": "cloud"
+      },
+      {
+        "name": "语音合成",
+        "where": "cloud"
+      },
+      {
+        "name": "说话人识别",
+        "where": "device"
+      },
+      {
+        "name": "设备控制",
+        "where": "edge"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "ESP32-S3",
+      "MCP协议",
+      "多模态交互",
+      "开源硬件",
+      "大模型终端"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:28:55.953Z"
+}

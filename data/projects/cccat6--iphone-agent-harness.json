@@ -1,0 +1,36 @@
+{
+  "id": "cccat6--iphone-agent-harness",
+  "repo": "cccat6/iphone-agent-harness",
+  "status": "candidate",
+  "github": {
+    "stars": 52,
+    "license": "MIT",
+    "pushedAt": "2026-11-18T05:21:46Z",
+    "description": "Automate your real iPhone from Safari with a $2 ESP32. No Mac, no APP, and no jailbreak. Local conversations, your choice of AI, and community skills.",
+    "topics": [
+      "agent",
+      "agent-framework",
+      "agent-skill",
+      "agentic-workflow",
+      "ai-agent",
+      "automation",
+      "bluetooth-hid",
+      "computer-use",
+      "esp32",
+      "esp32-arduino",
+      "esp32-c2",
+      "esp32-c3",
+      "esp32-c5",
+      "esp32-c6",
+      "esp32-s3",
+      "ipad",
+      "iphone",
+      "llm",
+      "llm-agents"
+    ],
+    "language": "C",
+    "homepage": "https://igent.cc"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

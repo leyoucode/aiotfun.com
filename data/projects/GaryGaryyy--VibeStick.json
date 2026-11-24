@@ -1,0 +1,16 @@
+{
+  "id": "GaryGaryyy--VibeStick",
+  "repo": "GaryGaryyy/VibeStick",
+  "status": "candidate",
+  "github": {
+    "stars": 76,
+    "license": "MIT",
+    "pushedAt": "2026-08-01T10:29:49Z",
+    "description": "Tiny desktop AI agent companion for M5Stack StickS3",
+    "topics": [],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

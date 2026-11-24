@@ -1,0 +1,35 @@
+{
+  "id": "cifertech--free-embedded-dev-tools",
+  "repo": "cifertech/free-embedded-dev-tools",
+  "status": "candidate",
+  "github": {
+    "stars": 53,
+    "license": "MIT",
+    "pushedAt": "2026-07-08T07:27:03Z",
+    "description": "A curated list of free tools and resources for embedded, firmware, and hardware development. PCB design, debugging, simulation, CI, IoT backends, RF, TinyML, and more. PRs welcome.",
+    "topics": [
+      "awesome-list",
+      "diy-electronics",
+      "electronics",
+      "embedded",
+      "embedded-development",
+      "embedded-systems",
+      "esp32",
+      "firmware",
+      "firmware-development",
+      "free-courses",
+      "hardware",
+      "iot",
+      "ki",
+      "maker",
+      "microcontroller",
+      "open-source-hardware",
+      "pcb-design",
+      "rf"
+    ],
+    "language": null,
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

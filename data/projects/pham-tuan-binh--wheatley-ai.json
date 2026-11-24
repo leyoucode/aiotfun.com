@@ -1,0 +1,16 @@
+{
+  "id": "pham-tuan-binh--wheatley-ai",
+  "repo": "pham-tuan-binh/wheatley-ai",
+  "status": "candidate",
+  "github": {
+    "stars": 197,
+    "license": "LGPL-2.1",
+    "pushedAt": "2025-02-01T01:48:30Z",
+    "description": "Real-time conversational AI on ESP32-S3 using LiveKit, WebRTC and SenseCap Watcher",
+    "topics": [],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

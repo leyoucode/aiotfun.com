@@ -1,0 +1,72 @@
+{
+  "id": "second-state--echokit_box",
+  "repo": "second-state/echokit_box",
+  "status": "approved",
+  "github": {
+    "stars": 218,
+    "license": "GPL-3.0",
+    "pushedAt": "2026-05-05T14:24:36Z",
+    "description": "ESP32 firmware for the EchoKit voice device",
+    "topics": [
+      "ai",
+      "esp32",
+      "rust",
+      "voice"
+    ],
+    "language": "Rust",
+    "homepage": "https://echokit.dev/"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "EchoKit Box",
+    "summary": "基于 ESP32-S3 的语音交互固件，配合 EchoKit 服务端实现端云协同的 AI 语音设备。",
+    "intro": "EchoKit Box 是专为 EchoKit 硬件设计的 Rust 编写的嵌入式固件，面向语音交互场景，运行在集成 LCD 和按键的 ESP32-S3 开发套件上。\n\n固件负责音频采集（通过板载麦克风）、按键触发、LCD 显示与网络通信；AI 语音识别、自然语言理解及合成等核心能力由配套的云端 EchoKit Server 提供，设备端仅做轻量级预处理与指令中转。\n\n采用 Rust + ESP-IDF 构建，内存安全且实时性好；支持一键 Web 烧录（ESP Launchpad），并提供预编译固件与完整构建链路，兼顾开发效率与可定制性。\n\n适合想快速搭建语音 AI 原型的嵌入式开发者、IoT 教育者或 Rust 爱好者，无需训练模型，专注端侧逻辑与服务集成。",
+    "shelf": "voice",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "LCD",
+        "role": "display"
+      },
+      {
+        "name": "K0 button",
+        "role": "input"
+      },
+      {
+        "name": "RST button",
+        "role": "input"
+      },
+      {
+        "name": "microphone",
+        "role": "audio-in"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "语音唤醒",
+        "where": "cloud"
+      },
+      {
+        "name": "语音识别",
+        "where": "cloud"
+      },
+      {
+        "name": "语义理解",
+        "where": "cloud"
+      },
+      {
+        "name": "语音合成",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "Rust嵌入式",
+      "端云协同",
+      "ESP32-S3",
+      "AIoT"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:19.151Z"
+}

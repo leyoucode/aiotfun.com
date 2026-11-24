@@ -1,0 +1,31 @@
+---
+import { PLATFORMS } from '../lib/taxonomy.ts';
+import { formatStars, owner, type Project } from '../lib/projects.ts';
+
+interface Props {
+  project: Project;
+  class?: string;
+}
+const { project: p, class: className } = Astro.props;
+---
+
+<a href={`/p/${p.id}/`} class:list={['group block min-w-0', className]} data-search-item>
+  <div class="overflow-hidden rounded-xl border border-line bg-surface transition group-hover:border-teal/40 group-hover:shadow-sm">
+    <img src={`/cards/${p.id}.svg`} alt={`${p.ai.title} 的结构图`} width="400" height="250" loading="lazy" decoding="async" class="aspect-[8/5] w-full" />
+  </div>
+  <div class="mt-2 px-0.5">
+    <h3 class="truncate text-sm font-semibold group-hover:text-teal" title={p.ai.title}>{p.ai.title}</h3>
+    <p class="truncate text-xs text-muted" title={p.ai.summary}>{p.ai.summary}</p>
+    <div class="mt-1.5 flex items-center gap-2 text-xs text-muted">
+      <span class="truncate">{owner(p)}</span>
+      <span aria-hidden="true">·</span>
+      <span class="shrink-0">★ {formatStars(p.github.stars)}</span>
+      <span aria-hidden="true">·</span>
+      <span class="shrink-0">{PLATFORMS[p.ai.platform]}</span>
+      <span class="ml-auto hidden shrink-0 items-center gap-1 rounded-full border border-line px-1.5 py-0.5" data-like-count={p.id}>
+        <svg viewBox="0 0 20 20" class="size-3" fill="currentColor" aria-hidden="true"><path d="M10 17s-6.5-4.1-6.5-8.6A3.6 3.6 0 0 1 10 6a3.6 3.6 0 0 1 6.5 2.4C16.5 12.9 10 17 10 17Z"></path></svg>
+        <span data-num></span>
+      </span>
+    </div>
+  </div>
+</a>

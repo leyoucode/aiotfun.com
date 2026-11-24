@@ -1,0 +1,37 @@
+{
+  "id": "chilly23--RP2040-and-ESP32-AI",
+  "repo": "chilly23/RP2040-and-ESP32-AI",
+  "status": "candidate",
+  "github": {
+    "stars": 55,
+    "license": "MIT",
+    "pushedAt": "2026-08-17T20:04:38Z",
+    "description": "Run a 28.9M-parameter TinyLM on ESP32-S3 with an RP2040 OLED display node for fully local embedded AI inference.",
+    "topics": [
+      "arduino",
+      "c",
+      "claude-code",
+      "codex",
+      "cpp",
+      "edge-ai",
+      "embedded-ai",
+      "embedded-systems",
+      "esp32",
+      "esp32-s3",
+      "language-model",
+      "llm",
+      "machine-learning",
+      "microcontrollers",
+      "oled",
+      "on-device-ai",
+      "python",
+      "quantization",
+      "rp2040",
+      "tinyml"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

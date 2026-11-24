@@ -1,0 +1,47 @@
+{
+  "id": "esphome--wake-word-voice-assistants",
+  "repo": "esphome/wake-word-voice-assistants",
+  "status": "approved",
+  "github": {
+    "stars": 237,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-11-18T18:46:13Z",
+    "description": "Wake word voice assistant configurations and firmware for ESPHome",
+    "topics": [],
+    "language": null,
+    "homepage": "https://esphome.io/projects/?type=voice"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "ESPHome 唤醒词助手",
+    "summary": "基于 ESPHome 的轻量级唤醒词语音助手固件，支持在 ESP32 等设备上本地运行唤醒检测与语音交互。",
+    "intro": "这是一个为 ESPHome 设计的唤醒词语音助手固件集合，提供开箱即用的 YAML 配置和编译好的固件镜像，用于快速部署本地语音唤醒能力。\n\n它在 ESP32（或 ESP32-S3/C3 等）主控上运行轻量级唤醒词模型（如 Picovoice Porcupine 或 ESP-IDF 内置 wake word 检测），麦克风采集音频后端侧实时检测唤醒词，触发后通过 MQTT 或 Home Assistant 协议连接语音服务（如 Whisper + Llama.cpp 边缘推理或云端 ASR/TTS）。\n\n支持 OTA 更新、Web 烧录（通过 esp-web-tools）、低功耗唤醒、多设备统一管理；无需训练模型，配置即用，兼顾隐私与响应速度。\n\n适合智能家居爱好者、Home Assistant 用户及嵌入式初学者，只需一块带麦克风的 ESP32 开发板（如 ESP32-S3-DevKitC-1）即可搭建私有语音入口。",
+    "shelf": "voice",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "I2S microphone",
+        "role": "audio-in"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "唤醒词检测",
+        "where": "device"
+      },
+      {
+        "name": "语音指令转发",
+        "where": "device"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音唤醒",
+      "ESPHome",
+      "本地ASR",
+      "Home Assistant",
+      "边缘语音"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:18.065Z"
+}

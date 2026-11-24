@@ -1,0 +1,32 @@
+{
+  "id": "device-context-protocol--dcp",
+  "repo": "device-context-protocol/dcp",
+  "status": "candidate",
+  "github": {
+    "stars": 62,
+    "license": "MIT",
+    "pushedAt": "2026-05-27T04:46:02Z",
+    "description": "Device Context Protocol — bridge LLM agents to physical devices. Sub-50-byte frames, 27.6KB flash / 0.6KB RAM measured on ESP32, capability-scoped and safe by design. Complementary to MCP. Paper: arXiv:2605.26159",
+    "topics": [
+      "agent",
+      "arduino",
+      "bridge",
+      "cbor",
+      "device-control",
+      "embedded",
+      "esp32",
+      "hardware",
+      "iot",
+      "llm",
+      "mcp",
+      "microcontroller",
+      "model-context-protocol",
+      "protocol",
+      "uart"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

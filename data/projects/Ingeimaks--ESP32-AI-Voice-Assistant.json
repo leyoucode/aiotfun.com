@@ -1,0 +1,16 @@
+{
+  "id": "Ingeimaks--ESP32-AI-Voice-Assistant",
+  "repo": "Ingeimaks/ESP32-AI-Voice-Assistant",
+  "status": "candidate",
+  "github": {
+    "stars": 50,
+    "license": "MIT",
+    "pushedAt": "2026-07-24T12:57:05Z",
+    "description": "Advanced ESP32 AI Voice Assistant with STT, Gemini AI, and TTS - 63% faster performance",
+    "topics": [],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

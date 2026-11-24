@@ -1,0 +1,37 @@
+{
+  "id": "catorendal-a11y--tessera-deck",
+  "repo": "catorendal-a11y/tessera-deck",
+  "status": "candidate",
+  "github": {
+    "stars": 77,
+    "license": "MIT",
+    "pushedAt": "2026-11-24T08:56:00Z",
+    "description": "Tessera: a DIY Stream Deck alternative for 7-inch ESP32-P4 touchscreens. Boards: GUITION JC1060P470C and Elecrow CrowPanel Advance 7.0, plus experimental builds for Waveshare ESP32-S3-Touch-LCD-7 and Sunton ESP32-8048S070. Open-source macro deck with widgets, PC gauges, an AI agents screen and a Windows and Linux (X11) host. Home Assistant in beta",
+    "topics": [
+      "claude-code",
+      "codex",
+      "diy-stream-deck",
+      "esp-idf",
+      "esp32",
+      "esp32-p4",
+      "esphome",
+      "guition",
+      "home-assistant",
+      "jc1060p470",
+      "linux",
+      "lvgl",
+      "macro-deck",
+      "macro-pad",
+      "python",
+      "stream-deck",
+      "stream-deck-alternative",
+      "system-monitor",
+      "touchscreen",
+      "windows"
+    ],
+    "language": "C",
+    "homepage": "https://catorendal-a11y.github.io/tessera-deck/"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

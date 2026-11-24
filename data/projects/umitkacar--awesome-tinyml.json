@@ -1,0 +1,37 @@
+{
+  "id": "umitkacar--awesome-tinyml",
+  "repo": "umitkacar/awesome-tinyml",
+  "status": "candidate",
+  "github": {
+    "stars": 60,
+    "license": "MIT",
+    "pushedAt": "2025-11-10T09:48:13Z",
+    "description": "TinyML & Edge AI: On-device inference, model quantization, embedded ML, ultra-low-power AI for microcontrollers and IoT devices.",
+    "topics": [
+      "arduino",
+      "cortex-m",
+      "edge-ai",
+      "edge-computing",
+      "embedded-ml",
+      "embedded-systems",
+      "esp32",
+      "iot",
+      "knowledge-distillation",
+      "microcontroller",
+      "model-optimization",
+      "neural-network-compression",
+      "on-device-inference",
+      "pruning",
+      "quantization",
+      "raspberry-pi",
+      "tensorflow-lite",
+      "tiny-deep-learning",
+      "tinyml",
+      "ultra-low-power"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

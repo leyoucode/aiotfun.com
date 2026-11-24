@@ -1,0 +1,16 @@
+{
+  "id": "visorbarnis--voice-assistant",
+  "repo": "visorbarnis/voice-assistant",
+  "status": "candidate",
+  "github": {
+    "stars": 32,
+    "license": "MIT",
+    "pushedAt": "2026-03-22T18:40:20Z",
+    "description": "Programmable voice interface using ESP32-S3 and Gemini Live API",
+    "topics": [],
+    "language": "C",
+    "homepage": "https://voice-assistant.io"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

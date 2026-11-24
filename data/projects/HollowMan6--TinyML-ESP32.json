@@ -1,0 +1,66 @@
+{
+  "id": "HollowMan6--TinyML-ESP32",
+  "repo": "HollowMan6/TinyML-ESP32",
+  "status": "approved",
+  "github": {
+    "stars": 219,
+    "license": "GPL-3.0",
+    "pushedAt": "2025-01-22T12:20:54Z",
+    "description": "This is the TinyML programs for ESP32 according to BlackWalnut Labs Tutorials. (黑胡桃实验室的TinyML教程中的程序集合) ",
+    "topics": [
+      "esp32-arduino",
+      "tinyml"
+    ],
+    "language": "C",
+    "homepage": "https://blackwalnut.zucc.edu.cn/codelabs/TinyML"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "TinyML-ESP32",
+    "summary": "基于ESP32-WROOM-32的TinyML实践项目集，支持手势识别、语音唤醒和跳绳计数等端侧AI应用。",
+    "intro": "这是一个面向教学的TinyML开源项目集合，完整复现黑胡桃实验室TinyML教程，涵盖数据采集、模型训练（Jupyter）、端侧部署（TensorFlow Lite Micro）全流程。\n\n项目依托ESP32-WROOM-32开发板内置传感器（陀螺仪、麦克风）与外设（WS2812 LED、按键），在设备端运行轻量级AI模型，实现手势/语音/动作识别，并通过串口或WebSocket实时反馈结果。\n\n亮点包括：开箱即用的硬件适配（含I2S麦克风、GY-25Z六轴传感器）、分步式代码结构（采集→标注→训练→预测→可视化）、配套B站视频教程与交互式Web前端展示。\n\n适合嵌入式初学者学习TinyML落地流程，也适合作为高校AIoT实验课套件或开发者快速验证边缘AI想法的参考模板。",
+    "shelf": "sensing",
+    "platform": "esp32",
+    "hardware": [
+      {
+        "name": "I2S麦克风",
+        "role": "audio-in"
+      },
+      {
+        "name": "GY-25Z陀螺仪",
+        "role": "sensor"
+      },
+      {
+        "name": "WS2812 LED",
+        "role": "light"
+      },
+      {
+        "name": "按键",
+        "role": "input"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "手势识别",
+        "where": "device"
+      },
+      {
+        "name": "语音唤醒",
+        "where": "device"
+      },
+      {
+        "name": "动作计数",
+        "where": "device"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "TinyML",
+      "ESP32",
+      "手势识别",
+      "语音唤醒",
+      "传感器AI"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:18.755Z"
+}

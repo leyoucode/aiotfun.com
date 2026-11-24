@@ -1,0 +1,19 @@
+{
+  "id": "big-mouth-cn--xiaozhi-esp32-for-talkx",
+  "repo": "big-mouth-cn/xiaozhi-esp32-for-talkx",
+  "status": "candidate",
+  "github": {
+    "stars": 120,
+    "license": "MIT",
+    "pushedAt": "2025-04-22T12:27:35Z",
+    "description": "小智AI聊天机器人 ESP32",
+    "topics": [
+      "talkx",
+      "xiaozhi-esp32"
+    ],
+    "language": "C++",
+    "homepage": "https://web.talkx.cn"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

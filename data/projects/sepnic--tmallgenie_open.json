@@ -1,0 +1,20 @@
+{
+  "id": "sepnic--tmallgenie_open",
+  "repo": "sepnic/tmallgenie_open",
+  "status": "candidate",
+  "github": {
+    "stars": 34,
+    "license": "Apache-2.0",
+    "pushedAt": "2025-05-10T17:46:50Z",
+    "description": "tmallgenie built for macosx, ubuntu, android, raspberry-pi and esp32 (天猫精灵智能音箱/语音助手)",
+    "topics": [
+      "smart-speaker",
+      "tmallgenie",
+      "voice-assistant"
+    ],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

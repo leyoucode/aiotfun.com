@@ -1,0 +1,16 @@
+{
+  "id": "Artem76228--PaperOS",
+  "repo": "Artem76228/PaperOS",
+  "status": "candidate",
+  "github": {
+    "stars": 39,
+    "license": "GPL-2.0",
+    "pushedAt": "2026-08-30T13:24:38Z",
+    "description": "A whole little OS for the M5Stack Cardputer - launcher, file manager, paint, browser, offline AI, game emulator, Lua scripting, and more.",
+    "topics": [],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

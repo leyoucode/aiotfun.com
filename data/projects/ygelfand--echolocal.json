@@ -1,0 +1,90 @@
+{
+  "id": "ygelfand--echolocal",
+  "repo": "ygelfand/echolocal",
+  "status": "approved",
+  "github": {
+    "stars": 626,
+    "license": "MIT",
+    "pushedAt": "2026-11-23T17:02:27Z",
+    "description": "Turn an Amazon Echo Dot or Echo Show into a fully local Home Assistant voice satellite, media player, display and Bluetooth proxy. No Amazon, no cloud.",
+    "topics": [
+      "alexa",
+      "assist",
+      "echo",
+      "echo-dot",
+      "echo-show",
+      "echo-show-5",
+      "esphome",
+      "golang",
+      "home-assistant",
+      "homeassistant",
+      "sendspin",
+      "voice-assistant",
+      "wake-word"
+    ],
+    "language": "Go",
+    "homepage": "https://github.com/ygelfand/echolocal-hacs"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "EchoLocal",
+    "summary": "将旧款亚马逊 Echo 设备改造为完全离线的 Home Assistant 语音卫星与智能中控，支持本地唤醒、媒体播放、视频通话和蓝牙代理。",
+    "intro": "EchoLocal 是一个开源固件项目，用于替代 Alexa 系统，让已有的 Echo Dot/Show 设备脱离亚马逊云，转而深度集成 Home Assistant，实现全本地化语音交互与设备控制。\n\n它复用 Echo 原有硬件：麦克风阵列、扬声器、触摸屏（Show）、摄像头（Show）、LED 环（Dot）、光感器、按钮等，所有 AI 能力（如唤醒词检测、语音识别前端）均在设备端运行，仅语音识别后处理可选配本地 ASR（如 via Home Assistant Assist）。\n\n核心亮点包括双唤醒词并行支持（microWakeWord + openWakeWord）、设备间免云对讲/广播、蓝牙代理扩展 Home Assistant 的 BLE 覆盖、RTSP 摄像头输出、ONVIF 发现、以及原生适配 Tessera 和 Rings 等 HA 屏幕框架。\n\n适合已有闲置 Echo 设备、熟悉 Home Assistant 生态、希望构建隐私优先、离线优先智能家居中枢的进阶用户；需动手刷入 TWRP 并执行命令行安装，不涉及焊接或 PCB 设计。",
+    "shelf": "home",
+    "platform": "other",
+    "hardware": [
+      {
+        "name": "内置麦克风阵列",
+        "role": "audio-in"
+      },
+      {
+        "name": "内置扬声器",
+        "role": "audio-out"
+      },
+      {
+        "name": "LED 环（Dot）",
+        "role": "light"
+      },
+      {
+        "name": "电容式触摸屏（Show）",
+        "role": "display"
+      },
+      {
+        "name": "前置摄像头（Show）",
+        "role": "camera"
+      },
+      {
+        "name": "环境光传感器",
+        "role": "sensor"
+      },
+      {
+        "name": "物理按键（静音/动作键）",
+        "role": "input"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "本地唤醒词",
+        "where": "device"
+      },
+      {
+        "name": "语音对话",
+        "where": "device"
+      },
+      {
+        "name": "语音识别（前端）",
+        "where": "device"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "Home Assistant",
+      "离线AI",
+      "设备复用",
+      "智能家居",
+      "唤醒词"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:09.948Z"
+}

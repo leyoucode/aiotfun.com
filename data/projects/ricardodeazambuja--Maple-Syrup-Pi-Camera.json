@@ -1,0 +1,23 @@
+{
+  "id": "ricardodeazambuja--Maple-Syrup-Pi-Camera",
+  "repo": "ricardodeazambuja/Maple-Syrup-Pi-Camera",
+  "status": "candidate",
+  "github": {
+    "stars": 75,
+    "license": "Apache-2.0",
+    "pushedAt": "2025-04-05T17:56:02Z",
+    "description": "Low power smart camera (3D printed) based on the Raspberry Pi Zero W and Google Coral EdgeTPU",
+    "topics": [
+      "ai",
+      "aiot",
+      "camera",
+      "computer-vision",
+      "machine-learning",
+      "raspberry-pi"
+    ],
+    "language": "G-code",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

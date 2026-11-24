@@ -1,0 +1,232 @@
+---
+import Base from '../layouts/Base.astro';
+import { projects } from '../lib/projects.ts';
+import { layoutMap } from '../lib/map-layout.ts';
+
+const data = layoutMap(projects);
+---
+
+<Base title="星图" description="每个点是一个开源 AIoT 项目，同类项目聚成一团" wide>
+  <div class="relative -mx-4 h-[calc(100dvh-3.5rem)] overflow-hidden md:-mx-6">
+    <canvas id="map" class="block size-full cursor-grab touch-none active:cursor-grabbing" aria-label={`项目星图：${projects.length} 个项目按分类聚成 ${data.clusters.length} 团，点击圆点进入项目详情`}></canvas>
+
+    <div class="pointer-events-none absolute left-4 top-4 rounded-xl border border-line bg-surface/90 px-4 py-3 backdrop-blur">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-muted">AIoTFun · 星图</p>
+      <p class="mt-1 text-sm font-semibold">{projects.length} 个项目 · {data.clusters.length} 个分类</p>
+      <p class="mt-0.5 text-xs text-muted">滚轮或双指缩放，拖动平移，点圆点看详情</p>
+    </div>
+
+    <div class="absolute bottom-4 right-4 flex overflow-hidden rounded-lg border border-line bg-surface text-sm shadow-sm">
+      <button type="button" id="zoom-out" class="px-3 py-1.5 hover:bg-paper" aria-label="缩小">−</button>
+      <button type="button" id="zoom-fit" class="border-x border-line px-3 py-1.5 text-xs hover:bg-paper">全景</button>
+      <button type="button" id="zoom-in" class="px-3 py-1.5 hover:bg-paper" aria-label="放大">+</button>
+    </div>
+
+    <div id="tip" class="pointer-events-none absolute z-10 hidden max-w-64 rounded-lg border border-line bg-surface px-3 py-2 text-xs shadow-md">
+      <p data-title class="font-semibold text-ink"></p>
+      <p data-summary class="mt-0.5 text-muted"></p>
+    </div>
+  </div>
+  <script id="map-data" type="application/json" set:html={JSON.stringify(data).replace(/</g, '\\u003c')} />
+</Base>
+
+<script>
+  import { likedIds } from '../scripts/likes.ts';
+
+  interface Cluster { key: string; label: string; count: number; x: number; y: number; r: number }
+  interface Point { id: string; title: string; summary: string; x: number; y: number; size: number }
+
+  const { clusters, points } = JSON.parse(document.querySelector('#map-data')!.textContent!) as { clusters: Cluster[]; points: Point[] };
+  const liked = new Set(likedIds());
+  const canvas = document.querySelector<HTMLCanvasElement>('#map')!;
+  const ctx = canvas.getContext('2d')!;
+  const tip = document.querySelector<HTMLElement>('#tip')!;
+  const css = getComputedStyle(document.documentElement);
+  const color = (name: string) => css.getPropertyValue(name).trim();
+  const C = { teal: color('--color-teal'), accent: color('--color-accent'), muted: color('--color-muted'), line: color('--color-line'), surface: color('--color-surface') };
+
+  // 视图：屏幕坐标 = 世界坐标 * scale + offset
+  let scale = 1;
+  let ox = 0;
+  let oy = 0;
+  let hover: Point | null = null;
+
+  function resize() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = canvas.clientWidth * dpr;
+    canvas.height = canvas.clientHeight * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function fit() {
+    if (!clusters.length) return;
+    const minX = Math.min(...clusters.map((c) => c.x - c.r));
+    const maxX = Math.max(...clusters.map((c) => c.x + c.r));
+    const minY = Math.min(...clusters.map((c) => c.y - c.r));
+    const maxY = Math.max(...clusters.map((c) => c.y + c.r + 24));
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    scale = Math.min(w / (maxX - minX + 80), h / (maxY - minY + 120), 3);
+    ox = w / 2 - ((minX + maxX) / 2) * scale;
+    oy = h / 2 - ((minY + maxY) / 2) * scale + 20;
+    draw();
+  }
+
+  function draw() {
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    ctx.clearRect(0, 0, w, h);
+    for (const c of clusters) {
+      const x = c.x * scale + ox;
+      const y = c.y * scale + oy;
+      ctx.beginPath();
+      ctx.arc(x, y, c.r * scale, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(7, 52, 49, 0.03)';
+      ctx.fill();
+      ctx.setLineDash([3, 4]);
+      ctx.strokeStyle = C.line;
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.font = '600 12px -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif';
+      ctx.textAlign = 'center';
+      const label = `${c.label} · ${c.count}`;
+      const lw = ctx.measureText(label).width + 16;
+      const ly = y + c.r * scale + 14;
+      ctx.fillStyle = C.surface;
+      ctx.beginPath();
+      ctx.roundRect(x - lw / 2, ly - 11, lw, 22, 11);
+      ctx.fill();
+      ctx.strokeStyle = C.line;
+      ctx.stroke();
+      ctx.fillStyle = C.teal;
+      ctx.fillText(label, x, ly + 4);
+    }
+    const k = Math.min(Math.max(scale, 0.6), 2.2);
+    for (const p of points) {
+      const x = p.x * scale + ox;
+      const y = p.y * scale + oy;
+      if (x < -10 || y < -10 || x > w + 10 || y > h + 10) continue;
+      ctx.beginPath();
+      ctx.arc(x, y, p.size * k * (p === hover ? 1.6 : 1), 0, Math.PI * 2);
+      ctx.fillStyle = liked.has(p.id) || p === hover ? C.accent : C.teal;
+      ctx.fill();
+    }
+  }
+
+  function pick(sx: number, sy: number): Point | null {
+    let best: Point | null = null;
+    let bestD = 12;
+    for (const p of points) {
+      const d = Math.hypot(p.x * scale + ox - sx, p.y * scale + oy - sy);
+      if (d < bestD) {
+        best = p;
+        bestD = d;
+      }
+    }
+    return best;
+  }
+
+  function zoomAt(sx: number, sy: number, factor: number) {
+    const next = Math.min(Math.max(scale * factor, 0.2), 8);
+    ox = sx - ((sx - ox) * next) / scale;
+    oy = sy - ((sy - oy) * next) / scale;
+    scale = next;
+    draw();
+  }
+
+  function showTip(p: Point | null, sx: number, sy: number) {
+    hover = p;
+    canvas.style.cursor = p ? 'pointer' : '';
+    if (!p) {
+      tip.classList.add('hidden');
+      return;
+    }
+    tip.querySelector('[data-title]')!.textContent = p.title;
+    tip.querySelector('[data-summary]')!.textContent = p.summary;
+    tip.classList.remove('hidden');
+    const left = Math.min(sx + 14, canvas.clientWidth - tip.offsetWidth - 8);
+    tip.style.left = `${left}px`;
+    tip.style.top = `${sy + 14}px`;
+  }
+
+  // 指针：单指拖动平移，双指缩放；位移很小的抬起视为点击
+  const pointers = new Map<number, { x: number; y: number }>();
+  let moved = 0;
+  let pinchDist = 0;
+  const local = (e: PointerEvent) => {
+    const r = canvas.getBoundingClientRect();
+    return { x: e.clientX - r.left, y: e.clientY - r.top };
+  };
+
+  canvas.addEventListener('pointerdown', (e) => {
+    canvas.setPointerCapture(e.pointerId);
+    pointers.set(e.pointerId, local(e));
+    moved = 0;
+    if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      pinchDist = Math.hypot(a.x - b.x, a.y - b.y);
+    }
+  });
+  canvas.addEventListener('pointermove', (e) => {
+    const pos = local(e);
+    const prev = pointers.get(e.pointerId);
+    if (!prev) {
+      showTip(pick(pos.x, pos.y), pos.x, pos.y);
+      draw();
+      return;
+    }
+    pointers.set(e.pointerId, pos);
+    if (pointers.size === 1) {
+      ox += pos.x - prev.x;
+      oy += pos.y - prev.y;
+      moved += Math.abs(pos.x - prev.x) + Math.abs(pos.y - prev.y);
+      showTip(null, 0, 0);
+      draw();
+    } else if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      const dist = Math.hypot(a.x - b.x, a.y - b.y);
+      moved += 10;
+      if (pinchDist > 0) zoomAt((a.x + b.x) / 2, (a.y + b.y) / 2, dist / pinchDist);
+      pinchDist = dist;
+    }
+  });
+  const release = (e: PointerEvent) => {
+    const pos = local(e);
+    const wasTap = pointers.size === 1 && moved < 6;
+    pointers.delete(e.pointerId);
+    if (pointers.size < 2) pinchDist = 0;
+    if (wasTap && e.type === 'pointerup') {
+      const p = pick(pos.x, pos.y);
+      if (p) location.href = `/p/${p.id}/`;
+    }
+  };
+  canvas.addEventListener('pointerup', release);
+  canvas.addEventListener('pointercancel', release);
+  canvas.addEventListener('pointerleave', () => {
+    if (!pointers.size) {
+      showTip(null, 0, 0);
+      draw();
+    }
+  });
+  canvas.addEventListener(
+    'wheel',
+    (e) => {
+      e.preventDefault();
+      const pos = local(e as unknown as PointerEvent);
+      zoomAt(pos.x, pos.y, Math.exp(-e.deltaY * 0.0015));
+    },
+    { passive: false },
+  );
+
+  const center = () => ({ x: canvas.clientWidth / 2, y: canvas.clientHeight / 2 });
+  document.querySelector('#zoom-in')!.addEventListener('click', () => zoomAt(center().x, center().y, 1.4));
+  document.querySelector('#zoom-out')!.addEventListener('click', () => zoomAt(center().x, center().y, 1 / 1.4));
+  document.querySelector('#zoom-fit')!.addEventListener('click', fit);
+  window.addEventListener('resize', () => {
+    resize();
+    fit();
+  });
+
+  resize();
+  fit();
+</script>

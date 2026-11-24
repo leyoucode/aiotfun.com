@@ -1,0 +1,27 @@
+{
+  "id": "AutoEmbed--AutoEmbed",
+  "repo": "AutoEmbed/AutoEmbed",
+  "status": "candidate",
+  "github": {
+    "stars": 48,
+    "license": "MIT",
+    "pushedAt": "2026-06-12T02:27:27Z",
+    "description": "AutoEmbed: Towards Automated Software Development for Generic Embedded IoT Systems via LLMs (SenSys 2026)",
+    "topics": [
+      "arduino",
+      "code-generation",
+      "desktop-app",
+      "electron",
+      "embedded-systems",
+      "fastapi",
+      "iot",
+      "llm",
+      "openai",
+      "react"
+    ],
+    "language": "Python",
+    "homepage": "https://autoembed.github.io"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

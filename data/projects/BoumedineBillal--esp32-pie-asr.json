@@ -1,0 +1,26 @@
+{
+  "id": "BoumedineBillal--esp32-pie-asr",
+  "repo": "BoumedineBillal/esp32-pie-asr",
+  "status": "candidate",
+  "github": {
+    "stars": 59,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-11-01T20:53:17Z",
+    "description": "Live English speech recognition on the ESP32-P4: a 65.7M-parameter streaming transducer in 2/4-bit weights, faster than real time, on the chip alone. With six voice-control demos.",
+    "topics": [
+      "asr",
+      "embedded",
+      "esp32-p4",
+      "quantization",
+      "risc-v",
+      "simd",
+      "speech-recognition",
+      "tinyml",
+      "voice-control"
+    ],
+    "language": "C++",
+    "homepage": "https://boumedinebillal.github.io/esp32-pie-asr/"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

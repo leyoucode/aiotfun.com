@@ -1,0 +1,32 @@
+{
+  "id": "soyboitech--beacons",
+  "repo": "soyboitech/beacons",
+  "status": "candidate",
+  "github": {
+    "stars": 33,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-11-18T19:27:28Z",
+    "description": "counter surveillance firmware for esp32 boards, plus native ios and android apps. passively detects nearby alpr cameras, drones, body cams, smart glasses and bluetooth trackers.",
+    "topics": [
+      "acab",
+      "alpr",
+      "android",
+      "beacon",
+      "bodycams",
+      "counter-surveillance",
+      "flock",
+      "info",
+      "ios",
+      "law-enforcement",
+      "meshtastic",
+      "oui-spy",
+      "privacy",
+      "smart-glasses",
+      "surveillance-detection"
+    ],
+    "language": "Kotlin",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

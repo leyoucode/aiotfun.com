@@ -1,0 +1,16 @@
+{
+  "id": "fangkuaiLS--EspSmith",
+  "repo": "fangkuaiLS/EspSmith",
+  "status": "candidate",
+  "github": {
+    "stars": 33,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-09-20T03:18:59Z",
+    "description": "AI 闭环开发 ESP32 固件，创意到硬件轻松实现 /AI Closed-Loop Development of ESP32 Firmware: From Idea to Hardware with Ease.",
+    "topics": [],
+    "language": "Rust",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

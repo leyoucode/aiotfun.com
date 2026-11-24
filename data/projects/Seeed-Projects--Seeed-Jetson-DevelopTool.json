@@ -1,0 +1,28 @@
+{
+  "id": "Seeed-Projects--Seeed-Jetson-DevelopTool",
+  "repo": "Seeed-Projects/Seeed-Jetson-DevelopTool",
+  "status": "candidate",
+  "github": {
+    "stars": 58,
+    "license": "MIT",
+    "pushedAt": "2026-11-23T11:57:32Z",
+    "description": "All-in-one desktop toolkit for NVIDIA Jetson: one-click JetPack/L4T firmware flashing, SSH remote development, device diagnostics, app market (YOLO, LLM, RAG, robotics, ROS), AI agent skills (Claude/Codex), OTA updates and disk backup. PyQt6 GUI for Linux & Windows",
+    "topics": [
+      "edge-ai",
+      "firmware",
+      "gui",
+      "jetpack",
+      "jetson",
+      "l4t",
+      "nvidia",
+      "pytorch",
+      "recomputer",
+      "remote-development",
+      "seeed"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

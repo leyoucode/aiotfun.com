@@ -1,0 +1,25 @@
+{
+  "id": "Mr-C4T--LeCyborg",
+  "repo": "Mr-C4T/LeCyborg",
+  "status": "candidate",
+  "github": {
+    "stars": 31,
+    "license": "MIT",
+    "pushedAt": "2025-09-25T16:39:17Z",
+    "description": "AI-powered third-arm prosthesis. 🦾 LeRobot Worldwide Hackathon 2025  (🏆 13ᵗʰ place)",
+    "topics": [
+      "3d-printing",
+      "ai",
+      "electronics",
+      "esp32",
+      "lerobot",
+      "python",
+      "robotics",
+      "sensor"
+    ],
+    "language": "Python",
+    "homepage": "https://www.youtube.com/shorts/QdlEGFZBbcE"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

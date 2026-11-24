@@ -1,0 +1,80 @@
+{
+  "id": "CX-ArtLab--BoopFace",
+  "repo": "CX-ArtLab/BoopFace",
+  "status": "approved",
+  "github": {
+    "stars": 216,
+    "license": "MIT",
+    "pushedAt": "2026-11-20T09:02:23Z",
+    "description": "BoopFace (formerly Agent Robot Avatar): a lightweight, expressive robot avatar component for AI bots, agents and interactive apps.",
+    "topics": [
+      "agent-ui",
+      "ai-agent",
+      "ai-bot",
+      "animated-avatar",
+      "arduino",
+      "avatar-component",
+      "chatbot-ui",
+      "embedded",
+      "esp32",
+      "platformio",
+      "raspberry-pi-pico",
+      "robot-avatar",
+      "stm32",
+      "svg",
+      "svg-animation",
+      "vanilla-javascript",
+      "virtual-pet",
+      "web-component",
+      "zero-dependencies"
+    ],
+    "language": "JavaScript",
+    "homepage": "https://boopface.com"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "BoopFace",
+    "summary": "轻量级可编程机器人表情组件，支持Web端与ESP32/STM32/RP2040等嵌入式平台运行SVG动画表情。",
+    "intro": "BoopFace 是一个基于 SVG 和原生 Web Component 构建的轻量级机器人表情组件，专为 AI 助手、智能体（Agent）和交互式应用提供可视化状态反馈（如等待、成功、失败、惊讶等）。\n\n它通过纯前端 JavaScript 实现丰富微交互（指针跟随、弹性天线、头部惯性运动），同时提供嵌入式版本 BoopFace Embedded —— 将相同表情逻辑移植到 ESP32、STM32 和 Raspberry Pi Pico 等 MCU 平台，驱动 TFT/OLED 屏幕实时渲染 SVG 风格动画。\n\n亮点包括：零依赖、188 种可热切换 SVG 皮肤、自动眨眼与 idle 行为、可配置睡眠策略、支持 reduced-motion 无障碍模式，以及配套在线硬件模拟器（含 32 种屏幕预设）。\n\n适合想为 AI 应用快速添加拟人化 UI 的前端开发者；也适合嵌入式爱好者将动态表情集成到机器人、桌面宠物或智能硬件设备中，无需训练模型，仅需烧录固件并连接屏幕即可运行。",
+    "shelf": "robot",
+    "platform": "esp32",
+    "hardware": [
+      {
+        "name": "TFT display",
+        "role": "display"
+      },
+      {
+        "name": "OLED display",
+        "role": "display"
+      },
+      {
+        "name": "AMOLED display",
+        "role": "display"
+      },
+      {
+        "name": "monochrome OLED",
+        "role": "display"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "状态反馈",
+        "where": "device"
+      },
+      {
+        "name": "交互响应",
+        "where": "device"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "机器人表情",
+      "嵌入式UI",
+      "SVG动画",
+      "AI状态可视化",
+      "ESP32显示",
+      "Web组件"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:19.492Z"
+}

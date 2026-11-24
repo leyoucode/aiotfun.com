@@ -1,0 +1,22 @@
+{
+  "id": "mm7h--XiaoZhi.Net",
+  "repo": "mm7h/XiaoZhi.Net",
+  "status": "candidate",
+  "github": {
+    "stars": 36,
+    "license": "MIT",
+    "pushedAt": "2026-10-17T04:49:56Z",
+    "description": "xiaozhi esp32的C#服务端，帮助你搭建属于自己的小智服务。Helps you build your own xiaozhi esp32 back-end service.",
+    "topics": [
+      "ms-agent-framework",
+      "sherpa-onnx",
+      "supersocket",
+      "xiaozhi-esp32",
+      "xiaozhi-server"
+    ],
+    "language": "C#",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

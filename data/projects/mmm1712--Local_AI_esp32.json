@@ -1,0 +1,23 @@
+{
+  "id": "mmm1712--Local_AI_esp32",
+  "repo": "mmm1712/Local_AI_esp32",
+  "status": "candidate",
+  "github": {
+    "stars": 111,
+    "license": "MIT",
+    "pushedAt": "2026-10-25T06:57:01Z",
+    "description": "A language model trained from scratch and running offline on an ESP32-S3 with a touchscreen chat interface.",
+    "topics": [
+      "embedded-ai",
+      "esp32",
+      "esp32-s3",
+      "llm",
+      "transformer",
+      "xiao"
+    ],
+    "language": "C",
+    "homepage": "https://youtu.be/LgCNVUndTH8"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

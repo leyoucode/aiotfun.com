@@ -1,0 +1,73 @@
+{
+  "id": "stack-chan--stack-chan",
+  "repo": "stack-chan/stack-chan",
+  "status": "approved",
+  "github": {
+    "stars": 1902,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-11-24T02:53:33Z",
+    "description": "A JavaScript-driven M5Stack-embedded super-kawaii robot.",
+    "topics": [
+      "chatgpt",
+      "esp32",
+      "fusion360",
+      "hardware",
+      "javascript",
+      "kawaii",
+      "kicad",
+      "m5stack",
+      "moddable",
+      "robots",
+      "schematics",
+      "stackchan",
+      "typescript"
+    ],
+    "language": "TypeScript",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "Stack-chan",
+    "summary": "基于M5Stack的JavaScript驱动可编程萌系桌面机器人，支持语音交互、表情动画与AI扩展。",
+    "intro": "Stack-chan是一款开源硬件+软件的桌面级萌系机器人，以M5StackChan CoreS3为主控，用TypeScript/JavaScript开发固件与应用（MOD），通过浏览器工具链实现零本地环境配置的快速开发。\n\n它内置麦克风与扬声器实现语音输入输出，屏幕显示动态表情，可通过Wi-Fi连接云端API（如ChatGPT），也可运行端侧MediaPipe手势/人脸追踪（经BLE传至浏览器），形成‘设备感知-边缘处理-云协同’的轻量AI工作流。\n\n项目亮点包括：全Web化开发体验（烧录、配置、编程、仿真一站式）、模块化MOD生态、3D仿真与Face编辑器、完整KiCAD原理图与Fusion360机壳设计，软硬一体高度开放。\n\n适合嵌入式初学者学习JavaScript嵌入式开发，也适合教育场景开展AI交互实验，或创客快速原型验证语音+视觉+动作融合的桌面机器人应用。",
+    "shelf": "robot",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "M5Stack built-in microphone",
+        "role": "audio-in"
+      },
+      {
+        "name": "M5Stack built-in speaker",
+        "role": "audio-out"
+      },
+      {
+        "name": "M5Stack LCD screen",
+        "role": "display"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "语音交互",
+        "where": "cloud"
+      },
+      {
+        "name": "人脸追踪",
+        "where": "edge"
+      },
+      {
+        "name": "手势识别",
+        "where": "edge"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "桌面机器人",
+      "JavaScript嵌入式",
+      "语音交互",
+      "表情动画",
+      "MOD扩展"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:06.772Z"
+}

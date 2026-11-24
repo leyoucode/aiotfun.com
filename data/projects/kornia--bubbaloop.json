@@ -1,0 +1,32 @@
+{
+  "id": "kornia--bubbaloop",
+  "repo": "kornia/bubbaloop",
+  "status": "candidate",
+  "github": {
+    "stars": 30,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-06-26T10:02:27Z",
+    "description": "Open-source Hardware AI agent. Single Rust binary for cameras, sensors, robots, and IoT fleets — orchestrated by AI agents with memory and real-time telemetry. Runs on Jetson, Raspberry Pi, any Linux.",
+    "topics": [
+      "ai-agent",
+      "computer-vision",
+      "edge-ai",
+      "embedded-ai",
+      "hardware-ai",
+      "iot",
+      "jetson",
+      "mcp",
+      "mcp-server",
+      "raspberry-pi",
+      "robotics",
+      "rust",
+      "sensors",
+      "vlm",
+      "zenoh"
+    ],
+    "language": "Rust",
+    "homepage": "https://www.kornia.org/bubbaloop/"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

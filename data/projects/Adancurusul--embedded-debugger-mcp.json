@@ -1,0 +1,64 @@
+{
+  "id": "Adancurusul--embedded-debugger-mcp",
+  "repo": "Adancurusul/embedded-debugger-mcp",
+  "status": "approved",
+  "github": {
+    "stars": 221,
+    "license": "MIT",
+    "pushedAt": "2026-07-16T12:50:13Z",
+    "description": "MCP server + CLI + Codex/Claude skill for embedded debugging via probe-rs or OpenOCD — ARM Cortex-M, RISC-V, and Xtensa (ESP32), with AI crash diagnosis",
+    "topics": [
+      "ai-skill",
+      "arm-cortex-m",
+      "claude-code",
+      "claude-code-skill",
+      "claude-skill",
+      "cli",
+      "codex-skill",
+      "debug-probe",
+      "embedded-debugging",
+      "embedded-systems",
+      "esp32",
+      "mcp",
+      "mcp-server",
+      "model-context-protocol",
+      "openocd",
+      "probe-rs",
+      "riscv",
+      "rust",
+      "skill",
+      "xtensa"
+    ],
+    "language": "Rust",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "嵌入式调试MCP服务器",
+    "summary": "为ARM Cortex-M、RISC-V和ESP32等MCU提供AI辅助调试能力的MCP服务端，支持故障诊断与栈回溯。",
+    "intro": "这是一个基于Rust构建的嵌入式调试MCP（Model Context Protocol）服务器，桥接probe-rs或OpenOCD，向AI助手暴露标准化调试工具集。\n\n它不直接运行AI模型，而是将硬件调试能力（如读取SCB寄存器、RTT通信、闪存烧录、栈回溯）封装为MCP工具，供Codex/Claude等AI客户端调用，实现‘AI看寄存器+推理根因’的协同调试。\n\n亮点在于统一抽象双后端（probe-rs原生 / OpenOCD GDB-RSP），对AI暴露一致接口；内置CLI快速验证环境；支持Cortex-M专属AI故障诊断（`diagnose_fault`+`unwind_exception`）；已实测ESP32-S3。\n\n适合嵌入式开发者、固件工程师及AI Agent开发者：前者可零配置接入AI调试流；后者可基于其MCP工具集构建智能调试Agent或IDE插件。",
+    "shelf": "tools",
+    "platform": "other",
+    "hardware": [],
+    "aiCapabilities": [
+      {
+        "name": "故障诊断",
+        "where": "cloud"
+      },
+      {
+        "name": "栈回溯分析",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "嵌入式调试",
+      "AI辅助开发",
+      "MCP协议",
+      "ESP32-S3",
+      "Cortex-M",
+      "Rust"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:18.425Z"
+}

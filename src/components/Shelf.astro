@@ -1,0 +1,39 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import type { ShelfDef } from '../lib/projects.ts';
+
+interface Props {
+  shelf: ShelfDef;
+  limit?: number;
+  title?: string;
+  showAll?: boolean;
+}
+const { shelf, limit = 12, title = shelf.title, showAll = true } = Astro.props;
+const items = shelf.items.slice(0, limit);
+---
+
+<section class="mt-10" data-shelf>
+  <div class="mb-3 flex items-end justify-between gap-4 border-b border-line pb-2">
+    <div class="min-w-0">
+      <h2 class="text-lg font-semibold tracking-tight">{title}</h2>
+      {shelf.subtitle && <p class="truncate text-xs text-muted">{shelf.subtitle}</p>}
+    </div>
+    <div class="flex shrink-0 items-center gap-2">
+      {showAll && <a href={`/shelf/${shelf.key}/`} class="text-xs text-muted hover:text-teal">查看全部 {shelf.items.length} 个 →</a>}
+      <button type="button" class="hidden size-7 place-items-center rounded-full border border-line bg-surface text-muted hover:text-ink md:grid" data-dir="-1" aria-label="向左滚动">‹</button>
+      <button type="button" class="hidden size-7 place-items-center rounded-full border border-line bg-surface text-muted hover:text-ink md:grid" data-dir="1" aria-label="向右滚动">›</button>
+    </div>
+  </div>
+  <div class="rail -mx-4 flex gap-4 overflow-x-auto px-4 pb-2 md:mx-0 md:px-0" data-rail>
+    {items.map((p) => <ProjectCard project={p} class="w-56 shrink-0 md:w-60" />)}
+  </div>
+</section>
+
+<script>
+  for (const shelf of document.querySelectorAll<HTMLElement>('[data-shelf]')) {
+    const rail = shelf.querySelector<HTMLElement>('[data-rail]')!;
+    for (const btn of shelf.querySelectorAll<HTMLButtonElement>('button[data-dir]')) {
+      btn.addEventListener('click', () => rail.scrollBy({ left: Number(btn.dataset.dir) * rail.clientWidth * 0.8, behavior: 'smooth' }));
+    }
+  }
+</script>

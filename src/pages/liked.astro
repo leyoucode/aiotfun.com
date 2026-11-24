@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../lib/projects.ts';
+---
+
+<Base title="我喜欢的" description="你点过喜欢的 AIoT 项目">
+  <div class="pt-8">
+    <h1 class="text-2xl font-bold tracking-tight">我喜欢的</h1>
+    <p class="mt-1 text-sm text-muted">只保存在这台设备的浏览器里，清除浏览器数据后会丢失。</p>
+  </div>
+  <p id="empty" class="mt-10 hidden rounded-xl border border-dashed border-line p-10 text-center text-muted">
+    还没有喜欢的项目。去 <a href="/swipe/" class="text-teal underline">滑一滑</a> 或在项目详情页点 ♥。
+  </p>
+  <div id="list" class="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
+    {projects.map((p) => (
+      <div data-id={p.id} hidden>
+        <ProjectCard project={p} />
+      </div>
+    ))}
+  </div>
+</Base>
+
+<script>
+  import { likedIds } from '../scripts/likes.ts';
+  const liked = likedIds();
+  const list = document.querySelector<HTMLElement>('#list')!;
+  // 按喜欢的先后倒序：最近喜欢的排最前
+  for (const id of [...liked].reverse()) {
+    const el = list.querySelector<HTMLElement>(`[data-id="${CSS.escape(id)}"]`);
+    if (el) {
+      el.hidden = false;
+      list.append(el);
+    }
+  }
+  if (!list.querySelector('[data-id]:not([hidden])')) document.querySelector('#empty')!.classList.remove('hidden');
+</script>

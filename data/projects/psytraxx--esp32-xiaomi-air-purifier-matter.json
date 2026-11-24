@@ -1,0 +1,16 @@
+{
+  "id": "psytraxx--esp32-xiaomi-air-purifier-matter",
+  "repo": "psytraxx/esp32-xiaomi-air-purifier-matter",
+  "status": "candidate",
+  "github": {
+    "stars": 40,
+    "license": "MIT",
+    "pushedAt": "2026-11-17T08:16:32Z",
+    "description": "Cloud-free Matter firmware for the Xiaomi Mi Air Purifier 3H and 3C, running on the purifier’s own ESP32 (ESP-IDF + esp-matter)",
+    "topics": [],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

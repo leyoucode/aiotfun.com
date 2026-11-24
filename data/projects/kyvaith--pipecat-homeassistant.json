@@ -1,0 +1,22 @@
+{
+  "id": "kyvaith--pipecat-homeassistant",
+  "repo": "kyvaith/pipecat-homeassistant",
+  "status": "candidate",
+  "github": {
+    "stars": 67,
+    "license": "MIT",
+    "pushedAt": "2026-11-05T10:24:59Z",
+    "description": "Realtime Pipecat assistant for Home Assistant with MCP and ESP32 satellite support",
+    "topics": [
+      "esphome",
+      "hacs",
+      "home-assistant",
+      "pipecat",
+      "voice-assistant"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

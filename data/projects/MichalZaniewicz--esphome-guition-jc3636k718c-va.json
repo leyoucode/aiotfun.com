@@ -1,0 +1,27 @@
+{
+  "id": "MichalZaniewicz--esphome-guition-jc3636k718c-va",
+  "repo": "MichalZaniewicz/esphome-guition-jc3636k718c-va",
+  "status": "candidate",
+  "github": {
+    "stars": 176,
+    "license": "MIT",
+    "pushedAt": "2026-11-02T07:56:46Z",
+    "description": "Full Home Assistant voice assistant on the Guition JC3636K718C round knob display, in pure ESPHome: on-device wake word, music player, timers, addressable LED ring, device control and two built-in games.",
+    "topics": [
+      "esp32-s3",
+      "esphome",
+      "guition",
+      "home-assistant",
+      "jc3636k718c",
+      "knob-display",
+      "lvgl",
+      "micro-wake-word",
+      "smart-home",
+      "voice-assistant"
+    ],
+    "language": "Python",
+    "homepage": "https://github.com/MichalZaniewicz/esphome-guition-jc3636k718c-va/wiki"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

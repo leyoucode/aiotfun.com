@@ -1,0 +1,27 @@
+{
+  "id": "Bellman281--esp32-tinyLLM",
+  "repo": "Bellman281/esp32-tinyLLM",
+  "status": "candidate",
+  "github": {
+    "stars": 49,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-08-20T17:49:01Z",
+    "description": "Rust inference engine for a 28.9M-parameter PLE TinyLM on the ESP32-S3 — 9.4 tok/s, faster than the C implementation it was ported from",
+    "topics": [
+      "embedded",
+      "esp32",
+      "esp32-s3",
+      "inference-engine",
+      "llm",
+      "quantization",
+      "rust",
+      "rust-crate",
+      "rust-lang",
+      "tinyml"
+    ],
+    "language": "Rust",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

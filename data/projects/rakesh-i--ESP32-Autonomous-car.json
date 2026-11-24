@@ -1,0 +1,27 @@
+{
+  "id": "rakesh-i--ESP32-Autonomous-car",
+  "repo": "rakesh-i/ESP32-Autonomous-car",
+  "status": "candidate",
+  "github": {
+    "stars": 80,
+    "license": "MIT",
+    "pushedAt": "2026-09-13T11:36:52Z",
+    "description": "Autonomous car using ESP32.",
+    "topics": [
+      "alexnet",
+      "arduino",
+      "autonomous-robots",
+      "autonomous-vehicles",
+      "esp32",
+      "esp32cam",
+      "machine-learning",
+      "rc",
+      "socket-programming",
+      "wireless"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

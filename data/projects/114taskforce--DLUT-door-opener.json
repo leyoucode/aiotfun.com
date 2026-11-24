@@ -1,0 +1,16 @@
+{
+  "id": "114taskforce--DLUT-door-opener",
+  "repo": "114taskforce/DLUT-door-opener",
+  "status": "candidate",
+  "github": {
+    "stars": 34,
+    "license": "MIT",
+    "pushedAt": "2026-09-05T04:02:26Z",
+    "description": "运行在ESP32 S3 N16R8上的单片机程序，实现了在大连理工大学校园网内联网登录统一登录系统获取校园统一登录系统token到发送开宿舍门请求的流程。使用教程：https://www.bilibili.com/video/BV1QXXvBEEcq/     部分代码由AI生成",
+    "topics": [],
+    "language": "Kotlin",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

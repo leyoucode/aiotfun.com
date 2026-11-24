@@ -1,0 +1,70 @@
+{
+  "id": "HeyWillow--willow",
+  "repo": "HeyWillow/willow",
+  "status": "approved",
+  "github": {
+    "stars": 3145,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-11-01T00:35:41Z",
+    "description": "Open source, local, and self-hosted Amazon Echo/Google Home competitive Voice Assistant alternative",
+    "topics": [
+      "alexa",
+      "deep-learning",
+      "echo",
+      "esp-adf",
+      "esp-idf",
+      "esp32",
+      "google-home",
+      "home-assistant",
+      "home-automation",
+      "privacy",
+      "speech-recognition",
+      "speech-to-text",
+      "whisper"
+    ],
+    "language": "C",
+    "homepage": "https://heywillow.org/"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "Willow 语音助手",
+    "summary": "开源、本地化、可自托管的离线语音助手，基于 ESP32 实现端侧语音识别与响应。",
+    "intro": "Willow 是一个对标 Amazon Echo 和 Google Home 的开源语音助手项目，强调隐私保护与完全本地运行能力，所有语音处理均可在设备端完成。\n\n它基于 ESP32（搭配 ADF 音频框架）实现麦克风音频采集、前端语音活动检测（VAD）、本地 STT（如 Whisper 轻量化版本）及 TTS 合成，并支持连接自托管推理服务扩展 LLM 能力。\n\n核心亮点包括：零云端依赖的默认工作模式、模块化音频/ASR/TTS 架构、对 Home Assistant 深度集成、以及面向嵌入式优化的低资源语音栈。\n\n适合嵌入式开发者、智能家居爱好者和隐私敏感用户，用于构建不联网的语音控制中枢或二次开发定制语音交互设备。",
+    "shelf": "voice",
+    "platform": "esp32",
+    "hardware": [
+      {
+        "name": "I2S microphone",
+        "role": "audio-in"
+      },
+      {
+        "name": "I2S speaker",
+        "role": "audio-out"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "语音识别",
+        "where": "device"
+      },
+      {
+        "name": "语音合成",
+        "where": "device"
+      },
+      {
+        "name": "语言理解",
+        "where": "edge"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "离线语音",
+      "ESP32",
+      "隐私优先",
+      "Home Assistant",
+      "STT",
+      "TTS"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:05.991Z"
+}

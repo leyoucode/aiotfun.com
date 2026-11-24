@@ -1,0 +1,16 @@
+{
+  "id": "agodianel--esp32-claude-workbench",
+  "repo": "agodianel/esp32-claude-workbench",
+  "status": "candidate",
+  "github": {
+    "stars": 82,
+    "license": "MIT",
+    "pushedAt": "2026-11-14T05:24:56Z",
+    "description": "Deterministic AI workflow for ESP32 firmware development — structured missions, implementation contracts, debug playbooks, testing-first approach, and Claude Code skills for safe, repeatable embedded engineering.",
+    "topics": [],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

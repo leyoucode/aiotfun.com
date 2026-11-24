@@ -1,0 +1,16 @@
+{
+  "id": "dht3218--esp32pico_watch",
+  "repo": "dht3218/esp32pico_watch",
+  "status": "candidate",
+  "github": {
+    "stars": 34,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-01-18T11:29:32Z",
+    "description": "基于esp32 pico v3 02的手表设计，并将云端模型和本地语音识别模型组合使用，提供智能化控制能力",
+    "topics": [],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

@@ -1,0 +1,23 @@
+{
+  "id": "zhangheng18--esp32-ai-chat",
+  "repo": "zhangheng18/esp32-ai-chat",
+  "status": "candidate",
+  "github": {
+    "stars": 35,
+    "license": "MIT",
+    "pushedAt": "2025-06-30T13:00:11Z",
+    "description": "esp32s3 ai chat",
+    "topics": [
+      "chat",
+      "dht20",
+      "esp32-s3",
+      "micropython",
+      "st7789-display",
+      "websocket"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

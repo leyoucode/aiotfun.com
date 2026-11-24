@@ -1,0 +1,72 @@
+{
+  "id": "streamcoreai--streamcore-server",
+  "repo": "streamcoreai/streamcore-server",
+  "status": "approved",
+  "github": {
+    "stars": 249,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-11-23T17:58:49Z",
+    "description": "Open-source realtime voice agent server in Go with WebRTC (WHIP), barge-in, streaming STT/LLM/TTS pipelines, plugin system, multi-language SDKs, SIP telephony, ESP32 support & fully local mode.",
+    "topics": [
+      "agent-framework",
+      "ai-voice-agent",
+      "conversational-ai",
+      "esp32",
+      "go",
+      "golang",
+      "local-ai",
+      "open-source-ai",
+      "realtime-ai",
+      "realtime-voice-agent",
+      "sip",
+      "speech-to-text",
+      "stt",
+      "telephony",
+      "text-to-speech",
+      "tts",
+      "voice-agent",
+      "voice-ai",
+      "webrtc",
+      "webrtc-whip"
+    ],
+    "language": "Go",
+    "homepage": "https://www.streamcore.ai"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "StreamCore Server",
+    "summary": "开源实时语音代理服务器，支持 WebRTC/WHIP、流式 STT/LLM/TTS、打断（barge-in）及 ESP32 端侧接入。",
+    "intro": "StreamCore 是一个用 Go 编写的轻量级、低延迟实时语音基础设施，专注处理 AI 语音交互中敏感的媒体链路——从用户麦克风到 AI 模型再到扬声器的端到端流式管道。\n\n它不运行 AI 模型本身，而是将音频流实时分发给外部 STT/LLM/TTS 服务（或本地 Ollama/VibeVoice），同时在设备端（如 ESP32）完成音频采集与播放，实现真正端云协同的语音 Agent 架构。\n\n核心亮点包括：零依赖内置 STUN/TURN、自适应 VAD 与精准 barge-in、ICE 重启会话保持、全路径毫秒级延迟监控、以及对浏览器/手机/SIP/ESP32 的统一 WHIP 接口。\n\n适合想快速构建私有化语音助手、智能电话客服、嵌入式语音设备或需要完全可控媒体链路的 AI 应用开发者，尤其适配已有模型服务或追求本地化部署的团队。",
+    "shelf": "voice",
+    "platform": "other",
+    "hardware": [],
+    "aiCapabilities": [
+      {
+        "name": "语音对话",
+        "where": "cloud"
+      },
+      {
+        "name": "语音识别",
+        "where": "cloud"
+      },
+      {
+        "name": "语音合成",
+        "where": "cloud"
+      },
+      {
+        "name": "流式推理",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "实时语音",
+      "WebRTC",
+      "ESP32",
+      "流式AI",
+      "开源框架"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:17.329Z"
+}

@@ -1,0 +1,75 @@
+{
+  "id": "JosssphZhou--groki-bot",
+  "repo": "JosssphZhou/groki-bot",
+  "status": "approved",
+  "github": {
+    "stars": 241,
+    "license": "BSL-1.0",
+    "pushedAt": "2026-10-31T05:34:40Z",
+    "description": "Groki Bot desktop robot (M5Stack CoreS3): firmware, a voice and MCP gateway for your computer, and a hand-off to Grok Bot agents",
+    "topics": [
+      "esp32",
+      "firmware",
+      "m5stack",
+      "mcp",
+      "robot",
+      "stack-chan"
+    ],
+    "language": "C++",
+    "homepage": "https://josssphzhou.github.io/groki-bot/"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "Groki Bot",
+    "summary": "基于M5Stack CoreS3的桌面语音机器人，支持本地唤醒词、Mac摄像头人脸追踪与Grok Bot原生语音交互。",
+    "intro": "Groki Bot是一款开源桌面机器人，硬件主体为M5Stack CoreS3主控+Stack-chan机械底座，集固件、电脑端网关和Grok Bot代理桥接于一体。\n\n它通过Mac摄像头实现人脸检测与双轴舵机实时转向，本地运行轻量级唤醒词识别（'Hi Grok'），眼睛动画在设备端渲染；语音识别与对话由Grok Bot桌面App云端处理，无需额外API密钥。\n\n支持一键网页烧录与Wi-Fi OTA升级，免本地工具链；网关层抽象了MCP（Model Context Protocol）通信，便于扩展其他AI代理；表达引擎支持15种表情+自动眨眼。\n\n适合想快速体验AI语音交互的嵌入式爱好者，或希望将现有AI Agent（如Grok Bot）具身化的开发者，需基础ESP32开发与Mac环境配置经验。",
+    "shelf": "robot",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "M5Stack CoreS3",
+        "role": "other"
+      },
+      {
+        "name": "Stack-chan base",
+        "role": "actuator"
+      },
+      {
+        "name": "dual-axis servo",
+        "role": "actuator"
+      },
+      {
+        "name": "on-device display",
+        "role": "display"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "语音唤醒",
+        "where": "edge"
+      },
+      {
+        "name": "人脸追踪",
+        "where": "edge"
+      },
+      {
+        "name": "语音对话",
+        "where": "cloud"
+      },
+      {
+        "name": "表情生成",
+        "where": "device"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音机器人",
+      "ESP32-S3",
+      "Grok集成",
+      "人脸追踪",
+      "MCP协议",
+      "桌面机器人"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:17.690Z"
+}

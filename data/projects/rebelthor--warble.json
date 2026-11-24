@@ -1,0 +1,28 @@
+{
+  "id": "rebelthor--warble",
+  "repo": "rebelthor/warble",
+  "status": "candidate",
+  "github": {
+    "stars": 36,
+    "license": "MIT",
+    "pushedAt": "2026-06-16T14:00:13Z",
+    "description": "Fully local AI voice backend for the M5Stack StackChan robot (whisper.cpp + Silero VAD + Ollama + Piper) - replaces the xiaozhi.me cloud, no API keys, runs on your own machine.",
+    "topics": [
+      "esp32-s3",
+      "local-llm",
+      "m5stack",
+      "offline-voice",
+      "ollama",
+      "piper-tts",
+      "self-hosted",
+      "stackchan",
+      "voice-assistant",
+      "whisper",
+      "xiaozhi"
+    ],
+    "language": "Go",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

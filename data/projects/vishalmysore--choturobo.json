@@ -1,0 +1,25 @@
+{
+  "id": "vishalmysore--choturobo",
+  "repo": "vishalmysore/choturobo",
+  "status": "candidate",
+  "github": {
+    "stars": 81,
+    "license": "MIT",
+    "pushedAt": "2025-04-20T12:14:52Z",
+    "description": "Integrate Arduino-based robotics (using the NodeMCU ESP32 or Arduino Nano 368 board) with AI using the MCP (Model Context Protocol) framework from Claude Anthropic",
+    "topics": [
+      "anthropic-claude",
+      "antrophic",
+      "ardiuno",
+      "artificial-intelligence",
+      "artificial-neural-networks",
+      "claude-ai",
+      "robot",
+      "robotics"
+    ],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

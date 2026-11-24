@@ -1,0 +1,63 @@
+{
+  "id": "xinnan-tech--xiaozhi-esp32-server",
+  "repo": "xinnan-tech/xiaozhi-esp32-server",
+  "status": "approved",
+  "github": {
+    "stars": 11390,
+    "license": "MIT",
+    "pushedAt": "2026-11-24T03:22:28Z",
+    "description": "本项目为xiaozhi-esp32提供后端服务，帮助您快速搭建ESP32设备控制服务器。Backend service for xiaozhi-esp32, helps you quickly build an ESP32 device control server.",
+    "topics": [
+      "dify",
+      "esp32",
+      "mcp-server",
+      "xiaozhi",
+      "xiaozhi-ai",
+      "xiaozhi-esp32",
+      "xiaozhi-server"
+    ],
+    "language": "JavaScript",
+    "homepage": "https://2662r3426b.vicp.fun"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "小智后端服务",
+    "summary": "为xiaozhi-esp32硬件提供AI能力支撑的后端服务，支持语音交互、声纹识别、多模态对话与设备控制。",
+    "intro": "这是一个专为开源智能硬件项目 xiaozhi-esp32 设计的后端服务系统，基于人机共生智能理论构建，实现ESP32终端与AI大模型之间的协议桥接与能力调度。\n\n硬件（ESP32）通过MQTT/UDP/WebSocket连接本服务，上传音频流并接收指令；服务端集成ASR、TTS、VAD、声纹识别、LLM/VLLM等AI模块，完成语音理解、意图决策、多模态响应与设备反控闭环。\n\n支持全免费本地部署（FunASR+EdgeTTS+glm-4-flash）、流式低延迟交互（讯飞ASR+百炼LLM+火山TTS），具备声纹多用户识别、RAG知识库、MCP协议接入、插件化工具调用等先进特性。\n\n适合已有ESP32硬件（如xiaozhi-esp32开发板）并希望自建可控AI语音中台的开发者、教育者或智能家居爱好者，需具备基础Node.js/Python/Docker运维能力。",
+    "shelf": "voice",
+    "platform": "other",
+    "hardware": [],
+    "aiCapabilities": [
+      {
+        "name": "语音对话",
+        "where": "cloud"
+      },
+      {
+        "name": "声纹识别",
+        "where": "cloud"
+      },
+      {
+        "name": "多模态理解",
+        "where": "cloud"
+      },
+      {
+        "name": "意图识别",
+        "where": "cloud"
+      },
+      {
+        "name": "知识检索",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "ESP32配套",
+      "大模型中台",
+      "声纹识别",
+      "MCP协议",
+      "RAG"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:00.095Z"
+}

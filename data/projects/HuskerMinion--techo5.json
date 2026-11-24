@@ -1,0 +1,78 @@
+{
+  "id": "HuskerMinion--techo5",
+  "repo": "HuskerMinion/techo5",
+  "status": "approved",
+  "github": {
+    "stars": 827,
+    "license": "MIT",
+    "pushedAt": "2026-11-24T02:41:51Z",
+    "description": "Open firmware for the Echo Show 5, 1st and 2nd gen: Alpine Linux instead of Android, no Alexa. A local Home Assistant voice satellite with its own touch screen, on-device wake word, SSH and A/B over-the-air updates.",
+    "topics": [
+      "alexa-alternative",
+      "alpine-linux",
+      "checkers",
+      "cronos",
+      "echo-show",
+      "echo-show-5",
+      "esphome",
+      "firmware",
+      "home-assistant",
+      "linux",
+      "local-first",
+      "microwakeword",
+      "mt8163",
+      "ota-updates",
+      "privacy",
+      "voice-assistant",
+      "wake-word"
+    ],
+    "language": "Go",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "TECHO5 开源固件",
+    "summary": "为 Echo Show 5/8 等设备打造的开源 Linux 固件，替代 Alexa，本地运行唤醒词与 Home Assistant 语音卫星功能。",
+    "intro": "TECHO5 是一套专为 Amazon Echo 系列硬件（Show 5/8、Spot、Dot 等）开发的开源固件，用 Alpine Linux + Go 守护进程完全替换原厂 Fire OS 和 Alexa 云服务。\n\n它复用设备原有麦克风阵列、触摸屏、扬声器和 SoC（如 MT8163），在端侧运行轻量级 wake word 检测（microwakeword）、语音指令解析（对接 Home Assistant）、屏幕渲染与触控交互，全部数据不出本地网络。\n\n支持 A/B 分区 OTA 升级、SSH 调试、自定义唤醒词训练样本采集、多语言界面、暗光婴儿房模式、Snapcast 同步播放、Headscale 私有 Tailscale 网络等隐私优先特性。\n\n适合熟悉 Linux 嵌入式系统、Home Assistant 生态及语音交互原理的进阶用户，用于改造闲置 Echo 设备为可控、可审计、无云依赖的家庭智能终端。",
+    "shelf": "voice",
+    "platform": "other",
+    "hardware": [
+      {
+        "name": "内置麦克风阵列",
+        "role": "audio-in"
+      },
+      {
+        "name": "内置扬声器",
+        "role": "audio-out"
+      },
+      {
+        "name": "触摸 LCD 屏幕",
+        "role": "display"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "端侧唤醒词",
+        "where": "device"
+      },
+      {
+        "name": "语音指令理解",
+        "where": "edge"
+      },
+      {
+        "name": "本地语音合成",
+        "where": "device"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "隐私优先",
+      "Home Assistant",
+      "固件改造",
+      "Linux嵌入式",
+      "唤醒词识别"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:09.139Z"
+}

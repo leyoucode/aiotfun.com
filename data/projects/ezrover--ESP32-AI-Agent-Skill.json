@@ -1,0 +1,16 @@
+{
+  "id": "ezrover--ESP32-AI-Agent-Skill",
+  "repo": "ezrover/ESP32-AI-Agent-Skill",
+  "status": "candidate",
+  "github": {
+    "stars": 61,
+    "license": "MIT",
+    "pushedAt": "2026-08-03T03:35:30Z",
+    "description": "ESP32 Family agent skills for IDF and PlatformIO based programming, electronic schematic and PCB layout",
+    "topics": [],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

@@ -1,0 +1,60 @@
+{
+  "id": "michellzappa--headroom",
+  "repo": "michellzappa/headroom",
+  "status": "approved",
+  "github": {
+    "stars": 266,
+    "license": "MIT",
+    "pushedAt": "2026-11-24T08:45:23Z",
+    "description": "Local-first AI coding quotas and ship status, on your menu bar, iPhone, Watch and an ESP32 desk display.",
+    "topics": [
+      "ambient-display",
+      "arduino",
+      "claude-code",
+      "developer-tools",
+      "esp32",
+      "ios",
+      "local-first",
+      "macos",
+      "menubar",
+      "swift",
+      "swiftui",
+      "watchos"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "Headroom",
+    "summary": "本地优先的AI编码配额与部署状态监控工具，支持Mac菜单栏、iPhone、Apple Watch及ESP32桌面显示屏。",
+    "intro": "Headroom 是一个本地优先（local-first）的开发者工具，通过 macOS 上运行的 Python 服务端聚合本地已登录的 AI 编码工具（如 Claude、Cursor）配额、CI/CD 状态（GitHub Actions、Vercel 等）和生产健康度，统一输出为结构化 JSON 数据源。\n\nESP32-S3 桌面屏作为可选终端，通过 USB 或局域网连接 Mac 主机，实时拉取 `/usage` 等 API 数据，在 Waveshare AMOLED 屏上渲染三环配额图与周消耗趋势，不依赖云端、无账号体系，所有凭证保留在用户设备。\n\n亮点在于真正实现「本地可信」：零外部依赖（Python 标准库）、USB fallback 容灾机制（酒店 Wi-Fi 失效时仍可用）、多端 UI 语义一致（Mac/iPhone/Watch/ESP32 共享同一数据模型与 ring 设计语言）。\n\n适合关注 AI 使用成本与交付节奏的开发者，尤其是多工具并用、需快速感知配额临界与部署异常的技术人员；ESP32 部分适合熟悉 PlatformIO、能烧录固件并配置串口通信的嵌入式入门者。",
+    "shelf": "desk",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "Waveshare ESP32-S3-Touch-AMOLED-1.8",
+        "role": "display"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "配额监控",
+        "where": "device"
+      },
+      {
+        "name": "部署状态",
+        "where": "edge"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "开发者工具",
+      "本地优先",
+      "ESP32",
+      "桌面显示",
+      "AI监控"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:15.799Z"
+}

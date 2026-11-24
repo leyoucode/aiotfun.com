@@ -1,0 +1,36 @@
+{
+  "id": "makerspet--makerspet_snoopy",
+  "repo": "makerspet/makerspet_snoopy",
+  "status": "candidate",
+  "github": {
+    "stars": 33,
+    "license": "Apache-2.0",
+    "pushedAt": "2025-10-04T21:52:36Z",
+    "description": "Maker's Pet Snoopy - a 300mm 3D-printed DIY pet robot compatible with Kaia.ai robotics software platform",
+    "topics": [
+      "3d-printing",
+      "3mf",
+      "arduino",
+      "diy",
+      "esp32",
+      "esp32-arduino",
+      "fusion-360",
+      "kaia-ai",
+      "kaiaai-robot",
+      "makers",
+      "open-source",
+      "pet-robots",
+      "pets",
+      "remake-ai",
+      "robot",
+      "robotics",
+      "ros2",
+      "stem",
+      "stl-files"
+    ],
+    "language": "Lua",
+    "homepage": "https://makerspet.com"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

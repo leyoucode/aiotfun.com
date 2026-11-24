@@ -1,0 +1,25 @@
+{
+  "id": "Schluggi--AIOsense",
+  "repo": "Schluggi/AIOsense",
+  "status": "candidate",
+  "github": {
+    "stars": 164,
+    "license": "MIT",
+    "pushedAt": "2026-11-24T08:02:18Z",
+    "description": "ESPHome based all-in-one sensor",
+    "topics": [
+      "diy",
+      "esp32",
+      "esphome",
+      "hacktoberfest",
+      "home-assistant",
+      "pcb",
+      "sensor",
+      "smarthome"
+    ],
+    "language": null,
+    "homepage": "https://aiosense.readthedocs.io/en/latest/"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

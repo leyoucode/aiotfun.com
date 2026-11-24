@@ -1,0 +1,79 @@
+{
+  "id": "HuskerMinion--techo5-dot",
+  "repo": "HuskerMinion/techo5-dot",
+  "status": "approved",
+  "github": {
+    "stars": 304,
+    "license": "MIT",
+    "pushedAt": "2026-11-24T02:37:55Z",
+    "description": "Linux firmware for the Echo Dot (2nd gen): no Fire OS, no Alexa. A local Home Assistant voice satellite with all seven mics, Bluetooth speaker mode, signed A/B updates and SSH.",
+    "topics": [
+      "alexa-alternative",
+      "alpine-linux",
+      "biscuit",
+      "bluetooth-speaker",
+      "echo-dot",
+      "esphome",
+      "firmware",
+      "home-assistant",
+      "linux",
+      "local-first",
+      "mt8163",
+      "privacy",
+      "voice-assistant",
+      "wake-word"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "TECHO5 Dot",
+    "summary": "为二代 Echo Dot 刷写的开源 Linux 固件，替代 Alexa，实现本地化 Home Assistant 语音卫星功能。",
+    "intro": "TECHO5 Dot 是专为 Amazon Echo Dot 第二代（及兼容型号）设计的轻量级 Alpine Linux 固件，彻底移除 Fire OS 和 Alexa 云服务，将设备转变为完全本地化的 Home Assistant 语音前端。\n\n设备保留全部七麦克风阵列，端侧完成唤醒词检测（microWakeWord）、回声消除与语音采集；语音流经加密本地 API 直达 Home Assistant，全程不触网、不上传云端；同时复用原硬件支持蓝牙音箱/耳机、SIP 通话、AirPlay/Spotify Connect 等能力。\n\n亮点包括：A/B 分区签名固件更新与自动回滚、硬件级静音线控制、全自定义环形灯效与提示音、婴儿监听模式、SSH 密钥登录、严格防火墙策略，以及可扩展的 `/data/techo5-linux/rc.local` 启动脚本机制。\n\n适合熟悉 Home Assistant 生态、追求隐私优先的 Linux 爱好者或智能家居进阶用户，需具备刷机基础（使用 amonet 解锁）和基本命令行操作能力。",
+    "shelf": "voice",
+    "platform": "other",
+    "hardware": [
+      {
+        "name": "7-mic array",
+        "role": "audio-in"
+      },
+      {
+        "name": "ring LED",
+        "role": "light"
+      },
+      {
+        "name": "action button",
+        "role": "input"
+      },
+      {
+        "name": "mic mute hardware line",
+        "role": "input"
+      },
+      {
+        "name": "3.5mm audio out",
+        "role": "audio-out"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "唤醒词识别",
+        "where": "device"
+      },
+      {
+        "name": "语音采集增强",
+        "where": "device"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "隐私优先",
+      "Home Assistant",
+      "固件替换",
+      "Linux",
+      "本地化"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:13.879Z"
+}

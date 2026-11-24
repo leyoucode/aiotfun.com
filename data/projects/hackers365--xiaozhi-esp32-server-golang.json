@@ -1,0 +1,59 @@
+{
+  "id": "hackers365--xiaozhi-esp32-server-golang",
+  "repo": "hackers365/xiaozhi-esp32-server-golang",
+  "status": "approved",
+  "github": {
+    "stars": 467,
+    "license": "MIT",
+    "pushedAt": "2026-11-24T06:24:36Z",
+    "description": "golang版本的小智后端服务，支持websocket和mqtt+udp协议，支持声纹识别/声音克隆/知识库/mcp远程调用/主动音频下发/openclaw等功能",
+    "topics": [
+      "golang",
+      "openclaw",
+      "xiaozhi-esp32"
+    ],
+    "language": "Go",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "小智ESP32后端服务",
+    "summary": "Go语言编写的AI语音后端，为ESP32等设备提供ASR/LLM/TTS全链路流式语音交互能力。",
+    "intro": "这是一个专为ESP32等轻量级硬件终端设计的高性能AI语音后端服务，通过WebSocket/MQTT+UDP协议与设备通信，承担语音识别、大模型推理、语音合成等核心AI计算任务。\n\n硬件（如ESP32语音模组）仅负责音频采集（麦克风）、播放（扬声器）和基础协议收发，所有复杂AI能力均在服务端完成；设备端极简，可专注低功耗与实时响应，形成‘端侧轻量化+云端强智能’协同架构。\n\n支持声纹识别自动切换TTS音色、OpenClaw智能体接入、知识库RAG、声音克隆、MCP远程调用等前沿功能，模块化设计便于按需启用或替换ASR/LLM/TTS引擎（如FunASR、Ollama、CosyVoice）。\n\n适合想快速搭建AI语音助手系统的开发者：无需训练模型或部署复杂AI服务，只需配置ESP32设备连接该后端，即可获得企业级语音交互能力。",
+    "shelf": "voice",
+    "platform": "other",
+    "hardware": [],
+    "aiCapabilities": [
+      {
+        "name": "语音识别",
+        "where": "cloud"
+      },
+      {
+        "name": "语音合成",
+        "where": "cloud"
+      },
+      {
+        "name": "声纹识别",
+        "where": "cloud"
+      },
+      {
+        "name": "大模型对话",
+        "where": "cloud"
+      },
+      {
+        "name": "声音克隆",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "声纹识别",
+      "RAG知识库",
+      "OpenClaw",
+      "MCP协议",
+      "ESP32配套"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:12.305Z"
+}

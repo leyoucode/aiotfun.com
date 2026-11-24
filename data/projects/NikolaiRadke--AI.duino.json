@@ -1,0 +1,32 @@
+{
+  "id": "NikolaiRadke--AI.duino",
+  "repo": "NikolaiRadke/AI.duino",
+  "status": "candidate",
+  "github": {
+    "stars": 64,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-11-23T05:57:16Z",
+    "description": "An Arduino AI Assistant. (4A! Yay!). This plugin integrates Claude, ChatGPT, Gemini, LM Studio and more directly into the Arduino IDE. ",
+    "topics": [
+      "agentic",
+      "agentic-workflow",
+      "ai",
+      "arduino",
+      "arduino-ide",
+      "assistant",
+      "chatgpt",
+      "claude-ai",
+      "i18n",
+      "lm-studio",
+      "multilingual",
+      "ollama",
+      "plugin",
+      "vibe",
+      "vscode-extension"
+    ],
+    "language": "JavaScript",
+    "homepage": "http://www.monstermaker.de"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

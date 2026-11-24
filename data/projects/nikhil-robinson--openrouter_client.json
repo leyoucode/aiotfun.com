@@ -1,0 +1,21 @@
+{
+  "id": "nikhil-robinson--openrouter_client",
+  "repo": "nikhil-robinson/openrouter_client",
+  "status": "candidate",
+  "github": {
+    "stars": 31,
+    "license": "MIT",
+    "pushedAt": "2025-08-24T17:17:20Z",
+    "description": "A comprehensive OpenRouter API client library for ESP32 (ESP-IDF), enabling seamless integration with OpenRouter’s AI models. Supports text generation, streaming responses, function calling, and multimodal capabilities including image and audio processing.",
+    "topics": [
+      "esp-idf",
+      "esp32",
+      "llm",
+      "openrouter"
+    ],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

@@ -1,0 +1,27 @@
+{
+  "id": "bryant24hao--ClawPuter",
+  "repo": "bryant24hao/ClawPuter",
+  "status": "candidate",
+  "github": {
+    "stars": 160,
+    "license": "MIT",
+    "pushedAt": "2026-03-19T17:53:31Z",
+    "description": "ClawPuter — pixel desktop companion for M5Stack Cardputer (ESP32-S3). AI chat, voice input, real-time weather, synced macOS desktop pet.",
+    "topics": [
+      "ai-chat",
+      "arduino",
+      "cardputer",
+      "desktop-pet",
+      "esp32",
+      "esp32-s3",
+      "m5stack",
+      "openclaw",
+      "pixel-art",
+      "weather"
+    ],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

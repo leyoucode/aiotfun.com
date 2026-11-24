@@ -1,0 +1,37 @@
+{
+  "id": "ayutaz--sanoTTS-jp",
+  "repo": "ayutaz/sanoTTS-jp",
+  "status": "candidate",
+  "github": {
+    "stars": 72,
+    "license": "MIT",
+    "pushedAt": "2026-11-15T15:55:04Z",
+    "description": "559 K パラメータの日本語 TTS を ESP32-S3 で実時間合成。漢字かな交じり文の形態素解析・アクセント推定まで端末内で走る（M5Stack CoreS3 実機で確認）。推論は依存ゼロの C99、ブラウザ demo あり。arXiv:2608.21378 sanoTTS の日本語 clean-room 再実装。⚠️ コードは MIT ですが、配布モデルの重みは MIT ではありません（LICENSE-MODEL.md。出力に用途制限が伝播します）",
+    "topics": [
+      "embedded",
+      "esp32",
+      "esp32-s3",
+      "g2p",
+      "japanese",
+      "japanese-tts",
+      "knowledge-distillation",
+      "m5stack",
+      "microcontroller",
+      "openjtalk",
+      "piper",
+      "pitch-accent",
+      "quantization",
+      "speech-synthesis",
+      "stack-chan",
+      "text-to-speech",
+      "tinyml",
+      "tts",
+      "vits",
+      "webassembly"
+    ],
+    "language": "Python",
+    "homepage": "https://ayutaz.github.io/sanoTTS-jp/"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

@@ -1,0 +1,72 @@
+{
+  "id": "Explorerlowi--ESP32_AI_LLM",
+  "repo": "Explorerlowi/ESP32_AI_LLM",
+  "status": "approved",
+  "github": {
+    "stars": 576,
+    "license": "GPL-3.0",
+    "pushedAt": "2024-12-08T15:51:46Z",
+    "description": "本项目使用esp32、esp32s3接入Chatgpt、Claude、讯飞星火、豆包等15款大模型，实现语音对话聊天，支持语音唤醒、连续对话、音乐播放等功能，同时外接了一块显示屏实时显示对话的内容。",
+    "topics": [],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "ESP32 AI语音助手",
+    "summary": "基于ESP32/S3的离线唤醒+在线大模型语音对话终端，支持15款LLM、TFT屏显、音乐播放与网页配置。",
+    "intro": "这是一个面向嵌入式端的大模型交互系统，将ESP32/ESP32-S3作为主控，通过ASRPRO实现低功耗离线语音唤醒，并调用讯飞STT、百度TTS及15家云端大模型API完成端云协同语音对话。\n\n硬件层：INMP441采集语音→ASRPRO离线唤醒→ESP32触发录音→讯飞STT转文本→LLM生成回复→百度TTS合成语音→MAX98357驱动喇叭输出；同时1.8寸TFT实时渲染对话内容，LED指示运行状态。\n\n亮点包括：多模型动态切换指令、AP配网+网页参数配置、网易云直链音乐播放、抽象整活（丁真/坤坤壁纸+音效）、BOOT键快捷控制（暂停/音量/灯光）以及完整的连续对话状态机管理。\n\n适合想实践AIoT全链路开发的嵌入式爱好者：需掌握ESP-IDF/PlatformIO开发、I2S音频调试、串口通信、WebSocket连接及基础AI服务对接，但无需训练模型或PCB设计。",
+    "shelf": "voice",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "INMP441",
+        "role": "audio-in"
+      },
+      {
+        "name": "MAX98357",
+        "role": "audio-out"
+      },
+      {
+        "name": "1.8寸RGB_TFT",
+        "role": "display"
+      },
+      {
+        "name": "ASRPRO",
+        "role": "audio-in"
+      },
+      {
+        "name": "LED",
+        "role": "light"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "语音唤醒",
+        "where": "device"
+      },
+      {
+        "name": "语音识别",
+        "where": "cloud"
+      },
+      {
+        "name": "大模型对话",
+        "where": "cloud"
+      },
+      {
+        "name": "语音合成",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "大模型接入",
+      "离线唤醒",
+      "TFT显示",
+      "WiFi配网",
+      "多模型切换"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:11.061Z"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "derdacavga--Esp32-Ai-Voice-Assistant",
+  "repo": "derdacavga/Esp32-Ai-Voice-Assistant",
+  "status": "candidate",
+  "github": {
+    "stars": 73,
+    "license": "GPL-3.0",
+    "pushedAt": "2025-11-22T16:37:03Z",
+    "description": "In this project I will share with you Complately Free Ai Voice Support Assistant. You can build Easily Own Ai Assstant",
+    "topics": [
+      "ai",
+      "chatgpt",
+      "esp32",
+      "gemini",
+      "huggingface",
+      "llm",
+      "tts"
+    ],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

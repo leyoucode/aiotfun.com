@@ -1,0 +1,89 @@
+{
+  "id": "raullenchai--esp32-thinks",
+  "repo": "raullenchai/esp32-thinks",
+  "status": "approved",
+  "github": {
+    "stars": 255,
+    "license": "MIT",
+    "pushedAt": "2026-10-19T20:53:13Z",
+    "description": "A multi-model Muse: personal AI voice assistant on ESP32 - wake word or knob, any OpenAI-compatible brain (STT/chat/TTS mix-and-match), streaming replies, out of the box. Built on muse-gadget-sdk.",
+    "topics": [
+      "ai-assistant",
+      "deepseek",
+      "edge-ai",
+      "esp-sr",
+      "esp32",
+      "esp32-s3",
+      "llm",
+      "muse",
+      "muse-gadget-sdk",
+      "offline-first",
+      "openai",
+      "openai-compatible",
+      "sensecap-watcher",
+      "smart-speaker",
+      "stt",
+      "tts",
+      "voice-agent",
+      "voice-assistant",
+      "wake-word",
+      "whisper"
+    ],
+    "language": "Shell",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "ESP32-Thinks",
+    "summary": "基于ESP32-S3的开源语音助手固件，支持唤醒词/旋钮触发，可自由组合OpenAI兼容的STT/LLM/TTS服务，实现流式语音应答。",
+    "intro": "ESP32-Thinks 是一个运行在 ESP32-S3 硬件上的轻量级个人 AI 语音助手固件，基于 Facebook 的 muse-gadget-sdk 深度定制，专为边缘语音交互设计。\n\n它通过板载麦克风（ES7243E）采集语音，本地运行 WakeNet10 唤醒词检测；将音频流式上传至任意 OpenAI 兼容服务端完成语音识别、大模型对话和文本转语音，并实时驱动扬声器（ES8311）与圆形屏幕（412×412）同步反馈。\n\n核心亮点包括：三端点解耦配置（STT/chat/TTS 可混搭不同服务商）、端侧流式响应（首字延迟仅 2.2s）、带防误触的静音守卫、Barge-in 中断、TLS 连接保活与自动恢复、多语言（中/英/韩）自动识别与适配合成。\n\n适合熟悉 ESP-IDF 的嵌入式开发者快速搭建私有化语音终端，也适合想摆脱云厂商锁定、自主掌控 AI 栈的硬件爱好者与隐私敏感用户。",
+    "shelf": "voice",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "ES7243E",
+        "role": "audio-in"
+      },
+      {
+        "name": "ES8311",
+        "role": "audio-out"
+      },
+      {
+        "name": "1.45\" round LCD (412×412)",
+        "role": "display"
+      },
+      {
+        "name": "PTT knob",
+        "role": "input"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "语音唤醒",
+        "where": "device"
+      },
+      {
+        "name": "语音识别",
+        "where": "cloud"
+      },
+      {
+        "name": "大模型对话",
+        "where": "cloud"
+      },
+      {
+        "name": "语音合成",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "边缘AI",
+      "ESP32-S3",
+      "多模型",
+      "离线优先",
+      "OpenAI兼容"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:16.579Z"
+}

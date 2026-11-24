@@ -1,0 +1,16 @@
+{
+  "id": "migratorywhale--stackchan-mcp",
+  "repo": "migratorywhale/stackchan-mcp",
+  "status": "candidate",
+  "github": {
+    "stars": 101,
+    "license": "MIT",
+    "pushedAt": "2026-10-07T08:56:42Z",
+    "description": "Give your AI a body. MCP bridge for Stack-chan (M5Stack CoreS3) — speak, listen, see, move, emote.",
+    "topics": [],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

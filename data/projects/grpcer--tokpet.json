@@ -1,0 +1,31 @@
+{
+  "id": "grpcer--tokpet",
+  "repo": "grpcer/tokpet",
+  "status": "candidate",
+  "github": {
+    "stars": 106,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-06-30T15:45:38Z",
+    "description": "Your AI usage, quota, and balance — as a desk pet. 🐾 A local companion service that normalizes every AI provider into one LAN feed, plus ESP32-S3 firmware for the device that shows it.",
+    "topics": [
+      "ai-usage",
+      "ambient-display",
+      "anthropic",
+      "desk-pet",
+      "esp32",
+      "esp32-s3",
+      "firmware",
+      "llm",
+      "local-first",
+      "monitoring",
+      "nodejs",
+      "openai",
+      "self-hosted",
+      "token-usage"
+    ],
+    "language": "C",
+    "homepage": "https://www.npmjs.com/package/tokpet"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

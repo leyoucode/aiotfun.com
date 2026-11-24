@@ -1,0 +1,16 @@
+{
+  "id": "uELKO--ESPHome-Air-Quality-Monitor",
+  "repo": "uELKO/ESPHome-Air-Quality-Monitor",
+  "status": "candidate",
+  "github": {
+    "stars": 46,
+    "license": "GPL-3.0",
+    "pushedAt": "2026-04-18T12:35:45Z",
+    "description": "Project about an air quality monitor with e-paper display and ESP32-S3 for integration into ESPHome in Home Assistant.",
+    "topics": [],
+    "language": null,
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

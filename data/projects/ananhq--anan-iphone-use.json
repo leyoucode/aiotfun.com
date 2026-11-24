@@ -1,0 +1,22 @@
+{
+  "id": "ananhq--anan-iphone-use",
+  "repo": "ananhq/anan-iphone-use",
+  "status": "candidate",
+  "github": {
+    "stars": 164,
+    "license": "GPL-3.0",
+    "pushedAt": "2026-10-15T15:24:42Z",
+    "description": "ESP32 MCP firmware for iPhone USB input, built for M5Stack StopWatch with guided board adaptation",
+    "topics": [
+      "agent-infra",
+      "esp32",
+      "esp32-s3",
+      "iphone-use",
+      "phone-use"
+    ],
+    "language": "C",
+    "homepage": "https://anan.sh/iphone-use"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

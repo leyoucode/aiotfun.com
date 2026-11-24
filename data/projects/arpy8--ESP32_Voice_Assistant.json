@@ -1,0 +1,25 @@
+{
+  "id": "arpy8--ESP32_Voice_Assistant",
+  "repo": "arpy8/ESP32_Voice_Assistant",
+  "status": "candidate",
+  "github": {
+    "stars": 50,
+    "license": "MIT",
+    "pushedAt": "2025-11-17T20:56:44Z",
+    "description": "This project combines embedded system and AI inference to create an end-to-end conversational experience.",
+    "topics": [
+      "ai",
+      "esp32",
+      "faster-whisper",
+      "gemini",
+      "llm",
+      "piper-tts",
+      "tts",
+      "voice-assistant"
+    ],
+    "language": "Python",
+    "homepage": "https://youtu.be/_BZOLwxb_aU"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

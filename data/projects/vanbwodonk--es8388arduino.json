@@ -1,0 +1,16 @@
+{
+  "id": "vanbwodonk--es8388arduino",
+  "repo": "vanbwodonk/es8388arduino",
+  "status": "candidate",
+  "github": {
+    "stars": 36,
+    "license": "GPL-2.0",
+    "pushedAt": "2025-06-16T09:50:01Z",
+    "description": "Arduino library for ES8388 audio codec (ESP32-A1S-AudioKit by AI-Thinker)",
+    "topics": [],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

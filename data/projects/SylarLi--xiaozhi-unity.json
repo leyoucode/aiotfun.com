@@ -1,0 +1,21 @@
+{
+  "id": "SylarLi--xiaozhi-unity",
+  "repo": "SylarLi/xiaozhi-unity",
+  "status": "candidate",
+  "github": {
+    "stars": 59,
+    "license": "MIT",
+    "pushedAt": "2025-09-15T16:53:15Z",
+    "description": "基于虾哥的xiaozhi-esp32项目的Unity版本，可直接语音控制米家设备",
+    "topics": [
+      "unity",
+      "unity3d",
+      "xiaozhi",
+      "xiaozhi-ai"
+    ],
+    "language": "C#",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

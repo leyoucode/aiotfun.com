@@ -1,0 +1,36 @@
+{
+  "id": "BoumedineBillal--yolo26n_esp",
+  "repo": "BoumedineBillal/yolo26n_esp",
+  "status": "candidate",
+  "github": {
+    "stars": 55,
+    "license": "MIT",
+    "pushedAt": "2026-02-04T23:55:54Z",
+    "description": "World's First NMS-Free YOLOv26n on ESP32-P4. Features end-to-end Int8 QAT and custom C++ optimizations achieving 30% faster inference than the official ESP-DL YOLOv11n (1.7s vs 2.4s).",
+    "topics": [
+      "computer-vision",
+      "edge-ai",
+      "embedded-ai",
+      "esp-dl",
+      "esp-idf",
+      "esp32",
+      "esp32-p4",
+      "graph-surgery",
+      "int8",
+      "nms-free",
+      "object-detection",
+      "onnx",
+      "qat",
+      "quantization",
+      "risc-v",
+      "simd",
+      "tinyml",
+      "ultralytics",
+      "yolo"
+    ],
+    "language": "Jupyter Notebook",
+    "homepage": "https://boumedinebillal.github.io/my_profile/project-viewer.html?id=yolo26n-esp32p4"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

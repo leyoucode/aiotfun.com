@@ -1,0 +1,67 @@
+{
+  "id": "puritysb--AgentDeck",
+  "repo": "puritysb/AgentDeck",
+  "status": "approved",
+  "github": {
+    "stars": 303,
+    "license": "MIT",
+    "pushedAt": "2026-11-23T13:28:55Z",
+    "description": "Local dashboards and physical controls for AI coding agents — native 3D aquariums, Stream Deck, Apple/Android apps, e-ink, ESP32 and LED displays.",
+    "topics": [
+      "ai-agents",
+      "android",
+      "claude-code",
+      "developer-tools",
+      "esp32",
+      "hardware",
+      "iot",
+      "monorepo",
+      "stream-deck",
+      "swiftui"
+    ],
+    "language": "TypeScript",
+    "homepage": "https://puritysb.github.io/AgentDeck/"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "AgentDeck",
+    "summary": "为本地AI编程代理提供物理控制面板和多端状态看板，支持ESP32等硬件实时显示代理运行状态。",
+    "intro": "AgentDeck 是一个面向AI编码代理（如Claude Code、OpenCode）的本地化监控与交互系统，核心是将抽象的AI工作流转化为桌面可感知的物理/视觉反馈。\n\n它通过在ESP32等嵌入式设备上运行轻量固件，接收本地主机（Mac/PC）上AgentDeck Daemon推送的代理状态（如运行中、等待输入、已完成），驱动LED、e-ink屏或小型LCD实时更新；AI逻辑完全运行在主机或云端，硬件仅作状态呈现与简单控制（如确认/中断）。\n\n支持多种硬件形态：ESP32开发板（含TRMNL 7.5\" e-ink）、Stream Deck、Ulanzi D200系列、Pixoo像素屏、Vobot Mini Dock等，所有设备均通过Wi-Fi或USB连接本地Daemon，无需云依赖，保障隐私与低延迟。\n\n适合希望将AI编程工作流具象化、提升多任务感知效率的开发者；尤其适合已使用Claude/Codex/OpenCode等工具，且愿用低成本硬件（如ESP32-WROOM-32）打造专属AI状态台的进阶用户。",
+    "shelf": "desk",
+    "platform": "esp32",
+    "hardware": [
+      {
+        "name": "e-ink display",
+        "role": "display"
+      },
+      {
+        "name": "rotary encoder",
+        "role": "input"
+      },
+      {
+        "name": "LED indicator",
+        "role": "light"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "代理状态监控",
+        "where": "edge"
+      },
+      {
+        "name": "会话控制",
+        "where": "edge"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "AI代理",
+      "状态看板",
+      "ESP32",
+      "开发者工具",
+      "本地化",
+      "桌面硬件"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:14.256Z"
+}

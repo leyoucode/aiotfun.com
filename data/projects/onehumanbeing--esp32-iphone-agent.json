@@ -1,0 +1,81 @@
+{
+  "id": "onehumanbeing--esp32-iphone-agent",
+  "repo": "onehumanbeing/esp32-iphone-agent",
+  "status": "approved",
+  "github": {
+    "stars": 5296,
+    "license": "MIT",
+    "pushedAt": "2026-11-24T05:45:09Z",
+    "description": "Manina AI: let an AI model use a real iPhone with a $7 ESP32: AirPlay eyes, USB HID hands, any OpenAI-compatible vision model. No Mac, no developer account, no jailbreak.",
+    "topics": [
+      "ai-agent",
+      "airplay",
+      "claude-code",
+      "computer-use",
+      "esp32",
+      "esp32-s3",
+      "ios",
+      "ios-automation",
+      "iphone",
+      "iphone-automation",
+      "llm",
+      "manina-ai",
+      "mcp",
+      "mcp-server",
+      "mobile-agent",
+      "phone-agent",
+      "screen-mirroring",
+      "seeed-xiao",
+      "usb-hid",
+      "xiao-esp32s3"
+    ],
+    "language": "Swift",
+    "homepage": "https://manina.ai?ref=github"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "ESP32 iPhone Agent",
+    "summary": "用7美元ESP32-S3板控制真实iPhone：AirPlay投屏当眼睛，USB/蓝牙HID当手，AI模型驱动自动化操作。",
+    "intro": "这是一个开源AI代理硬件系统，让轻量级ESP32-S3开发板充当iPhone的‘外设大脑’——不越狱、不需Mac、不依赖开发者账号，即可实现端到端的手机自动化。\n\n硬件与AI协同工作：ESP32-S3创建Wi-Fi热点接收iPhone AirPlay屏幕流（作‘眼睛’），同时以USB HID或Bluetooth HID身份模拟鼠标键盘（作‘手’）；iOS端App负责解码画面、调用云端视觉大模型（如Claude Vision、GPT-4o）生成操作指令，并闭环执行点击、滑动、输入等动作。\n\n核心亮点包括：纯无线蓝牙模式支持Lightning旧机；AirPlay音频转发实现语音听力练习响应；全链路离线可运行（仅模型调用需联网）；动态指针校准与操作回溯功能保障鲁棒性；支持TestFlight一键安装与浏览器免工具烧录。\n\n适合想快速验证AI手机代理能力的开发者、教育者或自动化爱好者；也适合希望绕过Apple生态限制、构建跨平台移动Agent原型的研究者。",
+    "shelf": "robot",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "Seeed XIAO ESP32S3",
+        "role": "comm"
+      },
+      {
+        "name": "USB-C cable",
+        "role": "comm"
+      },
+      {
+        "name": "Lightning to USB Camera Adapter",
+        "role": "comm"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "屏幕理解",
+        "where": "cloud"
+      },
+      {
+        "name": "操作规划",
+        "where": "cloud"
+      },
+      {
+        "name": "语音转文字",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "手机代理",
+      "AI自动化",
+      "AirPlay",
+      "USB-HID",
+      "视觉大模型",
+      "ESP32-S3"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:03.246Z"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "ja1chen--actell",
+  "repo": "ja1chen/actell",
+  "status": "candidate",
+  "github": {
+    "stars": 127,
+    "license": "GPL-3.0",
+    "pushedAt": "2026-11-15T09:36:57Z",
+    "description": "Actell (执言) is an experimental AI agent for iPhone that understands the screen and performs actions via CoreDevice, using on-device loopback or an ESP32 relay. An early-stage, vibe-coded prototype for exploration and idea sharing.",
+    "topics": [
+      "agent",
+      "esp32",
+      "iphone-use"
+    ],
+    "language": "Swift",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

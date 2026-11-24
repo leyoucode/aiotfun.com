@@ -1,0 +1,36 @@
+{
+  "id": "BoumedineBillal--esp32-p4-jit",
+  "repo": "BoumedineBillal/esp32-p4-jit",
+  "status": "candidate",
+  "github": {
+    "stars": 57,
+    "license": "MIT",
+    "pushedAt": "2026-01-01T05:43:07Z",
+    "description": "ESP32-P4 dynamic RISC-V compiler -  faster iteration (1-2s vs 30-60s firmware rebuild) | Native performance, zero interpreter overhead | NumPy integration with automatic type conversion & memory management | Multi-file LTO compilation | Call firmware functions (printf, malloc, FreeRTOS) | Type-safe, memory-safe | Ideal for DSP, ML, and audio",
+    "topics": [
+      "audio-processing",
+      "computer-vision",
+      "cross-compilation",
+      "dsp",
+      "dynamic-loading",
+      "embedded-systems",
+      "esp-idf",
+      "esp-idf-component",
+      "esp32",
+      "esp32-p4",
+      "jit-compiler",
+      "machine-learning",
+      "microcontroller",
+      "python",
+      "rapid-prototyping",
+      "real-time",
+      "risc-v",
+      "tinyusb",
+      "usb"
+    ],
+    "language": "Assembly",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

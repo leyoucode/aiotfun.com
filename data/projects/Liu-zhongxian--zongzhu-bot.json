@@ -1,0 +1,73 @@
+{
+  "id": "Liu-zhongxian--zongzhu-bot",
+  "repo": "Liu-zhongxian/zongzhu-bot",
+  "status": "approved",
+  "github": {
+    "stars": 275,
+    "license": "MIT",
+    "pushedAt": "2026-11-07T11:41:30Z",
+    "description": "宗主：Waveshare 1.75C 圆屏 ESP32 上的 Grok Bot 语音终端，会眨眼的眼睛表情、字幕与朗读，含固件和后端源码（2.5.2.9）",
+    "topics": [
+      "amoled",
+      "desktop-robot",
+      "esp32",
+      "esp32-s3",
+      "grok",
+      "voice-assistant",
+      "waveshare",
+      "xiaozhi"
+    ],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "宗主 Bot",
+    "summary": "基于 ESP32-S3 圆屏的 Grok 语音终端，支持本地语音识别、眨眼表情、字幕显示与电脑端协同执行任务。",
+    "intro": "宗主是一个软硬协同的 AI 语音助手终端，由 ESP32-S3 硬件（带 AMOLED 圆屏）和运行在用户电脑上的后端服务组成，核心目标是将 Grok 等大模型能力自然接入物理交互设备。\n\n硬件端负责语音采集、本地离线 ASR（X-ASR）、实时表情渲染（13 种眨眼/倾斜/触摸响应）与 TTS 朗读；AI 逻辑（意图理解、任务分发、内容生成）全部交由后端网关调度——它可将指令转给 Grok Bot、本地点歌系统或小米音箱 Pro，实现多模态协同。\n\n亮点包括：全链路局域网隐私保护、固件签名自动更新、唤醒词热词纠错、屏幕状态可视化（等待秒数/滚动字幕/表情反馈）、网关 Web 页面统一管控设备与 Bot、以及实验性支持刷机后的小米音箱 Pro 作为无屏扩展节点。\n\n适合已有 ESP32-S3 开发经验、熟悉局域网服务部署、希望快速构建可交互 AI 硬件原型的进阶爱好者；无需训练模型，但需配置 Bot Webhook 并运行后端服务。",
+    "shelf": "voice",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "Waveshare 1.75C AMOLED 圆屏",
+        "role": "display"
+      },
+      {
+        "name": "板载麦克风",
+        "role": "audio-in"
+      },
+      {
+        "name": "板载扬声器",
+        "role": "audio-out"
+      },
+      {
+        "name": "触摸屏",
+        "role": "input"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "语音识别",
+        "where": "device"
+      },
+      {
+        "name": "语音对话",
+        "where": "cloud"
+      },
+      {
+        "name": "语音控制",
+        "where": "edge"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "ESP32-S3",
+      "Grok",
+      "AMOLED",
+      "本地ASR",
+      "网关控制"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:15.441Z"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "iotsystem--xiaozhi-esp32",
+  "repo": "iotsystem/xiaozhi-esp32",
+  "status": "candidate",
+  "github": {
+    "stars": 72,
+    "license": "MIT",
+    "pushedAt": "2025-01-17T17:46:51Z",
+    "description": "",
+    "topics": [],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

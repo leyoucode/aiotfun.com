@@ -1,0 +1,16 @@
+{
+  "id": "Kristian8606--esp32-airplay2-surround",
+  "repo": "Kristian8606/esp32-airplay2-surround",
+  "status": "candidate",
+  "github": {
+    "stars": 408,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-11-23T22:02:41Z",
+    "description": "",
+    "topics": [],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

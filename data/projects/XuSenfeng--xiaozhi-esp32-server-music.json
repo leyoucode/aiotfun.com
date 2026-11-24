@@ -1,0 +1,16 @@
+{
+  "id": "XuSenfeng--xiaozhi-esp32-server-music",
+  "repo": "XuSenfeng/xiaozhi-esp32-server-music",
+  "status": "candidate",
+  "github": {
+    "stars": 70,
+    "license": "MIT",
+    "pushedAt": "2025-09-04T08:59:05Z",
+    "description": "小智连接音乐",
+    "topics": [],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

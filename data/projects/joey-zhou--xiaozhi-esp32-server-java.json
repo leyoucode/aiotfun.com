@@ -1,0 +1,67 @@
+{
+  "id": "joey-zhou--xiaozhi-esp32-server-java",
+  "repo": "joey-zhou/xiaozhi-esp32-server-java",
+  "status": "approved",
+  "github": {
+    "stars": 1433,
+    "license": "MIT",
+    "pushedAt": "2026-11-24T07:11:41Z",
+    "description": "小智ESP32的Java企业级管理平台，提供设备监控、音色定制、角色切换和对话记录管理的前后端及服务端一体化解决方案",
+    "topics": [
+      "esp32",
+      "java",
+      "mcp",
+      "mcp-client",
+      "mcp-server",
+      "spring-ai",
+      "stt",
+      "tts",
+      "xiaozhi",
+      "xiaozhi-ai",
+      "xiaozhi-esp32",
+      "xiaozhi-server"
+    ],
+    "language": "Java",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "小智ESP32服务端",
+    "summary": "为Xiaozhi ESP32硬件提供企业级Java后端，支持设备管理、语音对话、音色定制与多AI平台接入。",
+    "intro": "这是一个专为Xiaozhi ESP32智能硬件设计的Java企业级服务端，包含管理后台（xiaozhi-server）和对话服务（xiaozhi-dialogue）双进程架构，提供设备监控、OTA升级、对话记录等全生命周期管理能力。\n\n硬件（ESP32）负责音频采集与播放、唤醒词检测、本地VAD及轻量指令处理；服务端承接WebSocket/MQTT音频流，完成STT/TTS、LLM推理、声纹识别、RAG检索等重载AI任务，并将响应实时下发回设备。\n\n支持OpenAI/讯飞/Ollama等10+AI平台、本地+云端混合语音方案、声纹识别与多成员记忆、MCP工具协议扩展、RAG知识库及长期记忆图谱，具备高并发（百设备级）、低时延（<2s用户感知延迟）、可横向扩展的企业级能力。\n\n适合已拥有Xiaozhi ESP32硬件的个人开发者或中小团队，用于快速搭建稳定、可运维、可扩展的AI语音助手后端；也适用于需对接自有IoT设备、构建私有语音中台的技术人员。",
+    "shelf": "voice",
+    "platform": "esp32",
+    "hardware": [],
+    "aiCapabilities": [
+      {
+        "name": "语音对话",
+        "where": "cloud"
+      },
+      {
+        "name": "语音识别",
+        "where": "device"
+      },
+      {
+        "name": "语音合成",
+        "where": "cloud"
+      },
+      {
+        "name": "声纹识别",
+        "where": "cloud"
+      },
+      {
+        "name": "知识检索",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "ESP32",
+      "Java后端",
+      "多AI集成",
+      "企业级"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:07.568Z"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "dax8it--nous-girl-stackchan",
+  "repo": "dax8it/nous-girl-stackchan",
+  "status": "candidate",
+  "github": {
+    "stars": 47,
+    "license": "MIT",
+    "pushedAt": "2026-11-15T00:44:48Z",
+    "description": "Open-source voice companion firmware for the M5Stack StackChan (CoreS3, ESP32-S3): xiaozhi-based, Hermes Agent brain, anime faces, dance, DJ and rave modes, memes and email. Beta.",
+    "topics": [
+      "ai-companion",
+      "cores3",
+      "esp-idf",
+      "esp32",
+      "esp32-s3",
+      "firmware",
+      "hermes-agent",
+      "lvgl",
+      "m5stack",
+      "nous-research",
+      "open-source",
+      "robot",
+      "stackchan",
+      "voice-assistant",
+      "xiaozhi"
+    ],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

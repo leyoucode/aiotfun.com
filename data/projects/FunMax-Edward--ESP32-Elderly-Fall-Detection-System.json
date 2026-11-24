@@ -1,0 +1,16 @@
+{
+  "id": "FunMax-Edward--ESP32-Elderly-Fall-Detection-System",
+  "repo": "FunMax-Edward/ESP32-Elderly-Fall-Detection-System",
+  "status": "candidate",
+  "github": {
+    "stars": 33,
+    "license": "MIT",
+    "pushedAt": "2026-06-01T08:58:13Z",
+    "description": "ESP32老人跌倒监测系统是一个基于ESP32和MPU6050传感器的智能监护设备，专为老年人的安全监护设计。系统通过精确分析姿态数据，实时检测老人的跌倒状态，并通过现代化的网页界面展示实时数据、发送警报通知。 本系统采用了现代Web技术实现了美观易用的用户界面，支持离线使用，并可通过语音或网页进行远程控制，是智能家居和远程看护的理想解决方案。",
+    "topics": [],
+    "language": "HTML",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

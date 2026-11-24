@@ -1,0 +1,24 @@
+{
+  "id": "GOROman--vibewatch",
+  "repo": "GOROman/vibewatch",
+  "status": "candidate",
+  "github": {
+    "stars": 156,
+    "license": "MIT",
+    "pushedAt": "2026-08-08T06:16:02Z",
+    "description": "A tactile M5Stack StopWatch controller for AI-assisted Vibe Coding",
+    "topics": [
+      "ai",
+      "ble-hid",
+      "esp32-s3",
+      "m5stack",
+      "m5stack-stopwatch",
+      "platformio",
+      "vibe-coding"
+    ],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

@@ -1,0 +1,22 @@
+{
+  "id": "waahah--esp-xingzhi",
+  "repo": "waahah/esp-xingzhi",
+  "status": "candidate",
+  "github": {
+    "stars": 36,
+    "license": "MIT",
+    "pushedAt": "2025-08-17T17:27:39Z",
+    "description": "ESP32-S3-N16R8开发板的星智聊天机器人，基于小智XiaoZhi AI Chatbot",
+    "topics": [
+      "esp",
+      "esp32-s3",
+      "nologo",
+      "xiaozhi-esp32",
+      "xingzhi"
+    ],
+    "language": "C++",
+    "homepage": "http://156.226.179.68/xiaozhi-plus-firmware/releases/"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

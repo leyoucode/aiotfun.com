@@ -1,0 +1,47 @@
+{
+  "id": "Low-Zi-Hong--ESP32s3-LLM-Cluster",
+  "repo": "Low-Zi-Hong/ESP32s3-LLM-Cluster",
+  "status": "approved",
+  "github": {
+    "stars": 263,
+    "license": "MIT",
+    "pushedAt": "2026-10-08T00:10:22Z",
+    "description": "7-node ESP32-S3 cluster running a 0.4B LLM via 1.58-bit (BitNet) ternary quantization over SPI daisy-chain",
+    "topics": [],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "ESP32-S3 LLM集群",
+    "summary": "7节点ESP32-S3通过SPI级联，分布式运行1.58比特量化0.4B语言模型，实现端侧轻量LLM推理。",
+    "intro": "这是一个基于ESP32-S3微控制器的分布式大语言模型（LLM）推理系统，将0.4B参数模型按Transformer层切分，由1个主节点和6个计算节点协同完成前向传播。\n\n主节点负责分词、词嵌入与最终归一化/采样；各计算节点通过高速SPI菊花链接收隐藏状态、执行1.58比特注意力与MLP运算，并利用PSRAM缓存KV；所有AI计算均在设备端实时完成，无云端依赖。\n\n采用BitNet ternary量化（1.58-bit）、手写汇编优化MAC、INT4嵌入查表、定制Flash分区与双通道SPI DMA通信，在资源受限MCU上达成可行LLM流水线。\n\n适合熟悉ESP-IDF、嵌入式C++、SPI总线协议及模型量化原理的进阶开发者，用于探索边缘端分布式AI架构与超低比特推理极限。",
+    "shelf": "tools",
+    "platform": "esp32-s3",
+    "hardware": [],
+    "aiCapabilities": [
+      {
+        "name": "语言建模",
+        "where": "device"
+      },
+      {
+        "name": "文本生成",
+        "where": "device"
+      },
+      {
+        "name": "分布式推理",
+        "where": "device"
+      }
+    ],
+    "difficulty": "advanced",
+    "tags": [
+      "边缘AI",
+      "模型量化",
+      "分布式推理",
+      "ESP32-S3",
+      "LLM",
+      "BitNet"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:16.206Z"
+}

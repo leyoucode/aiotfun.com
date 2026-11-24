@@ -1,0 +1,16 @@
+{
+  "id": "iamankushpandit--esp_ai",
+  "repo": "iamankushpandit/esp_ai",
+  "status": "candidate",
+  "github": {
+    "stars": 129,
+    "license": "GPL-3.0",
+    "pushedAt": "2026-11-09T17:20:14Z",
+    "description": "Fully offline voice assistant on ESP32-S3 (Freenove FNK0104B): free-form STT, tiny LLM, TTS https://iamankushpandit.github.io/esp_ai/",
+    "topics": [],
+    "language": "C",
+    "homepage": "https://iamankushpandit.github.io/esp_ai/docs/#home"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

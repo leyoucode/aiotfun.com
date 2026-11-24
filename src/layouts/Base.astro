@@ -1,0 +1,105 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  wide?: boolean;
+}
+
+const SITE_NAME = 'AIoTFun';
+const {
+  title,
+  description = '收录 GitHub 上开源的 AI + 硬件项目：语音助手、视觉识别、机器人、桌面玩具……挑一个，开始你的下一个作品。',
+  image = '/logo-512.png',
+  wide = false,
+} = Astro.props;
+const fullTitle = title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} · 好玩的 AIoT 项目画廊`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+
+const nav = [
+  { href: '/', label: '画廊', match: (p: string) => p === '/' || p.startsWith('/shelf') || p.startsWith('/p/') },
+  { href: '/explore/', label: '星图', match: (p: string) => p.startsWith('/explore') },
+  { href: '/swipe/', label: '滑一滑', match: (p: string) => p.startsWith('/swipe') },
+  { href: '/liked/', label: '喜欢', match: (p: string) => p.startsWith('/liked') },
+];
+const path = Astro.url.pathname;
+const REPO_URL = 'https://github.com/leyoucode/aiotfun.com';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/logo-512.png" />
+    <meta name="theme-color" content="#faf9f5" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body class="flex flex-col">
+    <header class="sticky top-0 z-30 border-b border-line bg-paper/90 backdrop-blur">
+      <div class="mx-auto flex h-14 max-w-6xl items-center gap-3 px-4 md:gap-6 md:px-6">
+        <a href="/" class="flex shrink-0 items-center gap-2" aria-label="AIoTFun 首页">
+          <img src="/logo.png" alt="" width="28" height="28" class="size-7 rounded-md" />
+          <span class="hidden text-[15px] font-semibold tracking-tight sm:inline">AIoTFun</span>
+        </a>
+        <nav class="rail flex min-w-0 flex-1 items-center gap-1 overflow-x-auto text-sm">
+          {nav.map((item) => (
+            <a
+              href={item.href}
+              class:list={[
+                'shrink-0 rounded-md px-2.5 py-1.5 transition-colors',
+                item.match(path) ? 'bg-accent-soft font-medium text-teal' : 'text-muted hover:text-ink',
+              ]}
+              aria-current={item.match(path) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <a
+          href="/search/"
+          class="flex shrink-0 items-center gap-1.5 rounded-md border border-line bg-surface px-2.5 py-1.5 text-sm text-muted hover:text-ink"
+          aria-label="搜索项目"
+        >
+          <svg viewBox="0 0 20 20" class="size-4" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="9" cy="9" r="6"></circle><path d="m14 14 4 4" stroke-linecap="round"></path>
+          </svg>
+          <span class="hidden sm:inline">搜索</span>
+        </a>
+      </div>
+    </header>
+
+    <main class:list={['mx-auto w-full flex-1 px-4 md:px-6', wide ? 'max-w-none' : 'max-w-6xl']}>
+      <slot />
+    </main>
+
+    <footer class="mt-16 border-t border-line">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 text-xs text-muted md:flex-row md:items-center md:justify-between md:px-6">
+        <p>项目信息由 AI 根据各仓库 README 整理，可能有误，请以原仓库为准。版权归原作者所有。</p>
+        <p class="flex gap-4">
+          <a class="hover:text-ink" href={`${REPO_URL}/issues/new?title=${encodeURIComponent('申请下架 / 纠错：')}`} target="_blank" rel="noopener">申请下架 / 纠错</a>
+          <a class="hover:text-ink" href={REPO_URL} target="_blank" rel="noopener">GitHub</a>
+        </p>
+      </div>
+    </footer>
+    <script>
+      import { bindLikeButtons, paintAll } from '../scripts/likes.ts';
+      bindLikeButtons();
+      void paintAll();
+    </script>
+  </body>
+</html>

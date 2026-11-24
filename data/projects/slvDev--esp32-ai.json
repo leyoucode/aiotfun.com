@@ -1,0 +1,47 @@
+{
+  "id": "slvDev--esp32-ai",
+  "repo": "slvDev/esp32-ai",
+  "status": "approved",
+  "github": {
+    "stars": 4702,
+    "license": "MIT",
+    "pushedAt": "2026-09-23T08:08:10Z",
+    "description": "",
+    "topics": [],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "ESP32-S3 大模型推理",
+    "summary": "在 ESP32-S3 上本地运行 2890 万参数 LLM 和果蝇脑神经网络，全部离线、无云端依赖。",
+    "intro": "这是一个面向资源严苛微控制器（ESP32-S3）的端侧 AI 系统项目，包含两个核心模块：轻量化大语言模型（TinyStories/Barista）与生物启发式神经模拟（果蝇逃逸回路）。所有计算均在芯片上完成，不依赖网络或服务器。\n\n硬件与 AI 深度协同：利用 ESP32-S3 的 SRAM/PSRAM/Flash 三级存储架构，将 embedding 表存于 Flash、核心层放 PSRAM、高频激活放 SRAM；果蝇神经图谱以压缩图结构加载，通过双核 SIMD 并行遍历突触连接，驱动 OLED 实时视觉反馈。\n\n项目最大亮点是‘Per-Layer Embeddings’内存优化技术的嵌入式落地——首次在 MCU 上实现千万级参数模型的端到端 token 生成（9.88 tok/s），并同步运行含 4.8 万神经元、946 万连接的真实生物神经回路仿真。\n\n适合嵌入式 AI 爱好者、边缘计算开发者及神经形态计算初学者：无需训练模型，仅需烧录预编译固件即可体验端侧大模型与生物神经仿真，是理解内存受限 AI 部署的极佳实践范例。",
+    "shelf": "tools",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "OLED 屏幕",
+        "role": "display"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "文本生成",
+        "where": "device"
+      },
+      {
+        "name": "神经回路仿真",
+        "where": "device"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "端侧大模型",
+      "神经形态",
+      "嵌入式AI",
+      "ESP32-S3",
+      "离线推理"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:04.758Z"
+}

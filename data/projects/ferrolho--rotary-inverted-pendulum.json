@@ -1,0 +1,25 @@
+{
+  "id": "ferrolho--rotary-inverted-pendulum",
+  "repo": "ferrolho/rotary-inverted-pendulum",
+  "status": "candidate",
+  "github": {
+    "stars": 111,
+    "license": "MIT",
+    "pushedAt": "2026-10-02T13:23:36Z",
+    "description": "A £20 open-source rotary inverted pendulum that balances itself with a 689-parameter neural network running standalone on an Arduino Nano.",
+    "topics": [
+      "control-theory",
+      "furuta-pendulum",
+      "inverted-pendulum",
+      "mujoco",
+      "reinforcement-learning",
+      "robotics",
+      "sim-to-real",
+      "tinyml"
+    ],
+    "language": "Python",
+    "homepage": "https://ferrolho.github.io/rotary-inverted-pendulum/"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

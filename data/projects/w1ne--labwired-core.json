@@ -1,0 +1,64 @@
+{
+  "id": "w1ne--labwired-core",
+  "repo": "w1ne/labwired-core",
+  "status": "approved",
+  "github": {
+    "stars": 207,
+    "license": "MIT",
+    "pushedAt": "2026-11-24T09:36:19Z",
+    "description": "Open-source circuit and MCU firmware simulator for mixed-signal co-simulation, deterministic CI, and MCP workflows. STM32, ESP32, RP2040.",
+    "topics": [
+      "ai-agents",
+      "arm",
+      "circuit-simulation",
+      "cortex-m",
+      "deterministic",
+      "embedded-systems",
+      "esp32",
+      "firmware",
+      "firmware-simulation",
+      "mcp-server",
+      "mcu-digital-twin",
+      "microcontroller",
+      "nrf52",
+      "risc-v",
+      "rp2040",
+      "rust",
+      "simulation",
+      "stm32",
+      "virtual-hardware",
+      "zephyr-rtos"
+    ],
+    "language": "Rust",
+    "homepage": "https://labwired.com"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "LabWired Core",
+    "summary": "开源固件级混合信号仿真器，支持STM32/ESP32/RP2040等MCU，在纯软件中确定性运行真实固件二进制。",
+    "intro": "LabWired Core 是一个 Rust 编写的虚拟硬件仿真引擎，能加载并执行未经修改的嵌入式固件 ELF 文件，精确建模 CPU、总线、外设（如 UART、GPIO、I2C、SPI）及连接的传感器、显示屏等模拟/数字器件。\n\n它不依赖物理开发板，而是通过 YAML 描述芯片架构与系统拓扑（内存布局、寄存器基址、引脚连接），让固件与虚拟硅片交互：UART 输出可捕获，GPIO 状态可断言，I2C 流量可验证，所有行为完全确定性——同一固件+同一配置在任意机器上产生完全一致的执行轨迹。\n\n核心亮点是‘可审计的保真度’：每个外设模型明确标注为 Modeled / Smoke-tested / Hardware-compared 三级，并公开《Fidelity Ledger》说明建模缺口；同时原生支持 MCP 协议，可被 AI 编程代理直接调用完成‘搭板→烧录→测试→反馈’闭环。\n\n适合嵌入式固件工程师做 CI 自动化门禁、AI 编程代理构建硬件工作流、教学演示外设交互逻辑，或在无硬件时快速验证裸机驱动与 RTOS 应用逻辑。",
+    "shelf": "tools",
+    "platform": "other",
+    "hardware": [],
+    "aiCapabilities": [
+      {
+        "name": "固件仿真",
+        "where": "device"
+      },
+      {
+        "name": "AI代理协同",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "固件仿真",
+      "确定性测试",
+      "AI代理",
+      "CI门禁",
+      "虚拟硬件",
+      "混合信号"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:20.705Z"
+}

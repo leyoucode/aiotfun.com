@@ -1,0 +1,89 @@
+{
+  "id": "kstevica--captain-claw",
+  "repo": "kstevica/captain-claw",
+  "status": "approved",
+  "github": {
+    "stars": 199,
+    "license": "MIT",
+    "pushedAt": "2026-11-24T08:11:31Z",
+    "description": "Command a fleet of AI agents, on every deck, every desk, every wrist. Self-hosted multi-agent platform with memory, a coding pipeline, Flows, a team kiosk and voice devices. Any LLM, or 100% local with Ollama.",
+    "topics": [
+      "agent-memory",
+      "agent-orchestration",
+      "agentic-coding",
+      "agentic-workflow",
+      "ai-agents",
+      "ai-assistants",
+      "anthropic",
+      "autonomous-agents",
+      "llm",
+      "local-llm",
+      "m5stack",
+      "mcp",
+      "multi-agent",
+      "ollama",
+      "openai",
+      "python",
+      "self-hosted",
+      "telegrambot",
+      "voice-assistant",
+      "workflow-automation"
+    ],
+    "language": "Python",
+    "homepage": "https://captain-claw.com"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "Captain Claw",
+    "summary": "自托管多智能体平台，支持语音设备接入、跨设备协同、本地LLM（Ollama）及端侧AI工作流编排。",
+    "intro": "Captain Claw 是一个开源、MIT许可的自托管多智能体（multi-agent）操作系统，核心是‘Flight Deck’——可部署在服务器、树莓派、桌面或边缘设备上的AI指挥中心。\n\n它通过 BotPort 协议让不同硬件节点（如 Raspberry Pi、M5Stack 语音终端、Waveshare 设备）上的智能体协同工作；语音设备作为输入/输出终端，将用户指令路由至本地或云端LLM，并支持Ollama全离线运行，实现端侧意图理解与任务分发。\n\n亮点包括：7种智能体编排模式、6层共享记忆、First Mate长期任务引擎、带隐私门控的数据房间、Chrome/Mac屏幕感知、签名网页读取（LinkedIn/X）、以及面向真实工作的编码流水线（Plan→Build→Review）。\n\n适合希望构建企业级AI工作流、部署私有语音助手集群、或在树莓派/M5Stack等硬件上运行可协作、可审计、可训练AI团队的开发者与技术团队。",
+    "shelf": "voice",
+    "platform": "rpi",
+    "hardware": [
+      {
+        "name": "M5Stack",
+        "role": "audio-in"
+      },
+      {
+        "name": "M5Stack",
+        "role": "audio-out"
+      },
+      {
+        "name": "Waveshare voice device",
+        "role": "audio-in"
+      },
+      {
+        "name": "Waveshare voice device",
+        "role": "audio-out"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "语音指令理解",
+        "where": "edge"
+      },
+      {
+        "name": "多智能体协同",
+        "where": "edge"
+      },
+      {
+        "name": "本地代码生成",
+        "where": "device"
+      },
+      {
+        "name": "隐私数据脱敏",
+        "where": "edge"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "多智能体",
+      "语音助手",
+      "本地大模型",
+      "工作流编排",
+      "树莓派",
+      "M5Stack"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:21.515Z"
+}

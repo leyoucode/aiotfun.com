@@ -1,0 +1,33 @@
+{
+  "id": "captainluzik--oh-my-embedded",
+  "repo": "captainluzik/oh-my-embedded",
+  "status": "candidate",
+  "github": {
+    "stars": 42,
+    "license": "MIT",
+    "pushedAt": "2026-03-04T15:37:34Z",
+    "description": "OpenCode plugin for embedded systems engineering — ESP32, STM32, FreeRTOS, PCB design, component sourcing. Embedded engineer on steroids.",
+    "topics": [
+      "ai",
+      "cortex-m",
+      "electronics",
+      "embedded",
+      "esp-idf",
+      "esp32",
+      "firmware",
+      "freertos",
+      "hardware",
+      "iot",
+      "kicad",
+      "mcp",
+      "opencode",
+      "opencode-plugin",
+      "pcb",
+      "stm32"
+    ],
+    "language": "TypeScript",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

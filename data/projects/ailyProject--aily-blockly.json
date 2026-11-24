@@ -1,0 +1,60 @@
+{
+  "id": "ailyProject--aily-blockly",
+  "repo": "ailyProject/aily-blockly",
+  "status": "candidate",
+  "github": {
+    "stars": 3883,
+    "license": "GPL-3.0",
+    "pushedAt": "2026-11-24T09:41:41Z",
+    "description": "AI IDE for hardware development, support Arduino, MicroPython, ESP32, STM32, RP2040, Nrf5x...",
+    "topics": [
+      "ai",
+      "arduino",
+      "blockly",
+      "ide",
+      "iot"
+    ],
+    "language": "TypeScript",
+    "homepage": "https://aily.pro"
+  },
+  "ai": {
+    "relevant": false,
+    "title": "aily Blockly",
+    "summary": "面向硬件开发的AI增强型图形化编程IDE，支持多平台代码生成与智能辅助开发。",
+    "intro": "aily Blockly 是一个开源的、AI 原生的硬件开发集成环境（IDE），基于 Blockly 图形化编程框架，目标是降低硬件编程门槛，推动自然语言驱动的开发范式。\n\n它本身不运行在硬件上，也不直接控制任何外设；而是作为桌面端开发工具（Electron + Angular），为 Arduino、ESP32、STM32、RP2040 等百余种主控平台生成固件代码，并提供 AI 辅助的 wiring 分析、错误诊断、库适配和项目结构设计。\n\n核心亮点包括：开箱即用的多平台支持、边缘-云协同编译加速、AI 全流程参与（需求分析→接线图生成→代码编写→调试建议）、可自动适配 C/C++ 库的 Blockly 扩展机制，以及内置模拟器和 UI 设计器。\n\n适合教育场景中的初学者、创客、中小学信息课教师及快速原型开发者，用于教学演示、课程实验或创意验证；不适合需要深度硬件控制或生产级固件开发的专业工程师。",
+    "shelf": "tools",
+    "platform": "other",
+    "hardware": [],
+    "aiCapabilities": [
+      {
+        "name": "需求分析",
+        "where": "cloud"
+      },
+      {
+        "name": "接线图生成",
+        "where": "cloud"
+      },
+      {
+        "name": "代码生成",
+        "where": "cloud"
+      },
+      {
+        "name": "错误诊断",
+        "where": "cloud"
+      },
+      {
+        "name": "库适配",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "beginner",
+    "tags": [
+      "图形化编程",
+      "AI辅助开发",
+      "多平台支持",
+      "教育工具",
+      "开源IDE"
+    ]
+  },
+  "reviewedAt": null
+}

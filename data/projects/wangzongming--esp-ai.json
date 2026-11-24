@@ -1,0 +1,76 @@
+{
+  "id": "wangzongming--esp-ai",
+  "repo": "wangzongming/esp-ai",
+  "status": "approved",
+  "github": {
+    "stars": 859,
+    "license": "MIT",
+    "pushedAt": "2026-11-12T07:56:51Z",
+    "description": "The simplest and lowest-cost AI integration solution. If you like this project, please give it a Star~ | 最简单、最低成本的AI接入方案。喜欢本项目的话点个 Star 吧~",
+    "topics": [
+      "aiot",
+      "arduino",
+      "arduino-llm",
+      "esp",
+      "esp-ai",
+      "esp32",
+      "esp32-ai",
+      "esp32-idf",
+      "esp32-llm",
+      "esp8266",
+      "espai",
+      "iat",
+      "llm",
+      "rag",
+      "tts"
+    ],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "ESP-AI",
+    "summary": "面向ESP32系列的轻量级AI对话框架，集成语音识别、大模型推理与语音合成能力。",
+    "intro": "ESP-AI 是一个专为 ESP32 系列（含 S3/C3）设计的嵌入式 AI 对话中间件，以库形式注入 Arduino/ESP-IDF 项目，提供开箱即用的端云协同 AI 对话能力。\n\n硬件侧负责音频采集（麦克风）、播放（扬声器）及基础唤醒（按键/串口），AI 流程由云端服务（ASR/TTS/LLM/RAG）完成；设备仅需低功耗运行轻量通信协议与音频流处理，实现低成本接入。\n\n支持插件化扩展任意 ASR/TTS/LLM 服务，具备全链路流式传输、对话打断、多设备独立配置、认证连接等工业级特性，并配套可视化配置平台与免费在线服务。\n\n适合想快速为智能硬件（如语音玩具、IoT 设备、教育机器人）添加自然语言交互能力的嵌入式开发者，无需训练模型或部署复杂后端。",
+    "shelf": "voice",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "麦克风",
+        "role": "audio-in"
+      },
+      {
+        "name": "扬声器",
+        "role": "audio-out"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "语音识别",
+        "where": "cloud"
+      },
+      {
+        "name": "大模型对话",
+        "where": "cloud"
+      },
+      {
+        "name": "语音合成",
+        "where": "cloud"
+      },
+      {
+        "name": "上下文响应",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "ESP32",
+      "云端AI",
+      "ASR",
+      "TTS",
+      "LLM"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:08.359Z"
+}

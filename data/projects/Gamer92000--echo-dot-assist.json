@@ -1,0 +1,76 @@
+{
+  "id": "Gamer92000--echo-dot-assist",
+  "repo": "Gamer92000/echo-dot-assist",
+  "status": "approved",
+  "github": {
+    "stars": 1485,
+    "license": "MIT",
+    "pushedAt": "2026-11-24T01:40:10Z",
+    "description": "Turn Amazon Echos (Echo Dot 3, Echo Dot 2, Echo 2) into local Home Assistant voice satellites. Keeps Amazon's mic processing and wake word engine, replaces Alexa with a small C daemon speaking ESPHome or Wyoming. Multiroom music via Music Assistant, Bluetooth speaker and proxy, no cloud.",
+    "topics": [
+      "assist",
+      "echo-dot",
+      "esphome-api",
+      "home-assistant",
+      "music-assistant",
+      "sendspin",
+      "voice-assistant"
+    ],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "Echo Dot Assist",
+    "summary": "将旧款亚马逊 Echo 改造成本地化 Home Assistant 语音卫星，保留原唤醒引擎，替换 Alexa 为本地语音助手。",
+    "intro": "这是一个开源项目，通过刷写定制固件，将闲置的 Amazon Echo 设备（如 Echo Dot 2/3、Echo Show 等）改造为完全离线、不连接亚马逊云的 Home Assistant 语音终端。\n\n它复用 Echo 原有的麦克风阵列与唤醒词识别（Alexa/Echo 等），仅替换后端语音处理逻辑：运行轻量 C 守护进程 `hassmic`，通过 ESPHome 或 Wyoming 协议与 Home Assistant 对接，实现本地语音识别、响应、多房间音乐、蓝牙代理等功能。\n\n项目亮点包括：零云端通信（防火墙强制隔离）、多设备自协商应答、Wi-Fi 动作检测、自定义灯环动画、扬声器增益调节、本地声音事件检测（烟雾报警等），以及完整的 Web 设置页（http://<echo-ip>:28931/）。\n\n适合熟悉 Linux 命令行、有嵌入式刷机经验的 Home Assistant 用户；需手动解锁 Bootloader（依赖 R0rt1z2 的 MediaTek 漏洞工具链），支持从 Windows（Git Bash）或 Linux 主机完成部署。",
+    "shelf": "voice",
+    "platform": "other",
+    "hardware": [
+      {
+        "name": "microphone array",
+        "role": "audio-in"
+      },
+      {
+        "name": "LED ring",
+        "role": "light"
+      },
+      {
+        "name": "action button",
+        "role": "input"
+      },
+      {
+        "name": "speaker",
+        "role": "audio-out"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "语音唤醒",
+        "where": "device"
+      },
+      {
+        "name": "语音识别",
+        "where": "edge"
+      },
+      {
+        "name": "语音合成",
+        "where": "edge"
+      },
+      {
+        "name": "声音事件检测",
+        "where": "device"
+      }
+    ],
+    "difficulty": "advanced",
+    "tags": [
+      "语音助手",
+      "设备改造",
+      "本地化",
+      "Home Assistant",
+      "固件破解",
+      "离线AI"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:07.203Z"
+}

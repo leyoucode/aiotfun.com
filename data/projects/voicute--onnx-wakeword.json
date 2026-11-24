@@ -1,0 +1,37 @@
+{
+  "id": "voicute--onnx-wakeword",
+  "repo": "voicute/onnx-wakeword",
+  "status": "candidate",
+  "github": {
+    "stars": 95,
+    "license": "MIT",
+    "pushedAt": "2026-11-18T05:08:06Z",
+    "description": "Open-source, fully offline wake word / keyword spotting (KWS) inference engine — ONNX/TFLite <130KB, multi-keyword, multilingual. Train a custom wake word online with auto hard-negative mining; deploy on ESP32 / Raspberry Pi / Android / Web / Windows / macOS / Linux / Home Assistant — runs on any ONNX/TFLite-capable device.",
+    "topics": [
+      "android",
+      "custom-wake-word",
+      "esp32",
+      "home-assistant",
+      "keyword-spotter",
+      "keyword-spotting",
+      "kws",
+      "on-device",
+      "onnx",
+      "raspberry-pi",
+      "speech-recognition",
+      "tflite",
+      "tinyml",
+      "trigger-word-detection",
+      "voice-assistant",
+      "wake-word",
+      "wake-word-detection",
+      "wake-word-engine",
+      "wyoming",
+      "wyoming-protocol"
+    ],
+    "language": "C",
+    "homepage": "https://www.voicute.com"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

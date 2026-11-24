@@ -1,0 +1,16 @@
+{
+  "id": "igorantolic--ai-esp32-rotary-encoder",
+  "repo": "igorantolic/ai-esp32-rotary-encoder",
+  "status": "candidate",
+  "github": {
+    "stars": 381,
+    "license": "GPL-2.0",
+    "pushedAt": "2026-06-30T18:22:52Z",
+    "description": "Easy implement rotary encoder to your application using microcontroler like ESP32",
+    "topics": [],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

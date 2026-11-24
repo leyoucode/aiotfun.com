@@ -1,0 +1,28 @@
+{
+  "id": "ohdarling--AirCube",
+  "repo": "ohdarling/AirCube",
+  "status": "candidate",
+  "github": {
+    "stars": 102,
+    "license": "MIT",
+    "pushedAt": "2024-12-18T13:53:57Z",
+    "description": "An DIY all in one air quality monitor and environment detector powered by ESPHome, includes metrics such as PM2.5, PM10, CO2, Luminance, Temperature, Humidity and Barometric Pressure.",
+    "topics": [
+      "airquality",
+      "co2",
+      "domoticz",
+      "eink",
+      "esp32",
+      "esphome",
+      "home-assistant",
+      "humidity",
+      "pm25",
+      "sensor",
+      "temperature"
+    ],
+    "language": "Shell",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

@@ -1,0 +1,37 @@
+{
+  "id": "alkove-ai--alkove",
+  "repo": "alkove-ai/alkove",
+  "status": "candidate",
+  "github": {
+    "stars": 84,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-11-23T12:51:18Z",
+    "description": "On-device voice models and SDK: voice isolation, wake words, voice activity and voiceprints. In the browser (WebAssembly), Python, Android and iOS, with plugins for LiveKit Agents, Pipecat and Home Assistant (ESPHome, Wyoming). No server, no key. Apache-2.0 code and weights.",
+    "topics": [
+      "android",
+      "esphome",
+      "home-assistant",
+      "ios",
+      "keyword-spotting",
+      "livekit",
+      "noise-cancellation",
+      "on-device",
+      "pipecat",
+      "python",
+      "speaker-verification",
+      "speech-enhancement",
+      "swift",
+      "target-speaker-extraction",
+      "voice-activity-detection",
+      "voice-agent",
+      "voice-isolation",
+      "voiceprint",
+      "wake-word",
+      "webassembly"
+    ],
+    "language": "Rust",
+    "homepage": "https://alkove.ai"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

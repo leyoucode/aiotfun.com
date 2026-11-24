@@ -1,0 +1,31 @@
+{
+  "id": "Seeed-Solution--vibe-pet",
+  "repo": "Seeed-Solution/vibe-pet",
+  "status": "candidate",
+  "github": {
+    "stars": 54,
+    "license": "MIT",
+    "pushedAt": "2026-07-15T12:30:49Z",
+    "description": "Agent token and task monitoring, thousands of pet avatars, cross-platform support, and compatibility with popular AI agents.  一眼查看 Token 与任务状态，海量 Petdex 形象可选，支持 Windows/macOS/Linux、ESP/Wio Terminal，兼容 Cursor、Codex、Claude、Windsurf 等主流 Agent。",
+    "topics": [
+      "agent-pet",
+      "ai-pet",
+      "claude-code",
+      "code-pet",
+      "codex",
+      "cursor",
+      "esp32",
+      "pet",
+      "seeed",
+      "seeedstudio",
+      "token",
+      "vibe-codeing",
+      "vibe-pet",
+      "wio-terminal"
+    ],
+    "language": "C",
+    "homepage": "https://codecraft.seeed.cc"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

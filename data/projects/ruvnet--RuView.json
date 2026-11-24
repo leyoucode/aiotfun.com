@@ -1,0 +1,83 @@
+{
+  "id": "ruvnet--RuView",
+  "repo": "ruvnet/RuView",
+  "status": "approved",
+  "github": {
+    "stars": 105018,
+    "license": "MIT",
+    "pushedAt": "2026-11-24T09:45:37Z",
+    "description": "π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection — all without a single pixel of video.",
+    "topics": [
+      "claude",
+      "claude-code",
+      "esp32",
+      "firmware",
+      "home-assistant",
+      "home-automation",
+      "iot",
+      "mcp",
+      "monitoring",
+      "networking",
+      "pose-estimation",
+      "react",
+      "rf",
+      "self-learning",
+      "spatial-intelligence",
+      "typescript",
+      "webassembly",
+      "wifi",
+      "wifi-security"
+    ],
+    "language": "Rust",
+    "homepage": "https://cognitum.one"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "RuView WiFi感知平台",
+    "summary": "利用ESP32捕获WiFi信道状态信息（CSI），实现无摄像头、无接触的人员存在检测、呼吸/心率监测与姿态估计。",
+    "intro": "RuView是一个基于WiFi射频信号的边缘侧空间智能感知平台，不依赖视觉传感器，仅通过分析环境中已有的WiFi信号扰动即可实现高隐私性环境感知。\n\n硬件层使用低成本ESP32-C3/ESP32-S3节点采集原始CSI数据；AI层在边缘设备（如Raspberry Pi）或本地网关运行轻量化模型（如4-bit量化pose模型），完成呼吸率、心率、存在检测、17点姿态估计等推理任务，全程无需云端参与。\n\n支持多协议智能家居集成（Home Assistant/Matter/HomeKit/Google/Alexa），提供加密见证链、本地自学习（30秒环境适配）、RF指纹建图、隐私标注证据系统等硬核特性；模型开源且可本地重训练。\n\n适合物联网开发者、智能家居方案集成者、边缘AI研究者及关注隐私保护的健康监测应用构建者，需具备嵌入式调试与基本信号处理理解能力。",
+    "shelf": "sensing",
+    "platform": "esp32-c3",
+    "hardware": [
+      {
+        "name": "ESP32-C3",
+        "role": "comm"
+      },
+      {
+        "name": "ESP32-S3",
+        "role": "comm"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "存在检测",
+        "where": "edge"
+      },
+      {
+        "name": "呼吸监测",
+        "where": "edge"
+      },
+      {
+        "name": "心率监测",
+        "where": "edge"
+      },
+      {
+        "name": "姿态估计",
+        "where": "edge"
+      },
+      {
+        "name": "跌倒识别",
+        "where": "edge"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "WiFi感知",
+      "无接触监测",
+      "边缘AI",
+      "隐私优先",
+      "智能家居"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:28:51.214Z"
+}

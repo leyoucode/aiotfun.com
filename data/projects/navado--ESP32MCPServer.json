@@ -1,0 +1,28 @@
+{
+  "id": "navado--ESP32MCPServer",
+  "repo": "navado/ESP32MCPServer",
+  "status": "candidate",
+  "github": {
+    "stars": 66,
+    "license": "MIT",
+    "pushedAt": "2026-11-14T23:17:51Z",
+    "description": "Allow AI models connect to ESP32 and read connected sensors NMEA2k, ODB/ODBII, NMEA0183. AI generated MCP server.",
+    "topics": [
+      "ai",
+      "can-bus",
+      "esp32",
+      "generated-code",
+      "mcp-server",
+      "nmea0183",
+      "nmea2000",
+      "odb2",
+      "odbii",
+      "sensors",
+      "websocket-server"
+    ],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

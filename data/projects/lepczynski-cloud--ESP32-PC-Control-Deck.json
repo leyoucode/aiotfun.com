@@ -1,0 +1,35 @@
+{
+  "id": "lepczynski-cloud--ESP32-PC-Control-Deck",
+  "repo": "lepczynski-cloud/ESP32-PC-Control-Deck",
+  "status": "candidate",
+  "github": {
+    "stars": 44,
+    "license": "MIT",
+    "pushedAt": "2026-11-06T20:22:31Z",
+    "description": "USB-connected ESP32 PC monitor and touch control deck for system telemetry, ChatGPT, Ollama, local voice services and configurable macros.",
+    "topics": [
+      "clion",
+      "cyberdeck",
+      "elecrow",
+      "esp32",
+      "ili9341",
+      "librehardwaremonitor",
+      "local-ai",
+      "macropad",
+      "ollama",
+      "pc-monitor",
+      "platformio",
+      "psutil",
+      "pyserial",
+      "python",
+      "system-monitor",
+      "tft-espi",
+      "usb-serial",
+      "xpt2046"
+    ],
+    "language": "Python",
+    "homepage": "https://sp32-pc-control-deck.lepczynski.it/"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

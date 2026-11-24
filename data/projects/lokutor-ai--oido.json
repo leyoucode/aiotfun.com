@@ -1,0 +1,35 @@
+{
+  "id": "lokutor-ai--oido",
+  "repo": "lokutor-ai/oido",
+  "status": "candidate",
+  "github": {
+    "stars": 141,
+    "license": "GPL-3.0",
+    "pushedAt": "2026-11-12T11:37:42Z",
+    "description": "Oído: open-vocabulary speech recognition on a $5 ESP32-S3, faster than real time. No cloud, no NPU. English + Spanish.",
+    "topics": [
+      "asr",
+      "conformer",
+      "edge-ai",
+      "embedded",
+      "esp-idf",
+      "esp32",
+      "esp32-s3",
+      "int4",
+      "microcontroller",
+      "offline-speech-recognition",
+      "on-device-ai",
+      "quantization",
+      "real-time",
+      "speech-recognition",
+      "speech-to-text",
+      "streaming-asr",
+      "tinyml",
+      "voice-assistant"
+    ],
+    "language": "C",
+    "homepage": "https://lokutor-ai.github.io/oido/demo/"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

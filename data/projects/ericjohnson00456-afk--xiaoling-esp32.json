@@ -1,0 +1,16 @@
+{
+  "id": "ericjohnson00456-afk--xiaoling-esp32",
+  "repo": "ericjohnson00456-afk/xiaoling-esp32",
+  "status": "candidate",
+  "github": {
+    "stars": 38,
+    "license": "MIT",
+    "pushedAt": "2026-11-24T09:15:35Z",
+    "description": "小聆AI是聆思面向桌面机器人和陪伴类设备打造的智能语音交互方案，专为打造更拟人、更懂你、更智能的语音交互体验而设计。",
+    "topics": [],
+    "language": "C++",
+    "homepage": "https://platform.listenai.com"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

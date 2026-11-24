@@ -1,0 +1,16 @@
+{
+  "id": "findstr--xiaozhi-esp32-server-mini",
+  "repo": "findstr/xiaozhi-esp32-server-mini",
+  "status": "candidate",
+  "github": {
+    "stars": 39,
+    "license": "MIT",
+    "pushedAt": "2026-09-04T06:12:49Z",
+    "description": "适用于 NAS、路由器、树莓派等轻量级设备的 xiaozhi-esp32 服务端",
+    "topics": [],
+    "language": "Lua",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

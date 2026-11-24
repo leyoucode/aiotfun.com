@@ -1,0 +1,24 @@
+{
+  "id": "MhageGH--esp32_CloudSpeech",
+  "repo": "MhageGH/esp32_CloudSpeech",
+  "status": "candidate",
+  "github": {
+    "stars": 115,
+    "license": "MIT",
+    "pushedAt": "2026-04-21T12:34:24Z",
+    "description": "Transcribe your voice by Google's Cloud Speech-to-Text API with esp32",
+    "topics": [
+      "ai",
+      "arduino",
+      "cloud-speech-api",
+      "esp32",
+      "m5stack-fire",
+      "machine-learning",
+      "voice-recognition"
+    ],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

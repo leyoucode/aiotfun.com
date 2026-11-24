@@ -1,0 +1,21 @@
+{
+  "id": "mac8005--xiaozhi-mcp-ha",
+  "repo": "mac8005/xiaozhi-mcp-ha",
+  "status": "candidate",
+  "github": {
+    "stars": 114,
+    "license": "MIT",
+    "pushedAt": "2026-11-09T21:09:31Z",
+    "description": "A Home Assistant Custom Integration (HACS) that connects Xiaozhi ESP32 AI chatbot to Home Assistant via MCP",
+    "topics": [
+      "hacs",
+      "homeassistant",
+      "mcp",
+      "xiaozhi-esp32"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

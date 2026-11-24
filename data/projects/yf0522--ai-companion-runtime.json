@@ -1,0 +1,24 @@
+{
+  "id": "yf0522--ai-companion-runtime",
+  "repo": "yf0522/ai-companion-runtime",
+  "status": "candidate",
+  "github": {
+    "stars": 49,
+    "license": "MIT",
+    "pushedAt": "2026-10-16T08:19:51Z",
+    "description": "Eldercare runtime: risk-gated companion with reminders, anti-fraud, family escalation, and traceability",
+    "topics": [
+      "ai-agent",
+      "companion-ai",
+      "eldercare",
+      "esp32-s3",
+      "family-care",
+      "fraud-detection",
+      "realtime-ai"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

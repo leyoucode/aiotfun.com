@@ -1,0 +1,74 @@
+{
+  "id": "SensorsIot--Embedded-AI-Harness",
+  "repo": "SensorsIot/Embedded-AI-Harness",
+  "status": "approved",
+  "github": {
+    "stars": 296,
+    "license": "MIT",
+    "pushedAt": "2026-10-09T10:00:18Z",
+    "description": "AI Closed-Loop Programming for embedded systems — the AI writes, flashes, and tests firmware on real hardware until the tests run clean. Spec to silicon, hands off.",
+    "topics": [
+      "ai",
+      "claude",
+      "closed-loop",
+      "embedded",
+      "esp32",
+      "mcp",
+      "raspberry-pi",
+      "tdd",
+      "test-automation"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "Embedded-AI-Harness",
+    "summary": "AI闭环编程框架：自动编写、烧录、测试ESP32固件，直至硬件测试全部通过。",
+    "intro": "这是一个面向嵌入式系统的AI闭环编程（AICLP）框架，将AI（Claude Code）与真实硬件（ESP32）深度耦合，实现从需求规格（FSD）到可运行固件的全自动交付闭环。\n\n框架依赖Raspberry Pi测试台作为‘AI的手和眼’：通过HTTP API控制ESP32插槽（复位/烧录/串口/调试）、模拟WiFi AP/蓝牙/RF环境，并实时采集硬件日志与状态。AI基于测试反馈持续迭代修正固件。\n\n核心亮点是‘真TDD驱动’——测试用例由需求自动生成、在真实硅片上执行；失败即误差信号，触发AI自主修正；只有所有测试绿灯，循环才终止。全程无需本地开发环境，构建由GitHub Actions锁定工具链完成。\n\n适合嵌入式工程师、AI工程化实践者及自动化测试开发者，用于快速验证AI生成固件的可靠性，或构建高可信度的嵌入式CI/CD流水线。",
+    "shelf": "tools",
+    "platform": "esp32",
+    "hardware": [
+      {
+        "name": "ESP32",
+        "role": "actuator"
+      },
+      {
+        "name": "Raspberry Pi",
+        "role": "comm"
+      },
+      {
+        "name": "RTL-SDR",
+        "role": "sensor"
+      },
+      {
+        "name": "Si5351 + PE4302",
+        "role": "actuator"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "固件生成",
+        "where": "cloud"
+      },
+      {
+        "name": "闭环测试",
+        "where": "edge"
+      },
+      {
+        "name": "自动纠错",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "AI编程",
+      "闭环测试",
+      "ESP32",
+      "TDD",
+      "硬件CI",
+      "Claude"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:15.049Z"
+}

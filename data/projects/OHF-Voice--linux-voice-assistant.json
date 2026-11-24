@@ -1,0 +1,70 @@
+{
+  "id": "OHF-Voice--linux-voice-assistant",
+  "repo": "OHF-Voice/linux-voice-assistant",
+  "status": "approved",
+  "github": {
+    "stars": 706,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-11-24T04:33:35Z",
+    "description": "Voice satellite for Home Assistant using the ESPHome protocol",
+    "topics": [
+      "esphome-api",
+      "home-assistant",
+      "linux-app",
+      "voice-assistant",
+      "voice-satellite"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "Linux语音卫星",
+    "summary": "基于Linux的Home Assistant语音助手卫星端，支持本地唤醒词检测与语音交互。",
+    "intro": "这是一个运行在x64/ARM64 Linux设备（如树莓派）上的语音卫星软件，作为Home Assistant的远程语音控制节点，通过ESPHome协议接入系统。\n\n它利用本地CPU进行实时音频处理：通过PulseAudio/PipeWire采集麦克风阵列音频，调用OpenWakeWord或MicroWakeWord实现端侧唤醒词检测，并将语音流转发至Home Assistant Assist服务完成ASR/TTS/对话逻辑。\n\n支持多唤醒词、多语言、API加密通信、远场麦克风阵列（含XMOS DSP预处理）、按钮/LED外设WebSocket扩展，且提供预编译镜像、Docker和HA插件三种部署方式。\n\n适合已有Home Assistant生态、希望摆脱云端依赖并提升隐私性与响应速度的Linux爱好者、智能家居开发者，以及需要定制化语音前端的边缘AI项目实践者。",
+    "shelf": "voice",
+    "platform": "rpi",
+    "hardware": [
+      {
+        "name": "Satellite1 Hat Board",
+        "role": "audio-in"
+      },
+      {
+        "name": "Respeaker Lite",
+        "role": "audio-in"
+      },
+      {
+        "name": "ReSpeaker 2-Mics Pi HAT V2.0",
+        "role": "audio-in"
+      },
+      {
+        "name": "WebRTC Gain/Noise Suppression",
+        "role": "audio-in"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "唤醒词检测",
+        "where": "device"
+      },
+      {
+        "name": "语音识别",
+        "where": "cloud"
+      },
+      {
+        "name": "语音合成",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "Home Assistant",
+      "端侧唤醒",
+      "Linux",
+      "远场麦克风",
+      "ESPHome"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:09.528Z"
+}

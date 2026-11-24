@@ -1,0 +1,30 @@
+{
+  "id": "ForestHubAI--boardsmith",
+  "repo": "ForestHubAI/boardsmith",
+  "status": "candidate",
+  "github": {
+    "stars": 38,
+    "license": "AGPL-3.0",
+    "pushedAt": "2026-03-11T23:12:11Z",
+    "description": "Text prompt → KiCad schematic, BOM, and firmware. No templates — real wired circuits with computed values.",
+    "topics": [
+      "ai",
+      "circuit-design",
+      "eda",
+      "electronics",
+      "esp32",
+      "firmware",
+      "hardware",
+      "kicad",
+      "llm",
+      "open-source-hardware",
+      "pcb",
+      "python",
+      "rp2040"
+    ],
+    "language": "Python",
+    "homepage": "https://github.com/ForestHubAI/boardsmith#quick-start"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

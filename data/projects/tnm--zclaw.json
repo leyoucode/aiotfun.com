@@ -1,0 +1,59 @@
+{
+  "id": "tnm--zclaw",
+  "repo": "tnm/zclaw",
+  "status": "approved",
+  "github": {
+    "stars": 2245,
+    "license": "MIT",
+    "pushedAt": "2026-05-17T03:43:36Z",
+    "description": "Your personal AI assistant at all-in 888KiB (~35KB in app code). Running on an ESP32. GPIO, cron, custom tools, memory, and more.",
+    "topics": [],
+    "language": "C",
+    "homepage": "https://zclaw.dev"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "zclaw",
+    "summary": "超轻量ESP32端AI助手，888KiB内集成自然语言交互、GPIO控制与定时任务。",
+    "intro": "zclaw 是一个专为 ESP32 设计的极简 AI 个人助理固件，全部功能压缩在 888 KiB 固件镜像中，包含运行时、Wi-Fi、TLS 和证书等完整依赖。\n\n它通过 Telegram 或 Web 中继接收自然语言指令，在设备端解析意图后调用内置工具（如 GPIO 控制、DHT 温湿度读取、I2C 扫描）或转发至云端 LLM（OpenAI/Anthropic/Ollama 等）生成响应，支持本地串口管理与离线基础操作。\n\n亮点在于极致资源约束下的全栈能力：支持时区感知定时任务、持久化 NVS 存储、多 Persona 语气切换、安全凭证加密烧录，以及 USB 本地管理控制台（无需联网即可调试）。\n\n适合嵌入式爱好者与 IoT 开发者快速构建可语音/消息驱动的智能硬件节点，无需训练模型，只需配置 LLM 接口和外设即可扩展功能。",
+    "shelf": "tools",
+    "platform": "esp32",
+    "hardware": [
+      {
+        "name": "GPIO",
+        "role": "actuator"
+      },
+      {
+        "name": "DHT",
+        "role": "sensor"
+      },
+      {
+        "name": "I2C",
+        "role": "comm"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "自然语言交互",
+        "where": "cloud"
+      },
+      {
+        "name": "指令解析",
+        "where": "device"
+      },
+      {
+        "name": "定时任务调度",
+        "where": "device"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "ESP32",
+      "轻量AI",
+      "固件助手",
+      "Telegram控制",
+      "GPIO编程"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:06.426Z"
+}

@@ -1,0 +1,72 @@
+{
+  "id": "rokbenko--quackd",
+  "repo": "rokbenko/quackd",
+  "status": "approved",
+  "github": {
+    "stars": 297,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-11-21T22:39:58Z",
+    "description": "The communication layer between people and robots, and between robots. Talk to any robot in your own words, with an LLM for its brain. Robots that have never met check each other's passports and share the work. Microduck, Huebot, Open Duck Mini, LeRobot arms, XLeRobot carts, AlohaMini, ToddlerBot, MOSS, ROS bases and industrial arms on ROS 2.",
+    "topics": [
+      "ai-agents",
+      "claude",
+      "embodied-ai",
+      "gemini",
+      "human-robot-interaction",
+      "jetson",
+      "lerobot",
+      "llm",
+      "mcp",
+      "microduck",
+      "multi-robot",
+      "ollama",
+      "openai",
+      "physical-ai",
+      "robot-communication",
+      "robotic-arm",
+      "robotics",
+      "ros2",
+      "so-101",
+      "vla"
+    ],
+    "language": "Python",
+    "homepage": "https://www.quackd.org"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "Roboglot",
+    "summary": "面向机器人的LLM通信中间件，支持人机对话、多机器人协同与技能编排。",
+    "intro": "Roboglot 是一个开源的机器人通信层，为物理机器人提供统一的LLM驱动接口，将自然语言目标转化为可执行动作序列。\n\n它不直接运行在硬件上，而是作为边缘/云端服务，通过适配器（如 ROS 2、LeRobot、MOSS bridge）连接真实或模拟机器人；LLM（如 GPT-6、Ollama 模型）在本地或云端推理决策，再调用机器人API执行动作（如移动、抓取、挥手），并基于传感器反馈（摄像头、关节状态）迭代推进任务。\n\n支持跨厂商、跨形态机器人协作：自动交换‘护照’（能力清单）、协商分工、强制执行安全契约（步数限制、人工确认点、技能白名单）；已实机验证 SO-101 机械臂，其余九种机器人（Microduck、Open Duck Mini 等）提供完整 mock 仿真与适配器。\n\n适合机器人开发者快速集成LLM智能体、ROS工程师构建多机协同系统、AI研究者实验具身智能工作流，无需从零训练模型或开发底层驱动。",
+    "shelf": "robot",
+    "platform": "other",
+    "hardware": [],
+    "aiCapabilities": [
+      {
+        "name": "自然语言理解",
+        "where": "cloud"
+      },
+      {
+        "name": "任务规划",
+        "where": "cloud"
+      },
+      {
+        "name": "多机协同决策",
+        "where": "cloud"
+      },
+      {
+        "name": "视觉反馈决策",
+        "where": "edge"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "具身智能",
+      "多机器人",
+      "LLM控制",
+      "ROS2",
+      "机器人通信",
+      "AI代理"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:14.634Z"
+}

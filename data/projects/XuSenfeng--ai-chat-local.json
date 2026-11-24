@@ -1,0 +1,16 @@
+{
+  "id": "XuSenfeng--ai-chat-local",
+  "repo": "XuSenfeng/ai-chat-local",
+  "status": "candidate",
+  "github": {
+    "stars": 160,
+    "license": "Apache-2.0",
+    "pushedAt": "2025-07-27T13:44:43Z",
+    "description": "使用esp32+ollama实现本地模型的对话以及联网+工具调用",
+    "topics": [],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

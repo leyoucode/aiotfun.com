@@ -1,0 +1,27 @@
+{
+  "id": "MichalZaniewicz--esphome-waveshare-esp32-s3-audio-va",
+  "repo": "MichalZaniewicz/esphome-waveshare-esp32-s3-audio-va",
+  "status": "candidate",
+  "github": {
+    "stars": 100,
+    "license": "MIT",
+    "pushedAt": "2026-11-21T20:35:06Z",
+    "description": "Home Assistant voice satellite on the Waveshare ESP32-S3-AUDIO-Board, in pure ESPHome: on-device wake word, simultaneous music and announcements, voice timers, and a configurable RGB status ring, all on stock components over the board's shared I2S bus.",
+    "topics": [
+      "es8311",
+      "esp32-s3",
+      "esp32-s3-audio",
+      "esphome",
+      "home-assistant",
+      "micro-wake-word",
+      "smart-home",
+      "voice-assistant",
+      "voice-satellite",
+      "waveshare"
+    ],
+    "language": "Python",
+    "homepage": "https://github.com/MichalZaniewicz/esphome-waveshare-esp32-s3-audio-va/wiki"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

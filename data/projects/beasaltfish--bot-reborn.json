@@ -1,0 +1,27 @@
+{
+  "id": "beasaltfish--bot-reborn",
+  "repo": "beasaltfish/bot-reborn",
+  "status": "candidate",
+  "github": {
+    "stars": 71,
+    "license": "MIT",
+    "pushedAt": "2026-11-23T15:02:50Z",
+    "description": "A workbench for voice-AI robots: configure a brain per character, wire and flash the ESP32 that becomes its body, and start with no parts at all.",
+    "topics": [
+      "breadboard",
+      "diy",
+      "esp32",
+      "llm",
+      "local-first",
+      "robotics",
+      "speech-recognition",
+      "voice-assistant",
+      "webusb",
+      "wiring-simulator"
+    ],
+    "language": "JavaScript",
+    "homepage": "https://bot-reborn.agentlenshq.com"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

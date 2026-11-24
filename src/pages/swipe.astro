@@ -1,0 +1,185 @@
+---
+import Base from '../layouts/Base.astro';
+import { formatStars, owner, projects } from '../lib/projects.ts';
+import { PLATFORMS } from '../lib/taxonomy.ts';
+---
+
+<Base title="滑一滑" description="一张张刷开源 AIoT 项目，右滑喜欢，左滑跳过">
+  <div class="mx-auto max-w-sm pt-6">
+    <div class="flex items-baseline justify-between">
+      <h1 class="text-xl font-bold tracking-tight">滑一滑</h1>
+      <p class="text-xs text-muted">已看 <span id="seen-count">0</span> / {projects.length}</p>
+    </div>
+    <p class="mt-1 text-xs text-muted">右滑喜欢，左滑跳过；也可以用键盘 ← →。点卡片看详情。</p>
+
+    <div id="deck" class="relative mt-5 aspect-[3/4] w-full select-none touch-none">
+      {projects.map((p) => (
+        <article
+          data-id={p.id}
+          class="absolute inset-0 hidden flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-sm will-change-transform"
+        >
+          <img src={`/cards/${p.id}.svg`} alt="" width="400" height="250" loading="lazy" draggable="false" class="aspect-[8/5] w-full border-b border-line" />
+          <div class="flex min-h-0 flex-1 flex-col p-4">
+            <h2 class="text-lg font-semibold leading-snug">{p.ai.title}</h2>
+            <p class="mt-1 text-xs text-muted">{owner(p)} · ★ {formatStars(p.github.stars)} · {PLATFORMS[p.ai.platform]}</p>
+            <p class="mt-3 line-clamp-3 text-sm leading-relaxed">{p.ai.summary}</p>
+            <div class="mt-auto flex flex-wrap gap-1.5 pt-3">
+              {p.ai.aiCapabilities.map((a) => <span class="rounded-full bg-accent-soft px-2 py-0.5 text-xs text-teal">{a.name}</span>)}
+            </div>
+          </div>
+          <div data-stamp="like" class="pointer-events-none absolute left-4 top-4 rotate-[-12deg] rounded-md border-2 border-accent px-2 py-0.5 text-lg font-bold text-accent opacity-0">喜欢</div>
+          <div data-stamp="skip" class="pointer-events-none absolute right-4 top-4 rotate-[12deg] rounded-md border-2 border-muted px-2 py-0.5 text-lg font-bold text-muted opacity-0">跳过</div>
+        </article>
+      ))}
+      <div id="done" class="absolute inset-0 hidden flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-line text-center">
+        <p class="text-muted">全部看完了。</p>
+        <div class="flex gap-2 text-sm">
+          <a href="/liked/" class="rounded-lg bg-teal px-3 py-1.5 text-white">看我喜欢的</a>
+          <button id="restart" type="button" class="rounded-lg border border-line bg-surface px-3 py-1.5">重新开始</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 grid grid-cols-3 gap-3">
+      <button id="btn-skip" type="button" class="rounded-xl border border-line bg-surface py-2.5 text-sm text-muted hover:text-ink">← 跳过</button>
+      <a id="btn-open" href="/" class="rounded-xl border border-line bg-surface py-2.5 text-center text-sm text-muted hover:text-ink">详情</a>
+      <button id="btn-like" type="button" class="rounded-xl bg-teal py-2.5 text-sm font-medium text-white hover:bg-teal/90">喜欢 →</button>
+    </div>
+  </div>
+</Base>
+
+<script>
+  import { setLiked } from '../scripts/likes.ts';
+
+  const SEEN_KEY = 'aiotfun:seen';
+  const THRESHOLD = 100;
+
+  const deck = document.querySelector<HTMLElement>('#deck')!;
+  const cards = new Map([...deck.querySelectorAll<HTMLElement>('article[data-id]')].map((el) => [el.dataset.id!, el]));
+  const done = document.querySelector<HTMLElement>('#done')!;
+  const seenCount = document.querySelector<HTMLElement>('#seen-count')!;
+  const openBtn = document.querySelector<HTMLAnchorElement>('#btn-open')!;
+
+  function loadSeen(): Set<string> {
+    try {
+      return new Set(JSON.parse(localStorage.getItem(SEEN_KEY) ?? '[]'));
+    } catch {
+      return new Set();
+    }
+  }
+  function saveSeen() {
+    try {
+      localStorage.setItem(SEEN_KEY, JSON.stringify([...seen]));
+    } catch {
+      // 存不下就只在本次会话记住
+    }
+  }
+
+  let seen = loadSeen();
+  let order: string[] = [];
+  let busy = false;
+
+  function shuffle(ids: string[]) {
+    for (let i = ids.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [ids[i], ids[j]] = [ids[j], ids[i]];
+    }
+    return ids;
+  }
+
+  function render() {
+    seenCount.textContent = String([...seen].filter((id) => cards.has(id)).length);
+    for (const el of cards.values()) {
+      el.classList.add('hidden');
+      el.classList.remove('flex');
+      el.style.transition = '';
+    }
+    order.slice(0, 3).forEach((id, depth) => {
+      const el = cards.get(id)!;
+      el.classList.remove('hidden');
+      el.classList.add('flex');
+      el.style.zIndex = String(30 - depth);
+      el.style.transform = `translateY(${depth * 10}px) scale(${1 - depth * 0.04})`;
+      for (const s of el.querySelectorAll<HTMLElement>('[data-stamp]')) s.style.opacity = '0';
+    });
+    const top = order[0];
+    done.classList.toggle('hidden', !!top);
+    done.classList.toggle('flex', !top);
+    openBtn.href = top ? `/p/${top}/` : '/';
+  }
+
+  function decide(like: boolean) {
+    const id = order[0];
+    if (!id || busy) return;
+    busy = true;
+    const el = cards.get(id)!;
+    el.style.transition = 'transform 250ms ease-out';
+    el.style.transform = `translateX(${like ? 140 : -140}%) rotate(${like ? 18 : -18}deg)`;
+    seen.add(id);
+    saveSeen();
+    if (like) void setLiked(id, true);
+    setTimeout(() => {
+      order.shift();
+      busy = false;
+      render();
+    }, 260);
+  }
+
+  // 指针拖拽：移动不足 5px 视为点击，进入详情
+  let startX = 0;
+  let startY = 0;
+  let dragging = false;
+  deck.addEventListener('pointerdown', (e) => {
+    const el = cards.get(order[0]);
+    if (!el || busy || !el.contains(e.target as Node)) return;
+    dragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    el.setPointerCapture(e.pointerId);
+    el.style.transition = '';
+  });
+  deck.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    const el = cards.get(order[0])!;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    el.style.transform = `translate(${dx}px, ${dy * 0.3}px) rotate(${dx / 18}deg)`;
+    el.querySelector<HTMLElement>('[data-stamp="like"]')!.style.opacity = String(Math.max(0, Math.min(1, dx / THRESHOLD)));
+    el.querySelector<HTMLElement>('[data-stamp="skip"]')!.style.opacity = String(Math.max(0, Math.min(1, -dx / THRESHOLD)));
+  });
+  deck.addEventListener('pointerup', (e) => {
+    if (!dragging) return;
+    dragging = false;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    if (Math.abs(dx) > THRESHOLD) return decide(dx > 0);
+    if (Math.abs(dx) < 5 && Math.abs(dy) < 5) {
+      location.href = `/p/${order[0]}/`;
+      return;
+    }
+    const el = cards.get(order[0])!;
+    el.style.transition = 'transform 200ms ease-out';
+    el.style.transform = '';
+    for (const s of el.querySelectorAll<HTMLElement>('[data-stamp]')) s.style.opacity = '0';
+  });
+  deck.addEventListener('pointercancel', () => {
+    dragging = false;
+    render();
+  });
+
+  document.querySelector('#btn-like')!.addEventListener('click', () => decide(true));
+  document.querySelector('#btn-skip')!.addEventListener('click', () => decide(false));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') decide(true);
+    if (e.key === 'ArrowLeft') decide(false);
+  });
+  document.querySelector('#restart')!.addEventListener('click', () => {
+    seen = new Set();
+    saveSeen();
+    order = shuffle([...cards.keys()]);
+    render();
+  });
+
+  order = shuffle([...cards.keys()].filter((id) => !seen.has(id)));
+  render();
+</script>

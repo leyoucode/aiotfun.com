@@ -1,0 +1,22 @@
+{
+  "id": "nliaudat--esphome_ai_component",
+  "repo": "nliaudat/esphome_ai_component",
+  "status": "candidate",
+  "github": {
+    "stars": 74,
+    "license": "MIT",
+    "pushedAt": "2026-11-23T20:29:35Z",
+    "description": "A component to run AI model on esphome",
+    "topics": [
+      "camera",
+      "esp32",
+      "esphome-component",
+      "meter-reading",
+      "tflite"
+    ],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

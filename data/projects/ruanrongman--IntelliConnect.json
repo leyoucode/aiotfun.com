@@ -1,0 +1,26 @@
+{
+  "id": "ruanrongman--IntelliConnect",
+  "repo": "ruanrongman/IntelliConnect",
+  "status": "candidate",
+  "github": {
+    "stars": 152,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-11-22T07:14:28Z",
+    "description": "本项目为xiaozhi-esp32提供后端服务  |  A Powerful AI agent IoT platform core.",
+    "topics": [
+      "agent",
+      "iot-core",
+      "iot-platform",
+      "mcp-client",
+      "mcp-server",
+      "xiaozhi-ai",
+      "xiaozhi-mcp",
+      "xiaozhi-server",
+      "xioazhi-esp32"
+    ],
+    "language": "Java",
+    "homepage": "https://ruanrongman.github.io/IntelliConnect/"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

@@ -1,0 +1,16 @@
+{
+  "id": "wireless-tag-com--EmbedClaw",
+  "repo": "wireless-tag-com/EmbedClaw",
+  "status": "candidate",
+  "github": {
+    "stars": 45,
+    "license": "MIT",
+    "pushedAt": "2026-04-02T13:37:08Z",
+    "description": "Decouple LLM, Tools, Agent, and Channels—then pack them onto a single ESP32",
+    "topics": [],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

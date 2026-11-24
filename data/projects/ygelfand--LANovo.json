@@ -1,0 +1,28 @@
+{
+  "id": "ygelfand--LANovo",
+  "repo": "ygelfand/LANovo",
+  "status": "candidate",
+  "github": {
+    "stars": 61,
+    "license": "AGPL-3.0",
+    "pushedAt": "2026-11-23T17:02:45Z",
+    "description": "Turn a Lenovo Smart Display into a fully local Home Assistant voice satellite, multi-room media player, lux sensor, remote camera, home assistant dashboard, Bluetooth proxy, and more",
+    "topics": [
+      "assist",
+      "assistant",
+      "chromecast",
+      "chromecast-receiver",
+      "esphome",
+      "golang",
+      "home-assistant",
+      "homeassistant",
+      "sendspin",
+      "wake-word",
+      "wakeword"
+    ],
+    "language": "Go",
+    "homepage": "https://www.lanovo.link"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

@@ -1,0 +1,80 @@
+{
+  "id": "oleost--VisionState",
+  "repo": "oleost/VisionState",
+  "status": "approved",
+  "github": {
+    "stars": 210,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-11-23T20:17:50Z",
+    "description": "Turn your cameras into Home Assistant sensors with a local AI: garage door open/closed, people and cars, water, gas and power meters read by any camera or ESP32-CAM. 100% local, any CPU.",
+    "topics": [
+      "computer-vision",
+      "dinov2",
+      "energy-meter",
+      "esp32-cam",
+      "esphome",
+      "face-recognition",
+      "frigate",
+      "gas-meter",
+      "home-assistant",
+      "home-assistant-addon",
+      "home-assistant-app",
+      "image-classification",
+      "meter-reading",
+      "mqtt",
+      "object-detection",
+      "ocr",
+      "onnx",
+      "self-hosted",
+      "water-meter"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "VisionState",
+    "summary": "本地AI视觉感知系统，将任意摄像头（含ESP32-CAM）转化为Home Assistant传感器，支持状态识别、人车检测、声音监听与水电气表读数。",
+    "intro": "VisionState 是一个完全本地运行的 Home Assistant 插件，通过轻量级 AI 模型将普通摄像头升级为智能传感器，无需云端依赖或GPU加速。\n\n它支持四类感知：状态（如车库门开/关）、物体与人脸（支持自定义训练）、声音（烟雾报警、门铃等）、计量读数（机械/电子水电气表OCR+轮盘识别）。AI模型在本地CPU（含树莓派）实时推理，输入来自Home Assistant中已配置的任意camera.*实体或ESP32-CAM快照。\n\n核心亮点包括：100%离线、区域聚焦识别、自动校验读数（防跳变/倒退）、主动触发（运动/开关信号唤醒）、持续学习（误标一键修正）；所有传感器通过MQTT自动注册为标准HA设备。\n\n适合Home Assistant用户快速部署隐私优先的AI视觉应用——无需编程基础，仅需点击框选目标区域并标注示例，即可启用状态判断、家人识别、仪表自动抄表等功能。",
+    "shelf": "home",
+    "platform": "other",
+    "hardware": [
+      {
+        "name": "ESP32-CAM",
+        "role": "camera"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "状态识别",
+        "where": "edge"
+      },
+      {
+        "name": "人脸识别",
+        "where": "edge"
+      },
+      {
+        "name": "车牌识别",
+        "where": "edge"
+      },
+      {
+        "name": "仪表读数",
+        "where": "edge"
+      },
+      {
+        "name": "声音分类",
+        "where": "edge"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "本地AI",
+      "Home Assistant",
+      "OCR识别",
+      "状态检测",
+      "边缘计算",
+      "隐私优先"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:20.213Z"
+}

@@ -1,0 +1,71 @@
+{
+  "id": "AI-FanGe--OpenAIglasses_for_Navigation",
+  "repo": "AI-FanGe/OpenAIglasses_for_Navigation",
+  "status": "approved",
+  "github": {
+    "stars": 1411,
+    "license": "MIT",
+    "pushedAt": "2025-11-01T06:47:27Z",
+    "description": "a open framework for blind navigation based on esp32",
+    "topics": [],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "AI盲人导航眼镜",
+    "summary": "基于ESP32-CAM的智能眼镜系统，为视障人士提供盲道导航、过马路辅助、物品识别与语音交互能力。",
+    "intro": "这是一个面向视障人群的端云协同智能辅助系统，核心运行在PC服务器端（Python+GPU），通过WebSocket与ESP32-CAM等嵌入式设备通信，实现视觉感知与实时语音反馈。\n\n硬件侧由ESP32-CAM负责采集视频流和音频流，并上传IMU数据；AI能力主要部署在本地服务器（device端仅做轻量预处理），利用YOLO分割/检测、MediaPipe手部模型、光流稳定等算法处理图像，再调用云端ASR/TTS服务完成语音闭环。\n\n支持多模态状态机切换（盲道导航/过马路/物品查找/对话），具备光流掩码稳定、手部引导+抓取确认、斑马线对齐、红绿灯状态融合识别等实用创新点；Web界面提供实时可视化与3D姿态监控。\n\n适合有Python+CV基础的开发者二次开发导航逻辑或集成新模型；也适合作为高校无障碍AI课程项目，需自行准备ESP32-CAM、麦克风、扬声器及高性能GPU主机。",
+    "shelf": "vision",
+    "platform": "esp32-c3",
+    "hardware": [
+      {
+        "name": "ESP32-CAM",
+        "role": "camera"
+      },
+      {
+        "name": "麦克风",
+        "role": "audio-in"
+      },
+      {
+        "name": "扬声器",
+        "role": "audio-out"
+      },
+      {
+        "name": "IMU传感器",
+        "role": "sensor"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "盲道识别",
+        "where": "edge"
+      },
+      {
+        "name": "斑马线检测",
+        "where": "edge"
+      },
+      {
+        "name": "红绿灯识别",
+        "where": "edge"
+      },
+      {
+        "name": "语音识别",
+        "where": "cloud"
+      },
+      {
+        "name": "多模态对话",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "无障碍",
+      "视觉导航",
+      "YOLO",
+      "语音交互",
+      "ESP32"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:07.968Z"
+}

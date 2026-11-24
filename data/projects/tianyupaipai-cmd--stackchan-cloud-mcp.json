@@ -1,0 +1,25 @@
+{
+  "id": "tianyupaipai-cmd--stackchan-cloud-mcp",
+  "repo": "tianyupaipai-cmd/stackchan-cloud-mcp",
+  "status": "candidate",
+  "github": {
+    "stars": 44,
+    "license": "MIT",
+    "pushedAt": "2026-10-07T02:37:00Z",
+    "description": "Cloud MCP gateway that connects a StackChan desk robot to claude.ai — OAuth 2.1 bridge, reflex daemon, pixel avatar toolkit, and the field notes from making it work",
+    "topics": [
+      "claude",
+      "desk-robot",
+      "esp32",
+      "m5stack",
+      "mcp",
+      "oauth2",
+      "robotics",
+      "stackchan"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

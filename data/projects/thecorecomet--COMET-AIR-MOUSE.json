@@ -1,0 +1,16 @@
+{
+  "id": "thecorecomet--COMET-AIR-MOUSE",
+  "repo": "thecorecomet/COMET-AIR-MOUSE",
+  "status": "candidate",
+  "github": {
+    "stars": 112,
+    "license": "MIT",
+    "pushedAt": "2026-08-19T18:15:34Z",
+    "description": "COMET Air Mouse 🖱️🚀 — An open-source ESP32-C3 + MPU6050 wireless BLE motion-controlled mouse.",
+    "topics": [],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

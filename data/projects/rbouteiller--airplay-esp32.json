@@ -1,0 +1,22 @@
+{
+  "id": "rbouteiller--airplay-esp32",
+  "repo": "rbouteiller/airplay-esp32",
+  "status": "candidate",
+  "github": {
+    "stars": 726,
+    "license": "GPL-3.0",
+    "pushedAt": "2026-11-23T20:42:27Z",
+    "description": "This firmware turns a cheap ESP32 board into a wireless AirPlay 2 speaker. Plug it into an amplifier or powered speakers and it shows up on your iPhone, iPad or Mac just like a HomePod or an AirPlay TV.",
+    "topics": [
+      "airplay",
+      "airplay-receiver",
+      "airplay2",
+      "esp-idf",
+      "esp32"
+    ],
+    "language": "C",
+    "homepage": "https://rbouteiller.github.io/airplay-esp32/"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

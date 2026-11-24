@@ -1,0 +1,80 @@
+{
+  "id": "huangjunsen0406--py-xiaozhi",
+  "repo": "huangjunsen0406/py-xiaozhi",
+  "status": "approved",
+  "github": {
+    "stars": 3561,
+    "license": "MIT",
+    "pushedAt": "2026-11-23T02:24:11Z",
+    "description": "Open-source AI assistant ecosystem with MCP integrations, multimodal workflows, IoT support, and cross-platform voice interaction.",
+    "topics": [
+      "cross-platform",
+      "edge-computing",
+      "embodied-ai",
+      "esp32",
+      "esp32-s3",
+      "iot",
+      "mcp",
+      "mcp-client",
+      "mcp-server",
+      "multi-modal",
+      "python",
+      "raspberry-pi",
+      "robotics",
+      "voice-assistant",
+      "xiaozhi-esp32"
+    ],
+    "language": "Python",
+    "homepage": "https://huangjunsen0406.github.io/py-xiaozhi/"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "py-xiaozhi",
+    "summary": "跨平台多模态AI助手框架，支持语音唤醒、视觉理解、IoT设备控制和MCP工具生态。",
+    "intro": "py-xiaozhi 是一个基于 Python 异步架构的轻量级多模态AI交互框架，面向桌面与边缘设备（如树莓派、ESP32-S3）提供统一AI能力接入层。\n\n它通过音频流（Opus编解码+Sherpa-ONNX离线唤醒词）、摄像头采集与VLM集成、GPIO/MQTT/WS协议实现AI与硬件联动：语音指令可触发本地TTS播报、摄像头截图、音乐播放、IoT开关等动作。\n\n核心亮点包括：双协议（WebSocket/MQTT）加密通信、事件驱动插件系统、分层状态机（IDLE/LISTENING/SPEAKING）、离线唤醒词支持、MCP标准工具服务（音乐/相机/天气/音量等）及多UI模式（GUI/TUI/GPIO）。\n\n适合想快速构建带语音+视觉+硬件控制能力的AI终端的开发者——无需训练模型，可直接部署在树莓派或ESP32-S3网关上，也支持Windows/macOS桌面端作为AI中控。",
+    "shelf": "voice",
+    "platform": "rpi",
+    "hardware": [
+      {
+        "name": "microphone",
+        "role": "audio-in"
+      },
+      {
+        "name": "speaker",
+        "role": "audio-out"
+      },
+      {
+        "name": "camera",
+        "role": "camera"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "语音唤醒",
+        "where": "device"
+      },
+      {
+        "name": "语音识别",
+        "where": "device"
+      },
+      {
+        "name": "语音合成",
+        "where": "cloud"
+      },
+      {
+        "name": "图像理解",
+        "where": "edge"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "多模态",
+      "MCP协议",
+      "边缘AI",
+      "IoT控制",
+      "树莓派"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:05.283Z"
+}

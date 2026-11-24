@@ -1,0 +1,16 @@
+{
+  "id": "Jeremy-Ngai-Sew-Poh--InkQuest-ESP32",
+  "repo": "Jeremy-Ngai-Sew-Poh/InkQuest-ESP32",
+  "status": "candidate",
+  "github": {
+    "stars": 36,
+    "license": "GPL-3.0",
+    "pushedAt": "2026-11-07T06:06:22Z",
+    "description": "InkQuest is an interactive text adventure device using an ESP32, an e-paper display and a rotary encoder. It is powered by Gemini to generate infinite stories and choices. ",
+    "topics": [],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

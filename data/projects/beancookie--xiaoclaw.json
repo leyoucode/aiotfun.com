@@ -1,0 +1,27 @@
+{
+  "id": "beancookie--xiaoclaw",
+  "repo": "beancookie/xiaoclaw",
+  "status": "candidate",
+  "github": {
+    "stars": 52,
+    "license": "MIT",
+    "pushedAt": "2026-05-13T14:00:02Z",
+    "description": "Local AI Agent firmware running on ESP32-S3, integrating offline voice wake-up with cloud TTS, supporting local LLM inference, tool calling, long-term memory storage and autonomous task execution.",
+    "topics": [
+      "assistant",
+      "chatbot",
+      "edge-ai-agents",
+      "embedded",
+      "esp32",
+      "idf-esp",
+      "openclaw",
+      "own-your-data",
+      "personal",
+      "xiaozhi-esp32"
+    ],
+    "language": "C++",
+    "homepage": "https://beancookie.github.io/xiaoclaw/"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

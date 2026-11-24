@@ -1,0 +1,20 @@
+{
+  "id": "trombik--esp-adf-component-ai-thinker-esp32-a1s",
+  "repo": "trombik/esp-adf-component-ai-thinker-esp32-a1s",
+  "status": "candidate",
+  "github": {
+    "stars": 32,
+    "license": "MIT",
+    "pushedAt": "2025-12-10T04:19:47Z",
+    "description": "Ai Thinker ESP32 A1S Audio Kit board definition for esp-adf",
+    "topics": [
+      "esp-adf",
+      "esp-idf",
+      "esp32"
+    ],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

@@ -1,0 +1,16 @@
+{
+  "id": "hpy666666--xiaozhi-esp32-pet",
+  "repo": "hpy666666/xiaozhi-esp32-pet",
+  "status": "candidate",
+  "github": {
+    "stars": 56,
+    "license": "MIT",
+    "pushedAt": "2026-08-26T05:14:26Z",
+    "description": "基于xiaozhi-esp32的桌面宠物机器人，增加舵机控制和动态表情系统 | Desktop pet robot based on xiaozhi-esp32 with   servo control and dynamic emotion system",
+    "topics": [],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

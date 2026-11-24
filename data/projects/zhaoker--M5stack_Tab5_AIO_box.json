@@ -1,0 +1,18 @@
+{
+  "id": "zhaoker--M5stack_Tab5_AIO_box",
+  "repo": "zhaoker/M5stack_Tab5_AIO_box",
+  "status": "candidate",
+  "github": {
+    "stars": 47,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-10-21T01:31:51Z",
+    "description": "Turn your M5stack Tab5 into a Swiss Army knife for your ESP32!",
+    "topics": [
+      "m5stack-tab5"
+    ],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

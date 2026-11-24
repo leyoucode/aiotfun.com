@@ -1,0 +1,16 @@
+{
+  "id": "iMike78--nest-mini-drop-in-pcb",
+  "repo": "iMike78/nest-mini-drop-in-pcb",
+  "status": "candidate",
+  "github": {
+    "stars": 646,
+    "license": "CERN-OHL-S-2.0",
+    "pushedAt": "2026-11-01T15:22:06Z",
+    "description": "Drop-in PCB replacement for the Google Nest Mini v2 with ESP32-S3, ESP32-P4 and optional ESP32-C6. Inspired by Onju Voice and Home Assistant Voice PE.",
+    "topics": [],
+    "language": null,
+    "homepage": "https://micimike.com"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

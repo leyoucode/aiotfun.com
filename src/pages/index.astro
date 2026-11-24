@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import Shelf from '../components/Shelf.astro';
+import { allShelves, projects, topTags } from '../lib/projects.ts';
+import { FEATURED_PLATFORMS, PLATFORMS } from '../lib/taxonomy.ts';
+
+const shelves = allShelves();
+const get = (key: string) => shelves.find((s) => s.key === key)!;
+const categoryShelves = shelves.filter((s) => !['hot', 'beginner', 'recent'].includes(s.key) && !(FEATURED_PLATFORMS as string[]).includes(s.key) && s.key !== 'other');
+const platformCounts = FEATURED_PLATFORMS.map((k) => ({ key: k, label: PLATFORMS[k], count: get(k).items.length })).filter((x) => x.count > 0);
+const tags = topTags(8);
+const MIN_SHELF = 3;
+---
+
+<Base>
+  <section class="grid items-center gap-8 pt-10 md:grid-cols-[1fr_auto] md:pt-14">
+    <div>
+      <p class="font-mono text-xs uppercase tracking-widest text-muted">AIoTFun · 项目画廊</p>
+      <h1 class="mt-2 text-3xl font-bold tracking-tight md:text-[44px] md:leading-tight">动手做点好玩的 AIoT</h1>
+      <p class="mt-3 max-w-xl text-muted">
+        收录 GitHub 上 {projects.length} 个开源 AI + 硬件项目。挑一个看看别人怎么做，再开始你的下一个作品。
+      </p>
+      <form action="/search/" method="get" class="mt-6 flex max-w-xl items-center gap-2 rounded-xl border border-line bg-surface px-3 py-2 focus-within:border-teal/50" role="search">
+        <svg viewBox="0 0 20 20" class="size-4 shrink-0 text-muted" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <circle cx="9" cy="9" r="6"></circle><path d="m14 14 4 4" stroke-linecap="round"></path>
+        </svg>
+        <input name="q" type="search" placeholder="搜项目：语音助手、ESP32-S3、机器人……" class="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-muted/70" aria-label="搜索项目" />
+        <button class="shrink-0 rounded-lg bg-teal px-3 py-1.5 text-xs font-medium text-white hover:bg-teal/90">搜索</button>
+      </form>
+      {tags.length > 0 && (
+        <div class="mt-3 flex flex-wrap items-center gap-1.5 text-xs">
+          <span class="text-muted">热门</span>
+          {tags.map((t) => (
+            <a href={`/search/?q=${encodeURIComponent(t)}`} class="rounded-full border border-line bg-surface px-2.5 py-1 text-muted hover:border-teal/40 hover:text-teal">{t}</a>
+          ))}
+        </div>
+      )}
+    </div>
+    <div class="hidden md:block">
+      <img src="/logo-512.png" alt="" width="200" height="200" class="size-48 rounded-[2.5rem] border border-line shadow-sm" />
+    </div>
+  </section>
+
+  {projects.length === 0 ? (
+    <p class="mt-16 rounded-xl border border-dashed border-line p-10 text-center text-muted">还没有上架的项目。</p>
+  ) : (
+    <>
+      <Shelf shelf={get('hot')} />
+      {categoryShelves.filter((s) => s.items.length >= MIN_SHELF).map((s) => <Shelf shelf={s} />)}
+
+      {platformCounts.length > 0 && (
+        <section class="mt-10">
+          <div class="mb-3 border-b border-line pb-2">
+            <h2 class="text-lg font-semibold tracking-tight">按平台浏览</h2>
+            <p class="text-xs text-muted">按主控芯片找项目。</p>
+          </div>
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-7">
+            {platformCounts.map((p) => (
+              <a href={`/shelf/${p.key}/`} class="rounded-xl border border-line bg-surface p-4 hover:border-teal/40">
+                <div class="font-semibold text-teal">{p.label}</div>
+                <div class="mt-1 text-xs text-muted">{p.count} 个项目</div>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {get('beginner').items.length >= MIN_SHELF && <Shelf shelf={get('beginner')} />}
+      <Shelf shelf={get('recent')} />
+    </>
+  )}
+</Base>

@@ -1,0 +1,16 @@
+{
+  "id": "ngxson--esp32-usb-to-airprint",
+  "repo": "ngxson/esp32-usb-to-airprint",
+  "status": "candidate",
+  "github": {
+    "stars": 348,
+    "license": "MIT",
+    "pushedAt": "2026-11-09T22:52:29Z",
+    "description": "Add AirPrint / AirScan support to your old printer, using just a cheap ESP32-S3",
+    "topics": [],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

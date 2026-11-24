@@ -1,0 +1,16 @@
+{
+  "id": "waveshareteam--ESP32-AIChats",
+  "repo": "waveshareteam/ESP32-AIChats",
+  "status": "candidate",
+  "github": {
+    "stars": 114,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-10-26T03:51:10Z",
+    "description": "A library for ESP32 access to the large model platform to realize voice dialogue, supporting ESP32-S3 and ESP32-P4",
+    "topics": [],
+    "language": null,
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

@@ -1,0 +1,68 @@
+{
+  "id": "Maggotxy--xiaozhi-esp32-music",
+  "repo": "Maggotxy/xiaozhi-esp32-music",
+  "status": "approved",
+  "github": {
+    "stars": 362,
+    "license": "MIT",
+    "pushedAt": "2025-12-18T03:47:38Z",
+    "description": "小智ai机器人 音乐播放固件",
+    "topics": [],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "小智ESP32音乐固件",
+    "summary": "基于ESP32的AI语音助手固件，支持语音点歌、歌词显示与多角色交互。",
+    "intro": "这是一套专为小智AI机器人设计的开源ESP32音乐播放固件，以MIT协议发布，可直接烧录运行，无需额外训练模型或硬件改造。\n\n固件在ESP32端集成离线唤醒（ESP-SR）、流式ASR/TTS、OLED/LCD显示及音频播放能力；音乐控制逻辑由云端大模型（如DeepSeekV3/Qwen）通过MCP协议触发`self.music.play_song`工具，设备端执行解码（OPUS）、播放与歌词同步渲染。\n\n亮点包括：开箱即用的多平台兼容性（支持70+开源ESP32-S3开发板）、声纹识别（3D-Speaker）、Wi-Fi/4G双联网、多语言角色系统，以及面向开发者开放的MCP设备控制扩展能力。\n\n适合想快速搭建AI语音音乐终端的嵌入式爱好者、教育项目实践者，或希望在现有小智硬件上启用正版音乐服务的普通用户。",
+    "shelf": "voice",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "OLED/LCD显示屏",
+        "role": "display"
+      },
+      {
+        "name": "麦克风",
+        "role": "audio-in"
+      },
+      {
+        "name": "扬声器",
+        "role": "audio-out"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "语音唤醒",
+        "where": "device"
+      },
+      {
+        "name": "语音识别",
+        "where": "device"
+      },
+      {
+        "name": "语音合成",
+        "where": "edge"
+      },
+      {
+        "name": "声纹识别",
+        "where": "device"
+      },
+      {
+        "name": "音乐语义理解",
+        "where": "cloud"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "ESP32-S3",
+      "音乐播放",
+      "MCP协议",
+      "离线唤醒",
+      "多角色"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:12.709Z"
+}

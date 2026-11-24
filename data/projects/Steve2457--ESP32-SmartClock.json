@@ -1,0 +1,16 @@
+{
+  "id": "Steve2457--ESP32-SmartClock",
+  "repo": "Steve2457/ESP32-SmartClock",
+  "status": "candidate",
+  "github": {
+    "stars": 35,
+    "license": "MIT",
+    "pushedAt": "2025-07-10T06:57:06Z",
+    "description": "AI, weather, calendar",
+    "topics": [],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

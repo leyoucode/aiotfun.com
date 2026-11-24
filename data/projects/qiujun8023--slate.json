@@ -1,0 +1,26 @@
+{
+  "id": "qiujun8023--slate",
+  "repo": "qiujun8023/slate",
+  "status": "candidate",
+  "github": {
+    "stars": 39,
+    "license": "MIT",
+    "pushedAt": "2026-10-27T08:22:12Z",
+    "description": "基于 ZecTrix Note4 墨水屏的自托管相框、信息看板和语音助手",
+    "topics": [
+      "dashboard",
+      "digital-photo-frame",
+      "e-ink",
+      "e-paper",
+      "esp-idf",
+      "esp32",
+      "self-hosted",
+      "typescript",
+      "voice-assistant"
+    ],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

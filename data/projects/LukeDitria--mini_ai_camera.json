@@ -1,0 +1,16 @@
+{
+  "id": "LukeDitria--mini_ai_camera",
+  "repo": "LukeDitria/mini_ai_camera",
+  "status": "candidate",
+  "github": {
+    "stars": 94,
+    "license": "MIT",
+    "pushedAt": "2026-11-23T02:15:39Z",
+    "description": "mini raspberry pi ai wildlife monitor using the imx500",
+    "topics": [],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

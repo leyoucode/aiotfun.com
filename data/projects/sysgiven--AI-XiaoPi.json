@@ -1,0 +1,16 @@
+{
+  "id": "sysgiven--AI-XiaoPi",
+  "repo": "sysgiven/AI-XiaoPi",
+  "status": "candidate",
+  "github": {
+    "stars": 180,
+    "license": "MIT",
+    "pushedAt": "2026-08-02T23:59:56Z",
+    "description": "小皮AI直播机器人 硬件+私有服务器解决方案 (XiaoPi)是一个将直播弹幕与AI硬件语音交互结合的解决方案。它能够：  - 📺 实时接收直播间弹幕消息 - 🤖 使用大语言模型(LLM)生成智能回复 - 🔊 将回复转换为语音(TTS) - 📡 发送到ESP32等硬件设备进行播放 - 🎯 支持串行化处理，避免弹幕堆积",
+    "topics": [],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

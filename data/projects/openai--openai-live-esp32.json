@@ -1,0 +1,16 @@
+{
+  "id": "openai--openai-live-esp32",
+  "repo": "openai/openai-live-esp32",
+  "status": "candidate",
+  "github": {
+    "stars": 31,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-11-23T01:37:57Z",
+    "description": "Experimental Live API SDK for ESP32-S3 with a Waveshare voice app. Not officially supported by OpenAI.",
+    "topics": [],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

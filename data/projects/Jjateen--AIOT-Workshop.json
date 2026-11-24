@@ -1,0 +1,37 @@
+{
+  "id": "Jjateen--AIOT-Workshop",
+  "repo": "Jjateen/AIOT-Workshop",
+  "status": "candidate",
+  "github": {
+    "stars": 30,
+    "license": "MIT",
+    "pushedAt": "2025-02-13T19:59:00Z",
+    "description": "This repository contains resources, including circuit diagrams, code, and project files from the IoTics AIoT Workshop, focusing on integrating Artificial Intelligence (AI) with the Internet of Things (IoT). It features hands-on projects exploring sensor integration, cloud services, machine learning, and robotics.",
+    "topics": [
+      "adafruit-io",
+      "aiot",
+      "arduino",
+      "blynk",
+      "cloud-integration",
+      "computer-vision",
+      "cpp",
+      "deep-learning",
+      "embedded-systems",
+      "esp32",
+      "gesture-recognition",
+      "haar-cascade",
+      "iot",
+      "machine-learning",
+      "mediapipe",
+      "object-detection",
+      "python",
+      "sensor-data",
+      "surveillance",
+      "wokwi"
+    ],
+    "language": "Jupyter Notebook",
+    "homepage": "https://www.instagram.com/iotics_iiitn/"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

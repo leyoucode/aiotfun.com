@@ -1,0 +1,32 @@
+{
+  "id": "decoded-cipher--nodrix",
+  "repo": "decoded-cipher/nodrix",
+  "status": "candidate",
+  "github": {
+    "stars": 48,
+    "license": "MIT",
+    "pushedAt": "2026-11-17T08:18:23Z",
+    "description": "The IoT platform Cloudflare didn't build. Telemetry, realtime dashboards, and automations on Workers + D1 + R2 + Durable Objects — in your own Cloudflare account.",
+    "topics": [
+      "arduino",
+      "cloudflare",
+      "cloudflare-workers",
+      "esp32",
+      "esp8266",
+      "hardware",
+      "home-automation",
+      "iot",
+      "iot-dashboard",
+      "iot-platform",
+      "mcp",
+      "micropython",
+      "model-context-protocol",
+      "self-hosted",
+      "serverless"
+    ],
+    "language": "TypeScript",
+    "homepage": "https://nodrix.live"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

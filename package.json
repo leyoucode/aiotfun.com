@@ -1,0 +1,27 @@
+{
+  "name": "aiotfun.com",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "generate-types": "wrangler types",
+    "crawl": "node scripts/crawl.ts",
+    "enrich": "node scripts/enrich.ts",
+    "review": "node scripts/review.ts",
+    "db:migrate:local": "wrangler d1 migrations apply aiotfun --local"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^14.4.9",
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.13",
+    "tailwindcss": "^4.3.5",
+    "wrangler": "^4.167.0"
+  },
+  "packageManager": "pnpm@10.31.0+sha512.e3927388bfaa8078ceb79b748ffc1e8274e84d75163e67bc22e06c0d3aed43dd153151cbf11d7f8301ff4acb98c68bdc5cadf6989532801ffafe3b3e4a63c268"
+}

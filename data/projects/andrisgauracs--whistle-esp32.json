@@ -1,0 +1,69 @@
+{
+  "id": "andrisgauracs--whistle-esp32",
+  "repo": "andrisgauracs/whistle-esp32",
+  "status": "approved",
+  "github": {
+    "stars": 252,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-10-21T14:55:15Z",
+    "description": "Whistle speech-to-text running fully on an ESP32-S3: hold a button, say a colour in one of 7 languages, the LED does it. No network.",
+    "topics": [
+      "edge-ai",
+      "esp32",
+      "esp32-s3",
+      "inmp441",
+      "speech-recognition",
+      "speech-to-text",
+      "tinyml",
+      "whistle"
+    ],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "Whistle-ESP32",
+    "summary": "基于ESP32-S3的离线语音识别项目，支持7种语言指令控制RGB LED，全程端侧运行，无需网络。",
+    "intro": "Whistle-ESP32 是一个完全在 ESP32-S3 上运行的端侧语音识别系统，将 Whistle 模型（Apache 2.0）完整移植为纯 C99 实现，不依赖任何外部库或云端服务。\n\n硬件通过 INMP441 麦克风采集语音，按键触发录音，WS2812 RGB LED（板载）实时响应识别结果；AI 模型（14.5 MB int8 Whistle）在 S3 的 PIE 向量单元上执行 log-mel 特征提取、编码器/解码器推理，全程离线完成语音转文本与语义解析。\n\n亮点包括：七语种自动检测与混合识别、深度可裁剪模型适配有限 Flash/PSRAM、噪声门控与音频瞬态抑制、逐层张量级精度验证、全链路开源（含参考 NumPy 实现）。\n\n适合嵌入式 AI 入门者学习 TinyML 部署流程，也适合进阶开发者研究端侧语音模型轻量化、I²S 音频驱动优化及多语言 NLU 嵌入设计。",
+    "shelf": "voice",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "INMP441",
+        "role": "audio-in"
+      },
+      {
+        "name": "tactile switch",
+        "role": "input"
+      },
+      {
+        "name": "WS2812",
+        "role": "light"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "语音识别",
+        "where": "device"
+      },
+      {
+        "name": "语种识别",
+        "where": "device"
+      },
+      {
+        "name": "语义解析",
+        "where": "device"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "离线语音",
+      "TinyML",
+      "ESP32-S3",
+      "多语言",
+      "端侧AI",
+      "LED控制"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:16.943Z"
+}

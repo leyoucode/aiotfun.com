@@ -1,0 +1,20 @@
+{
+  "id": "ailyProject--aily-builder",
+  "repo": "ailyProject/aily-builder",
+  "status": "candidate",
+  "github": {
+    "stars": 2321,
+    "license": "GPL-3.0",
+    "pushedAt": "2026-11-23T15:42:24Z",
+    "description": "Faster Arduino compilation CLI. Arduino快速编译工具，小项目提速50%，大项目提速80%! 时间就是金钱，我的朋友!",
+    "topics": [
+      "arduino",
+      "avr",
+      "esp32"
+    ],
+    "language": "TypeScript",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

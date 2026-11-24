@@ -1,0 +1,26 @@
+{
+  "id": "mandarwagh9--embedist",
+  "repo": "mandarwagh9/embedist",
+  "status": "candidate",
+  "github": {
+    "stars": 47,
+    "license": "MIT",
+    "pushedAt": "2026-05-28T15:28:54Z",
+    "description": "AI-Native Embedded Development Environment",
+    "topics": [
+      "ai",
+      "ai-agents",
+      "developer-tools",
+      "embedded",
+      "embedded-software",
+      "embedded-systems",
+      "esp32",
+      "hardware",
+      "hardware-ai"
+    ],
+    "language": "TypeScript",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

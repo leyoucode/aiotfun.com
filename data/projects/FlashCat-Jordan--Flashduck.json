@@ -1,0 +1,27 @@
+{
+  "id": "FlashCat-Jordan--Flashduck",
+  "repo": "FlashCat-Jordan/Flashduck",
+  "status": "candidate",
+  "github": {
+    "stars": 189,
+    "license": "MIT",
+    "pushedAt": "2026-11-17T11:05:16Z",
+    "description": "闪猫造物Flashduck — an open-source ESP32-S3 desktop duck robot with six servos, a single animated eye, wide-stance walking and two interaction systems (voice assistant / DuckClaw local agent).",
+    "topics": [
+      "3d-printing",
+      "diy",
+      "duckclaw",
+      "embedded",
+      "esp-idf",
+      "esp32-s3",
+      "flashduck",
+      "lvgl",
+      "robot",
+      "robotics"
+    ],
+    "language": "C",
+    "homepage": "https://shanmaotech.cn/flashduck/"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

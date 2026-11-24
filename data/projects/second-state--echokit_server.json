@@ -1,0 +1,62 @@
+{
+  "id": "second-state--echokit_server",
+  "repo": "second-state/echokit_server",
+  "status": "approved",
+  "github": {
+    "stars": 591,
+    "license": "GPL-3.0",
+    "pushedAt": "2026-02-15T20:35:16Z",
+    "description": "Open Source Voice Agent Platform",
+    "topics": [
+      "agentic-ai",
+      "ai",
+      "asr",
+      "esp32",
+      "llm",
+      "mcp",
+      "mcp-client",
+      "tts",
+      "voice",
+      "voice-assistant"
+    ],
+    "language": "Rust",
+    "homepage": "https://echokit.dev/"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "EchoKit Server",
+    "summary": "开源语音智能体服务端，协调ESP32设备与ASR/LLM/TTS等AI服务，实现端云协同的语音对话系统。",
+    "intro": "EchoKit Server 是 EchoKit 语音助手平台的核心服务端组件，运行在本地服务器或边缘设备上，负责管理 ESP32 端设备与各类 AI 服务（语音识别、大语言模型、语音合成）之间的双向通信和流程编排。\n\n它不直接运行在硬件上，而是作为边缘网关：接收 ESP32 设备上传的音频流（经VAD检测），调用 ASR 转文本，送入 LLM 推理，再将响应交由 TTS 合成音频流下发回设备播放。全程支持 WebSocket 实时交互与 OpenAI 兼容 API。\n\n支持灵活模型替换（Gemini、Qwen、Whisper、GSV-TTS 等）、自定义提示词与工作流、MCP 工具调用扩展，并提供 Web 配置界面与蓝牙配网能力，兼顾开箱即用与深度定制。\n\n适合希望快速搭建可定制语音 AI 应用的嵌入式开发者、AI 工程师或教育者；需部署 Rust 服务端并配置 AI 模型接口，无需硬件焊接但需理解语音流水线与 API 集成。",
+    "shelf": "voice",
+    "platform": "other",
+    "hardware": [],
+    "aiCapabilities": [
+      {
+        "name": "语音识别",
+        "where": "cloud"
+      },
+      {
+        "name": "语言理解",
+        "where": "edge"
+      },
+      {
+        "name": "语音合成",
+        "where": "cloud"
+      },
+      {
+        "name": "语音唤醒",
+        "where": "device"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音助手",
+      "端云协同",
+      "ASR",
+      "LLM",
+      "TTS",
+      "MCP"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:10.698Z"
+}

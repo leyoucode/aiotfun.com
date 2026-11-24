@@ -1,0 +1,85 @@
+{
+  "id": "PetoiCamp--OpenCatEsp32-Quadruped-Robot",
+  "repo": "PetoiCamp/OpenCatEsp32-Quadruped-Robot",
+  "status": "approved",
+  "github": {
+    "stars": 559,
+    "license": "MIT",
+    "pushedAt": "2026-11-23T08:12:06Z",
+    "description": "An ESP32-based open source quadruped robot pet framework for developing Boston Dynamics-style four-legged robots that are perfect for STEM, coding & robotics education, IoT robotics applications, AI-enhanced robotics application services, research, and DIY robotics kit development.",
+    "topics": [
+      "ai",
+      "arduino",
+      "block-coding",
+      "education",
+      "esp32",
+      "iot",
+      "legged-robot",
+      "physical-ai",
+      "quadruped",
+      "quadruped-robot-gaits",
+      "raspberry-pi",
+      "reinforcement-learning",
+      "robot-cat",
+      "robot-dog",
+      "robot-kit",
+      "robotics",
+      "robotics-education",
+      "simulation",
+      "stem",
+      "walking-robot"
+    ],
+    "language": "C++",
+    "homepage": "https://www.petoi.com"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "OpenCat ESP32 四足机器人",
+    "summary": "基于ESP32的开源四足机器人框架，支持步态控制、AI增强与物理交互，适用于教育、研究和DIY开发。",
+    "intro": "这是一个运行在Petoi BiBoard（ESP32主控）上的开源四足机器人软件框架，为Bittle X、Nybble Q等桌面级机器狗/猫提供底层运动控制与扩展能力。\n\n硬件通过BiBoard实时协调最多12个舵机实现动态步态，并利用内置Wi-Fi/蓝牙实现无线通信；AI能力可端侧运行轻量模型，也可与树莓派、Jetson或云服务协同完成视觉、语音、强化学习等任务。\n\n支持Puppet Mode（手拖示教）、sim2real迁移、ROS集成、SLAM与强化学习实验；全栈开源（软硬件），配套在线仿真器与丰富教育课程。\n\n适合STEM教师开展机器人实践课、大学生做ROS/RL课题、创客定制AI宠物、研究人员验证具身智能算法。",
+    "shelf": "robot",
+    "platform": "esp32",
+    "hardware": [
+      {
+        "name": "舵机",
+        "role": "actuator"
+      },
+      {
+        "name": "Wi-Fi模块",
+        "role": "comm"
+      },
+      {
+        "name": "蓝牙模块",
+        "role": "comm"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "步态控制",
+        "where": "device"
+      },
+      {
+        "name": "强化学习",
+        "where": "edge"
+      },
+      {
+        "name": "语音交互",
+        "where": "cloud"
+      },
+      {
+        "name": "视觉识别",
+        "where": "edge"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "四足机器人",
+      "AI教育",
+      "ESP32",
+      "强化学习",
+      "ROS",
+      "物理AI"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:11.479Z"
+}

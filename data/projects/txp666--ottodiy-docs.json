@@ -1,0 +1,26 @@
+{
+  "id": "txp666--ottodiy-docs",
+  "repo": "txp666/ottodiy-docs",
+  "status": "candidate",
+  "github": {
+    "stars": 61,
+    "license": "MIT",
+    "pushedAt": "2026-10-19T10:09:53Z",
+    "description": "Open-source Otto robot + XiaoZhi AI technical documentation and sharing",
+    "topics": [
+      "ai-robot",
+      "docusaurus",
+      "esp32",
+      "humanoid-robot",
+      "open-source-hardware",
+      "otto-diy",
+      "otto-robot",
+      "robotics",
+      "xiaozhi-ai"
+    ],
+    "language": "JavaScript",
+    "homepage": "http://www.ottodiy.tech"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

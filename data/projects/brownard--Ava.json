@@ -1,0 +1,16 @@
+{
+  "id": "brownard--Ava",
+  "repo": "brownard/Ava",
+  "status": "candidate",
+  "github": {
+    "stars": 188,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-06-18T18:36:26Z",
+    "description": "An Android voice assistant for Home Assistant using the ESPHome protocol",
+    "topics": [],
+    "language": "Kotlin",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

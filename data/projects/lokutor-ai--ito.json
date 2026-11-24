@@ -1,0 +1,33 @@
+{
+  "id": "lokutor-ai--ito",
+  "repo": "lokutor-ai/ito",
+  "status": "candidate",
+  "github": {
+    "stars": 39,
+    "license": "GPL-3.0",
+    "pushedAt": "2026-11-11T10:23:38Z",
+    "description": "Natural-sounding streaming text-to-speech for the ESP32-S3: 3.3 M params, 3.8 MB of weights, no cloud, no NPU",
+    "topics": [
+      "audio",
+      "edge-ai",
+      "embedded",
+      "embedded-ai",
+      "esp-idf",
+      "esp32",
+      "esp32-s3",
+      "huggingface",
+      "microcontroller",
+      "on-device",
+      "speech",
+      "speech-synthesis",
+      "streaming",
+      "text-to-speech",
+      "tinyml",
+      "tts"
+    ],
+    "language": "C",
+    "homepage": "https://lokutor-ai.github.io/ito/"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

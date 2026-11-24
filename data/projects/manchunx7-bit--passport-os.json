@@ -1,0 +1,16 @@
+{
+  "id": "manchunx7-bit--passport-os",
+  "repo": "manchunx7-bit/passport-os",
+  "status": "candidate",
+  "github": {
+    "stars": 50,
+    "license": "MIT",
+    "pushedAt": "2026-11-14T07:48:20Z",
+    "description": "Passport OS - ESP32-C3 Firmware for AI Passport (Launcher, Voice, Radio, Game, XiaoZhi)",
+    "topics": [],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

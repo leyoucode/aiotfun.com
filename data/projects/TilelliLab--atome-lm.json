@@ -1,0 +1,33 @@
+{
+  "id": "TilelliLab--atome-lm",
+  "repo": "TilelliLab/atome-lm",
+  "status": "candidate",
+  "github": {
+    "stars": 154,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-07-08T08:52:46Z",
+    "description": "A ternary, zero-heap tiny language model that runs inside a $2 microcontroller — bit-exact Python <-> C99 <-> Cortex-M3 (QEMU) parity. Apache-2.0.",
+    "topics": [
+      "bitnet",
+      "cortex-m",
+      "edge-ai",
+      "embedded",
+      "esp32",
+      "language-model",
+      "llm",
+      "machine-learning",
+      "microcontroller",
+      "on-device-ai",
+      "qemu",
+      "quantization",
+      "small-language-model",
+      "stm32",
+      "ternary",
+      "tinyml"
+    ],
+    "language": "Python",
+    "homepage": "https://atomelm.com"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

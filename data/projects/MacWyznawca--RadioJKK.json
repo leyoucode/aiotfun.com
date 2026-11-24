@@ -1,0 +1,24 @@
+{
+  "id": "MacWyznawca--RadioJKK",
+  "repo": "MacWyznawca/RadioJKK",
+  "status": "candidate",
+  "github": {
+    "stars": 33,
+    "license": "MIT",
+    "pushedAt": "2026-05-02T17:28:49Z",
+    "description": "Internet radio for AI Thinker ESP32-A1S and similar boards based on ESP-ADF audio libraries with web control, EQ and recording to SD card capabilities.",
+    "topics": [
+      "ai-thinker-esp32-a1s",
+      "audio",
+      "esp-adf",
+      "esp-idf",
+      "esp32",
+      "esp32-a1s",
+      "radio"
+    ],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

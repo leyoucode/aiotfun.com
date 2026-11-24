@@ -1,0 +1,30 @@
+{
+  "id": "davidhoo--relive",
+  "repo": "davidhoo/relive",
+  "status": "candidate",
+  "github": {
+    "stars": 57,
+    "license": "MIT",
+    "pushedAt": "2026-10-23T02:00:29Z",
+    "description": "Relive - 智能照片记忆相框：通过 AI 分析 NAS 照片，在墨水屏相框上展示往年今日或最值得回忆的时刻",
+    "topics": [
+      "dithering",
+      "diy",
+      "e-ink",
+      "e-paper",
+      "esp32",
+      "image-processing",
+      "iot",
+      "memories",
+      "open-source",
+      "photo-frame",
+      "photography",
+      "self-hosted",
+      "smart-home"
+    ],
+    "language": "Go",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

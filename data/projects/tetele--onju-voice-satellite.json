@@ -1,0 +1,16 @@
+{
+  "id": "tetele--onju-voice-satellite",
+  "repo": "tetele/onju-voice-satellite",
+  "status": "candidate",
+  "github": {
+    "stars": 150,
+    "license": "MIT",
+    "pushedAt": "2025-01-16T09:25:34Z",
+    "description": "An ESPHome config for the Onju Voice which makes it a Home Assistant voice satellite",
+    "topics": [],
+    "language": null,
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

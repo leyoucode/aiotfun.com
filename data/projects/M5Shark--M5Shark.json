@@ -1,0 +1,16 @@
+{
+  "id": "M5Shark--M5Shark",
+  "repo": "M5Shark/M5Shark",
+  "status": "candidate",
+  "github": {
+    "stars": 63,
+    "license": "MIT",
+    "pushedAt": "2026-09-18T23:48:34Z",
+    "description": "M5SHARK R153 - ESP32-C5 security device with SHARK UI, 62 MCP AI tools, games, Wi-Fi/BT/GPS/BadUSB",
+    "topics": [],
+    "language": "C",
+    "homepage": "https://m5shark.com/products/m5shark-marauder-v8"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

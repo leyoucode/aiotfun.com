@@ -1,0 +1,63 @@
+{
+  "id": "Mjrovai--XIAO-ESP32S3-Sense",
+  "repo": "Mjrovai/XIAO-ESP32S3-Sense",
+  "status": "approved",
+  "github": {
+    "stars": 344,
+    "license": "Apache-2.0",
+    "pushedAt": "2025-08-12T14:33:57Z",
+    "description": "Seeed Studio XIAO ESP32S3 Sense integrates a camera sensor, digital microphone, and SD card support. Combining embedded ML computing power and photography capability, this development board is a great tool to get started with TinyML (intelligent voice and vision AI).",
+    "topics": [],
+    "language": "Jupyter Notebook",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "XIAO ESP32S3 Sense",
+    "summary": "基于ESP32-S3的TinyML开发板，集成摄像头、麦克风和SD卡，支持图像分类、目标检测、运动识别与关键词唤醒等端侧AI任务。",
+    "intro": "这是一款专为TinyML入门设计的紧凑型AIoT开发板，搭载ESP32-S3主控，原生集成OV2640摄像头、数字麦克风及SD卡槽，开箱即可运行轻量级视觉与语音AI模型。\n\n硬件与AI深度协同：摄像头采集图像用于端侧图像分类/目标检测；麦克风捕获音频实现关键词识别（KWS）；加速度计数据支持运动分类与异常检测；所有AI推理均在设备端完成，无需云端依赖。\n\n亮点包括超低功耗（深睡仅14μA）、8MB PSRAM加速AI运算、Wi-Fi+BLE双模通信，以及可选配的1.28英寸圆形触控屏扩展板，兼顾便携性与交互能力。\n\n适合嵌入式初学者和AI爱好者快速实践端侧机器学习，无需训练模型，提供完整Jupyter Notebook教程与PDF文档，覆盖数据采集、模型部署到实机验证全流程。",
+    "shelf": "vision",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "OV2640",
+        "role": "camera"
+      },
+      {
+        "name": "digital microphone",
+        "role": "audio-in"
+      },
+      {
+        "name": "SD card slot",
+        "role": "comm"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "图像分类",
+        "where": "device"
+      },
+      {
+        "name": "目标检测",
+        "where": "device"
+      },
+      {
+        "name": "关键词识别",
+        "where": "device"
+      },
+      {
+        "name": "运动识别",
+        "where": "device"
+      }
+    ],
+    "difficulty": "beginner",
+    "tags": [
+      "TinyML",
+      "端侧AI",
+      "图像识别",
+      "语音唤醒",
+      "ESP32-S3"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:13.099Z"
+}

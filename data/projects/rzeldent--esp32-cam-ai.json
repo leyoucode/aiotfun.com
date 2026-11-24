@@ -1,0 +1,27 @@
+{
+  "id": "rzeldent--esp32-cam-ai",
+  "repo": "rzeldent/esp32-cam-ai",
+  "status": "candidate",
+  "github": {
+    "stars": 30,
+    "license": "MIT",
+    "pushedAt": "2026-09-29T19:54:42Z",
+    "description": "A Model Context Protocol (MCP) server implementation for ESP32-CAM that enables integration with a Large Language Model (LLM). The LLM connects using this library to the ESP32-CAM offering remote camera control, LED management, and system monitoring through standardized MCP tools offering AI capabilities.",
+    "topics": [
+      "ai",
+      "copilot",
+      "esp32-cam",
+      "esp32s",
+      "home-assistant",
+      "llm",
+      "mcp-server",
+      "node-red",
+      "ov2640",
+      "rpc-server"
+    ],
+    "language": "C++",
+    "homepage": "https://github.com/rzeldent/ESP32-CAM-AI"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

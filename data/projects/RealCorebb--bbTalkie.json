@@ -1,0 +1,70 @@
+{
+  "id": "RealCorebb--bbTalkie",
+  "repo": "RealCorebb/bbTalkie",
+  "status": "approved",
+  "github": {
+    "stars": 343,
+    "license": "MIT",
+    "pushedAt": "2026-04-13T01:29:23Z",
+    "description": "A hands-free mini walkie-talkie powered by embedded AI, featuring automatic voice detection, keyword-triggered animations, and real-time speech-to-text display.",
+    "topics": [
+      "arduino",
+      "diy",
+      "esp32",
+      "intercom",
+      "maker-projects",
+      "walkie-talkie"
+    ],
+    "language": "C",
+    "homepage": "https://www.bbrealm.com/"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "bbTalkie",
+    "summary": "基于ESP32-S3的免按键AI对讲机，支持语音唤醒、关键词触发动画和实时语音转文字显示。",
+    "intro": "bbTalkie是一款开源DIY迷你对讲机，专为免手持、免按键通信设计，融合嵌入式AI与硬件交互，主打骑行、户外等场景下的自然语音通讯体验。\n\n它以ESP32-S3为主控，利用ESP-SR语音识别框架实现端侧VAD（语音活动检测）与关键词识别；配合OLED屏幕实时显示文字气泡，并驱动LED或屏幕动画响应关键词；支持Wi-Fi组网实现多机对讲。\n\n项目亮点包括：全本地化语音处理（不依赖云端）、紧凑结构（含自研3D外壳与PCB）、PSRAM优化适配确保音频流低延迟、模块化软硬件设计便于二次开发。\n\n适合有一定嵌入式基础的Maker、AIoT爱好者动手复现，可用于学习ESP-IDF、嵌入式语音处理、低功耗无线通信及软硬协同设计。",
+    "shelf": "voice",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "OLED显示屏",
+        "role": "display"
+      },
+      {
+        "name": "麦克风",
+        "role": "audio-in"
+      },
+      {
+        "name": "扬声器",
+        "role": "audio-out"
+      },
+      {
+        "name": "LED指示灯",
+        "role": "light"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "语音唤醒",
+        "where": "device"
+      },
+      {
+        "name": "关键词识别",
+        "where": "device"
+      },
+      {
+        "name": "语音转文字",
+        "where": "device"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "语音唤醒",
+      "ESP32-S3",
+      "对讲机",
+      "嵌入式AI",
+      "DIY硬件"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:13.506Z"
+}

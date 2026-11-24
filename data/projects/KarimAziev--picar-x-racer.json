@@ -1,0 +1,22 @@
+{
+  "id": "KarimAziev--picar-x-racer",
+  "repo": "KarimAziev/picar-x-racer",
+  "status": "candidate",
+  "github": {
+    "stars": 31,
+    "license": "GPL-3.0",
+    "pushedAt": "2026-11-17T16:45:50Z",
+    "description": "A robotics and AI vehicle platform for the Raspberry Pi.",
+    "topics": [
+      "autonomous-driving",
+      "object-detection",
+      "picar-x",
+      "raspberry-pi",
+      "yolo"
+    ],
+    "language": "Python",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

@@ -1,0 +1,73 @@
+{
+  "id": "Ampixa--sanoTTS",
+  "repo": "Ampixa/sanoTTS",
+  "status": "approved",
+  "github": {
+    "stars": 854,
+    "license": "GPL-3.0",
+    "pushedAt": "2026-11-21T17:51:55Z",
+    "description": "sanoTTS (सानो = 'small' in Nepali): 294k–2.27M-parameter neural TTS that runs on a $3 chip, in the browser, or in Python with low-latency streaming.",
+    "topics": [
+      "arduino",
+      "edge-ai",
+      "esp32",
+      "esp32-s3",
+      "esphome",
+      "home-assistant",
+      "knowledge-distillation",
+      "low-latency",
+      "microcontroller",
+      "nepali",
+      "numpy",
+      "on-device",
+      "python",
+      "speech-synthesis",
+      "streaming-tts",
+      "text-to-speech",
+      "tinyml",
+      "tts",
+      "wasm",
+      "webassembly"
+    ],
+    "language": "C",
+    "homepage": "https://ampixa.com/sanotts/"
+  },
+  "ai": {
+    "relevant": true,
+    "title": "sanoTTS",
+    "summary": "超轻量神经语音合成引擎，294k–2.27M参数，可在ESP32-S3等微控制器上实时运行，也支持浏览器WASM和Python。",
+    "intro": "sanoTTS 是一个开源的极小规模神经文本转语音（TTS）框架，主打‘端侧全栈’——从音素转换（内置 espeak-ng WASM 版）到声学建模全部在设备本地完成，无需云端依赖或专用AI加速器。\n\n它在 ESP32-S3 上通过 GPIO 直接驱动 LM386 功放芯片和扬声器实现实时语音合成（RTF 0.383），同时支持 WebAssembly 浏览器原生运行、Python 离线调用及 Arduino/PlatformIO 嵌入式集成，真正实现‘一处训练、多端部署’。\n\n核心亮点包括：业界最小神经 TTS 模型族（最小仅 294k 参数 / 337KB int8）、跨平台零依赖设计（纯 C/WASM/numpy）、30+ 多语言语音（含 Nepali、Hindi、中文等）、以及针对 MCU 优化的 Xtensa SIMD 内核加速。\n\n适合嵌入式开发者为智能音箱、语音助手、无障碍设备等添加低成本、高隐私的本地语音能力；也适合教育者与创客快速构建离线语音交互原型。",
+    "shelf": "voice",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "LM386",
+        "role": "audio-out"
+      },
+      {
+        "name": "GPIO",
+        "role": "comm"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "文本转语音",
+        "where": "device"
+      },
+      {
+        "name": "音素转换",
+        "where": "device"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "端侧TTS",
+      "微控制器语音",
+      "WebAssembly",
+      "多语言",
+      "低功耗",
+      "开源语音"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:08.720Z"
+}

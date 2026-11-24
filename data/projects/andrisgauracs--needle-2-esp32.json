@@ -1,0 +1,51 @@
+{
+  "id": "andrisgauracs--needle-2-esp32",
+  "repo": "andrisgauracs/needle-2-esp32",
+  "status": "approved",
+  "github": {
+    "stars": 213,
+    "license": "Apache-2.0",
+    "pushedAt": "2026-08-18T00:36:18Z",
+    "description": "A 45M-parameter LLM: needle 2 running fully offline on an ESP32-S3, turning plain-English requests into guaranteed-valid JSON tool calls.",
+    "topics": [],
+    "language": "C",
+    "homepage": null
+  },
+  "ai": {
+    "relevant": true,
+    "title": "Needle 2 on ESP32-S3",
+    "summary": "45M参数轻量LLM，在ESP32-S3上离线运行，将自然语言指令解析为严格校验的JSON工具调用。",
+    "intro": "这是一个专为ESP32-S3深度优化的独立C99实现，完整运行 Needle 2（45M参数）语言模型，不依赖网络或云端服务，所有推理、语法约束采样和工具调用均在端侧完成。\n\n模型权重内存映射至16MB Flash，KV缓存驻留于8MB Octal PSRAM；输入通过串口终端接收，输出直接驱动WS2812 RGB LED——硬件与AI能力通过精简协议紧耦合，无中间层。\n\n支持运行时编译JSON Schema生成字节级语法约束，字段类型安全（int/bool/string/enum）、范围校验（min/max）由模型保证，开发者只需编写C工具处理器，无需手动解析或校验JSON。\n\n适合嵌入式AI初学者理解端侧LLM部署瓶颈，也适合IoT开发者构建离线语音/指令控制原型——例如用自然语言‘让LED红灯慢闪3次’直接触发硬件动作。",
+    "shelf": "tools",
+    "platform": "esp32-s3",
+    "hardware": [
+      {
+        "name": "WS2812",
+        "role": "light"
+      }
+    ],
+    "aiCapabilities": [
+      {
+        "name": "指令解析",
+        "where": "device"
+      },
+      {
+        "name": "工具调用",
+        "where": "device"
+      },
+      {
+        "name": "语法约束生成",
+        "where": "device"
+      }
+    ],
+    "difficulty": "intermediate",
+    "tags": [
+      "端侧大模型",
+      "离线LLM",
+      "工具调用",
+      "ESP32-S3",
+      "嵌入式AI"
+    ]
+  },
+  "reviewedAt": "2026-11-24T10:29:19.865Z"
+}

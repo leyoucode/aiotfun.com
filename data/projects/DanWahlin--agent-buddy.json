@@ -1,0 +1,19 @@
+{
+  "id": "DanWahlin--agent-buddy",
+  "repo": "DanWahlin/agent-buddy",
+  "status": "candidate",
+  "github": {
+    "stars": 74,
+    "license": "MIT",
+    "pushedAt": "2026-11-05T00:37:28Z",
+    "description": "An agent buddy that can run on an ESP32 device or on your desktop!",
+    "topics": [
+      "agents",
+      "ai"
+    ],
+    "language": "TypeScript",
+    "homepage": "https://getagentbuddy.com"
+  },
+  "ai": null,
+  "reviewedAt": null
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m5stack--M5Module-LLM",
+  "repo": "m5stack/M5Module-LLM",
+  "status": "candidate",
+  "github": {
+    "stars": 38,
+    "license": "MIT",
+    "pushedAt": "2026-10-29T02:04:21Z",
+    "description": "Arduino library for M5Stack LLM Module",
+    "topics": [],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}

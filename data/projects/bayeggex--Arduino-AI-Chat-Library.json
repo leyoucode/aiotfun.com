@@ -1,0 +1,28 @@
+{
+  "id": "bayeggex--Arduino-AI-Chat-Library",
+  "repo": "bayeggex/Arduino-AI-Chat-Library",
+  "status": "candidate",
+  "github": {
+    "stars": 51,
+    "license": "MIT",
+    "pushedAt": "2025-02-02T13:47:02Z",
+    "description": "🤖💬 Arduino library for integrating AI chat like OpenAI's ChatGPT, Hugging Face Transformers, and more.",
+    "topics": [
+      "ai",
+      "arduino",
+      "arduino-ai",
+      "arduino-library",
+      "chatbot",
+      "esp",
+      "esp32-arduino",
+      "esp8266-arduino",
+      "hugging-face",
+      "library",
+      "openai"
+    ],
+    "language": "C++",
+    "homepage": null
+  },
+  "ai": null,
+  "reviewedAt": null
+}
